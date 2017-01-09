@@ -1,0 +1,17 @@
+{
+  "name": "flourapp",
+  "version": "1.0.0",
+  "description": "Servidor y BD para el TP - Harinas Lolato",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Uciel",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "latest",
+    "express": "latest",
+    "method-override": "latest",
+    "mongoose": "latest"
+  }
+}
