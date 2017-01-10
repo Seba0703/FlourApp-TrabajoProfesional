@@ -52,12 +52,12 @@ exports.update = function(req, res) {
     Cliente.findById(req.params.id, function(err, cliente) { //"cliente" es el objeto que me devuelve la busqueda
         
 		//actualizo todos los campos de ese "cliente"
-        cliente.nombreEmpresa:    	req.body.nombreEmpresa;
-        cliente.cuit:     		  	req.body.cuit;
-        cliente.categoriaFiscalID:  req.body.categoriaFiscalID;
-        cliente.listaPrecioID:   	req.body.listaPrecioID;
-        cliente.direccion:  		req.body.direccion;
-        cliente.condicionPagoID:    req.body.condicionPagoID;
+        cliente.nombreEmpresa =   	req.body.nombreEmpresa;
+        cliente.cuit =     		  	req.body.cuit;
+        cliente.categoriaFiscalID=  req.body.categoriaFiscalID;
+        cliente.listaPrecioID =   	req.body.listaPrecioID;
+        cliente.direccion =  		req.body.direccion;
+        cliente.condicionPagoID =    req.body.condicionPagoID;
 
         cliente.save(function(err) { //almaceno en la base "cliente" para que quede actualizada con los nuevos cambios
             if(err) return res.status(500).send(err.message);

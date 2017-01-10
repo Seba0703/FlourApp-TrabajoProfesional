@@ -1,19 +1,35 @@
 var express = require("express"),  
     app = express(),
+	path = require('path'),
     bodyParser  = require("body-parser"),
     methodOverride = require("method-override");
     mongoose = require("mongoose");
+	
+
+app.use(express.static('public'));	
 	
 // Middlewares
 app.use(bodyParser.urlencoded({extended: false}));  
 app.use(bodyParser.json());  
 app.use(methodOverride());
 
+
+// HTML read
+var fileSystem = require("fs");
+
+var indexHTML;
+fileSystem.readFile("./public/index.html", function(err, html){
+	indexHTML = html;
+});
+ 
+
 // Index route
 var router = express.Router();
+
 router.get('/', function(req, res) {
-  res.send("Bienvenido a FlourApp!");
+	res.sendFile(path.join(__dirname, './public', 'index.html'));
 });
+
 app.use(router);
 
 // API routes

@@ -1,5 +1,5 @@
 // Import controller
-var clienteController = require("../controllers/cliente");
+var clienteController = require("../controllers/clienteController");
 
 exports.getClienteRoutersHandler = function(express){
 	var clienteRoutersHandler = express.Router();
