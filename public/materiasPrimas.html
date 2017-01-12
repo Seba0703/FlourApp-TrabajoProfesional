@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+	
+	<!-- Font Awesome CDN -->
+	<script src="https://use.fontawesome.com/c422ac8860.js"></script>
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="./stylesheets/style.css" type="text/css"> <!-- Por ser en cascada sobreescribe al que se habia definido antes (que seria el de bootstrap) -->
+  </head>
+  <body>
+	<header>
+	
+		<div class="container text-center"> <!-- defino en el header un objecto container  -->
+			<h1>Sistema <strong>FlourApp</strong></h1>
+		</div>
+		
+	</header>
+	
+
+    
+	<div id="main">
+		<div class="container">
+			
+			<div class="row"> <!-- inserto dentro del container una fila  -->
+				
+				<div class="col-md-12">
+					<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+					  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					  </button>
+					  <a class="navbar-brand" href="#">Home</a>
+					  
+					  	<ul class="navbar-nav mr-auto">
+						  <li class="nav-item">
+							<a class="nav-link" href="#">Clientes</a>
+						  </li>
+						  <li class="nav-item">
+							<a class="nav-link" href="#">Proveedores</a>
+						  </li>
+							<li class="nav-item dropdown active">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+							Productos
+							</a>
+								<div class="dropdown-menu" aria-labelledby="Preview">
+								<a class="dropdown-item" href="#">Materias Primas</a>
+								<a class="dropdown-item" href="#">Semi-Procesados</a>
+								<a class="dropdown-item" href="#">Terminados</a>
+								</div>
+							</li>
+						</ul>
+
+					</nav>
+				</div>
+				
+			</div>
+			
+			<div class="row">
+			
+				<div class="col-md-11">
+				
+					<table class="table">
+					  <thead class="thead-inverse">
+						<tr>
+						  <th>#</th>
+						  <th>Cantidad</th>
+						  <th>Unidad</th>
+						  <th>Stock Min</th>
+						  <th>Stock Max</th>
+						  <th>Precio Venta</th>
+						  <th>Tipo</th>
+						  <th>Porcentaje Merma</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr>
+						  <th scope="row">1</th>
+						  <td>10</td>
+						  <td>kg</td>
+						  <td>100</td>
+						  <td>200</td>
+						  <td>$25</td>
+						  <td>tipo</td>
+						  <td>5%</td>
+						</tr>
+					  </tbody>
+					</table>
+
+					
+				</div>
+				
+				<div class="col-md-1" style="padding-left: 0px;">
+					<button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar materia prima">+</button>
+				</div>
+			
+			</div>
+		</div>
+	</div>
+	
+	<footer>
+	
+	</footer>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="./js/jquery-3_1_1.js"></script>
+    <script src="./js/tether.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+  </body>
+</html>
