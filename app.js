@@ -30,6 +30,10 @@ router.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname, './public', 'index.html'));
 });
 
+router.get('/prueba', function(req, res) {
+	res.sendFile(path.join(__dirname, './public', 'produccion.html'));
+});
+
 app.use(router);
 
 // API routes

@@ -6,4 +6,4 @@ var listaPorcentajesProduccionSchema = new mongoose.Schema({
   porcentaje:				{ type: Number }
 });
 
-exports.productoSemiProcesadoModel = mongoose.model('ProductoSemiProcesado', productoSemiProcesadoSchema); //crea el modelo y lo exporta para que lo puedan usar otros modulos
+exports.listaPorcentajesProduccionModel = mongoose.model('listaPorcentajesProduccion', listaPorcentajesProduccionSchema ); //crea el modelo y lo exporta para que lo puedan usar otros modulos
