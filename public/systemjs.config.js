@@ -3,7 +3,6 @@
  * Adjust as necessary for your application needs.
  */
 (function (global) {
-  console.error("CARGANDO SYSTEM CONFIG");
   System.config({
     paths: {
       // paths serve as alias
