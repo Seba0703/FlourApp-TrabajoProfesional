@@ -21,7 +21,7 @@
 
     <script src="systemjs.config.js"></script>
     <script>
-      System.import('app').catch(function(err){ console.error(err); });
+      System.import('app/app_index/main').catch(function(err){ console.error(err); });
     </script>
 
 	<!-- Main CSS -->
@@ -32,6 +32,7 @@
 	
 		<div class="container text-center"> <!-- defino en el header un objecto container  -->
 			<h1>Sistema <strong>FlourApp</strong></h1>
+			<my-app>Loading AppComponent content here ...</my-app>
 		</div>
 		
 	</header>
