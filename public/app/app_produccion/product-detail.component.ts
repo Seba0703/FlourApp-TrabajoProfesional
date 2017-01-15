@@ -1,5 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, ViewChild, Input } from '@angular/core';
+import {RequiredProductComponent} from './required-product.component'
+import {RequiredProduct} from './required-product'
 import { Producto } from './producto';
+import { CommonFunctions } from './common-functions';
+
 @Component({
   selector: 'my-product-detail',
   template: `
@@ -25,7 +29,7 @@ import { Producto } from './producto';
 			
 		</table>
 		
-		<required-product-detail [product]="producto"></required-product-detail> 
+		<required-product-detail #required (notify)="onNotify($event)" [product]="producto"></required-product-detail> 
 		
 		<div style="text-align:center">  
 			<button (click)="fabricar()" type="button" class="btn btn-primary">Fabricar</button>
@@ -40,13 +44,22 @@ import { Producto } from './producto';
 export class ProductDetailComponent {
   @Input()
   producto: Producto;
+  requiredListDone: boolean = false;
+  @ViewChild('required') requiredProds: RequiredProductComponent;
   
   fabricar(): void {
 	console.log('post server');
   }
   
+  onNotify(message:string):void {
+    this.requiredListDone = true;
+  }
+  
   setGastos(): void {
-	console.log('perdio el foco');
+	if (this.requiredListDone && this.requiredProds.allGastosEmpty()) {
+		this.requiredProds.setGastos(this.producto.cant / (1 - this.producto.merma));
+		console.log('perdio el foco');
+	}
   }
   
 }
