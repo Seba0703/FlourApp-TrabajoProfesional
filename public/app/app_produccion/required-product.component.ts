@@ -11,31 +11,31 @@ import { CommonFunctions } from './common-functions';
 		<table class="table">
 			<thead>
 			  <tr>
-				<th>Productos necesarios </th>
-				<th>Stock  </th>
-				<th>Unidad </th>
-				<th>Gasto </th>
+				<th>Productos necesarios</th>
+				<th>Stock</th>
+				<th>Unidad</th>
+				<th>Gasto</th>
 			  </tr>
 			</thead>
 			<tbody *ngFor="let requiredProduct of requiredProducts">
-				<td>{{requiredProduct.name}}</td>
+				<td [ngClass]= '{red: requiredProduct.changeColor, black: !requiredProduct.changeColor}'>{{requiredProduct.name}}</td>
 				<td [ngClass]= '{red: requiredProduct.changeColor, black: !requiredProduct.changeColor}'>{{requiredProduct.stock}}</td>
-				<td>{{requiredProduct.unit}}</td>
-				<td><input [(ngModel)]="requiredProduct.spend" type="number" min="0.01" step="0.01" (blur)="executeComportamientos(requiredProduct)" placeholder="Cantidad"/></td>
+				<td [ngClass]= '{red: requiredProduct.changeColor, black: !requiredProduct.changeColor}'>{{requiredProduct.unit}}</td>
+				<td [ngClass]= '{red: requiredProduct.changeColor, black: !requiredProduct.changeColor}'>
+					<input [(ngModel)]="requiredProduct.spend" type="number" min="0.01" step="0.01" (blur)="executeComportamientos(requiredProduct)" placeholder="Cantidad"/>
+				</td>
 			</tbody>
 		</table>
 	</div>
   `,
   styles: [`
 	.red {
-		background-color: red; 
-		color: white;
+		background-color: #f2dede; 
 	}
 	.black {
 		background-color: white;
-		color: black;
 	}
-    .th {
+    .thead {
     background-color: #4CAF50;
     color: white;
 	}
