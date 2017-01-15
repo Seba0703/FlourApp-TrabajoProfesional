@@ -12,6 +12,7 @@
     map: {
       // our app is within the app folder
       app: 'app',
+	  produccion: 'app/app_produccion',
 
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
@@ -33,6 +34,12 @@
         main: './main.js',
         defaultExtension: 'js'
       },
+	  
+	  produccion: {
+        main: './main.js',
+        defaultExtension: 'js'
+      },
+	  
       rxjs: {
         defaultExtension: 'js'
       }
