@@ -61,7 +61,17 @@ export class ProductDetailComponent {
   
   fabricar(): void {
 	//no ceros, no NAN, no negativo, aviso de no cumple con porcentaje, aviso excluye merma
-	console.log('post server');
+	if (this.producto.cant && this.producto.merma && this.requiredProds.allGastosSetted() ) {
+		console.log('post server');
+	} else {
+		if (this.producto.cant != null && this.producto.cant == 0) {
+			alert('Cantidad erronea.');
+		} else if (this.producto.merma != null && this.producto.merma == 0) {
+			alert('Merma erronea.');
+		} else  {
+			alert('Indicadores en rojo.');
+		}
+	}
   }
   
   onNotify(message:string):void {
@@ -70,13 +80,14 @@ export class ProductDetailComponent {
   
   setGastos(): void {
 	
-	if (this.producto.cant && this.producto.merma && this.requiredListDone && this.requiredProds.allGastosEmpty()) {
-		this.requiredProds.setGastos(this.producto.cant / (1 - this.producto.merma));
+	if (this.producto.cant && this.producto.cant > 0 && this.producto.merma && this.producto.merma > 0
+		&& this.requiredListDone && this.requiredProds.allGastosEmpty()) {
+			this.requiredProds.setGastos(this.producto.cant / (1 - this.producto.merma));
 	}
   }
   
   overideGastos(): void {
-	if (this.producto.cant && this.producto.merma)
+	if (this.producto.cant && this.producto.cant > 0 && this.producto.merma && this.producto.merma > 0)
 		this.requiredProds.setGastos(this.producto.cant / (1 - this.producto.merma));
 	
   }
