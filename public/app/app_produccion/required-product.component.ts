@@ -8,13 +8,14 @@ import { CommonFunctions } from './common-functions';
   selector: 'required-product-detail',
   template: `
 	<div *ngIf="requiredProducts" style="overflow-x:auto;">
-		<table class="table">
+		<table class="table table-hover table-bordered">
 			<thead>
 			  <tr>
 				<th>Productos necesarios</th>
 				<th>Stock</th>
 				<th>Unidad</th>
 				<th>Gasto</th>
+				<th>Porcentaje</th>
 			  </tr>
 			</thead>
 			<tbody *ngFor="let requiredProduct of requiredProducts">
@@ -24,6 +25,7 @@ import { CommonFunctions } from './common-functions';
 				<td [ngClass]= '{red: requiredProduct.changeColor, black: !requiredProduct.changeColor}'>
 					<input [(ngModel)]="requiredProduct.spend" type="number" min="0.01" step="0.01" (blur)="executeComportamientos(requiredProduct)" placeholder="Cantidad"/>
 				</td>
+				<td [ngClass]= '{red: requiredProduct.changeColor, black: !requiredProduct.changeColor}'>{{requiredProduct.percent}}</td>
 			</tbody>
 		</table>
 	</div>
@@ -35,8 +37,11 @@ import { CommonFunctions } from './common-functions';
 	.black {
 		background-color: white;
 	}
-    .thead {
-    background-color: #4CAF50;
+	th, td {
+		text-align:center
+	}
+    thead {
+    background-color: #607d8b;
     color: white;
 	}
   `],
@@ -65,15 +70,11 @@ export class RequiredProductComponent implements OnInit{
   }
   
   executeComportamientos(requiredProduct: RequiredProduct): void {
-	//si no hay stock se cambia el color.
-	if (requiredProduct.spend && requiredProduct.spend > requiredProduct.stock) {
-		requiredProduct.changeColor = true;
-	} else if (requiredProduct.spend && requiredProduct.spend <= requiredProduct.stock) {
-		requiredProduct.changeColor = false;
-	}
+
+	this.changeAlertColor(requiredProduct);
 	  
 	//para poner una cantidad al producto que se va a producir, tienen que estar todos los gastos seteados, distintos de cero y con una numero correct al porcentaje.
-	if ( (!this.product.cant || this.product.cant == 0 )  && this.allGastosSetted() && this.correctQuantity()) {
+	if ( ( this.product.cant == null || this.product.cant == 0 )  && this.allGastosSetted() && this.correctQuantity()) {
 		this.product.cant = CommonFunctions.round( ((this.requiredProducts[0].spend / this.requiredProducts[0].percent) * ( 1 - this.product.merma)), 2);
 	}
   }
@@ -81,19 +82,29 @@ export class RequiredProductComponent implements OnInit{
   setGastos(cantSinMerma: number): void {
 	for (var i = 0; i < this.requiredProducts.length; i++) {
 		this.requiredProducts[i].spend = CommonFunctions.round( cantSinMerma * this.requiredProducts[i].percent, 2);
+		this.changeAlertColor(this.requiredProducts[i]);
+	}
+  }
+
+  //si no hay stock se cambia el color.
+  changeAlertColor(requiredProduct: RequiredProduct): void {
+	 if ( requiredProduct.spend != null && (requiredProduct.spend > requiredProduct.stock || requiredProduct.spend == 0) ) {
+		requiredProduct.changeColor = true;
+	} else if (requiredProduct.spend && requiredProduct.spend <= requiredProduct.stock && requiredProduct.spend > 0) {
+		requiredProduct.changeColor = false;
 	}
   }
   
   allGastosSetted(): boolean {
 	var i = 0;
-	for(i; i < this.requiredProducts.length && this.requiredProducts[i].spend && this.requiredProducts[i].spend != 0; i++) {}
+	for(i; i < this.requiredProducts.length && this.requiredProducts[i].spend ; i++) {}
 	
 	return this.requiredProducts.length == i;
   }
   
   allGastosEmpty(): boolean {
 	var i= 0;
-	for(i; i < this.requiredProducts.length && (!this.requiredProducts[i].spend || this.requiredProducts[i].spend == 0); i++) {}
+	for(i; i < this.requiredProducts.length && (this.requiredProducts[i].spend == null || this.requiredProducts[i].spend == 0); i++) {}
 	
 	return this.requiredProducts.length == i;
   }
@@ -101,7 +112,8 @@ export class RequiredProductComponent implements OnInit{
   //controla que los productos tengan el porcentaje correcto de acuerdo a la cantidad y que tengan stock.
   correctQuantity(): boolean {
 	var total = 0;
-	for(var i = 0; i < this.requiredProducts.length && this.requiredProducts[i].spend > this.requiredProducts[i].stock ; i++) {
+	
+	for(var i = 0; i < this.requiredProducts.length && this.requiredProducts[i].spend && this.requiredProducts[i].spend <= this.requiredProducts[i].stock ; i++) {
 		total += this.requiredProducts[i].spend;
 	}
 	

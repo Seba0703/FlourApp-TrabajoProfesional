@@ -9,7 +9,7 @@ import { CommonFunctions } from './common-functions';
   template: `
 	<div *ngIf="producto">
 		
-		<table class="table">
+		<table class="table table-bordered">
 			
 			<thead>
 			  <tr>
@@ -33,14 +33,20 @@ import { CommonFunctions } from './common-functions';
 		
 		<required-product-detail #required (notify)="onNotify($event)" [product]="producto"></required-product-detail> 
 		
-		<div style="text-align:center">  
+		<div style="text-align:center">
 			<button (click)="fabricar()" type="button" class="btn btn-primary">Fabricar</button>
 		</div>
-		
 	</div>
   `,
   styles:[`
+	th, td {
+		text-align:center
+	}
 	
+	 thead {
+    background-color: #607d8b;
+    color: white;
+	}
  `]
 })
 export class ProductDetailComponent {
@@ -54,6 +60,7 @@ export class ProductDetailComponent {
   requiredProds: RequiredProductComponent;
   
   fabricar(): void {
+	//no ceros, no NAN, no negativo, aviso de no cumple con porcentaje, aviso excluye merma
 	console.log('post server');
   }
   
@@ -62,8 +69,8 @@ export class ProductDetailComponent {
   }
   
   setGastos(): void {
-	 
-	if (this.producto.cant && this.producto.merma && this.producto.cant != null && this.requiredListDone && this.requiredProds.allGastosEmpty()) {
+	
+	if (this.producto.cant && this.producto.merma && this.requiredListDone && this.requiredProds.allGastosEmpty()) {
 		this.requiredProds.setGastos(this.producto.cant / (1 - this.producto.merma));
 	}
   }
@@ -73,5 +80,4 @@ export class ProductDetailComponent {
 		this.requiredProds.setGastos(this.producto.cant / (1 - this.producto.merma));
 	
   }
-  
 }
