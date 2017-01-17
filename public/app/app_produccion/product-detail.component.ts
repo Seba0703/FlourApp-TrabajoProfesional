@@ -9,7 +9,7 @@ import { CommonFunctions } from './common-functions';
   template: `
 	<div *ngIf="producto">
 		
-		<table class="table">
+		<table class="table table-bordered">
 			
 			<thead>
 			  <tr>
@@ -33,14 +33,20 @@ import { CommonFunctions } from './common-functions';
 		
 		<required-product-detail #required (notify)="onNotify($event)" [product]="producto"></required-product-detail> 
 		
-		<div style="text-align:center">  
+		<div style="text-align:center">
 			<button (click)="fabricar()" type="button" class="btn btn-primary">Fabricar</button>
 		</div>
-		
 	</div>
   `,
   styles:[`
+	th, td {
+		text-align:center
+	}
 	
+	 thead {
+    background-color: #607d8b;
+    color: white;
+	}
  `]
 })
 export class ProductDetailComponent {
@@ -54,7 +60,18 @@ export class ProductDetailComponent {
   requiredProds: RequiredProductComponent;
   
   fabricar(): void {
-	console.log('post server');
+	//no ceros, no NAN, no negativo, aviso de no cumple con porcentaje, aviso excluye merma
+	if (this.producto.cant && this.producto.merma && this.requiredProds.allGastosSetted() ) {
+		console.log('post server');
+	} else {
+		if (this.producto.cant != null && this.producto.cant == 0) {
+			alert('Cantidad erronea.');
+		} else if (this.producto.merma != null && this.producto.merma == 0) {
+			alert('Merma erronea.');
+		} else  {
+			alert('Indicadores en rojo.');
+		}
+	}
   }
   
   onNotify(message:string):void {
@@ -62,16 +79,16 @@ export class ProductDetailComponent {
   }
   
   setGastos(): void {
-	 
-	if (this.producto.cant && this.producto.merma && this.producto.cant != null && this.requiredListDone && this.requiredProds.allGastosEmpty()) {
-		this.requiredProds.setGastos(this.producto.cant / (1 - this.producto.merma));
+	
+	if (this.producto.cant && this.producto.cant > 0 && this.producto.merma && this.producto.merma > 0
+		&& this.requiredListDone && this.requiredProds.allGastosEmpty()) {
+			this.requiredProds.setGastos(this.producto.cant / (1 - this.producto.merma));
 	}
   }
   
   overideGastos(): void {
-	if (this.producto.cant && this.producto.merma)
+	if (this.producto.cant && this.producto.cant > 0 && this.producto.merma && this.producto.merma > 0)
 		this.requiredProds.setGastos(this.producto.cant / (1 - this.producto.merma));
 	
   }
-  
 }
