@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 //Import models
-var Cliente  = require("../models/cliente");;
+var Cliente  = require("../models/cliente").clienteModel;
 
 exports.findAll = function(req, res) {  
     Cliente.find(function(err, clientes){ 
