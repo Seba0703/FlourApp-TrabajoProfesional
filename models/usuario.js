@@ -2,7 +2,7 @@ var mongoose = require("mongoose"); //instancio objeto "mongoose"
 
 var usuarioSchema = new mongoose.Schema({  
   contrasenia:	 { type: String },
-  permisos:   	 { type: Array  },
+  permisos:   	 { type: String },
   nombre: 		 { type: String }
 });
 

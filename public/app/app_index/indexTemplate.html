@@ -1,0 +1,32 @@
+<div class="row justify-content-md-center"> <!-- inserto dentro del container una fila  -->
+	
+	<div class="col-md-6">
+		<div class="input-group mar-top-bottom5">
+		  <span class="input-group-addon" id="basic-addon1">
+			<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+		  </span>
+		    <input #boxName (keyup)="onKeyName(boxName.value)" type="text" class="form-control" placeholder="Usuario" aria-describedby="basic-addon1">
+		</div>				
+	</div>
+	
+	<div class="w-100"></div> <!-- produce un break entre columnas  -->
+
+	<div class="col-md-6">
+		<div class="input-group mar-top-bottom5">
+		  <span class="input-group-addon" id="basic-addon1">
+			<i class="fa fa-key" aria-hidden="true"></i>
+		  </span>
+		  <input #boxPass (keyup)="onKeyPass(boxPass.value)" type="password" class="form-control" 
+		  placeholder="Contraseña" aria-describedby="basic-addon1">
+		</div>
+	</div>
+	
+</div>
+
+<div class="row" style="margin-top: 20px;"> <!-- inserto dentro del container una fila  -->
+	<div class="col-md-12 text-center"> <!-- defino el contenido de la primer columna | "col-md-8" es el formato del tamanio de la pantalla  -->
+		<button (click)="ingresar()" type="button" class="btn btn-primary">Ingresar</button>
+		{{clickMessage}}
+	</div>
+	
+</div>

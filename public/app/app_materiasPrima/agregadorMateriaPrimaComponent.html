@@ -1,0 +1,32 @@
+<button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar materia prima" 
+data-toggle="modal" data-target="#exampleModal">+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar materia prima</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+				<div class="container">
+				    <input type="number" class="form-control" placeholder="Cantidad" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="cantidad">
+                    <input type="text" class="form-control" placeholder="Unidad" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="unidad">
+                    <input type="number" class="form-control" placeholder="Stock Min" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="stockMin">
+                    <input type="number" class="form-control" placeholder="Stock Max" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="stockMax">
+                    <input type="number" class="form-control" placeholder="Precio Venta" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="precioVenta">
+                    <input type="number" class="form-control" placeholder="Tipo" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="tipo">
+                    <input type="text" class="form-control" placeholder="Porcentaje" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="porcentaje">
+                    <input type="number" class="form-control" placeholder="Merma" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="merma">
+				</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
