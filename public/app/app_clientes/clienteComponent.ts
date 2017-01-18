@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-//import { ClienteServices } from './clienteServices';
+import { ClienteServices } from './clienteServices';
 
 @Component({
   selector: 'tabla-clientes',
@@ -22,5 +22,8 @@ import { Component } from '@angular/core';
 })
 
 export class ClienteComponent {
-  clientes = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado'];
+  clientes: Array<any> = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado'];
+
+  //constructor(private clienteSrv:ClienteServices){}
+
 }

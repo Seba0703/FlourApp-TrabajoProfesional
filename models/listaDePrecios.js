@@ -1,7 +1,7 @@
 var mongoose = require("mongoose"); //instancio objeto "mongoose"
 
 var listaDePreciosSchema = new mongoose.Schema({  
-  productoID:			{ type: Number },
+  productoID:			{ type: String },
   precio:   	  		{ type: Number }
 });
 

@@ -2,3 +2,5 @@ node_modules
 public/node_modules
 public/app/**/*.js
 public/app/**/*.map
+npm-debug
+public/npm-debug

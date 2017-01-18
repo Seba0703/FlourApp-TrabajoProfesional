@@ -3,11 +3,11 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class MateriaPrimaServices {
-  public materiaPrimas: Array<any>;
+export class SemiProcesadoServices {
+  public semiProcesados: Array<any>;
 
   constructor(private http:Http) {
-  	console.log("INICIALIZANDO MateriaPrimaS SERVIRCE");
+  	console.log("INICIALIZANDO SemiProcesadoS SERVIRCE");
   	this.cargarMateriasPrima();
   }
 
@@ -16,7 +16,7 @@ export class MateriaPrimaServices {
   	this.http.get('http://localhost:3000/api/materiasPrima')
   		.map(response => response.json())
   		.subscribe(
-  			materiaPrimasData => this.materiaPrimas = materiaPrimasData,
+  			semiProcesadosData => this.semiProcesados = semiProcesadosData,
   			err => console.error("EL ERROR FUE: ", err)
   		);
 
@@ -24,6 +24,6 @@ export class MateriaPrimaServices {
   }
 
 	private mostrar(): void{
-		console.log(this.materiaPrimas);	
+		console.log(this.semiProcesados);	
 	}
 }

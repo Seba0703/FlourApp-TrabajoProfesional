@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar materia prima" 
+<button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar producto semiprocesado" 
 data-toggle="modal" data-target="#exampleModal">+</button>
 
 <!-- Modal -->
@@ -6,7 +6,7 @@ data-toggle="modal" data-target="#exampleModal">+</button>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar materia prima</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Agregar producto semiprocesado</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -17,11 +17,10 @@ data-toggle="modal" data-target="#exampleModal">+</button>
                     <input type="text" class="form-control" placeholder="Unidad" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="unidad">
                     <input type="number" class="form-control" placeholder="Stock Min" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="stockMin">
                     <input type="number" class="form-control" placeholder="Stock Max" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="stockMax">
-                    <input type="text" class="form-control" placeholder="Porcentaje" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="porcentaje">
-                    <input type="number" class="form-control" placeholder="Merma" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="merma">
+                    <input type="number" class="form-control" placeholder="Embolsado (default)" 
+                    aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="embolsado">
                     <input type="text" class="form-control" placeholder="Tipo" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="tipo">
                     <input type="number" class="form-control" placeholder="Precio Venta" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="precioVenta">
-
 				</div>
             </div>
             <div class="modal-footer">

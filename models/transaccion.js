@@ -1,10 +1,10 @@
 var mongoose = require("mongoose"); //instancio objeto "mongoose"
 
 var transaccionSchema = new mongoose.Schema({  
-  organizacionID:		{ type: Number },
+  organizacionID:		{ type: String },
   fecha:   	  			{ type: Date   },
-  condicionPagoID:		{ type: Number },
-  listaPrecioID: 	  	{ type: Number },
+  condicionPagoID:		{ type: String },
+  listaPrecioID: 	  	{ type: String },
   numeroComprobante: 	{ type: Number }
 });
 

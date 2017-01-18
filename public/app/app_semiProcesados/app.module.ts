@@ -1,25 +1,23 @@
 import { NgModule }      from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
 
 import { AppComponent }  from './app.component';
-import { ClienteComponent} from './clienteComponent';
-import { AgregadorClienteComponent} from './agregadorClienteComponent';
-import { ClienteServices} from './clienteServices';
+import { SemiProcesadoComponent} from './semiProcesadoComponent';
+import { AgregadorSemiProcesadoComponent} from './agregadorSemiProcesadoComponent';
+//import { SemiProcesadoServices} from './semiProcesadoServices';
 
 @NgModule({
   imports: [
     BrowserModule,
-    HttpModule,
     FormsModule
   ],
   declarations: [
     AppComponent,
-    ClienteComponent,
-    AgregadorClienteComponent
+    SemiProcesadoComponent,
+    AgregadorSemiProcesadoComponent
   ],
-  providers: [ ClienteServices ],
+  providers: [  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

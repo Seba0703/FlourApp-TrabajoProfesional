@@ -15,13 +15,13 @@ export class IndexComponent {
 	ingresar() {
 		console.log("INGRESANDO");
     console.log(this.nombreUsuario + "-" + this.contraseniaUsuario);
-		let usuarioExistente: boolean = true;
-		console.log(this.indexSrv.usuarios);	
-		for (let usuario of this.indexSrv.usuarios) {
+		let usuarioExistente: boolean = false;
+		console.log(this.indexSrv.getUsuarios());	
+		for (let usuario of this.indexSrv.getUsuarios()) {
     		if (this.nombreUsuario == usuario.nombre && this.contraseniaUsuario == usuario.contrasenia){
-    			this.loginValido();
-    		} else {
-    			usuarioExistente = false;
+    			usuarioExistente = true;
+          this.loginValido();
+          break;
     		}
 		}
 

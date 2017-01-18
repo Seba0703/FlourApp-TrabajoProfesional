@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+
+const URL_USUARIOS: string = 'http://localhost:3000/api/usuarios';
 
 @Injectable()
 export class IndexService {
-  public usuarios: Array<any>;
-  public home: any;
+  private usuarios: Array<any>;
+  private home: any;
 
   constructor(private http:Http) {
   	console.log("INICIALIZANDO INDEX SERVIRCE");
@@ -14,8 +16,8 @@ export class IndexService {
 
   cargarUsuarios() {
   	console.log("HACIENDO REQUEST");
-  	this.http.get('http://localhost:3000/api/usuarios')
-  		.map(response => response.json())
+  	this.http.get(URL_USUARIOS)
+  		.map((response) => response.json())
   		.subscribe(
   			usuariosData => this.usuarios = usuariosData,
   			err => console.error("EL ERROR FUE: ", err)
@@ -28,10 +30,38 @@ export class IndexService {
       err => console.error("EL ERROR FUE: ", err)
     );
 
-  	console.log("FIN REQUEST");	
+  	console.log("FIN REQUEST");
+
+    //this.testRequest();
   }
 
 	private mostrar(): void{
 		console.log(this.usuarios);	
 	}
+
+  public getUsuarios(): Array<any> {
+    return this.usuarios;
+  }
+
+  testRequest() {
+      var body = {
+        nombre: "juan",
+        contrasenia: "123",
+        permisos: "all"        
+      };
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+
+      this.http
+        .post(URL_USUARIOS,
+              body, 
+              {
+                headers: headers
+              })
+              .subscribe(data => {
+                  console.log("usuario creado!!!");  
+              }, error => {
+                  console.log(JSON.stringify(error.json()));
+              });
+}
 }

@@ -1,15 +1,14 @@
 var mongoose = require("mongoose"); //instancio objeto "mongoose"
 
 var productoTerminadoSchema = new mongoose.Schema({  
-  tasaImpositivaID:		{ type: Number },
+  tasaImpositivaID:		{ type: String },
   cantidad:   	  		{ type: Number },
   unidad:				{ type: String },
   stockMin: 	  		{ type: Number },
   stockMax: 	  		{ type: Number },
   embolsadoCantDefault: { type: Number },
   tipo:     	  		{ type: String },
-  porcentajeMerma:		{ type: Number},
-  precioVenta:			{ type: Number}
+  precioVenta:			{ type: Number }
   //Se relaciona con listaPorcentajesSchema se inserta en esa tabla este ID y los de los productos con los q se genera este Producto
 });
 

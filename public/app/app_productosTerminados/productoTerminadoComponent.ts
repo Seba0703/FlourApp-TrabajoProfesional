@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-//import { MateriaPrimaServices } from './materiaPrimaServices';
+//import { ProductoTerminadoServices } from './productoTerminadoServices';
 
 @Component({
-  selector: 'tabla-materias-prima',
+  selector: 'tabla-productos-terminados',
     template: `
         <table class="table">
           <thead class="thead-inverse">
@@ -11,13 +11,13 @@ import { Component } from '@angular/core';
             <th>Unidad</th>
             <th>Stock Min</th>
             <th>Stock Max</th>
-            <th>Porcentaje Merma</th>
+            <th>Embolsado (default)</th>
             <th>Tipo</th>
             <th>Precio Venta</th>
           </tr>
           </thead>
-          <tbody *ngFor="let materiaPrima of materiasPrima">
-            <td>{{materiaPrima}}</td>
+          <tbody *ngFor="let productoTerminado of productosTerminados">
+            <td>{{productoTerminado}}</td>
             <td>1</td>
             <td>12</td>
             <td>123</td>
@@ -29,6 +29,6 @@ import { Component } from '@angular/core';
   `
 })
 
-export class MateriaPrimaComponent {
-  materiasPrima = ['WindstormY', 'BombastoY', 'MagnetaY', 'TornadoY'];
+export class ProductoTerminadoComponent {
+  productosTerminados = ['WindstormZZ', 'BombastoZZ', 'MagnetaZZ', 'TornadoZZ'];
 }

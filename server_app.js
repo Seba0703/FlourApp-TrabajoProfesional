@@ -53,11 +53,23 @@ router.get('/prueba', function(req, res) {
 app.use(router);
 
 // API routes
+var usuarioRoutersHandler = require("./routersHandlers/usuarioRoutersHandler").getUsuarioRoutersHandler(express);
+app.use('/api', usuarioRoutersHandler); 
+
 var clienteRoutersHandler = require("./routersHandlers/clienteRoutersHandler").getClienteRoutersHandler(express);
 app.use('/api', clienteRoutersHandler);
 
-var usuarioRoutersHandler = require("./routersHandlers/usuarioRoutersHandler").getUsuarioRoutersHandler(express);
-app.use('/api', usuarioRoutersHandler); 
+var proveedorRoutersHandler = require("./routersHandlers/proveedorRoutersHandler").getProveedorRoutersHandler(express);
+app.use('/api', proveedorRoutersHandler);
+
+var materiaPrimaRoutersHandler = require("./routersHandlers/materiaPrimaRoutersHandler").getMateriaPrimaRoutersHandler(express);
+app.use('/api', materiaPrimaRoutersHandler);
+
+var semiProcesadoRoutersHandler = require("./routersHandlers/semiProcesadoRoutersHandler").getSemiProcesadoRoutersHandler(express);
+app.use('/api', semiProcesadoRoutersHandler);
+
+var productoTerminadoRoutersHandler = require("./routersHandlers/productoTerminadoRoutersHandler").getProductoTerminadoRoutersHandler(express);
+app.use('/api', productoTerminadoRoutersHandler);
 
 // Connection to DB
 mongoose.connect('mongodb://localhost/flourapp', function(err, res) {  //se conecta a la base de datos

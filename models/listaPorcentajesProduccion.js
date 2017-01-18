@@ -1,8 +1,8 @@
 var mongoose = require("mongoose"); //instancio objeto "mongoose"
 
 var listaPorcentajesProduccionSchema = new mongoose.Schema({  
-  productoSemiProcesadoID:	{ type: Number },
-  productoID:				{type: Number},
+  productoSemiProcesadoID:	{ type: String },
+  productoID:				{ type: String},
   porcentaje:				{ type: Number }
 });
 
