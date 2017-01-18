@@ -19,6 +19,8 @@ import { ProductService } from './product.service';
 			   
 			</div>		
 			
+			<div style="border-left:1px solid #607d8b;"></div>
+			
 			<my-product-detail [producto]="selectedProduct"></my-product-detail> 
 			
 		</div>
