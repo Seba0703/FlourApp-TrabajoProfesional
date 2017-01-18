@@ -30,7 +30,7 @@ import { CommonFunctions } from './common-functions';
 			</tbody>
 			
 		</table>
-		
+		<hr>
 		<required-product-detail #required (notify)="onNotify($event)" [product]="producto"></required-product-detail> 
 		
 		<div style="text-align:center">
@@ -39,10 +39,21 @@ import { CommonFunctions } from './common-functions';
 	</div>
   `,
   styles:[`
+	
 	th, td {
 		text-align:center
 	}
 	
+	hr { 
+		display: block;
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+		margin-left: auto;
+		margin-right: auto;
+		border-style: inset;
+		border-width: 1px;
+		background-color: #607d8b;
+	}
 	 thead {
     background-color: #607d8b;
     color: white;
@@ -61,12 +72,12 @@ export class ProductDetailComponent {
   
   fabricar(): void {
 	//no ceros, no NAN, no negativo, aviso de no cumple con porcentaje, aviso excluye merma
-	if (this.producto.cant && this.producto.merma && this.requiredProds.allGastosSetted() ) {
+	if (this.producto.cant && this.producto.cant > 0 && this.producto.merma && this.producto.merma > 0 && this.requiredProds.allGastosSetted() ) {
 		console.log('post server');
 	} else {
-		if (this.producto.cant != null && this.producto.cant == 0) {
+		if (this.producto.cant == null || this.producto.cant <= 0) {
 			alert('Cantidad erronea.');
-		} else if (this.producto.merma != null && this.producto.merma == 0) {
+		} else if (this.producto.merma == null || this.producto.merma <= 0) {
 			alert('Merma erronea.');
 		} else  {
 			alert('Indicadores en rojo.');
