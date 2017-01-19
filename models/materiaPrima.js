@@ -7,8 +7,7 @@ var materiaPrimaSchema = new mongoose.Schema({
   stockMax: 		{ type: Number },
   precioVenta: 		{ type: Number },
   tipo:     		{ type: String },
-  porcentajeMerma: 	{ type: Number },
-  listaConversionID:{ type: String }
+  porcentajeMerma: 	{ type: Number }
 });
 
 exports.materiaPrimaModel = mongoose.model('MateriaPrima', materiaPrimaSchema); //crea el modelo y lo exporta para que lo puedan usar otros modulos

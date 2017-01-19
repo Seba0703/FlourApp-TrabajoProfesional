@@ -57,7 +57,7 @@ exports.update = function(req, res) {
         cliente.categoriaFiscalID=  req.body.categoriaFiscalID;
         cliente.listaPrecioID =   	req.body.listaPrecioID;
         cliente.direccion =  		req.body.direccion;
-        cliente.condicionPagoID =    req.body.condicionPagoID;
+        cliente.condicionPagoID =   req.body.condicionPagoID;
 
         cliente.save(function(err) { //almaceno en la base "cliente" para que quede actualizada con los nuevos cambios
             if(err) return res.status(500).send(err.message);

@@ -36,6 +36,7 @@ exports.add = function(req, res) {
         stockMin:              req.body.stockMin,
         stockMax:   	       req.body.stockMax,
         embolsadoCantDefault:  req.body.embolsadoCantDefault,
+        porcentajeMerma:       req.body.porcentajeMerma,
         tipo:                  req.body.tipo,
         listaPorcentajesID:    req.body.listaPorcentajesID,
         precioVenta:  	       req.body.precioVenta
@@ -62,6 +63,7 @@ exports.update = function(req, res) {
         semiProcesado.stockMin =             req.body.stockMin;
         semiProcesado.stockMax =   	         req.body.stockMax;
         semiProcesado.embolsadoCantDefault = req.body.embolsadoCantDefault;
+        semiProcesado.porcentajeMerma =      req.body.porcentajeMerma;
         semiProcesado.tipo =                 req.body.tipo;
         semiProcesado.listaPorcentajesID =   req.body.listaPorcentajesID;
         semiProcesado.precioVenta =          req.body.precioVenta;

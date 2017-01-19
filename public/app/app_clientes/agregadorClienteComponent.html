@@ -13,16 +13,50 @@ data-toggle="modal" data-target="#exampleModal">+</button>
             </div>
             <div class="modal-body">
 				<div class="container">
-				    <input type="text" class="form-control" placeholder="Nombre empresa" aria-describedby="basic-addon1" style="margin-bottom: 4px;" [(ngModel)]="nombre">
-				    <input type="text" class="form-control" placeholder="CUIT" 
-				    aria-describedby="basic-addon1" style="margin-bottom: 4px;" [(ngModel)]="cuit">
+				    <input type="text" class="form-control" placeholder="Nombre empresa" aria-describedby="basic-addon1" style="margin-bottom: 4px;" [(ngModel)]="nombreEmpresa">
+				    <input type="number" class="form-control" placeholder="CUIT ( sin los &quot;-&quot; )" 
+				    aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" 
+                    onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="cuit">
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label for="example-text-input" class="col-form-label">Categoria Fiscal</label>
+                        </div>
+                        <div class="col-8">
+                            <select class="form-control" id="categoriaFiscalID" [(ngModel)]="categoriaFiscalID">
+                              <option>cat1</option>
+                              <option>cat2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label for="example-text-input" class="col-form-label">Lista de Precios</label>
+                        </div>
+                        <div class="col-8">
+                            <select class="form-control" id="listaPrecioID" [(ngModel)]="listaPrecioID">
+                              <option>lp1</option>
+                              <option>lp2</option>
+                            </select>
+                        </div>
+                    </div>
 				    <input type="text" class="form-control" placeholder="Dirección" 
 				    aria-describedby="basic-addon1" style="margin-bottom: 4px;" [(ngModel)]="direccion">
+                    <div class="form-group row">
+                        <div class="col-5">
+                            <label for="example-text-input" class="col-form-label">Condición de Pago</label>
+                        </div>
+                        <div class="col-7">
+                            <select class="form-control" id="condicionPagoID" [(ngModel)]="condicionPagoID">
+                              <option>cp1</option>
+                              <option>cp2</option>
+                            </select>
+                        </div>
+                    </div>
 				</div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" (click)="guardar()">Guardar</button>
+                <button type="button" class="btn btn-primary" (click)="agregar()">Agregar</button>
             </div>
         </div>
     </div>

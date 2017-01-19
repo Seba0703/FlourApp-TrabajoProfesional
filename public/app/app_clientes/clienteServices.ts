@@ -1,30 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';  
 import 'rxjs/add/operator/map';
+
+const URL_CLIENTES = 'http://localhost:3000/api/clientes';
 
 @Injectable()
 export class ClienteServices {
   private clientes: Array<any>;
 
   constructor(private http:Http) {
-  	console.log("INICIALIZANDO CLIENTES SERVIRCE");
-  	this.cargarClientes();
+    console.log("INICIALIZANDO ClienteS SERVIRCE");
   }
 
-  cargarClientes() {
-  	console.log("HACIENDO REQUEST");
-  	this.http.get('http://localhost:3000/api/clientes')
-  		.map(response => response.json())
-  		.subscribe(
-  			clientesData => this.clientes = clientesData,
-  			err => console.error("EL ERROR FUE: ", err)
-  		);
-
-  	console.log("FIN REQUEST");	
+  getClientes(): Observable<Response>  {
+    console.log("HACIENDO REQUEST");
+    return this.http.get(URL_CLIENTES).map((response) => response.json())
   }
 
-  public getClientes(): Array<any> {
-    return this.clientes;
+  agregarCliente(body: Object): Observable<Response> {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log("POST REQUEST");
+    return this.http.post(URL_CLIENTES, body, {headers: headers});
   }
 
 	private mostrar(): void{

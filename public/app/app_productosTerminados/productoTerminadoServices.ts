@@ -1,26 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';  
 import 'rxjs/add/operator/map';
 
+const URL_PRODUCTOS_TERMINADOS = 'http://localhost:3000/api/productosTerminados';
+
 @Injectable()
-export class ProductoTerminadoServices {
+export class ProductoTerminadoServices{
   public productosTerminados: Array<any>;
 
   constructor(private http:Http) {
   	console.log("INICIALIZANDO ProductoTerminadoS SERVIRCE");
-  	this.cargarProductosTerminados();
+  	//this.cargarProductosTerminados();
   }
 
-  cargarProductosTerminados() {
+  getProductosTerminados(): Observable<Response>  {
   	console.log("HACIENDO REQUEST");
-  	this.http.get('http://localhost:3000/api/productosTerminados')
-  		.map(response => response.json())
-  		.subscribe(
-  			productosTerminadosData => this.productosTerminados = productosTerminadosData,
-  			err => console.error("EL ERROR FUE: ", err)
-  		);
+  	return this.http.get(URL_PRODUCTOS_TERMINADOS).map((response) => response.json())
+  }
 
-  	console.log("FIN REQUEST");	
+  agregarProductoTerminado(body: Object): Observable<Response> {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log("POST REQUEST");
+    return this.http.post(URL_PRODUCTOS_TERMINADOS, body, {headers: headers});
   }
 
 	private mostrar(): void{

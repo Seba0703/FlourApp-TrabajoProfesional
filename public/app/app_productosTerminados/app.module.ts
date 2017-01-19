@@ -1,15 +1,18 @@
 import { NgModule }      from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent }  from './app.component';
 import { ProductoTerminadoComponent} from './productoTerminadoComponent';
 import { AgregadorProductoTerminadoComponent} from './agregadorProductoTerminadoComponent';
-//import { ProductoTerminadoServices} from './productoTerminadoServices';
+
+import { ProductoTerminadoServices} from './productoTerminadoServices';
 
 @NgModule({
   imports: [
     BrowserModule,
+    HttpModule,
     FormsModule
   ],
   declarations: [
@@ -17,7 +20,7 @@ import { AgregadorProductoTerminadoComponent} from './agregadorProductoTerminado
     ProductoTerminadoComponent,
     AgregadorProductoTerminadoComponent
   ],
-  providers: [  ],
+  providers: [ ProductoTerminadoServices ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

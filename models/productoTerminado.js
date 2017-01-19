@@ -7,6 +7,7 @@ var productoTerminadoSchema = new mongoose.Schema({
   stockMin: 	  		{ type: Number },
   stockMax: 	  		{ type: Number },
   embolsadoCantDefault: { type: Number },
+  porcentajeMerma: 		{ type: Number },
   tipo:     	  		{ type: String },
   precioVenta:			{ type: Number }
   //Se relaciona con listaPorcentajesSchema se inserta en esa tabla este ID y los de los productos con los q se genera este Producto

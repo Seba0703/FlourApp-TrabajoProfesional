@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
-//import { ProvedorServices } from './provedorServices';
+import { Component, OnInit } from '@angular/core';
+import { Response } from '@angular/http';
+
+import { ProveedorServices } from './proveedorServices';
 
 @Component({
   selector: 'tabla-proveedores',
     template: `
-        <table class="table">
+          <table class="table">
           <thead class="thead-inverse">
           <tr>
             <th>Nombre Empresa</th>
@@ -13,14 +15,34 @@ import { Component } from '@angular/core';
           </tr>
           </thead>
           <tbody *ngFor="let proveedor of proveedores">
-            <td>{{proveedor}}</td>
-            <td>123</td>
-            <td>mdo</td>
+            <td>{{proveedor.nombreEmpresa}}</td>
+            <td>{{proveedor.cuit}}</td>
+            <td>{{proveedor.direccion}}</td>
           </tbody>
         </table>
   `
 })
 
 export class ProveedorComponent {
-  proveedores = ['WindstormX', 'BombastoX', 'MagnetaX', 'TornadoX'];
+  private proveedores: Response;
+  
+  constructor(private ptService: ProveedorServices){}
+
+  ngOnInit() {
+    console.log("ON INIT");
+    this.cargarProductosTerminados();
+  }
+
+  cargarProductosTerminados(){
+    console.log("CARGANDO CLIENTES");
+    // en el momento del subscribe es cuando se dispara la llamada
+    this.ptService.getProveedores()
+              .subscribe(
+                (proveedoresData) => {
+                  this.proveedores = proveedoresData;
+                  console.log(this.proveedores);
+                },
+                err => console.error("EL ERROR FUE: ", err)
+              );
+  }
 }

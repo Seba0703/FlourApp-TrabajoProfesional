@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Response } from '@angular/http';
+
 import { ClienteServices } from './clienteServices';
 
 @Component({
@@ -13,17 +15,35 @@ import { ClienteServices } from './clienteServices';
           </tr>
           </thead>
           <tbody *ngFor="let cliente of clientes">
-            <td>{{cliente}}</td>
-            <td>123</td>
-            <td>mdo</td>
+            <td>{{cliente.nombreEmpresa}}</td>
+            <td>{{cliente.cuit}}</td>
+            <td>{{cliente.direccion}}</td>
           </tbody>
         </table>
   `
 })
 
 export class ClienteComponent {
-  clientes: Array<any> = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado'];
+  private clientes: Response;
+  
+  constructor(private ptService: ClienteServices){}
 
-  //constructor(private clienteSrv:ClienteServices){}
+  ngOnInit() {
+    console.log("ON INIT");
+    this.cargarProductosTerminados();
+  }
+
+  cargarProductosTerminados(){
+    console.log("CARGANDO CLIENTES");
+    // en el momento del subscribe es cuando se dispara la llamada
+    this.ptService.getClientes()
+              .subscribe(
+                (clientesData) => {
+                  this.clientes = clientesData;
+                  console.log(this.clientes);
+                },
+                err => console.error("EL ERROR FUE: ", err)
+              );
+  }
 
 }

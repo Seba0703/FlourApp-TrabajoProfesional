@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-//import { materiaPrimaServices } from './materiaPrimaServices';
+import { MateriaPrimaServices } from './materiaPrimaServices';
 
 @Component({
   selector: 'agregar-materia-prima',
@@ -13,11 +13,34 @@ export class AgregadorMateriaPrimaComponent {
   private stockMax: number;
   private precioVenta: number;
   private tipo: string;
-  private porcentaje: number;
-  private merma: number;
+  private porcentajeMerma: number;
 
-  guardar() {
-    //console.log(this.nombre + "-" + this.cuit + "-" + this.direccion );
+  constructor(private ptService: MateriaPrimaServices){}
+
+  agregar() {
+    let materiaPrima = {
+        cantidad:            this.cantidad,
+        unidad:              this.unidad,
+        stockMin:           this.stockMin,
+        stockMax:           this.stockMax,
+        porcentajeMerma:    this.porcentajeMerma,
+        tipo:               this.tipo,
+        precioVenta:        this.precioVenta
+    }
+    
+    console.log(materiaPrima);
+
+    this.ptService.agregarMateriaPrima(materiaPrima)
+                  .subscribe(data => {
+                      console.log("materiaPrima creado!!!");
+                      console.log(data);
+                      alert("¡Materia Prima agregada! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                      window.location.reload();
+                  }, error => {
+                      console.log(JSON.stringify(error.json()));
+                      alert("ERROR al agregar Producto, revise los campos");
+                  });;
+
   }
 
 }

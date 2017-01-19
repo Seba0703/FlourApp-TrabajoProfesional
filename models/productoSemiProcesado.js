@@ -7,6 +7,7 @@ var productoSemiProcesadoSchema = new mongoose.Schema({
   stockMin: 	  		     { type: Number },
   stockMax: 	  		     { type: Number },
   embolsadoCantDefault:  	{ type: Number },
+  porcentajeMerma: 		 	{ type: Number },
   tipo:     	  		     { type: String },
   listaPorcentajesID:		 { type: String },
   precioVenta:			     { type: Number }

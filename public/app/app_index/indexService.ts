@@ -63,5 +63,5 @@ export class IndexService {
               }, error => {
                   console.log(JSON.stringify(error.json()));
               });
-}
+  }
 }
