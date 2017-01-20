@@ -14,30 +14,40 @@ export class AgregadorProveedorComponent {
   private direccion: string;
   private condicionPagoID: string;
 
+  private mostrarModalAgregar: boolean = true;
+
   constructor(private ptService: ProveedorServices){}
 
   agregar() {
-    let proveedor = {
-        nombreEmpresa:    	this.nombreEmpresa,
-        cuit:            	  this.cuit,
-        categoriaFiscalID:  this.categoriaFiscalID,
-        listaPrecioID:      this.listaPrecioID,
-        direccion:          this.direccion,
-        condicionPagoID:    this.condicionPagoID
-    }
-    
-    console.log(proveedor);
 
-    this.ptService.agregarProveedor(proveedor)
-                  .subscribe(data => {
-                      console.log("proveedor creado!!!");
-                      console.log(data);
-                      alert("¡Proveedor agregado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
-                      window.location.reload();
-                  }, error => {
-                      console.log(JSON.stringify(error.json()));
-                      alert("ERROR al agregar Proveedor, revise los campos");
-                  });;
+    if(this.nombreEmpresa && this.cuit && this.categoriaFiscalID && this.listaPrecioID && this.direccion && this.condicionPagoID){
+      let proveedor = {
+          nombreEmpresa:      this.nombreEmpresa,
+          cuit:                this.cuit,
+          categoriaFiscalID:  this.categoriaFiscalID,
+          listaPrecioID:      this.listaPrecioID,
+          direccion:          this.direccion,
+          condicionPagoID:    this.condicionPagoID
+      }
+      
+      console.log(proveedor);
+
+      this.ptService.agregarProveedor(proveedor)
+                    .subscribe(data => {
+                        console.log("proveedor creado!!!");
+                        console.log(data);
+                        this.mostrarModalAgregar = false;
+                        alert("¡Proveedor agregado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                        window.location.reload();
+                    }, error => {
+                        console.log(JSON.stringify(error.json()));
+                        alert("ERROR al agregar Proveedor, revise los campos");
+                    });;
+    } else {
+      alert("¡ERROR! Faltan datos");
+    }
+
+
 
   }
 }
