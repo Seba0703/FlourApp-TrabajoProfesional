@@ -26,6 +26,8 @@ data-toggle="modal" data-target="#exampleModal">+</button>
 						    </select>
 						</div>
 					</div>
+
+                    <input type="text" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="nombre">
                     
                     <input type="number" class="form-control" placeholder="Cantidad" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="cantidad">
 

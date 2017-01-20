@@ -9,22 +9,22 @@ import { MateriaPrimaServices } from './materiaPrimaServices';
         <table class="table">
           <thead class="thead-inverse">
           <tr>
+          	<th>Nombre</th>
             <th>Cantidad</th>
             <th>Unidad</th>
             <th>Stock Min</th>
             <th>Stock Max</th>
-            <th>Porcentaje Merma</th>
             <th>Tipo</th>
             <th>Precio Venta</th>
             <th>Acciones</th>
           </tr>
           </thead>
           <tbody *ngFor="let materiaPrima of materiasPrima">
+			<td>{{materiaPrima.nombre}}</td>
             <td>{{materiaPrima.cantidad}}</td>
             <td>{{materiaPrima.unidad}}</td>
             <td>{{materiaPrima.stockMin}}</td>
             <td>{{materiaPrima.stockMax}}</td>
-            <td>{{materiaPrima.porcentajeMerma}}%</td>
             <td>{{materiaPrima.tipo}}</td>
             <td>{{materiaPrima.precioVenta}}</td>
             <td>

@@ -7,23 +7,23 @@ import { MateriaPrimaServices } from './materiaPrimaServices';
 })
 
 export class AgregadorMateriaPrimaComponent {
+  private nombre: string;
   private cantidad: number;
   private unidad: string;
   private stockMin: number;
   private stockMax: number;
   private precioVenta: number;
   private tipo: string;
-  private porcentajeMerma: number;
 
   constructor(private ptService: MateriaPrimaServices){}
 
   agregar() {
     let materiaPrima = {
+        nombre:              this.nombre,
         cantidad:            this.cantidad,
         unidad:              this.unidad,
         stockMin:           this.stockMin,
         stockMax:           this.stockMax,
-        porcentajeMerma:    this.porcentajeMerma,
         tipo:               this.tipo,
         precioVenta:        this.precioVenta
     }
@@ -34,6 +34,7 @@ export class AgregadorMateriaPrimaComponent {
                   .subscribe(data => {
                       console.log("materiaPrima creado!!!");
                       console.log(data);
+
                       alert("¡Materia Prima agregada! Pulse 'Aceptar' para actualizar y visualizar los cambios");
                       window.location.reload();
                   }, error => {

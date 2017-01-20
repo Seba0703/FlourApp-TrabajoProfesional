@@ -8,6 +8,7 @@ import { SemiProcesadoServices } from './semiProcesadoServices';
         <table class="table">
           <thead class="thead-inverse">
           <tr>
+            <th>Nombre</th>
             <th>Cantidad</th>
             <th>Unidad</th>
             <th>Stock Min</th>
@@ -20,6 +21,7 @@ import { SemiProcesadoServices } from './semiProcesadoServices';
           </tr>
           </thead>
           <tbody *ngFor="let semiProcesado of semiProcesados">
+            <td>{{semiProcesado.nombre}}</td>
             <td>{{semiProcesado.cantidad}}</td>
             <td>{{semiProcesado.unidad}}</td>
             <td>{{semiProcesado.stockMin}}</td>
@@ -29,12 +31,19 @@ import { SemiProcesadoServices } from './semiProcesadoServices';
             <td>{{semiProcesado.tipo}}</td>
             <td>{{semiProcesado.precioVenta}}</td>
             <td>
-                <button type="button" class="btn btn-success" (click)="modificar()" title="Modificar" >
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
-                </button>
-                <button type="button" class="btn btn-danger" (click)="borrar(semiProcesado._id)" title="Borrar" >
-                  <i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
+              <div class="row">
+                  <div class="col-md-6">
+                    <button type="button" class="btn btn-success" (click)="modificar()" title="Modificar" >
+                      <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <button type="button" class="btn btn-danger" (click)="borrar(semiProcesado._id)" title="Borrar" >
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                  </div>
+              </div>
             </td>
           </tbody>
         </table>

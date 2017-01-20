@@ -7,6 +7,7 @@ import { ProductoTerminadoServices } from './productoTerminadoServices';
 })
 export class AgregadorProductoTerminadoComponent{
   private tasaImpositiva: string;
+  private nombre: string;
   private cantidad: number;
   private unidad: string;
   private stockMin: number;
@@ -39,6 +40,7 @@ export class AgregadorProductoTerminadoComponent{
     }
     let productoTerminado = {
         tasaImpositivaID:    tasaImpositivaID,
+        nombre:              this.nombre,
         cantidad:            this.cantidad,
         unidad:              this.unidad,
         stockMin:           this.stockMin,

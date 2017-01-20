@@ -9,6 +9,7 @@ import { ProductoTerminadoServices } from './productoTerminadoServices';
         <table class="table">
           <thead class="thead-inverse">
           <tr>
+            <th>Nombre</th>
             <th>Cantidad</th>
             <th>Unidad</th>
             <th>Stock Min</th>
@@ -21,6 +22,7 @@ import { ProductoTerminadoServices } from './productoTerminadoServices';
           </tr>
           </thead>
           <tbody *ngFor="let productoTerminado of productosTerminados">
+            <td>{{productoTerminado.nombre}}</td>
             <td>{{productoTerminado.cantidad}}</td>
             <td>{{productoTerminado.unidad}}</td>
             <td>{{productoTerminado.stockMin}}</td>
@@ -30,12 +32,19 @@ import { ProductoTerminadoServices } from './productoTerminadoServices';
             <td>{{productoTerminado.tipo}}</td>
             <td>{{productoTerminado.precioVenta}}</td>
             <td>
-                <button type="button" class="btn btn-success" (click)="modificar()" title="Modificar" >
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
-                </button>
-                <button type="button" class="btn btn-danger" (click)="borrar(productoTerminado._id)" title="Borrar" >
-                  <i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
+              <div class="row">
+                  <div class="col-md-6">
+                    <button type="button" class="btn btn-success" (click)="modificar()" title="Modificar" >
+                      <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <button type="button" class="btn btn-danger" (click)="borrar(productoTerminado._id)" title="Borrar" >
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                  </div>
+              </div>
             </td>
           </tbody>
         </table>
