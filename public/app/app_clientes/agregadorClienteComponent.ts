@@ -32,11 +32,11 @@ export class AgregadorClienteComponent {
                   .subscribe(data => {
                       console.log("cliente creado!!!");
                       console.log(data);
-                      alert("Cliente agregado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                      alert("¡Cliente agregado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
                       window.location.reload();
                   }, error => {
                       console.log(JSON.stringify(error.json()));
-                      alert("ERROR al agregar Producto, revise los campos");
+                      alert("ERROR al agregar ¡Cliente, revise los campos");
                   });;
 
   }

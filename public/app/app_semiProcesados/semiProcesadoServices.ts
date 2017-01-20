@@ -3,7 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';  
 import 'rxjs/add/operator/map';
 
-const URL_SEMIPROCESADO = 'http://localhost:3000/api/semiProcesados';
+const URL_SEMIPROCESADOS = 'http://localhost:3000/api/semiProcesados';
 
 @Injectable()
 export class SemiProcesadoServices{
@@ -16,17 +16,20 @@ export class SemiProcesadoServices{
 
   getSemiProcesados(): Observable<Response>  {
     console.log("HACIENDO REQUEST");
-    return this.http.get(URL_SEMIPROCESADO).map((response) => response.json())
+    return this.http.get(URL_SEMIPROCESADOS).map((response) => response.json())
   }
 
   agregarSemiProcesado(body: Object): Observable<Response> {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     console.log("POST REQUEST");
-    return this.http.post(URL_SEMIPROCESADO, body, {headers: headers});
+    return this.http.post(URL_SEMIPROCESADOS, body, {headers: headers});
   }
 
-  private mostrar(): void{
-    console.log(this.semiProcesados);  
+  borrarSemiProcesado(id: string): Observable<Response> {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log("DELETE REQUEST");
+    return this.http.delete(URL_SEMIPROCESADOS + "/" + id, {headers: headers});
   }
 }

@@ -32,7 +32,7 @@ export class AgregadorProveedorComponent {
                   .subscribe(data => {
                       console.log("proveedor creado!!!");
                       console.log(data);
-                      alert("Proveedor agregado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                      alert("¡Proveedor agregado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
                       window.location.reload();
                   }, error => {
                       console.log(JSON.stringify(error.json()));

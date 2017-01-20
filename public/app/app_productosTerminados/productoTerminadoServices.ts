@@ -26,7 +26,10 @@ export class ProductoTerminadoServices{
     return this.http.post(URL_PRODUCTOS_TERMINADOS, body, {headers: headers});
   }
 
-	private mostrar(): void{
-		console.log(this.productosTerminados);	
-	}
+  borrarProductoTerminado(id: string): Observable<Response> {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log("DELETE REQUEST");
+    return this.http.delete(URL_PRODUCTOS_TERMINADOS + "/" + id, {headers: headers});
+  }
 }

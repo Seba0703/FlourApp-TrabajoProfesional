@@ -25,7 +25,11 @@ export class ClienteServices {
     return this.http.post(URL_CLIENTES, body, {headers: headers});
   }
 
-	private mostrar(): void{
-		console.log(this.clientes);	
-	}
+  borrarCliente(id: string): Observable<Response> {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log("DELETE REQUEST");
+    return this.http.delete(URL_CLIENTES + "/" + id, {headers: headers});
+  }
+
 }

@@ -11,7 +11,6 @@ export class MateriaPrimaServices{
 
   constructor(private http:Http) {
     console.log("INICIALIZANDO MateriaPrimaS SERVIRCE");
-    //this.cargarProductosTerminados();
   }
 
   getMateriasPrima(): Observable<Response>  {
@@ -26,7 +25,10 @@ export class MateriaPrimaServices{
     return this.http.post(URL_MATERIAS_PRIMA, body, {headers: headers});
   }
 
-  private mostrar(): void{
-    console.log(this.materiasPrima);  
+  borrarMateriaPrima(id: string): Observable<Response> {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log("DELETE REQUEST");
+    return this.http.delete(URL_MATERIAS_PRIMA + "/" + id, {headers: headers});
   }
 }

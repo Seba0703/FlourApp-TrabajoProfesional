@@ -16,6 +16,7 @@ import { MateriaPrimaServices } from './materiaPrimaServices';
             <th>Porcentaje Merma</th>
             <th>Tipo</th>
             <th>Precio Venta</th>
+            <th>Acciones</th>
           </tr>
           </thead>
           <tbody *ngFor="let materiaPrima of materiasPrima">
@@ -26,6 +27,14 @@ import { MateriaPrimaServices } from './materiaPrimaServices';
             <td>{{materiaPrima.porcentajeMerma}}%</td>
             <td>{{materiaPrima.tipo}}</td>
             <td>{{materiaPrima.precioVenta}}</td>
+            <td>
+                <button type="button" class="btn btn-success" (click)="modificar()" title="Modificar" >
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-danger" (click)="borrar(materiaPrima._id)" title="Borrar" >
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+            </td>
           </tbody>
         </table>
   `
@@ -52,5 +61,23 @@ export class MateriaPrimaComponent {
                 },
                 err => console.error("EL ERROR FUE: ", err)
               );
+  }
+
+  borrar(id: string){
+    let r = confirm("¿Realmente desea realizar el borrado?");
+    if (r == true) {
+        console.log("You pressed OK!");
+        console.log("ID borrado= " + id);
+        this.ptService.borrarMateriaPrima(id)
+                      .subscribe(
+                        () => { 
+                      alert("¡Se borro existosamente! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                      window.location.reload();
+                      },
+                        err => console.error("EL ERROR FUE: ", err)
+                      );
+    } else {
+        console.log("You pressed CANCEL!");
+    }
   }
 }

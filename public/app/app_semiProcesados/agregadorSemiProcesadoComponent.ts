@@ -60,7 +60,7 @@ export class AgregadorSemiProcesadoComponent {
                       window.location.reload();
                   }, error => {
                       console.log(JSON.stringify(error.json()));
-                      alert("ERROR al agregar Producto, revise los campos");
+                      alert("ERROR al agregar Producto semiprocesado, revise los campos");
                   });;
 
   }
