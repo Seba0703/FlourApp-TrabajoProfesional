@@ -9,6 +9,9 @@ import { ClienteServices } from './clienteServices';
 })
 
 export class ClienteComponent {
+  private nombreUsuario: string;
+  private permisos: string;
+
   private clientes: Response;
 
   private _id : string;
@@ -21,7 +24,12 @@ export class ClienteComponent {
 
   private mostrarModalModificar: boolean = true;
   
-  constructor(private cService: ClienteServices){}
+  constructor(private cService: ClienteServices){
+    let dataLogin = JSON.parse(sessionStorage.getItem("dataLogin"));
+    
+    this.nombreUsuario = dataLogin.nombreUsuario;
+    this.permisos = dataLogin.permisos;
+  }
 
   ngOnInit() {
     console.log("ON INIT");

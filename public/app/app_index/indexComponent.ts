@@ -20,7 +20,7 @@ export class IndexComponent {
 		for (let usuario of this.indexSrv.getUsuarios()) {
     		if (this.nombreUsuario == usuario.nombre && this.contraseniaUsuario == usuario.contrasenia){
     			usuarioExistente = true;
-          this.loginValido();
+          this.loginValido(usuario.permisos);
           break;
     		}
 		}
@@ -31,9 +31,10 @@ export class IndexComponent {
 		}
    }
 
-  loginValido(){
+  loginValido(permisos: string){
   	console.log("OK log!!!");
-    location.href = "http://localhost:3000/home";
+    sessionStorage.setItem("dataLogin", JSON.stringify({nombreUsuario: this.nombreUsuario, permisos: permisos}));
+    location.href = "http://localhost:3000/clientes.html";
   }
 
   onKeyName(value: string) { // with type info

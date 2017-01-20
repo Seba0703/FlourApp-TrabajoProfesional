@@ -9,6 +9,9 @@ import { MateriaPrimaServices } from './materiaPrimaServices';
 })
 
 export class MateriaPrimaComponent {
+  private nombreUsuario: string;
+  private permisos: string;
+
   private materiasPrima: Response;
 
   private _id : string;
@@ -22,7 +25,12 @@ export class MateriaPrimaComponent {
 
   private mostrarModalModificar: boolean = true;
   
-  constructor(private mpService: MateriaPrimaServices){}
+  constructor(private mpService: MateriaPrimaServices){
+    let dataLogin = JSON.parse(sessionStorage.getItem("dataLogin"));
+    
+    this.nombreUsuario = dataLogin.nombreUsuario;
+    this.permisos = dataLogin.permisos;
+  }
 
   ngOnInit() {
     console.log("ON INIT");

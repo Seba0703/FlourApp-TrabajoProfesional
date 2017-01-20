@@ -116,8 +116,8 @@ export class ProductoTerminadoComponent implements OnInit{
           break;
       }
       let productoTerminado = {
-          _id:                 this._id;
-          tasaImpositivaID:    tasaImpositivaID,
+          _id:                  this._id,
+          tasaImpositivaID:     tasaImpositivaID,
           nombre:               this.nombre,
           cantidad:             this.cantidad,
           unidad:               this.unidad,

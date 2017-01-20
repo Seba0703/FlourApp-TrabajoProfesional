@@ -8,6 +8,9 @@ import { SemiProcesadoServices } from './semiProcesadoServices';
 })
 
 export class SemiProcesadoComponent implements OnInit{
+  private nombreUsuario: string;
+  private permisos: string;
+
   private semiProcesados: Response;
 
   private _id : string;
@@ -24,7 +27,12 @@ export class SemiProcesadoComponent implements OnInit{
 
   private mostrarModalModificar: boolean = true;
   
-  constructor(private spService: SemiProcesadoServices){}
+  constructor(private spService: SemiProcesadoServices){
+    let dataLogin = JSON.parse(sessionStorage.getItem("dataLogin"));
+    
+    this.nombreUsuario = dataLogin.nombreUsuario;
+    this.permisos = dataLogin.permisos;
+  }
 
   ngOnInit() {
     console.log("ON INIT");
@@ -116,8 +124,8 @@ export class SemiProcesadoComponent implements OnInit{
           break;
       }
       let semiProcesado = {
-          _id:                 this._id;
-          tasaImpositivaID:    tasaImpositivaID,
+          _id:                  this._id,
+          tasaImpositivaID:     tasaImpositivaID,
           nombre:               this.nombre,
           cantidad:             this.cantidad,
           unidad:               this.unidad,

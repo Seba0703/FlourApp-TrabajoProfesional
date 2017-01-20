@@ -9,6 +9,9 @@ import { ProveedorServices } from './proveedorServices';
 })
 
 export class ProveedorComponent {
+  private nombreUsuario: string;
+  private permisos: string;
+
   private proveedores: Response;
 
   private _id : string;
@@ -21,7 +24,12 @@ export class ProveedorComponent {
 
   private mostrarModalModificar: boolean = true;
   
-  constructor(private pService: ProveedorServices){}
+  constructor(private pService: ProveedorServices){
+    let dataLogin = JSON.parse(sessionStorage.getItem("dataLogin"));
+    
+    this.nombreUsuario = dataLogin.nombreUsuario;
+    this.permisos = dataLogin.permisos;
+  }
 
   ngOnInit() {
     console.log("ON INIT");
