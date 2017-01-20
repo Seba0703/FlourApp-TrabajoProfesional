@@ -31,6 +31,7 @@ exports.add = function(req, res) {
 
     var productoTerminado = new ProductoTerminado({ //creo un nuevo productoTerminado en base a lo recibido en el request
         tasaImpositivaID:      req.body.tasaImpositivaID, 
+        nombre:                req.body.nombre,
         cantidad:    	       req.body.cantidad,
         unidad:     	       req.body.unidad,
         stockMin:              req.body.stockMin,
@@ -57,6 +58,7 @@ exports.update = function(req, res) {
         
 		//actualizo todos los campos de ese "productoTerminado"
         productoTerminado.tasaImpositivaID =     req.body.tasaImpositivaID;
+        productoTerminado.nombre =                    req.body.nombre;
         productoTerminado.cantidad =   	         req.body.cantidad;
         productoTerminado.unidad =     		  	 req.body.unidad;
         productoTerminado.stockMin =             req.body.stockMin;

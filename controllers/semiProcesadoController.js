@@ -30,7 +30,8 @@ exports.add = function(req, res) {
     console.log(req.body);
 
     var semiProcesado = new ProductoSemiProcesado({ //creo un nuevo semiProcesado en base a lo recibido en el request
-        tasaImpositivaID:      req.body.tasaImpositivaID, 
+        tasaImpositivaID:      req.body.tasaImpositivaID,
+        nombre:                req.body.nombre,
         cantidad:    	       req.body.cantidad,
         unidad:     	       req.body.unidad,
         stockMin:              req.body.stockMin,
@@ -58,6 +59,7 @@ exports.update = function(req, res) {
         
 		//actualizo todos los campos de ese "semiProcesado"
         semiProcesado.tasaImpositivaID =     req.body.tasaImpositivaID;
+        semiProcesado.nombre =               req.body.nombre;
         semiProcesado.cantidad =   	         req.body.cantidad;
         semiProcesado.unidad =     		  	 req.body.unidad;
         semiProcesado.stockMin =             req.body.stockMin;

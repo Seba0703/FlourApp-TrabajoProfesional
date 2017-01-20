@@ -30,13 +30,13 @@ exports.add = function(req, res) {
     console.log(req.body);
 
     var materiaPrima = new MateriaPrima({ //creo un nuevo materiaPrima en base a lo recibido en el request
+        nombre:             req.body.nombre,
         cantidad:    	    req.body.cantidad,
         unidad:     	    req.body.unidad,
         stockMin:           req.body.stockMin,
         stockMax:   	    req.body.stockMax,
         precioVenta:  	    req.body.precioVenta,
         tipo:               req.body.tipo,
-        porcentajeMerma:    req.body.porcentajeMerma,
         listaConversionID:  req.body.listaConversionID
     });
 
@@ -54,6 +54,7 @@ exports.update = function(req, res) {
     MateriaPrima.findById(req.params.id, function(err, materiaPrima) { //"materiaPrima" es el objeto que me devuelve la busqueda
         
 		//actualizo todos los campos de ese "materiaPrima"
+        materiaPrima.nombre =               req.body.nombre;
         materiaPrima.cantidad =   	        req.body.cantidad;
         materiaPrima.unidad =     		  	req.body.unidad;
         materiaPrima.stockMin =             req.body.stockMin;
