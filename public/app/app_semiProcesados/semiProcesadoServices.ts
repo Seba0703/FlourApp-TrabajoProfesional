@@ -32,4 +32,11 @@ export class SemiProcesadoServices{
     console.log("DELETE REQUEST");
     return this.http.delete(URL_SEMIPROCESADOS + "/" + id, {headers: headers});
   }
+
+  modificar(body: any): Observable<Response> {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log("PUT REQUEST");
+    return this.http.put(URL_SEMIPROCESADOS + "/" + body._id, body, {headers: headers});
+  }
 }

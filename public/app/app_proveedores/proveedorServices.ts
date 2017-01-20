@@ -31,4 +31,11 @@ export class ProveedorServices {
     console.log("DELETE REQUEST");
     return this.http.delete(URL_PROVEEDORES + "/" + id, {headers: headers});
   }
+
+  modificar(body: any): Observable<Response> {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log("PUT REQUEST");
+    return this.http.put(URL_PROVEEDORES + "/" + body._id, body, {headers: headers});
+  }
 }

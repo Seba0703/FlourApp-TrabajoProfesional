@@ -5,45 +5,24 @@ import { MateriaPrimaServices } from './materiaPrimaServices';
 
 @Component({
   selector: 'tabla-materias-prima',
-    template: `
-        <table class="table">
-          <thead class="thead-inverse">
-          <tr>
-          	<th>Nombre</th>
-            <th>Cantidad</th>
-            <th>Unidad</th>
-            <th>Stock Min</th>
-            <th>Stock Max</th>
-            <th>Tipo</th>
-            <th>Precio Venta</th>
-            <th>Acciones</th>
-          </tr>
-          </thead>
-          <tbody *ngFor="let materiaPrima of materiasPrima">
-			<td>{{materiaPrima.nombre}}</td>
-            <td>{{materiaPrima.cantidad}}</td>
-            <td>{{materiaPrima.unidad}}</td>
-            <td>{{materiaPrima.stockMin}}</td>
-            <td>{{materiaPrima.stockMax}}</td>
-            <td>{{materiaPrima.tipo}}</td>
-            <td>{{materiaPrima.precioVenta}}</td>
-            <td>
-                <button type="button" class="btn btn-success" (click)="modificar()" title="Modificar" >
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
-                </button>
-                <button type="button" class="btn btn-danger" (click)="borrar(materiaPrima._id)" title="Borrar" >
-                  <i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
-            </td>
-          </tbody>
-        </table>
-  `
+    templateUrl:"app/app_materiasPrima/materiaPrimaComponent.html"
 })
 
 export class MateriaPrimaComponent {
   private materiasPrima: Response;
+
+  private _id : string;
+  private nombre: string;
+  private cantidad: number;
+  private unidad: string;
+  private stockMin: number;
+  private stockMax: number;
+  private precioVenta: number;
+  private tipo: string;
+
+  private mostrarModalModificar: boolean = true;
   
-  constructor(private ptService: MateriaPrimaServices){}
+  constructor(private mpService: MateriaPrimaServices){}
 
   ngOnInit() {
     console.log("ON INIT");
@@ -53,7 +32,7 @@ export class MateriaPrimaComponent {
   cargarMateriasPrima(){
     console.log("CARGANDO MateriaPrima");
     // en el momento del subscribe es cuando se dispara la llamada
-    this.ptService.getMateriasPrima()
+    this.mpService.getMateriasPrima()
               .subscribe(
                 (materiasPrimaData) => {
                   this.materiasPrima = materiasPrimaData;
@@ -68,7 +47,7 @@ export class MateriaPrimaComponent {
     if (r == true) {
         console.log("You pressed OK!");
         console.log("ID borrado= " + id);
-        this.ptService.borrarMateriaPrima(id)
+        this.mpService.borrarMateriaPrima(id)
                       .subscribe(
                         () => { 
                       alert("¡Se borro existosamente! Pulse 'Aceptar' para actualizar y visualizar los cambios");
@@ -78,6 +57,49 @@ export class MateriaPrimaComponent {
                       );
     } else {
         console.log("You pressed CANCEL!");
+    }
+  }
+
+  modificar(materiaPrima: any){
+    this._id =                materiaPrima._id;
+    this.nombre =             materiaPrima.nombre;
+    this.cantidad =           materiaPrima.cantidad;
+    this.unidad =              materiaPrima.unidad;
+    this.stockMin =          materiaPrima.stockMin;
+    this.stockMax =           materiaPrima.stockMax;
+    this.tipo =               materiaPrima.tipo;
+    this.precioVenta=        materiaPrima.precioVenta;
+  }
+
+  guardarModificaciones(){
+    if(this.nombre && this.cantidad && this.unidad && this.stockMin && this.stockMax && this.precioVenta && this.tipo){
+      this.mostrarModalModificar = false;
+      let materiaPrima = {
+          _id:                this._id,
+          nombre:             this.nombre,
+          cantidad:           this.cantidad,
+          unidad:             this.unidad,
+          stockMin:           this.stockMin,
+          stockMax:           this.stockMax,
+          tipo:               this.tipo,
+          precioVenta:        this.precioVenta
+      }
+      
+      console.log(materiaPrima);
+
+      this.mpService.modificar(materiaPrima)
+                    .subscribe(data => {
+                        console.log(data);
+                        
+                        alert("¡Materia Prima modificado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                        window.location.reload();                        
+                    }, error => {
+                        console.log(JSON.stringify(error.json()));
+                        alert("ERROR al modificar Materia Prima, revise los campos");
+                    });;
+    } else {
+      alert("¡ERROR! Faltan datos");
+      
     }
   }
 }

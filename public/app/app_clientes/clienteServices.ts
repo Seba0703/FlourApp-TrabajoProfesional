@@ -32,4 +32,11 @@ export class ClienteServices {
     return this.http.delete(URL_CLIENTES + "/" + id, {headers: headers});
   }
 
+  modificar(body: any): Observable<Response> {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log("PUT REQUEST");
+    return this.http.put(URL_CLIENTES + "/" + body._id, body, {headers: headers});
+  }
+
 }

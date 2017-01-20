@@ -5,37 +5,23 @@ import { ProveedorServices } from './proveedorServices';
 
 @Component({
   selector: 'tabla-proveedores',
-    template: `
-          <table class="table">
-          <thead class="thead-inverse">
-          <tr>
-            <th>Nombre Empresa</th>
-            <th>CUIT</th>
-            <th>Dirección</th>
-            <th>Acciones</th>
-          </tr>
-          </thead>
-          <tbody *ngFor="let proveedor of proveedores">
-            <td>{{proveedor.nombreEmpresa}}</td>
-            <td>{{proveedor.cuit}}</td>
-            <td>{{proveedor.direccion}}</td>
-            <td>
-                <button type="button" class="btn btn-success" (click)="modificar()" title="Modificar" >
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
-                </button>
-                <button type="button" class="btn btn-danger" (click)="borrar(proveedor._id)" title="Borrar" >
-                  <i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
-            </td>
-          </tbody>
-        </table>
-  `
+    templateUrl: "app/app_proveedores/proveedorComponent.html"
 })
 
 export class ProveedorComponent {
   private proveedores: Response;
+
+  private _id : string;
+  private nombreEmpresa: string;
+  private cuit: string;
+  private categoriaFiscalID: string;
+  private listaPrecioID: string;
+  private direccion: string;
+  private condicionPagoID: string;
+
+  private mostrarModalModificar: boolean = true;
   
-  constructor(private ptService: ProveedorServices){}
+  constructor(private pService: ProveedorServices){}
 
   ngOnInit() {
     console.log("ON INIT");
@@ -45,7 +31,7 @@ export class ProveedorComponent {
   cargarProductosTerminados(){
     console.log("CARGANDO CLIENTES");
     // en el momento del subscribe es cuando se dispara la llamada
-    this.ptService.getProveedores()
+    this.pService.getProveedores()
               .subscribe(
                 (proveedoresData) => {
                   this.proveedores = proveedoresData;
@@ -60,7 +46,7 @@ export class ProveedorComponent {
     if (r == true) {
         console.log("You pressed OK!");
         console.log("ID borrado= " + id);
-        this.ptService.borrarProveedor(id)
+        this.pService.borrarProveedor(id)
                       .subscribe(
                         () => { 
                       alert("¡Se borro existosamente! Pulse 'Aceptar' para actualizar y visualizar los cambios");
@@ -70,6 +56,47 @@ export class ProveedorComponent {
                       );
     } else {
         console.log("You pressed CANCEL!");
+    }
+  }
+
+  modificar(proveedor: any){
+    this._id =                proveedor._id;
+    this.nombreEmpresa =      proveedor.nombreEmpresa;
+    this.cuit =               proveedor.cuit;
+    this.categoriaFiscalID =  proveedor.categoriaFiscalID;
+    this.listaPrecioID =      proveedor.listaPrecioID;
+    this.direccion =          proveedor.direccion;
+    this.condicionPagoID =    proveedor.condicionPagoID;
+  }
+
+  guardarModificaciones(){
+    if(this.nombreEmpresa && this.cuit && this.categoriaFiscalID && this.listaPrecioID && this.direccion && this.condicionPagoID){
+      this.mostrarModalModificar = false;
+      let proveedor = {
+          _id:                this._id,
+          nombreEmpresa:      this.nombreEmpresa,
+          cuit:               this.cuit,
+          categoriaFiscalID:  this.categoriaFiscalID,
+          listaPrecioID:      this.listaPrecioID,
+          direccion:          this.direccion,
+          condicionPagoID:    this.condicionPagoID
+      }
+      
+      console.log(proveedor);
+
+      this.pService.modificar(proveedor)
+                    .subscribe(data => {
+                        console.log(data);
+                        
+                        alert("¡Proveedor modificado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                        window.location.reload();                        
+                    }, error => {
+                        console.log(JSON.stringify(error.json()));
+                        alert("ERROR al modificar ¡Proveedor, revise los campos");
+                    });;
+    } else {
+      alert("¡ERROR! Faltan datos");
+      
     }
   }
 }

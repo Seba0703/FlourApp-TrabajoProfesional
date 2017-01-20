@@ -46,8 +46,6 @@ export class AgregadorClienteComponent {
     } else {
       alert("¡ERROR! Faltan datos");
     }
-
-
   }
 
 }

@@ -5,53 +5,24 @@ import { ProductoTerminadoServices } from './productoTerminadoServices';
 
 @Component({
   selector: 'tabla-productos-terminados',
-    template: `
-        <table class="table">
-          <thead class="thead-inverse">
-          <tr>
-            <th>Nombre</th>
-            <th>Cantidad</th>
-            <th>Unidad</th>
-            <th>Stock Min</th>
-            <th>Stock Max</th>
-            <th>Embolsado (default)</th>
-            <th>Porcentaje Merma</th>
-            <th>Tipo</th>
-            <th>Precio Venta</th>
-            <th>Acciones</th>
-          </tr>
-          </thead>
-          <tbody *ngFor="let productoTerminado of productosTerminados">
-            <td>{{productoTerminado.nombre}}</td>
-            <td>{{productoTerminado.cantidad}}</td>
-            <td>{{productoTerminado.unidad}}</td>
-            <td>{{productoTerminado.stockMin}}</td>
-            <td>{{productoTerminado.stockMax}}</td>
-            <td>{{productoTerminado.embolsadoCantDefault}}</td>
-            <td>{{productoTerminado.porcentajeMerma}}%</td>
-            <td>{{productoTerminado.tipo}}</td>
-            <td>{{productoTerminado.precioVenta}}</td>
-            <td>
-              <div class="row">
-                  <div class="col-md-6">
-                    <button type="button" class="btn btn-success" (click)="modificar()" title="Modificar" >
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
-                    </button>
-                  </div>
-                  
-                  <div class="col-md-6">
-                    <button type="button" class="btn btn-danger" (click)="borrar(productoTerminado._id)" title="Borrar" >
-                      <i class="fa fa-trash" aria-hidden="true"></i>
-                    </button>
-                  </div>
-              </div>
-            </td>
-          </tbody>
-        </table>
-  `
+  templateUrl: "app/app_productosTerminados/productoTerminadoComponent.html"
 })
 export class ProductoTerminadoComponent implements OnInit{
   private productosTerminados: Response;
+
+  private _id : string;
+  private tasaImpositiva: string;
+  private nombre: string;
+  private cantidad: number;
+  private unidad: string;
+  private stockMin: number;
+  private stockMax: number;
+  private embolsado: number;
+  private porcentajeMerma: number;
+  private tipo: string;
+  private precioVenta: number;
+
+  private mostrarModalModificar: boolean = true;
   
   constructor(private ptService: ProductoTerminadoServices){}
 
@@ -89,5 +60,89 @@ export class ProductoTerminadoComponent implements OnInit{
     } else {
         console.log("You pressed CANCEL!");
     }
-  }  
+  }
+
+  modificar(productoTerminado: any){
+    this._id =  productoTerminado._id;
+
+    switch (productoTerminado.tasaImpositivaID) {
+      case "ti1":
+        this.tasaImpositiva = "IVA-0%";
+        break;
+      case "ti2":
+        this.tasaImpositiva = "IVA-10.5%";
+        break;  
+      case "ti3":
+        this.tasaImpositiva = "IVA-21%";
+        break;
+      case "ti4":
+        this.tasaImpositiva = "IVA-27%";
+        break;  
+      default:
+        this.tasaImpositiva = "IVA-0%";
+        break;
+    }
+
+    this.nombre =            productoTerminado.nombre;
+    this.cantidad =          productoTerminado.cantidad;
+    this.unidad =            productoTerminado.unidad;
+    this.stockMin =          productoTerminado.stockMin;
+    this.stockMax =          productoTerminado.stockMax;
+    this.embolsado =         productoTerminado.embolsadoCantDefault;
+    this.porcentajeMerma =   productoTerminado.porcentajeMerma;
+    this.tipo =              productoTerminado.tipo;
+    this.precioVenta=        productoTerminado.precioVenta;
+  }
+
+  guardarModificaciones(){
+    if(this.tasaImpositiva && this.nombre && this.cantidad && this.unidad && this.stockMin && this.stockMax && this.embolsado && this. porcentajeMerma && this.tipo && this.precioVenta) { 
+      this.mostrarModalModificar = false;
+      let tasaImpositivaID: string;
+      switch (this.tasaImpositiva.split("-")[1].split("%")[0]) {
+        case "0":
+          tasaImpositivaID = "ti1";
+          break;
+        case "10.5":
+          tasaImpositivaID = "ti2";
+          break;  
+        case "21":
+          tasaImpositivaID = "ti3";
+          break;
+        case "27":
+          tasaImpositivaID = "ti4";
+          break;  
+        default:
+          tasaImpositivaID = "ti1";
+          break;
+      }
+      let productoTerminado = {
+          _id:                 this._id;
+          tasaImpositivaID:    tasaImpositivaID,
+          nombre:               this.nombre,
+          cantidad:             this.cantidad,
+          unidad:               this.unidad,
+          stockMin:             this.stockMin,
+          stockMax:             this.stockMax,
+          embolsadoCantDefault: this.embolsado,
+          porcentajeMerma:      this.porcentajeMerma,
+          tipo:                 this.tipo,
+          precioVenta:          this.precioVenta
+      }
+      
+      console.log(productoTerminado);
+
+      this.ptService.modificar(productoTerminado)
+                    .subscribe(data => {
+                        console.log(data);
+                        alert("¡Producto terminado modificado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                        window.location.reload();                        
+                    }, error => {
+                        console.log(JSON.stringify(error.json()));
+                        alert("ERROR al modificar Producto terminado, revise los campos");
+                    });;
+    } else {
+      alert("¡ERROR! Faltan datos");
+      
+    }
+  }
 }

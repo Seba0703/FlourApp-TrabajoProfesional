@@ -31,4 +31,11 @@ export class MateriaPrimaServices{
     console.log("DELETE REQUEST");
     return this.http.delete(URL_MATERIAS_PRIMA + "/" + id, {headers: headers});
   }
+
+  modificar(body: any): Observable<Response> {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log("PUT REQUEST");
+    return this.http.put(URL_MATERIAS_PRIMA + "/" + body._id, body, {headers: headers});
+  }
 }

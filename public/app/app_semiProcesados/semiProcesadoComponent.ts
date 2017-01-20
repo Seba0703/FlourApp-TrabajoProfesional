@@ -4,56 +4,27 @@ import { SemiProcesadoServices } from './semiProcesadoServices';
 
 @Component({
   selector: 'tabla-semi-procesados',
-    template: `
-        <table class="table">
-          <thead class="thead-inverse">
-          <tr>
-            <th>Nombre</th>
-            <th>Cantidad</th>
-            <th>Unidad</th>
-            <th>Stock Min</th>
-            <th>Stock Max</th>
-            <th>Embolsado (default)</th>
-            <th>Porcentaje Merma</th>
-            <th>Tipo</th>
-            <th>Precio Venta</th>
-            <th>Acciones</th>
-          </tr>
-          </thead>
-          <tbody *ngFor="let semiProcesado of semiProcesados">
-            <td>{{semiProcesado.nombre}}</td>
-            <td>{{semiProcesado.cantidad}}</td>
-            <td>{{semiProcesado.unidad}}</td>
-            <td>{{semiProcesado.stockMin}}</td>
-            <td>{{semiProcesado.stockMax}}</td>
-            <td>{{semiProcesado.embolsadoCantDefault}}</td>
-            <td>{{semiProcesado.porcentajeMerma}}%</td>
-            <td>{{semiProcesado.tipo}}</td>
-            <td>{{semiProcesado.precioVenta}}</td>
-            <td>
-              <div class="row">
-                  <div class="col-md-6">
-                    <button type="button" class="btn btn-success" (click)="modificar()" title="Modificar" >
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
-                    </button>
-                  </div>
-                  
-                  <div class="col-md-6">
-                    <button type="button" class="btn btn-danger" (click)="borrar(semiProcesado._id)" title="Borrar" >
-                      <i class="fa fa-trash" aria-hidden="true"></i>
-                    </button>
-                  </div>
-              </div>
-            </td>
-          </tbody>
-        </table>
-  `
+    templateUrl: "app/app_semiProcesados/semiProcesadoComponent.html"
 })
 
 export class SemiProcesadoComponent implements OnInit{
   private semiProcesados: Response;
+
+  private _id : string;
+  private tasaImpositiva: string;
+  private nombre: string;
+  private cantidad: number;
+  private unidad: string;
+  private stockMin: number;
+  private stockMax: number;
+  private embolsado: number;
+  private porcentajeMerma: number;
+  private tipo: string;
+  private precioVenta: number;
+
+  private mostrarModalModificar: boolean = true;
   
-  constructor(private ptService: SemiProcesadoServices){}
+  constructor(private spService: SemiProcesadoServices){}
 
   ngOnInit() {
     console.log("ON INIT");
@@ -63,7 +34,7 @@ export class SemiProcesadoComponent implements OnInit{
   cargarSemiProcesados(){
     console.log("CARGANDO PRODUCTOS TERM");
     // en el momento del subscribe es cuando se dispara la llamada
-    this.ptService.getSemiProcesados()
+    this.spService.getSemiProcesados()
               .subscribe(
                 (semiProcesadosData) => {
                   this.semiProcesados = semiProcesadosData;
@@ -78,7 +49,7 @@ export class SemiProcesadoComponent implements OnInit{
     if (r == true) {
         console.log("You pressed OK!");
         console.log("ID borrado= " + id);
-        this.ptService.borrarSemiProcesado(id)
+        this.spService.borrarSemiProcesado(id)
                       .subscribe(
                         () => { 
                       alert("¡Se borro existosamente! Pulse 'Aceptar' para actualizar y visualizar los cambios");
@@ -90,4 +61,89 @@ export class SemiProcesadoComponent implements OnInit{
         console.log("You pressed CANCEL!");
     }
   }
+
+  modificar(semiProcesado: any){
+    this._id =                semiProcesado._id;
+
+    switch (semiProcesado.tasaImpositivaID) {
+      case "ti1":
+        this.tasaImpositiva = "IVA-0%";
+        break;
+      case "ti2":
+        this.tasaImpositiva = "IVA-10.5%";
+        break;  
+      case "ti3":
+        this.tasaImpositiva = "IVA-21%";
+        break;
+      case "ti4":
+        this.tasaImpositiva = "IVA-27%";
+        break;  
+      default:
+        this.tasaImpositiva = "IVA-0%";
+        break;
+    }
+
+    this.nombre =             semiProcesado.nombre;
+    this.cantidad =           semiProcesado.cantidad;
+    this.unidad =              semiProcesado.unidad;
+    this.stockMin =          semiProcesado.stockMin;
+    this.stockMax =           semiProcesado.stockMax;
+    this.embolsado =           semiProcesado.embolsadoCantDefault;
+    this.porcentajeMerma =     semiProcesado.porcentajeMerma;
+    this.tipo =               semiProcesado.tipo;
+    this.precioVenta=        semiProcesado.precioVenta;
+  }
+
+  guardarModificaciones(){
+    if(this.tasaImpositiva && this.nombre && this.cantidad && this.unidad && this.stockMin && this.stockMax && this.embolsado && this. porcentajeMerma && this.tipo && this.precioVenta) { 
+      this.mostrarModalModificar = false;
+      let tasaImpositivaID: string;
+      switch (this.tasaImpositiva.split("-")[1].split("%")[0]) {
+        case "0":
+          tasaImpositivaID = "ti1";
+          break;
+        case "10.5":
+          tasaImpositivaID = "ti2";
+          break;  
+        case "21":
+          tasaImpositivaID = "ti3";
+          break;
+        case "27":
+          tasaImpositivaID = "ti4";
+          break;  
+        default:
+          tasaImpositivaID = "ti1";
+          break;
+      }
+      let semiProcesado = {
+          _id:                 this._id;
+          tasaImpositivaID:    tasaImpositivaID,
+          nombre:               this.nombre,
+          cantidad:             this.cantidad,
+          unidad:               this.unidad,
+          stockMin:             this.stockMin,
+          stockMax:             this.stockMax,
+          embolsadoCantDefault: this.embolsado,
+          porcentajeMerma:      this.porcentajeMerma,
+          tipo:                 this.tipo,
+          precioVenta:          this.precioVenta
+      }
+      
+      console.log(semiProcesado);
+
+      this.spService.modificar(semiProcesado)
+                    .subscribe(data => {
+                        console.log(data);
+                        alert("¡Producto semiprocesado modificado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                        window.location.reload();                        
+                    }, error => {
+                        console.log(JSON.stringify(error.json()));
+                        alert("ERROR al modificar Producto semiprocesado, revise los campos");
+                    });;
+    } else {
+      alert("¡ERROR! Faltan datos");
+      
+    }
+  }
+
 }
