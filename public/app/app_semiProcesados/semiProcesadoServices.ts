@@ -3,7 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';  
 import 'rxjs/add/operator/map';
 
-const URL_SEMIPROCESADOS = 'http://localhost:3000/api/semiProcesados';
+import {URL_SEMIPROCESADOS} from '../rutas';
 
 @Injectable()
 export class SemiProcesadoServices{
@@ -11,7 +11,6 @@ export class SemiProcesadoServices{
 
   constructor(private http:Http) {
     console.log("INICIALIZANDO SemiProcesadoS SERVIRCE");
-    //this.cargarProductosTerminados();
   }
 
   getSemiProcesados(): Observable<Response>  {

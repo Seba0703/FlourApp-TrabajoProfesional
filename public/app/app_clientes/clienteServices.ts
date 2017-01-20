@@ -3,7 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';  
 import 'rxjs/add/operator/map';
 
-const URL_CLIENTES = 'http://localhost:3000/api/clientes';
+import {URL_CLIENTES} from '../rutas';
 
 @Injectable()
 export class ClienteServices {

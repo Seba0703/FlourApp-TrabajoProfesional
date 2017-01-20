@@ -3,8 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';  
 import 'rxjs/add/operator/map';
 
-const URL_MATERIAS_PRIMA = 'http://localhost:3000/api/materiasPrima';
-
+import {URL_MATERIAS_PRIMA} from '../rutas';
 @Injectable()
 export class MateriaPrimaServices{
   public materiasPrima: Array<any>;

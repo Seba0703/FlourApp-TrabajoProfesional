@@ -3,7 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';  
 import 'rxjs/add/operator/map';
 
-const URL_PRODUCTOS_TERMINADOS = 'http://localhost:3000/api/productosTerminados';
+import {URL_PRODUCTOS_TERMINADOS} from '../rutas';
 
 @Injectable()
 export class ProductoTerminadoServices{
@@ -11,7 +11,6 @@ export class ProductoTerminadoServices{
 
   constructor(private http:Http) {
   	console.log("INICIALIZANDO ProductoTerminadoS SERVIRCE");
-  	//this.cargarProductosTerminados();
   }
 
   getProductosTerminados(): Observable<Response>  {
