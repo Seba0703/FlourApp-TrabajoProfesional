@@ -8,12 +8,10 @@ import { CommonFunctions } from './common-functions';
   selector: 'my-product-detail',
   template: `
 	<div *ngIf="producto">
-		
 		<table class="table table-bordered">
 			
 			<thead>
 			  <tr>
-				<th>ProductoID</th>
 				<th>A producir</th>
 				<th>Cantidad</th>
 				<th>Unidad</th>
@@ -22,11 +20,10 @@ import { CommonFunctions } from './common-functions';
 			</thead>
 			
 			<tbody>
-				<td>{{producto.id}}</td>
-				<td>{{producto.name}}</td>
+				<td>{{producto.nombre}}</td>
 				<td><input [(ngModel)]="producto.cant" type="number" min="0.01" step="0.01" (blur)="setGastos()" placeholder="Cantidad"/></td>
 				<td>{{producto.unit}}</td>
-				<td><input [(ngModel)]="producto.merma" type="number" min="0.01" max="0.99" step="0.01" (blur)="overideGastos()" placeholder="Merma"/></td>
+				<td><input [(ngModel)]="producto.porcentajeMerma" type="number" min="0.01" max="0.99" step="0.01" (blur)="overideGastos()" placeholder="Merma"/></td>
 			</tbody>
 			
 		</table>
@@ -72,12 +69,12 @@ export class ProductDetailComponent {
   
   fabricar(): void {
 	//no ceros, no NAN, no negativo, aviso de no cumple con porcentaje, aviso excluye merma
-	if (this.producto.cant && this.producto.cant > 0 && this.producto.merma && this.producto.merma > 0 && this.requiredProds.allGastosSetted() ) {
+	if (this.producto.cant && this.producto.cant > 0 && this.producto.porcentajeMerma && this.producto.porcentajeMerma > 0 && this.requiredProds.allGastosSetted() ) {
 		console.log('post server');
 	} else {
 		if (this.producto.cant == null || this.producto.cant <= 0) {
 			alert('Cantidad erronea.');
-		} else if (this.producto.merma == null || this.producto.merma <= 0) {
+		} else if (this.producto.porcentajeMerma == null || this.producto.porcentajeMerma <= 0) {
 			alert('Merma erronea.');
 		} else  {
 			alert('Indicadores en rojo.');
@@ -91,15 +88,15 @@ export class ProductDetailComponent {
   
   setGastos(): void {
 	
-	if (this.producto.cant && this.producto.cant > 0 && this.producto.merma && this.producto.merma > 0
+	if (this.producto.cant && this.producto.cant > 0 && this.producto.porcentajeMerma && this.producto.porcentajeMerma > 0
 		&& this.requiredListDone && this.requiredProds.allGastosEmpty()) {
-			this.requiredProds.setGastos(this.producto.cant / (1 - this.producto.merma));
+			this.requiredProds.setGastos(this.producto.cant / (1 - this.producto.porcentajeMerma));
 	}
   }
   
   overideGastos(): void {
-	if (this.producto.cant && this.producto.cant > 0 && this.producto.merma && this.producto.merma > 0)
-		this.requiredProds.setGastos(this.producto.cant / (1 - this.producto.merma));
+	if (this.producto.cant && this.producto.cant > 0 && this.producto.porcentajeMerma && this.producto.porcentajeMerma > 0)
+		this.requiredProds.setGastos(this.producto.cant / (1 - this.producto.porcentajeMerma));
 	
   }
 }

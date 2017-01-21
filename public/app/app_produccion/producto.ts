@@ -1,7 +1,7 @@
 export class Producto {
-  id: number;
-  name: string;
-  unit: string;
+  _id: number;
+  nombre: string;
+  unidad: string;
   cant?: number;
-  merma: number;
+  porcentajeMerma: number;
 }

@@ -13,6 +13,7 @@
       // our app is within the app folder
       app: 'app',
 	  produccion: 'app/app_produccion',
+	  deshacerProduccion: 'app/app_deshacerProduccion'
 
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
@@ -34,8 +35,11 @@
         main: './main.js',
         defaultExtension: 'js'
       },
-	  
 	  produccion: {
+        main: './main.js',
+        defaultExtension: 'js'
+      },
+	  deshacerProduccion: {
         main: './main.js',
         defaultExtension: 'js'
       },

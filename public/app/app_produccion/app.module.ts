@@ -7,21 +7,20 @@ import { RequiredProductComponent } from './required-product.component';
 import { HttpModule }    from '@angular/http';
 
 // Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+import { ProductService } from './product.service';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-	HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService)
+	HttpModule
   ],
   declarations: [
     AppComponent,
     ProductDetailComponent,
 	RequiredProductComponent
   ],
+  providers: [ProductService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
