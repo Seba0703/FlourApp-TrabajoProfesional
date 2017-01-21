@@ -5,7 +5,7 @@ import { ProductService } from './product.service';
   selector: 'my-app',
   template: `
     <h1>{{title}}</h1>
-	<div class="container-fluid">
+	<div *ngIf="productos" class="container-fluid">
 		<div class="row">
 			<div>
 				<div style="text-align:center">¿Qué producto desea fabricar?</div>
@@ -13,7 +13,7 @@ import { ProductService } from './product.service';
 				  <li *ngFor="let producto of productos"
 					[class.selected]="producto === selectedProduct"
 					(click)="onSelect(producto)">
-						<span class="badge">{{producto.id}}</span> {{producto.name}}
+						<span class="badge"></span> {{producto.nombre}}
 				  </li>
 				</ul>
 			   
@@ -81,12 +81,17 @@ export class AppComponent implements OnInit {
   
   title = 'Pruduccion';
   productos: Producto[];
+  auxProds: Producto[];
   selectedProduct: Producto;
   
   constructor(private productService: ProductService) { }
   
   getProducts(): void {
-    this.productService.getProducts().then(productos => this.productos = productos);
+	
+    this.productService.getProductsSemi().then(productosSemi => {
+		this.auxProds = productosSemi;
+		this.productService.getProductsTerm().then(productosTerm => this.productos = this.auxProds.concat(productosTerm));
+	});
   }
  
   ngOnInit(): void {

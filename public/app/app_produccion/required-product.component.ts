@@ -75,7 +75,7 @@ export class RequiredProductComponent implements OnInit{
 	  
 	//para poner una cantidad al producto que se va a producir, tienen que estar todos los gastos seteados, distintos de cero y con una numero correct al porcentaje.
 	if ( ( this.product.cant == null || this.product.cant == 0 )  && this.allGastosSetted() && this.correctQuantityPercent()) {
-		this.product.cant = CommonFunctions.round( ((this.requiredProducts[0].spend / this.requiredProducts[0].percent) * ( 1 - this.product.merma)), 2);
+		this.product.cant = CommonFunctions.round( ((this.requiredProducts[0].spend / this.requiredProducts[0].percent) * ( 1 - this.product.porcentajeMerma)), 2);
 	}
   }
   
