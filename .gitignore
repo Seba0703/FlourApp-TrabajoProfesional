@@ -3,4 +3,4 @@ public/node_modules
 public/app/**/*.js
 public/app/**/*.map
 npm-debug
-public/npm-debug
+public/npm-debug.log

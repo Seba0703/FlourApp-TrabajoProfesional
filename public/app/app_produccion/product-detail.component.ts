@@ -8,7 +8,6 @@ import { CommonFunctions } from './common-functions';
   selector: 'my-product-detail',
   template: `
 	<div *ngIf="producto">
-		
 		<table class="table table-bordered">
 			
 			<thead>

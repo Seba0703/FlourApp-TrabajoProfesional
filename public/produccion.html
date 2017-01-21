@@ -4,7 +4,6 @@
     <title>Producción</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="stylesheets/style.css">
 
 	 <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -22,9 +21,59 @@
     <script>
       System.import('produccion').catch(function(err){ console.error(err); });
     </script>
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="stylesheets/style.css" type="text/css"> <!-- Por ser en cascada sobreescribe al que se habia definido antes (que seria el de bootstrap) -->	
   </head>
 
   <body>
+	<header>
+		<div class="container text-center"> <!-- defino en el header un objecto container  -->
+			<h1>Sistema <strong>FlourApp</strong></h1>
+		</div>
+	</header>
+	
+	<div class="container">
+
+	<div class="row"> <!-- inserto dentro del container una fila  -->
+		
+		<div class="col-md-12">
+			<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+			  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+			  <a class="navbar-brand" href="#">Home</a>
+			  
+			  	<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+					    <a class="nav-link" href="#">Clientes</a>
+					</li>
+					<li class="nav-item">
+					    <a class="nav-link" href="proveedores.html">Proveedores</a>
+					</li>
+					<li class="nav-item dropdown">
+					    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+							Productos
+						</a>
+					    <div class="dropdown-menu" aria-labelledby="Preview">
+					        <a class="dropdown-item" href="materiasPrimas.html">Materias Primas</a>
+					        <a class="dropdown-item" href="productosSemiProcesados.html">Semi-Procesados</a>
+					        <a class="dropdown-item" href="productosTerminados.html">Terminados</a>
+					    </div>
+					</li>
+					<li class="nav-item">
+					    <a class="nav-link" href="produccion.html">Producción</a>
+					</li>
+				</ul>
+
+			</nav>
+		</div>
+		
+	</div>
+	
     <my-app>Cargando...</my-app>
+	
+	<script src="./js/jquery-3_1_1.js"></script>
+    <script src="./js/tether.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
   </body>
 </html>
