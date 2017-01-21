@@ -78,7 +78,7 @@ export class ProveedorComponent {
   }
 
   guardarModificaciones(){
-    if(this.nombreEmpresa && this.cuit && this.categoriaFiscalID && this.listaPrecioID && this.direccion && this.condicionPagoID){
+    if(this.nombreEmpresa){
       this.mostrarModalModificar = false;
       let proveedor = {
           _id:                this._id,
@@ -103,8 +103,7 @@ export class ProveedorComponent {
                         alert("ERROR al modificar ¡Proveedor, revise los campos");
                     });;
     } else {
-      alert("¡ERROR! Faltan datos");
-      
+      alert("¡ERROR! Debe proporcionar al menos un nombre");
     }
   }
 }

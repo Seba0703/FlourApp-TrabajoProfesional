@@ -15,11 +15,14 @@ export class MateriaPrimaComponent {
   private materiasPrima: Response;
 
   private _id : string;
+  private listaPrecioID: string;
+  private tasaImpositivaID: string;
   private nombre: string;
   private cantidad: number;
   private unidad: string;
   private stockMin: number;
   private stockMax: number;
+  private embolsadoCantDefault: number;
   private precioVenta: number;
   private tipo: string;
 
@@ -70,27 +73,33 @@ export class MateriaPrimaComponent {
 
   modificar(materiaPrima: any){
     this._id =                materiaPrima._id;
+    this.listaPrecioID =      materiaPrima.listaPrecioID;
+    this.tasaImpositivaID =   materiaPrima.tasaImpositivaID;
     this.nombre =             materiaPrima.nombre;
     this.cantidad =           materiaPrima.cantidad;
     this.unidad =              materiaPrima.unidad;
     this.stockMin =          materiaPrima.stockMin;
     this.stockMax =           materiaPrima.stockMax;
+    this.embolsadoCantDefault = materiaPrima.embolsadoCantDefault;
     this.tipo =               materiaPrima.tipo;
     this.precioVenta=        materiaPrima.precioVenta;
   }
 
   guardarModificaciones(){
-    if(this.nombre && this.cantidad && this.unidad && this.stockMin && this.stockMax && this.precioVenta && this.tipo){
+    if(this.nombre && this.stockMin && this.stockMax){
       this.mostrarModalModificar = false;
       let materiaPrima = {
-          _id:                this._id,
-          nombre:             this.nombre,
-          cantidad:           this.cantidad,
-          unidad:             this.unidad,
-          stockMin:           this.stockMin,
-          stockMax:           this.stockMax,
-          tipo:               this.tipo,
-          precioVenta:        this.precioVenta
+          _id:                  this._id,
+          listaPrecioID:        this.listaPrecioID,
+          tasaImpositivaID:     this.tasaImpositivaID,
+          nombre:               this.nombre,
+          cantidad:             this.cantidad,
+          unidad:               this.unidad,
+          stockMin:             this.stockMin,
+          stockMax:             this.stockMax,
+          embolsadoCantDefault: this.embolsadoCantDefault,
+          tipo:                 this.tipo,
+          precioVenta:          this.precioVenta
       }
       
       console.log(materiaPrima);
@@ -106,8 +115,7 @@ export class MateriaPrimaComponent {
                         alert("ERROR al modificar Materia Prima, revise los campos");
                     });;
     } else {
-      alert("¡ERROR! Faltan datos");
-      
+      alert("¡ERROR! Campos obligatorios: Nombre - Stock Min - Stock Max");
     }
   }
 }

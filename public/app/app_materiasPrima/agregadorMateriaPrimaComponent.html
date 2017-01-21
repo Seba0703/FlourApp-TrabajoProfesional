@@ -7,12 +7,25 @@ data-toggle="modal" data-target="#exampleModal">+</button>
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Agregar materia prima</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
 				<div class="container">
+                    <input type="text" class="form-control" placeholder="lista precioID" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="listaPrecioID">
+
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label for="example-text-input" class="col-form-label">Tasa Impositiva</label>
+                        </div>
+                        <div class="col-8">
+                            <select class="form-control" id="porcentajeIVA" [(ngModel)]="tasaImpositiva">
+                              <option>IVA-0%</option>
+                              <option>IVA-10.5%</option>
+                              <option>IVA-21%</option>
+                              <option>IVA-27%</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <input type="text" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="nombre">
 
 				    <input type="number" class="form-control" placeholder="Cantidad" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="cantidad">
@@ -22,6 +35,9 @@ data-toggle="modal" data-target="#exampleModal">+</button>
                     <input type="number" class="form-control" placeholder="Stock Min" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="stockMin">
 
                     <input type="number" class="form-control" placeholder="Stock Max" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="stockMax">
+
+                    <input type="number" class="form-control" placeholder="Embolsado (default)" 
+                    aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="embolsado">
 
                     <input type="text" class="form-control" placeholder="Tipo" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="tipo">
 

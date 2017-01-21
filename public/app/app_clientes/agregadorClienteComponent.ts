@@ -20,7 +20,7 @@ export class AgregadorClienteComponent {
 
   agregar() {
 
-    if(this.nombreEmpresa && this.cuit && this.categoriaFiscalID && this.listaPrecioID && this.direccion && this.condicionPagoID){
+    if(this.nombreEmpresa){
       let cliente = {
           nombreEmpresa:      this.nombreEmpresa,
           cuit:               this.cuit,
@@ -44,7 +44,7 @@ export class AgregadorClienteComponent {
                         alert("ERROR al agregar ¡Cliente, revise los campos");
                     });;
     } else {
-      alert("¡ERROR! Faltan datos");
+      alert("¡ERROR! Debe proporcionar al menos un nombre");
     }
   }
 

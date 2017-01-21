@@ -30,14 +30,16 @@ exports.add = function(req, res) {
     console.log(req.body);
 
     var materiaPrima = new MateriaPrima({ //creo un nuevo materiaPrima en base a lo recibido en el request
-        nombre:             req.body.nombre,
-        cantidad:    	    req.body.cantidad,
-        unidad:     	    req.body.unidad,
-        stockMin:           req.body.stockMin,
-        stockMax:   	    req.body.stockMax,
-        precioVenta:  	    req.body.precioVenta,
-        tipo:               req.body.tipo,
-        listaConversionID:  req.body.listaConversionID
+        listaPrecioID:          req.body.listaPrecioID,  
+        tasaImpositivaID:       req.body.tasaImpositivaID,
+        nombre:                 req.body.nombre,
+        cantidad:    	        req.body.cantidad,
+        unidad:     	        req.body.unidad,
+        stockMin:               req.body.stockMin,
+        stockMax:   	        req.body.stockMax,
+        embolsadoCantDefault:   req.body.embolsadoCantDefault,
+        precioVenta:  	        req.body.precioVenta,
+        tipo:                   req.body.tipo,
     });
 
     materiaPrima.save(function(err, materiaPrima) { //almaceno el materiaPrima en la base de datos
@@ -54,15 +56,16 @@ exports.update = function(req, res) {
     MateriaPrima.findById(req.params.id, function(err, materiaPrima) { //"materiaPrima" es el objeto que me devuelve la busqueda
         
 		//actualizo todos los campos de ese "materiaPrima"
+        materiaPrima.listaPrecioID =        req.body.listaPrecioID;
+        materiaPrima.tasaImpositivaID =     req.body.tasaImpositivaID;
         materiaPrima.nombre =               req.body.nombre;
         materiaPrima.cantidad =   	        req.body.cantidad;
         materiaPrima.unidad =     		  	req.body.unidad;
         materiaPrima.stockMin =             req.body.stockMin;
         materiaPrima.stockMax =   	        req.body.stockMax;
+        materiaPrima.embolsadoCantDefault = req.body.embolsadoCantDefault;
         materiaPrima.precioVenta =  		req.body.precioVenta;
         materiaPrima.tipo =                 req.body.tipo;
-        materiaPrima.porcentajeMerma =      req.body.porcentajeMerma;
-        materiaPrima.listaConversionID =    req.body.listaConversionID;
 
         materiaPrima.save(function(err) { //almaceno en la base "materiaPrima" para que quede actualizada con los nuevos cambios
             if(err) return res.status(500).send(err.message);

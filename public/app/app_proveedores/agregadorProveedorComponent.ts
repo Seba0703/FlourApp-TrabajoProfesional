@@ -20,10 +20,10 @@ export class AgregadorProveedorComponent {
 
   agregar() {
 
-    if(this.nombreEmpresa && this.cuit && this.categoriaFiscalID && this.listaPrecioID && this.direccion && this.condicionPagoID){
+    if(this.nombreEmpresa){
       let proveedor = {
           nombreEmpresa:      this.nombreEmpresa,
-          cuit:                this.cuit,
+          cuit:               this.cuit,
           categoriaFiscalID:  this.categoriaFiscalID,
           listaPrecioID:      this.listaPrecioID,
           direccion:          this.direccion,
@@ -44,7 +44,7 @@ export class AgregadorProveedorComponent {
                         alert("ERROR al agregar Proveedor, revise los campos");
                     });;
     } else {
-      alert("¡ERROR! Faltan datos");
+      alert("¡ERROR! Debe proporcionar al menos un nombre");
     }
 
 

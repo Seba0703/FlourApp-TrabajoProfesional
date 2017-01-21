@@ -1,10 +1,11 @@
 var mongoose = require("mongoose"); //instancio objeto "mongoose"
 
-var productoTerminadoSchema = new mongoose.Schema({  
+var productoTerminadoSchema = new mongoose.Schema({
+  listaPrecioID:		{ type: Number },
   tasaImpositivaID:		{ type: String },
-  nombre:            { type: String },
+  nombre:            	{ type: String },
   cantidad:   	  		{ type: Number },
-  unidad:				     { type: String },
+  unidad:				{ type: String },
   stockMin: 	  		{ type: Number },
   stockMax: 	  		{ type: Number },
   embolsadoCantDefault: { type: Number },

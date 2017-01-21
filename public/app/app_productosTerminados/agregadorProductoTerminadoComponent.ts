@@ -6,6 +6,7 @@ import { ProductoTerminadoServices } from './productoTerminadoServices';
   templateUrl: 'app/app_productosTerminados/agregadorProductoTerminadoComponent.html'
 })
 export class AgregadorProductoTerminadoComponent{
+  private listaPrecioID: string;
   private tasaImpositiva: string;
   private nombre: string;
   private cantidad: number;
@@ -42,6 +43,7 @@ export class AgregadorProductoTerminadoComponent{
           break;
       }
       let productoTerminado = {
+          listaPrecioID:      this.listaPrecioID,
           tasaImpositivaID:    tasaImpositivaID,
           nombre:              this.nombre,
           cantidad:            this.cantidad,
@@ -68,7 +70,7 @@ export class AgregadorProductoTerminadoComponent{
                         alert("ERROR al agregar Producto terminado, revise los campos");
                     });;
     } else {
-      alert("¡ERROR! Faltan datos");
+       alert("¡ERROR! Campos obligatorios: Nombre - Stock Min - Stock Max");
     }
   }
 

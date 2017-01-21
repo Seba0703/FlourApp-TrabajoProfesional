@@ -78,7 +78,7 @@ export class ClienteComponent {
   }
 
   guardarModificaciones(){
-    if(this.nombreEmpresa && this.cuit && this.categoriaFiscalID && this.listaPrecioID && this.direccion && this.condicionPagoID){
+    if(this.nombreEmpresa){
       this.mostrarModalModificar = false;
       let cliente = {
           _id:                this._id,
@@ -103,8 +103,7 @@ export class ClienteComponent {
                         alert("ERROR al modificar Cliente, revise los campos");
                     });;
     } else {
-      alert("¡ERROR! Faltan datos");
-      
+      alert("¡ERROR! Debe proporcionar al menos un nombre");
     }
   }
 

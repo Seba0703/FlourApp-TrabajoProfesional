@@ -1,6 +1,7 @@
 var mongoose = require("mongoose"); //instancio objeto "mongoose"
 
-var productoSemiProcesadoSchema = new mongoose.Schema({  
+var productoSemiProcesadoSchema = new mongoose.Schema({ 
+  listaPrecioID:		{ type: Number },
   tasaImpositivaID:		   { type: String },
   nombre:                 { type: String },
   cantidad:   	  		   { type: Number },

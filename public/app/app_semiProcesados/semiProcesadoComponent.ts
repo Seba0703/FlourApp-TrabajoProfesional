@@ -14,6 +14,7 @@ export class SemiProcesadoComponent implements OnInit{
   private semiProcesados: Response;
 
   private _id : string;
+  private listaPrecioID: string;
   private tasaImpositiva: string;
   private nombre: string;
   private cantidad: number;
@@ -72,6 +73,7 @@ export class SemiProcesadoComponent implements OnInit{
 
   modificar(semiProcesado: any){
     this._id =                semiProcesado._id;
+    this.listaPrecioID =      semiProcesado.listaPrecioID;
 
     switch (semiProcesado.tasaImpositivaID) {
       case "ti1":
@@ -103,7 +105,7 @@ export class SemiProcesadoComponent implements OnInit{
   }
 
   guardarModificaciones(){
-    if(this.tasaImpositiva && this.nombre && this.cantidad && this.unidad && this.stockMin && this.stockMax && this.embolsado && this. porcentajeMerma && this.tipo && this.precioVenta) { 
+    if(this.nombre && this.stockMin && this.stockMax) { 
       this.mostrarModalModificar = false;
       let tasaImpositivaID: string;
       switch (this.tasaImpositiva.split("-")[1].split("%")[0]) {
@@ -125,6 +127,7 @@ export class SemiProcesadoComponent implements OnInit{
       }
       let semiProcesado = {
           _id:                  this._id,
+          listaPrecioID:        this.listaPrecioID,
           tasaImpositivaID:     tasaImpositivaID,
           nombre:               this.nombre,
           cantidad:             this.cantidad,
@@ -149,8 +152,7 @@ export class SemiProcesadoComponent implements OnInit{
                         alert("ERROR al modificar Producto semiprocesado, revise los campos");
                     });;
     } else {
-      alert("¡ERROR! Faltan datos");
-      
+      alert("¡ERROR! Campos obligatorios: Nombre - Stock Min - Stock Max");
     }
   }
 

@@ -11,6 +11,7 @@ export class ProductoTerminadoComponent implements OnInit{
   private productosTerminados: Response;
 
   private _id : string;
+  private listaPrecioID: string;
   private tasaImpositiva: string;
   private nombre: string;
   private cantidad: number;
@@ -63,7 +64,8 @@ export class ProductoTerminadoComponent implements OnInit{
   }
 
   modificar(productoTerminado: any){
-    this._id =  productoTerminado._id;
+    this._id =                productoTerminado._id;
+    this.listaPrecioID =      productoTerminado.listaPrecioID;
 
     switch (productoTerminado.tasaImpositivaID) {
       case "ti1":
@@ -95,7 +97,7 @@ export class ProductoTerminadoComponent implements OnInit{
   }
 
   guardarModificaciones(){
-    if(this.tasaImpositiva && this.nombre && this.cantidad && this.unidad && this.stockMin && this.stockMax && this.embolsado && this. porcentajeMerma && this.tipo && this.precioVenta) { 
+    if(this.nombre && this.stockMin && this.stockMax) { 
       this.mostrarModalModificar = false;
       let tasaImpositivaID: string;
       switch (this.tasaImpositiva.split("-")[1].split("%")[0]) {
@@ -117,6 +119,7 @@ export class ProductoTerminadoComponent implements OnInit{
       }
       let productoTerminado = {
           _id:                  this._id,
+          listaPrecioID:        this.listaPrecioID,
           tasaImpositivaID:     tasaImpositivaID,
           nombre:               this.nombre,
           cantidad:             this.cantidad,
@@ -141,8 +144,7 @@ export class ProductoTerminadoComponent implements OnInit{
                         alert("ERROR al modificar Producto terminado, revise los campos");
                     });;
     } else {
-      alert("¡ERROR! Faltan datos");
-      
+        alert("¡ERROR! Campos obligatorios: Nombre - Stock Min - Stock Max");
     }
   }
 }

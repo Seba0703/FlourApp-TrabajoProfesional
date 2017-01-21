@@ -7,26 +7,33 @@ import { MateriaPrimaServices } from './materiaPrimaServices';
 })
 
 export class AgregadorMateriaPrimaComponent {
+  private listaPrecioID: string;
+  private tasaImpositivaID: string;
   private nombre: string;
   private cantidad: number;
   private unidad: string;
   private stockMin: number;
   private stockMax: number;
-  private precioVenta: number;
+  private embolsadoCantDefault: number;
   private tipo: string;
+  private precioVenta: number;
+
 
   private mostrarModalAgregar: boolean = true;
 
   constructor(private ptService: MateriaPrimaServices){}
 
   agregar() {
-    if(this.nombre && this.cantidad && this.unidad && this.stockMin && this.stockMax && this.precioVenta && this.tipo) {
+    if(this.nombre && this.stockMin && this.stockMax) {
       let materiaPrima = {
+          listaPrecioID:      this.listaPrecioID,
+          tasaImpositivaID:   this.tasaImpositivaID,
           nombre:             this.nombre,
           cantidad:           this.cantidad,
           unidad:             this.unidad,
           stockMin:           this.stockMin,
           stockMax:           this.stockMax,
+          embolsadoCantDefault: this.embolsadoCantDefault,
           tipo:               this.tipo,
           precioVenta:        this.precioVenta
       }
@@ -45,10 +52,8 @@ export class AgregadorMateriaPrimaComponent {
                         alert("ERROR al agregar Producto, revise los campos");
                     });;
     } else {
-      alert("¡ERROR! Faltan datos");
+      alert("¡ERROR! Campos obligatorios: Nombre - Stock Min - Stock Max");
     }
-
-
   }
 
 }
