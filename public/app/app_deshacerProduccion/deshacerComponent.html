@@ -1,0 +1,58 @@
+<table class="table">
+<thead class="thead-inverse">
+    <tr>
+    <th>Fecha de Fabricación</th>
+    <th>Nombre</th>
+    <th>Cantidad Fabricada</th>
+    <th>Unidad</th>
+	<th>Acciones</th>
+    </tr>
+</thead>
+<tbody *ngFor="let producto of productosFinal">
+    <td>{{producto.fecha}}</td>
+    <td>{{producto.materiaPrimaUsada ? producto.materiaPrimaUsada.nombre : (producto.prodSemiUsado ? producto.prodSemiUsado.nombre : producto.prodTermUsado.nombre )}}</td>
+    <td>{{producto.cantidadFabricada}}</td>
+	<td>{{producto.materiaPrimaUsada ? producto.materiaPrimaUsada.unidad : (producto.prodSemiUsado ? producto.prodSemiUsado.unidad : producto.prodTermUsado.unidad )}}</td>
+    <td>
+        <button type="button" class="btn btn-success" (click)="verProducto(producto)" title="Modificar"
+        data-toggle="modal" data-target="#infoModal" >
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btn btn-danger" (click)="borrar(producto)" title="Borrar" >
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
+    </td>
+</tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="infoModal" #openB tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="productosUsado">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Información</h5>
+            </div>
+            <div class="modal-body">
+				<div class="container">
+					<table class="table">
+						<thead class="thead-inverse">
+							<tr>
+							<th>Nombre</th>
+							<th>Cantidad Usada</th>
+							<th>Unidad</th>
+							</tr>
+						</thead>
+					<tbody *ngFor="let productoU of productosUsado">
+						<td>{{productoU.materiaPrimaUsada ? productoU.materiaPrimaUsada.nombre : (productoU.prodSemiUsado ? productoU.prodSemiUsado.nombre : productoU.prodTermUsado.nombre )}}</td>
+						<td>{{productoU.cantidadUsada}}</td>
+						<td>{{productoU.materiaPrimaUsada ? productoU.materiaPrimaUsada.unidad : (productoU.prodSemiUsado ? productoU.prodSemiUsado.unidad : productoU.prodTermUsado.unidad )}}</td>
+					</tbody>
+					</table>
+				</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelar()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

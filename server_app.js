@@ -71,6 +71,12 @@ app.use('/api', semiProcesadoRoutersHandler);
 var productoTerminadoRoutersHandler = require("./routersHandlers/productoTerminadoRoutersHandler").getProductoTerminadoRoutersHandler(express);
 app.use('/api', productoTerminadoRoutersHandler);
 
+var movProductFinalRoutersHandler = require("./routersHandlers/movProductoFinalRoutersHandler").getMovProductoFinalRoutersHandler(express);
+app.use('/api', movProductFinalRoutersHandler);
+
+var movProductUsadoRoutersHandler = require("./routersHandlers/movProductoUsadoRoutersHandler").getMovProductoUsadoRoutersHandler(express);
+app.use('/api', movProductUsadoRoutersHandler);
+
 // Connection to DB
 mongoose.connect('mongodb://localhost/flourapp', function(err, res) {  //se conecta a la base de datos
   if(err) {

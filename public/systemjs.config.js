@@ -13,7 +13,7 @@
       // our app is within the app folder
       app: 'app',
 	  produccion: 'app/app_produccion',
-	  deshacerProduccion: 'app/app_deshacerProduccion'
+	  deshacerProduccion: 'app/app_deshacerProduccion',
 
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
@@ -24,6 +24,8 @@
       '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+	  
+	  'ng2-bootstrap':              'node_modules/ng2-bootstrap',
 
       // other libraries
       'rxjs':                      'npm:rxjs',
@@ -43,6 +45,9 @@
         main: './main.js',
         defaultExtension: 'js'
       },
+	  
+	  'ng2-bootstrap':              { format: 'cjs', main: 'bundles/ng2-bootstrap.umd.js', defaultExtension: 'js' },
+      'moment':                     { main: 'moment.js', defaultExtension: 'js' },
 	  
       rxjs: {
         defaultExtension: 'js'
