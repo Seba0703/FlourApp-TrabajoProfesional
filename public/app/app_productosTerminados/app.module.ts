@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent }  from './app.component';
+import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { ProductoTerminadoComponent} from './productoTerminadoComponent';
 import { AgregadorProductoTerminadoComponent} from './agregadorProductoTerminadoComponent';
 
@@ -17,6 +18,7 @@ import { ProductoTerminadoServices} from './productoTerminadoServices';
   ],
   declarations: [
     AppComponent,
+    SignOutComponent,
     ProductoTerminadoComponent,
     AgregadorProductoTerminadoComponent
   ],

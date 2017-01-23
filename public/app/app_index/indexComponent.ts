@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IndexService } from './indexService';
+import { URL_VIEW_CLIENTES} from '../rutas';
 
 @Component({
   selector: 'index-app',
@@ -31,10 +32,13 @@ export class IndexComponent {
 		}
    }
 
+  onEnter() { console.log("TOCASTE ENTER!!!"); this.ingresar() }
+
   loginValido(permisos: string){
   	console.log("OK log!!!");
     sessionStorage.setItem("dataLogin", JSON.stringify({nombreUsuario: this.nombreUsuario, permisos: permisos}));
-    location.href = "http://localhost:3000/clientes.html";
+    console.log("RUTA= " + URL_VIEW_CLIENTES);
+    location.href = URL_VIEW_CLIENTES;
   }
 
   onKeyName(value: string) { // with type info
