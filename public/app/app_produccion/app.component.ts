@@ -4,6 +4,16 @@ import { ProductService } from './product.service';
 @Component({
   selector: 'my-app',
   template: `
+  	<div class="container">
+
+	<div class="row"> <!-- inserto dentro del container una fila  -->
+		
+		<div class="col-md-12">
+			<nav-menu [origen]="'fabricar'"></nav-menu>
+		</div>
+		
+	</div>
+	
 	<div *ngIf="productos" class="container-fluid">
 		<div class="row">
 			<div>

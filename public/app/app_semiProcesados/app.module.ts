@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent }  from './app.component';
+import { NavMenuComponent } from '../nav-menu/navMenuComponent';
 import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { SemiProcesadoComponent} from './semiProcesadoComponent';
 import { AgregadorSemiProcesadoComponent} from './agregadorSemiProcesadoComponent';
@@ -17,6 +18,7 @@ import { SemiProcesadoServices} from './semiProcesadoServices';
   ],
   declarations: [
     AppComponent,
+    NavMenuComponent,
     SignOutComponent,
     SemiProcesadoComponent,
     AgregadorSemiProcesadoComponent

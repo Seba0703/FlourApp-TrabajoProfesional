@@ -2,6 +2,8 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { AppComponent }  from './app.component';
+import { NavMenuComponent } from '../nav-menu/navMenuComponent';
+import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { ProductDetailComponent } from './product-detail.component';
 import { RequiredProductComponent } from './required-product.component';
 import { HttpModule }    from '@angular/http';
@@ -17,6 +19,8 @@ import { ProductService } from './product.service';
   ],
   declarations: [
     AppComponent,
+    NavMenuComponent,
+    SignOutComponent,
     ProductDetailComponent,
 	RequiredProductComponent
   ],

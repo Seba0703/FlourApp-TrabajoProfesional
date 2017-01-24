@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { URL_VIEW_INDEX } from '../rutas'
 
 @Component({
   selector: 'sign-out',
@@ -21,7 +22,7 @@ export class SignOutComponent {
 
   signOut(){
     console.log("haciendo logout");
-    location.href = "http://localhost:3000/index.html";
+    location.href = URL_VIEW_INDEX;
   }
 
 }

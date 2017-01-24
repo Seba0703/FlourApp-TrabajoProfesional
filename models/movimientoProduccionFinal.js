@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var movimientoProduccionFinalSchema = new Schema({  
   materiaPrimaUsada:      { type: Schema.Types.ObjectId, ref: 'MateriaPrima' },
-  prodSemiUsado:      { type: Schema.Types.ObjectId, ref: 'ProductoSemiProcesado' },
+  prodSemiUsado:      { type: Schema.Types.ObjectId, ref: 'ProductSemiProcesado' },
   prodTermUsado:      { type: Schema.Types.ObjectId, ref: 'ProductoTerminado' },
   tipo:				   	{ type: Number },
   fecha:            	{ type: Date },

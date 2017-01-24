@@ -2,6 +2,8 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { AppComponent }  from './app.component';
+import { NavMenuComponent } from '../nav-menu/navMenuComponent';
+import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { HttpModule }    from '@angular/http';
 import { ModalModule } from 'ng2-bootstrap';
 
@@ -16,7 +18,9 @@ import { MovProductService } from './mov-product.service';
 	ModalModule.forRoot()
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    NavMenuComponent,
+    SignOutComponent
   ],
   providers: [MovProductService],
   bootstrap: [ AppComponent ]

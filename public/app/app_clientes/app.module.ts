@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent }  from './app.component';
+import { NavMenuComponent } from '../nav-menu/navMenuComponent';
 import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { ClienteComponent} from './clienteComponent';
 import { AgregadorClienteComponent} from './agregadorClienteComponent';
@@ -17,6 +18,7 @@ import { ClienteServices} from './clienteServices';
   ],
   declarations: [
     AppComponent,
+    NavMenuComponent,
     SignOutComponent,
     ClienteComponent,
     AgregadorClienteComponent

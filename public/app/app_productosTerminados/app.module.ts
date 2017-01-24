@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent }  from './app.component';
+import { NavMenuComponent } from '../nav-menu/navMenuComponent';
 import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { ProductoTerminadoComponent} from './productoTerminadoComponent';
 import { AgregadorProductoTerminadoComponent} from './agregadorProductoTerminadoComponent';
@@ -18,6 +19,7 @@ import { ProductoTerminadoServices} from './productoTerminadoServices';
   ],
   declarations: [
     AppComponent,
+    NavMenuComponent,
     SignOutComponent,
     ProductoTerminadoComponent,
     AgregadorProductoTerminadoComponent

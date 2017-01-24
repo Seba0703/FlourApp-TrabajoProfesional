@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent }  from './app.component';
+import { NavMenuComponent } from '../nav-menu/navMenuComponent';
 import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { MateriaPrimaComponent} from './materiaPrimaComponent';
 import { AgregadorMateriaPrimaComponent} from './agregadorMateriaPrimaComponent';
@@ -17,6 +18,7 @@ import { MateriaPrimaServices} from './materiaPrimaServices';
   ],
   declarations: [
     AppComponent,
+    NavMenuComponent,
     SignOutComponent,
     MateriaPrimaComponent,
     AgregadorMateriaPrimaComponent
