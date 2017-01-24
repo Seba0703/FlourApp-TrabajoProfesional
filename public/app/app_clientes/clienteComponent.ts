@@ -17,7 +17,7 @@ export class ClienteComponent {
   private _id : string;
   private nombreEmpresa: string;
   private cuit: string;
-  private categoriaFiscalID: string;
+  private categoriaFiscal: string;
   private listaPrecioID: string;
   private direccion: string;
   private condicionPagoID: string;
@@ -57,7 +57,7 @@ export class ClienteComponent {
         this.cService.borrarCliente(id)
                       .subscribe(
                         () => { 
-                      alert("¡Se borro existosamente! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                      alert("\t\t\t\t¡Se borro existosamente!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
                       window.location.reload();
                       },
                         err => console.error("EL ERROR FUE: ", err)
@@ -71,7 +71,7 @@ export class ClienteComponent {
     this._id =                cliente._id;
     this.nombreEmpresa =      cliente.nombreEmpresa;
     this.cuit =               cliente.cuit;
-    this.categoriaFiscalID =  cliente.categoriaFiscalID;
+    this.categoriaFiscal =    cliente.categoriaFiscal;
     this.listaPrecioID =      cliente.listaPrecioID;
     this.direccion =          cliente.direccion;
     this.condicionPagoID =    cliente.condicionPagoID;
@@ -84,7 +84,7 @@ export class ClienteComponent {
           _id:                this._id,
           nombreEmpresa:      this.nombreEmpresa,
           cuit:               this.cuit,
-          categoriaFiscalID:  this.categoriaFiscalID,
+          categoriaFiscal:    this.categoriaFiscal,
           listaPrecioID:      this.listaPrecioID,
           direccion:          this.direccion,
           condicionPagoID:    this.condicionPagoID
@@ -96,14 +96,14 @@ export class ClienteComponent {
                     .subscribe(data => {
                         console.log(data);
                         
-                        alert("¡Cliente modificado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                        alert("\t\t\t\t¡Cliente modificado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
                         window.location.reload();                        
                     }, error => {
                         console.log(JSON.stringify(error.json()));
-                        alert("ERROR al modificar Cliente, revise los campos");
+                        alert("\t\t\t\t¡ERROR al modificar Cliente!\n\nRevise los campos");
                     });;
     } else {
-      alert("¡ERROR! Debe proporcionar al menos un nombre");
+      alert("\t\t\t\t¡ERROR!\n\nDebe proporcionar al menos un nombre");
     }
   }
 

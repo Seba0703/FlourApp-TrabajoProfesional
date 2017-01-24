@@ -9,7 +9,7 @@ import { ProveedorServices } from './proveedorServices';
 export class AgregadorProveedorComponent {
   private nombreEmpresa: string;
   private cuit: string;
-  private categoriaFiscalID: string;
+  private categoriaFiscal: string;
   private listaPrecioID: string;
   private direccion: string;
   private condicionPagoID: string;
@@ -24,7 +24,7 @@ export class AgregadorProveedorComponent {
       let proveedor = {
           nombreEmpresa:      this.nombreEmpresa,
           cuit:               this.cuit,
-          categoriaFiscalID:  this.categoriaFiscalID,
+          categoriaFiscal:    this.categoriaFiscal,
           listaPrecioID:      this.listaPrecioID,
           direccion:          this.direccion,
           condicionPagoID:    this.condicionPagoID
@@ -37,17 +37,14 @@ export class AgregadorProveedorComponent {
                         console.log("proveedor creado!!!");
                         console.log(data);
                         this.mostrarModalAgregar = false;
-                        alert("¡Proveedor agregado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                        alert("\t\t\t\t¡Proveedor agregado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
                         window.location.reload();
                     }, error => {
                         console.log(JSON.stringify(error.json()));
-                        alert("ERROR al agregar Proveedor, revise los campos");
+                        alert("\t\t\t\t¡ERROR al agregar Proveedor!\n\nRevise los campos");
                     });;
     } else {
-      alert("¡ERROR! Debe proporcionar al menos un nombre");
+      alert("\t\t\t\t¡ERROR!\n\nDebe proporcionar al menos un nombre");
     }
-
-
-
   }
 }

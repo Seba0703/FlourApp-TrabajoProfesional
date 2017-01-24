@@ -45,14 +45,14 @@ export class AgregadorMateriaPrimaComponent {
                         console.log("materiaPrima creado!!!");
                         console.log(data);
                         this.mostrarModalAgregar = false;
-                        alert("¡Materia Prima agregada! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                        alert("\t\t\t\t¡Materia Prima agregada!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
                         window.location.reload();
                     }, error => {
                         console.log(JSON.stringify(error.json()));
-                        alert("ERROR al agregar Producto, revise los campos");
+                        alert("\t\t\t\t¡ERROR al agregar Materia Prima!\n\nrevise los campos");
                     });;
     } else {
-      alert("¡ERROR! Campos obligatorios: Nombre - Stock Min - Stock Max");
+      alert("\t\t\t\t¡ERROR!\n\nCampos obligatorios: Nombre - Stock Min - Stock Max");
     }
   }
 

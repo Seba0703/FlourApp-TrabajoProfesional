@@ -3,6 +3,7 @@
     <tr>
     <th>Nombre Empresa</th>
     <th>CUIT</th>
+    <th>Categoría Fiscal</th>
     <th>Dirección</th>
     <th>Acciones</th>
     </tr>
@@ -10,6 +11,7 @@
 <tbody *ngFor="let cliente of clientes">
     <td>{{cliente.nombreEmpresa}}</td>
     <td>{{cliente.cuit}}</td>
+    <td>{{cliente.categoriaFiscal}}</td>
     <td>{{cliente.direccion}}</td>
     <td>
         <button type="button" class="btn btn-success" (click)="modificar(cliente)" title="Modificar"
@@ -41,9 +43,13 @@
                             <label for="example-text-input" class="col-form-label">Categoria Fiscal</label>
                         </div>
                         <div class="col-8">
-                            <select class="form-control" id="categoriaFiscalID" [(ngModel)]="categoriaFiscalID">
-                              <option>cat1</option>
-                              <option>cat2</option>
+                            <select class="form-control" id="categoriaFiscal" [(ngModel)]="categoriaFiscal">
+                                <option>Consumidor Final</option>
+                                <option>Del Exterior</option>
+                                <option>Exento</option>
+                                <option>No computable IVA</option>
+                                <option>Responsable Inscripto</option>
+                                <option>Responsable No Inscripto</option>
                             </select>
                         </div>
                     </div>

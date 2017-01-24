@@ -23,25 +23,28 @@ export class AgregadorProductoTerminadoComponent{
   constructor(private ptService: ProductoTerminadoServices){}
 
   agregar() {
-    if(this.tasaImpositiva && this.nombre && this.cantidad && this.unidad && this.stockMin && this.stockMax && this.embolsado && this. porcentajeMerma && this.tipo && this.precioVenta) { 
+    if(this.nombre && this.stockMin && this.stockMax ) { 
       let tasaImpositivaID: string;
-      switch (this.tasaImpositiva.split("-")[1].split("%")[0]) {
-        case "0":
-          tasaImpositivaID = "ti1";
-          break;
-        case "10.5":
-          tasaImpositivaID = "ti2";
-          break;  
-        case "21":
-          tasaImpositivaID = "ti3";
-          break;
-        case "27":
-          tasaImpositivaID = "ti4";
-          break;  
-        default:
-          tasaImpositivaID = "ti1";
-          break;
+      if(this.tasaImpositiva) {
+        switch (this.tasaImpositiva.split("-")[1].split("%")[0]) {
+          case "0":
+            tasaImpositivaID = "ti1";
+            break;
+          case "10.5":
+            tasaImpositivaID = "ti2";
+            break;  
+          case "21":
+            tasaImpositivaID = "ti3";
+            break;
+          case "27":
+            tasaImpositivaID = "ti4";
+            break;  
+          default:
+            tasaImpositivaID = "ti1";
+            break;
+        }
       }
+
       let productoTerminado = {
           listaPrecioID:      this.listaPrecioID,
           tasaImpositivaID:    tasaImpositivaID,
@@ -63,14 +66,14 @@ export class AgregadorProductoTerminadoComponent{
                         console.log("producto creado!!!");
                         console.log(data);
                         this.mostrarModalAgregar = false;
-                        alert("¡Producto terminado agregado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                        alert("\t\t\t¡Producto terminado agregado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
                         window.location.reload();
                     }, error => {
                         console.log(JSON.stringify(error.json()));
-                        alert("ERROR al agregar Producto terminado, revise los campos");
+                        alert("\t\t\t\t¡ERROR al agregar Producto terminado!\n\nRevise los campos");
                     });;
     } else {
-       alert("¡ERROR! Campos obligatorios: Nombre - Stock Min - Stock Max");
+       alert("\t\t\t\t\t¡ERROR!\n\nCampos obligatorios: Nombre - Stock Min - Stock Max");
     }
   }
 

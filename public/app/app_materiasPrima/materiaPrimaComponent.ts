@@ -61,7 +61,7 @@ export class MateriaPrimaComponent {
         this.mpService.borrarMateriaPrima(id)
                       .subscribe(
                         () => { 
-                      alert("¡Se borro existosamente! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                      alert("\t\t\t\t¡Se borro existosamente!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
                       window.location.reload();
                       },
                         err => console.error("EL ERROR FUE: ", err)
@@ -108,14 +108,14 @@ export class MateriaPrimaComponent {
                     .subscribe(data => {
                         console.log(data);
                         
-                        alert("¡Materia Prima modificado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                        alert("\t\t\t\t¡Materia Prima modificado!\n\n Pulse 'Aceptar' para actualizar y visualizar los cambios");
                         window.location.reload();                        
                     }, error => {
                         console.log(JSON.stringify(error.json()));
-                        alert("ERROR al modificar Materia Prima, revise los campos");
+                        alert("\t\t\t\t¡ERROR al modificar Materia Prima!\n\nRevise los campos");
                     });;
     } else {
-      alert("¡ERROR! Campos obligatorios: Nombre - Stock Min - Stock Max");
+      alert("\t\t\t\t¡ERROR!\n\nCampos obligatorios: Nombre - Stock Min - Stock Max");
     }
   }
 }

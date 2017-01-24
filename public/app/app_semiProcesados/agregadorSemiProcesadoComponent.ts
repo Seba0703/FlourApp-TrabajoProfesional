@@ -26,22 +26,24 @@ export class AgregadorSemiProcesadoComponent {
   agregar() {
     if(this.nombre && this.stockMin && this.stockMax) { 
       let tasaImpositivaID: string;
-      switch (this.tasaImpositiva.split("-")[1].split("%")[0]) {
-        case "0":
-          tasaImpositivaID = "ti1";
-          break;
-        case "10.5":
-          tasaImpositivaID = "ti2";
-          break;  
-        case "21":
-          tasaImpositivaID = "ti3";
-          break;
-        case "27":
-          tasaImpositivaID = "ti4";
-          break;  
-        default:
-          tasaImpositivaID = "ti1";
-          break;
+      if(this.tasaImpositiva) {
+        switch (this.tasaImpositiva.split("-")[1].split("%")[0]) {
+          case "0":
+            tasaImpositivaID = "ti1";
+            break;
+          case "10.5":
+            tasaImpositivaID = "ti2";
+            break;  
+          case "21":
+            tasaImpositivaID = "ti3";
+            break;
+          case "27":
+            tasaImpositivaID = "ti4";
+            break;  
+          default:
+            tasaImpositivaID = "ti1";
+            break;
+        }
       }
       let semiProcesado = {
           listaPrecioID:      this.listaPrecioID,
@@ -64,14 +66,14 @@ export class AgregadorSemiProcesadoComponent {
                         console.log("producto creado!!!");
                         console.log(data);
                         this.mostrarModalAgregar = false;
-                        alert("¡Producto semiprocesado agregado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                        alert("\t\t¡Producto semiprocesado agregado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
                         window.location.reload();
                     }, error => {
                         console.log(JSON.stringify(error.json()));
-                        alert("ERROR al agregar Producto semiprocesado, revise los campos");
+                        alert("\t\t\t\t¡ERROR al agregar Producto semiprocesado!\n\nRevise los campos");
                     });;
     } else {
-      alert("¡ERROR! Campos obligatorios: Nombre - Stock Min - Stock Max");
+      alert("\t\t\t\t¡ERROR!\n\nCampos obligatorios: Nombre - Stock Min - Stock Max");
     }
   }
 }

@@ -4,7 +4,7 @@ var proveedorSchema = new mongoose.Schema({
   clienteID:		 { type: String },
   nombreEmpresa:	 { type: String },
   cuit:   	  		 { type: Number },
-  categoriaFiscalID: { type: String },
+  categoriaFiscal:   { type: String },
   listaPrecioID: 	 { type: String },
   direccion: 	  	 { type: String },
   condicionPagoID: 	 { type: String }

@@ -32,7 +32,7 @@ exports.add = function(req, res) {
     var cliente = new Cliente({ //creo un nuevo cliente en base a lo recibido en el request
         nombreEmpresa:    	req.body.nombreEmpresa,
         cuit:     		  	req.body.cuit,
-        categoriaFiscalID:  req.body.categoriaFiscalID,
+        categoriaFiscal:    req.body.categoriaFiscal,
         listaPrecioID:   	req.body.listaPrecioID,
         direccion:  		req.body.direccion,
         condicionPagoID:    req.body.condicionPagoID
@@ -54,7 +54,7 @@ exports.update = function(req, res) {
 		//actualizo todos los campos de ese "cliente"
         cliente.nombreEmpresa =   	req.body.nombreEmpresa;
         cliente.cuit =     		  	req.body.cuit;
-        cliente.categoriaFiscalID=  req.body.categoriaFiscalID;
+        cliente.categoriaFiscal=    req.body.categoriaFiscal;
         cliente.listaPrecioID =   	req.body.listaPrecioID;
         cliente.direccion =  		req.body.direccion;
         cliente.condicionPagoID =   req.body.condicionPagoID;

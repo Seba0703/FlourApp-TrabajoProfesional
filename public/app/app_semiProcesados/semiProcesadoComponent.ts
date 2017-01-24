@@ -61,7 +61,7 @@ export class SemiProcesadoComponent implements OnInit{
         this.spService.borrarSemiProcesado(id)
                       .subscribe(
                         () => { 
-                      alert("¡Se borro existosamente! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                      alert("\t\t\t\t¡Se borro existosamente!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
                       window.location.reload();
                       },
                         err => console.error("EL ERROR FUE: ", err)
@@ -145,14 +145,14 @@ export class SemiProcesadoComponent implements OnInit{
       this.spService.modificar(semiProcesado)
                     .subscribe(data => {
                         console.log(data);
-                        alert("¡Producto semiprocesado modificado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                        alert("\t\t¡Producto semiprocesado modificado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
                         window.location.reload();                        
                     }, error => {
                         console.log(JSON.stringify(error.json()));
-                        alert("ERROR al modificar Producto semiprocesado, revise los campos");
+                        alert("\t\t\t\t¡ERROR al modificar Producto semiprocesado!\n\nRevise los campos");
                     });;
     } else {
-      alert("¡ERROR! Campos obligatorios: Nombre - Stock Min - Stock Max");
+      alert("\t\t\t\t¡ERROR!\n\nCampos obligatorios: Nombre - Stock Min - Stock Max");
     }
   }
 

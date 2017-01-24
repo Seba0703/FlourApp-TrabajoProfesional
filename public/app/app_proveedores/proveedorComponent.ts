@@ -17,7 +17,7 @@ export class ProveedorComponent {
   private _id : string;
   private nombreEmpresa: string;
   private cuit: string;
-  private categoriaFiscalID: string;
+  private categoriaFiscal: string;
   private listaPrecioID: string;
   private direccion: string;
   private condicionPagoID: string;
@@ -57,7 +57,7 @@ export class ProveedorComponent {
         this.pService.borrarProveedor(id)
                       .subscribe(
                         () => { 
-                      alert("¡Se borro existosamente! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                      alert("\t\t\t\t¡Se borro existosamente!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
                       window.location.reload();
                       },
                         err => console.error("EL ERROR FUE: ", err)
@@ -71,7 +71,7 @@ export class ProveedorComponent {
     this._id =                proveedor._id;
     this.nombreEmpresa =      proveedor.nombreEmpresa;
     this.cuit =               proveedor.cuit;
-    this.categoriaFiscalID =  proveedor.categoriaFiscalID;
+    this.categoriaFiscal =    proveedor.categoriaFiscal;
     this.listaPrecioID =      proveedor.listaPrecioID;
     this.direccion =          proveedor.direccion;
     this.condicionPagoID =    proveedor.condicionPagoID;
@@ -84,7 +84,7 @@ export class ProveedorComponent {
           _id:                this._id,
           nombreEmpresa:      this.nombreEmpresa,
           cuit:               this.cuit,
-          categoriaFiscalID:  this.categoriaFiscalID,
+          categoriaFiscal:    this.categoriaFiscal,
           listaPrecioID:      this.listaPrecioID,
           direccion:          this.direccion,
           condicionPagoID:    this.condicionPagoID
@@ -96,14 +96,14 @@ export class ProveedorComponent {
                     .subscribe(data => {
                         console.log(data);
                         
-                        alert("¡Proveedor modificado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                        alert("\t\t\t\t¡Proveedor modificado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
                         window.location.reload();                        
                     }, error => {
                         console.log(JSON.stringify(error.json()));
-                        alert("ERROR al modificar ¡Proveedor, revise los campos");
+                        alert("\t\t\t\t¡ERROR al modificar Proveedor!\n\nrevise los campos");
                     });;
     } else {
-      alert("¡ERROR! Debe proporcionar al menos un nombre");
+      alert("\t\t\t\t¡ERROR!\n\nDebe proporcionar al menos un nombre");
     }
   }
 }

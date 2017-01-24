@@ -32,7 +32,7 @@ exports.add = function(req, res) {
     var proveedor = new Proveedor({ //creo un nuevo proveedor en base a lo recibido en el request
         nombreEmpresa:    	req.body.nombreEmpresa,
         cuit:     		  	req.body.cuit,
-        categoriaFiscalID:  req.body.categoriaFiscalID,
+        categoriaFiscal:    req.body.categoriaFiscal,
         listaPrecioID:   	req.body.listaPrecioID,
         direccion:  		req.body.direccion,
         condicionPagoID:    req.body.condicionPagoID
@@ -54,7 +54,7 @@ exports.update = function(req, res) {
 		//actualizo todos los campos de ese "proveedor"
         proveedor.nombreEmpresa =   	req.body.nombreEmpresa;
         proveedor.cuit =     		  	req.body.cuit;
-        proveedor.categoriaFiscalID=  	req.body.categoriaFiscalID;
+        proveedor.categoriaFiscal =  	req.body.categoriaFiscal;
         proveedor.listaPrecioID =   	req.body.listaPrecioID;
         proveedor.direccion =  			req.body.direccion;
         proveedor.condicionPagoID =     req.body.condicionPagoID;

@@ -3,7 +3,7 @@ var mongoose = require("mongoose"); //instancio objeto "mongoose"
 var clienteSchema = new mongoose.Schema({  
   nombreEmpresa:	 { type: String },
   cuit:   	  		 { type: Number },
-  categoriaFiscalID: { type: String },
+  categoriaFiscal: 	 { type: String },
   listaPrecioID: 	 { type: String },
   direccion: 	  	 { type: String },
   condicionPagoID: 	 { type: String }

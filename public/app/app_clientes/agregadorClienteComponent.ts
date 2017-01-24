@@ -9,7 +9,7 @@ import { ClienteServices } from './clienteServices';
 export class AgregadorClienteComponent {
   private nombreEmpresa: string;
   private cuit: string;
-  private categoriaFiscalID: string;
+  private categoriaFiscal: string;
   private listaPrecioID: string;
   private direccion: string;
   private condicionPagoID: string;
@@ -21,10 +21,11 @@ export class AgregadorClienteComponent {
   agregar() {
 
     if(this.nombreEmpresa){
+
       let cliente = {
           nombreEmpresa:      this.nombreEmpresa,
           cuit:               this.cuit,
-          categoriaFiscalID:  this.categoriaFiscalID,
+          categoriaFiscal:    this.categoriaFiscal,
           listaPrecioID:      this.listaPrecioID,
           direccion:          this.direccion,
           condicionPagoID:    this.condicionPagoID
@@ -37,14 +38,14 @@ export class AgregadorClienteComponent {
                         console.log("cliente creado!!!");
                         console.log(data);
                         this.mostrarModalAgregar = false;
-                        alert("¡Cliente agregado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                        alert("\t\t\t\t¡Cliente agregado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
                         window.location.reload();
                     }, error => {
                         console.log(JSON.stringify(error.json()));
-                        alert("ERROR al agregar ¡Cliente, revise los campos");
+                        alert("\t\t\t\t¡ERROR al agregar Cliente!\n\nRevise los campos");
                     });;
     } else {
-      alert("¡ERROR! Debe proporcionar al menos un nombre");
+      alert("\t\t\t\t¡ERROR!\n\nDebe proporcionar al menos un nombre");
     }
   }
 

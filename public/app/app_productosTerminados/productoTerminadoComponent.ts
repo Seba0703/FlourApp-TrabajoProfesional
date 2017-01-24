@@ -53,7 +53,7 @@ export class ProductoTerminadoComponent implements OnInit{
         this.ptService.borrarProductoTerminado(id)
                       .subscribe(
                         () => { 
-                      alert("¡Se borro existosamente! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                      alert("\t\t\t\t¡Se borro existosamente!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
                       window.location.reload();
                       },
                         err => console.error("EL ERROR FUE: ", err)
@@ -137,14 +137,14 @@ export class ProductoTerminadoComponent implements OnInit{
       this.ptService.modificar(productoTerminado)
                     .subscribe(data => {
                         console.log(data);
-                        alert("¡Producto terminado modificado! Pulse 'Aceptar' para actualizar y visualizar los cambios");
+                        alert("\t\t\t\t¡Producto terminado modificado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
                         window.location.reload();                        
                     }, error => {
                         console.log(JSON.stringify(error.json()));
-                        alert("ERROR al modificar Producto terminado, revise los campos");
+                        alert("\t\t\t\t¡ERROR al modificar Producto terminado!\n\nrevise los campos");
                     });;
     } else {
-        alert("¡ERROR! Campos obligatorios: Nombre - Stock Min - Stock Max");
+        alert("\t\t\t\t¡ERROR!\n\nCampos obligatorios: Nombre - Stock Min - Stock Max");
     }
   }
 }

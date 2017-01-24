@@ -19,10 +19,14 @@ data-toggle="modal" data-target="#exampleModal">+</button>
                             <label for="example-text-input" class="col-form-label">Categoria Fiscal</label>
                         </div>
                         <div class="col-8">
-                            <select class="form-control" id="categoriaFiscalID" [(ngModel)]="categoriaFiscalID">
-                              <option>cat1</option>
-                              <option>cat2</option>
-                            </select>
+							<select class="form-control" id="categoriaFiscal" [(ngModel)]="categoriaFiscal">
+								<option>Consumidor Final</option>
+								<option>Del Exterior</option>
+								<option>Exento</option>
+								<option>No computable IVA</option>
+								<option>Responsable Inscripto</option>
+								<option>Responsable No Inscripto</option>
+							</select>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -43,9 +47,9 @@ data-toggle="modal" data-target="#exampleModal">+</button>
                             <label for="example-text-input" class="col-form-label">Condición de Pago</label>
                         </div>
                         <div class="col-7">
-                            <select class="form-control" id="condicionPagoID" [(ngModel)]="condicionPagoID">
-                              <option>cp1</option>
-                              <option>cp2</option>
+                            <select class="form-control" id="condicionPago" [(ngModel)]="condicionPagoID">
+                              <option>cond1</option>
+                              <option>cond2</option>
                             </select>
                         </div>
                     </div>
