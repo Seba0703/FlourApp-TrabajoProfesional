@@ -1,7 +1,6 @@
 var mongoose = require("mongoose"); //instancio objeto "mongoose"
 
 var materiaPrimaSchema = new mongoose.Schema({
-  listaPrecioID:		{ type: Number },
   tasaImpositivaID:		{ type: String },
   nombre:				{ type: String },	
   cantidad: 			{ type: Number },

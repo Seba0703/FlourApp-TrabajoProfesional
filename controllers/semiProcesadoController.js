@@ -30,7 +30,6 @@ exports.add = function(req, res) {
     console.log(req.body);
 
     var semiProcesado = new ProductoSemiProcesado({ //creo un nuevo semiProcesado en base a lo recibido en el request
-        listaPrecioID:          req.body.listaPrecioID,
         tasaImpositivaID:      req.body.tasaImpositivaID,
         nombre:                req.body.nombre,
         cantidad:    	       req.body.cantidad,
@@ -59,7 +58,6 @@ exports.update = function(req, res) {
     ProductoSemiProcesado.findById(req.params.id, function(err, semiProcesado) { //"semiProcesado" es el objeto que me devuelve la busqueda
         
 		//actualizo todos los campos de ese "semiProcesado"
-        semiProcesado.listaPrecioID =        req.body.listaPrecioID;
         semiProcesado.tasaImpositivaID =     req.body.tasaImpositivaID;
         semiProcesado.nombre =               req.body.nombre;
         semiProcesado.cantidad =   	         req.body.cantidad;

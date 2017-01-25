@@ -30,7 +30,6 @@ exports.add = function(req, res) {
     console.log(req.body);
 
     var productoTerminado = new ProductoTerminado({ //creo un nuevo productoTerminado en base a lo recibido en el request
-        listaPrecioID:          req.body.listaPrecioID,
         tasaImpositivaID:      req.body.tasaImpositivaID, 
         nombre:                req.body.nombre,
         cantidad:    	       req.body.cantidad,
@@ -58,7 +57,6 @@ exports.update = function(req, res) {
     ProductoTerminado.findById(req.params.id, function(err, productoTerminado) { //"productoTerminado" es el objeto que me devuelve la busqueda
         
 		//actualizo todos los campos de ese "productoTerminado"
-        productoTerminado.listaPrecioID =        req.body.listaPrecioID;
         productoTerminado.tasaImpositivaID =     req.body.tasaImpositivaID;
         productoTerminado.nombre =               req.body.nombre;
         productoTerminado.cantidad =   	         req.body.cantidad;

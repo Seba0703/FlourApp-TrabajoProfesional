@@ -30,7 +30,6 @@ exports.add = function(req, res) {
     console.log(req.body);
 
     var materiaPrima = new MateriaPrima({ //creo un nuevo materiaPrima en base a lo recibido en el request
-        listaPrecioID:          req.body.listaPrecioID,  
         tasaImpositivaID:       req.body.tasaImpositivaID,
         nombre:                 req.body.nombre,
         cantidad:    	        req.body.cantidad,
@@ -56,7 +55,6 @@ exports.update = function(req, res) {
     MateriaPrima.findById(req.params.id, function(err, materiaPrima) { //"materiaPrima" es el objeto que me devuelve la busqueda
         
 		//actualizo todos los campos de ese "materiaPrima"
-        materiaPrima.listaPrecioID =        req.body.listaPrecioID;
         materiaPrima.tasaImpositivaID =     req.body.tasaImpositivaID;
         materiaPrima.nombre =               req.body.nombre;
         materiaPrima.cantidad =   	        req.body.cantidad;

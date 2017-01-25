@@ -1,7 +1,6 @@
 var mongoose = require("mongoose"); //instancio objeto "mongoose"
 
 var proveedorSchema = new mongoose.Schema({
-  clienteID:		 { type: String },
   nombreEmpresa:	 { type: String },
   cuit:   	  		 { type: Number },
   categoriaFiscal:   { type: String },
