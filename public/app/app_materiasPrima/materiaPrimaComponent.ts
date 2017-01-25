@@ -15,8 +15,7 @@ export class MateriaPrimaComponent {
   private materiasPrima: Response;
 
   private _id : string;
-  private listaPrecioID: string;
-  private tasaImpositivaID: string;
+  private tasaImpositiva: string;
   private nombre: string;
   private cantidad: number;
   private unidad: string;
@@ -73,8 +72,25 @@ export class MateriaPrimaComponent {
 
   modificar(materiaPrima: any){
     this._id =                materiaPrima._id;
-    this.listaPrecioID =      materiaPrima.listaPrecioID;
-    this.tasaImpositivaID =   materiaPrima.tasaImpositivaID;
+
+    switch (materiaPrima.tasaImpositivaID) {
+      case "ti1":
+        this.tasaImpositiva = "IVA-0%";
+        break;
+      case "ti2":
+        this.tasaImpositiva = "IVA-10.5%";
+        break;  
+      case "ti3":
+        this.tasaImpositiva = "IVA-21%";
+        break;
+      case "ti4":
+        this.tasaImpositiva = "IVA-27%";
+        break;  
+      default:
+        this.tasaImpositiva = "IVA-0%";
+        break;
+    }
+
     this.nombre =             materiaPrima.nombre;
     this.cantidad =           materiaPrima.cantidad;
     this.unidad =              materiaPrima.unidad;
@@ -88,10 +104,29 @@ export class MateriaPrimaComponent {
   guardarModificaciones(){
     if(this.nombre && this.stockMin && this.stockMax){
       this.mostrarModalModificar = false;
+
+      let tasaImpositivaID: string;
+      switch (this.tasaImpositiva.split("-")[1].split("%")[0]) {
+        case "0":
+          tasaImpositivaID = "ti1";
+          break;
+        case "10.5":
+          tasaImpositivaID = "ti2";
+          break;  
+        case "21":
+          tasaImpositivaID = "ti3";
+          break;
+        case "27":
+          tasaImpositivaID = "ti4";
+          break;  
+        default:
+          tasaImpositivaID = "ti1";
+          break;
+      }
+
       let materiaPrima = {
           _id:                  this._id,
-          listaPrecioID:        this.listaPrecioID,
-          tasaImpositivaID:     this.tasaImpositivaID,
+          tasaImpositivaID:     tasaImpositivaID,
           nombre:               this.nombre,
           cantidad:             this.cantidad,
           unidad:               this.unidad,

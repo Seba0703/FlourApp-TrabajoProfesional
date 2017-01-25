@@ -7,8 +7,7 @@ import { MateriaPrimaServices } from './materiaPrimaServices';
 })
 
 export class AgregadorMateriaPrimaComponent {
-  private listaPrecioID: string;
-  private tasaImpositivaID: string;
+  private tasaImpositiva: string;
   private nombre: string;
   private cantidad: number;
   private unidad: string;
@@ -25,9 +24,28 @@ export class AgregadorMateriaPrimaComponent {
 
   agregar() {
     if(this.nombre && this.stockMin && this.stockMax) {
+      let tasaImpositivaID: string;
+      if(this.tasaImpositiva) {
+        switch (this.tasaImpositiva.split("-")[1].split("%")[0]) {
+          case "0":
+            tasaImpositivaID = "ti1";
+            break;
+          case "10.5":
+            tasaImpositivaID = "ti2";
+            break;  
+          case "21":
+            tasaImpositivaID = "ti3";
+            break;
+          case "27":
+            tasaImpositivaID = "ti4";
+            break;  
+          default:
+            tasaImpositivaID = "ti1";
+            break;
+        }
+      }
       let materiaPrima = {
-          listaPrecioID:      this.listaPrecioID,
-          tasaImpositivaID:   this.tasaImpositivaID,
+          tasaImpositivaID:   tasaImpositivaID,
           nombre:             this.nombre,
           cantidad:           this.cantidad,
           unidad:             this.unidad,

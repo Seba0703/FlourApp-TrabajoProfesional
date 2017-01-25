@@ -7,7 +7,6 @@ import { SemiProcesadoServices } from './semiProcesadoServices';
 })
 
 export class AgregadorSemiProcesadoComponent {
-  private listaPrecioID: string;
   private tasaImpositiva: string;
   private nombre: string;
   private cantidad: number;
@@ -46,7 +45,6 @@ export class AgregadorSemiProcesadoComponent {
         }
       }
       let semiProcesado = {
-          listaPrecioID:      this.listaPrecioID,
           tasaImpositivaID:    tasaImpositivaID,
           nombre:              this.nombre,
           cantidad:            this.cantidad,

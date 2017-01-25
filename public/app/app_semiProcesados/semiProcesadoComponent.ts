@@ -14,7 +14,6 @@ export class SemiProcesadoComponent implements OnInit{
   private semiProcesados: Response;
 
   private _id : string;
-  private listaPrecioID: string;
   private tasaImpositiva: string;
   private nombre: string;
   private cantidad: number;
@@ -73,7 +72,6 @@ export class SemiProcesadoComponent implements OnInit{
 
   modificar(semiProcesado: any){
     this._id =                semiProcesado._id;
-    this.listaPrecioID =      semiProcesado.listaPrecioID;
 
     switch (semiProcesado.tasaImpositivaID) {
       case "ti1":
@@ -127,7 +125,6 @@ export class SemiProcesadoComponent implements OnInit{
       }
       let semiProcesado = {
           _id:                  this._id,
-          listaPrecioID:        this.listaPrecioID,
           tasaImpositivaID:     tasaImpositivaID,
           nombre:               this.nombre,
           cantidad:             this.cantidad,

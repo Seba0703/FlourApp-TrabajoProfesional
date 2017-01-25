@@ -6,7 +6,6 @@ import { ProductoTerminadoServices } from './productoTerminadoServices';
   templateUrl: 'app/app_productosTerminados/agregadorProductoTerminadoComponent.html'
 })
 export class AgregadorProductoTerminadoComponent{
-  private listaPrecioID: string;
   private tasaImpositiva: string;
   private nombre: string;
   private cantidad: number;
@@ -46,7 +45,6 @@ export class AgregadorProductoTerminadoComponent{
       }
 
       let productoTerminado = {
-          listaPrecioID:      this.listaPrecioID,
           tasaImpositivaID:    tasaImpositivaID,
           nombre:              this.nombre,
           cantidad:            this.cantidad,

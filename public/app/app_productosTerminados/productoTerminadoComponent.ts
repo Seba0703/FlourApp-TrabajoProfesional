@@ -11,7 +11,6 @@ export class ProductoTerminadoComponent implements OnInit{
   private productosTerminados: Response;
 
   private _id : string;
-  private listaPrecioID: string;
   private tasaImpositiva: string;
   private nombre: string;
   private cantidad: number;
@@ -65,7 +64,6 @@ export class ProductoTerminadoComponent implements OnInit{
 
   modificar(productoTerminado: any){
     this._id =                productoTerminado._id;
-    this.listaPrecioID =      productoTerminado.listaPrecioID;
 
     switch (productoTerminado.tasaImpositivaID) {
       case "ti1":
@@ -119,7 +117,6 @@ export class ProductoTerminadoComponent implements OnInit{
       }
       let productoTerminado = {
           _id:                  this._id,
-          listaPrecioID:        this.listaPrecioID,
           tasaImpositivaID:     tasaImpositivaID,
           nombre:               this.nombre,
           cantidad:             this.cantidad,
