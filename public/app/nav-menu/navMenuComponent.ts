@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { SignOutComponent }  from '../sign-out/signOutComponent';
 
 @Component({
   selector: 'nav-menu',
@@ -19,6 +18,9 @@ export class NavMenuComponent {
   activeProduccion: string = "";
   activeF: string = "";
   activeD: string = "";
+
+  activeLP: string = "";
+  activeU: string = "";
   
   constructor(){}
 
@@ -54,7 +56,13 @@ export class NavMenuComponent {
           case "deshacer":
           this.activeD = "active";
           this.activeProduccion = "active";
-          break; 
+          break;
+          case "listaDePrecios":
+          this.activeLP = "active";
+          break;
+          case "usuarios":
+          this.activeU = "active";
+          break;           
         default:
           this.activeH = "active";
           break;

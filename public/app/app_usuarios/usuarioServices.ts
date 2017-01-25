@@ -3,39 +3,39 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';  
 import 'rxjs/add/operator/map';
 
-import {URL_CLIENTES} from '../rutas';
+import {URL_USUARIOS} from '../rutas';
 
 @Injectable()
-export class ClienteServices {
+export class UsuarioServices {
 
   constructor(private http:Http) {
-    console.log("INICIALIZANDO ClienteS SERVIRCE");
+    console.log("INICIALIZANDO UsuarioS SERVIRCE");
   }
 
-  getClientes(): Observable<Response>  {
+  getUsuarios(): Observable<Response>  {
     console.log("HACIENDO REQUEST");
-    return this.http.get(URL_CLIENTES).map((response) => response.json())
+    return this.http.get(URL_USUARIOS).map((response) => response.json())
   }
 
-  agregarCliente(body: Object): Observable<Response> {
+  agregarUsuario(body: Object): Observable<Response> {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     console.log("POST REQUEST");
-    return this.http.post(URL_CLIENTES, body, {headers: headers});
+    return this.http.post(URL_USUARIOS, body, {headers: headers});
   }
 
-  borrarCliente(id: string): Observable<Response> {
+  borrarUsuario(id: string): Observable<Response> {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     console.log("DELETE REQUEST");
-    return this.http.delete(URL_CLIENTES + "/" + id, {headers: headers});
+    return this.http.delete(URL_USUARIOS + "/" + id, {headers: headers});
   }
 
   modificar(body: any): Observable<Response> {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     console.log("PUT REQUEST");
-    return this.http.put(URL_CLIENTES + "/" + body._id, body, {headers: headers});
+    return this.http.put(URL_USUARIOS + "/" + body._id, body, {headers: headers});
   }
 
 }

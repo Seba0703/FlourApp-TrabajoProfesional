@@ -1,0 +1,48 @@
+<table class="table">
+<thead class="thead-inverse">
+    <tr>
+    <th>Nombre</th>
+    <th>Permisos</th>
+    <th>Acciones</th>
+    </tr>
+</thead>
+<tbody *ngFor="let usuario of usuarios">
+    <td>{{usuario.nombre}}</td>
+    <td>{{usuario.permisos}}</td>
+    <td>
+        <button type="button" class="btn btn-success" (click)="modificar(usuario)" title="Modificar"
+        data-toggle="modal" data-target="#modificarModal" >
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btn btn-danger" (click)="borrar(usuario._id)" title="Borrar" >
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
+    </td>
+</tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="mostrarModalModificar">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modificar usuario</h5>
+            </div>
+            <div class="modal-body">
+				<div class="container">
+				    <input type="text" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1" style="margin-bottom: 4px;" [(ngModel)]="nombre">
+
+                    <input type="password" class="form-control" placeholder="Contraseña" aria-describedby="basic-addon1" style="margin-bottom: 4px;" [(ngModel)]="contrasenia">
+
+
+				</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="guardarModificaciones()">
+                    Guardar modificaciones
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

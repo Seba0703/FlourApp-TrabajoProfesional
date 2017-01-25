@@ -1,0 +1,26 @@
+<button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar usuario" 
+data-toggle="modal" data-target="#exampleModal">+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="mostrarModalAgregar">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar usuario</h5>
+            </div>
+            <div class="modal-body">
+				<div class="container">
+				    <input type="text" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1" style="margin-bottom: 4px;" [(ngModel)]="nombre">
+
+                    <input type="password" class="form-control" placeholder="Contraseña" aria-describedby="basic-addon1" style="margin-bottom: 4px;" [(ngModel)]="contrasenia">
+				</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="agregar()">
+                    Agregar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

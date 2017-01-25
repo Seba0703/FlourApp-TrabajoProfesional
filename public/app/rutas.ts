@@ -13,4 +13,4 @@ export const URL_SEMIPROCESADOS = 		'http://' + ip + ':' + puerto + '/api/semiPr
 export const URL_PRODUCTOS_TERMINADOS = 'http://' + ip + ':' + puerto + '/api/productosTerminados';
 export const URL_MOV_PROD_FINAL = 		'http://' + ip + ':' + puerto + '/api/movProductoFinal';
 export const URL_MOV_PROD_USADO = 		'http://' + ip + ':' + puerto + '/api/movProductoUsadoFinal';
-
+export const URL_USUARIOS = 			'http://' + ip + ':' + puerto + '/api/usuarios';

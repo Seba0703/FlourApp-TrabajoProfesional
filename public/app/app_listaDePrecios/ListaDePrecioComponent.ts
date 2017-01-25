@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Response } from '@angular/http';
 
-import { ClienteServices } from './clienteServices';
+import { ListaDePrecioServices } from './listaDePrecioServices';
 
 @Component({
-  selector: 'tabla-clientes',
-  templateUrl: "app/app_clientes/clienteComponent.html"
+  selector: 'tabla-listaDePrecios',
+  templateUrl: "app/app_listaDePrecios/clienteComponent.html"
 })
 
-export class ClienteComponent {
-  private accionesEjecutables: string;//ejecutables sobre este component
+export class ListaDePrecioComponent {
+  private nombreUsuario: string;
+  private permisos: string;
 
-  private clientes: Response;
+  private listaDePrecios: Response;
 
   private _id : string;
   private nombreEmpresa: string;
@@ -23,10 +24,11 @@ export class ClienteComponent {
 
   private mostrarModalModificar: boolean = true;
   
-  constructor(private cService: ClienteServices){
+  constructor(private lpService: ListaDePrecioServices){
     let dataLogin = JSON.parse(sessionStorage.getItem("dataLogin"));
     
-    this.accionesEjecutables = dataLogin.permisos;
+    this.nombreUsuario = dataLogin.nombreUsuario;
+    this.permisos = dataLogin.permisos;
   }
 
   ngOnInit() {
@@ -37,11 +39,11 @@ export class ClienteComponent {
   cargarProductosTerminados(){
     console.log("CARGANDO CLIENTES");
     // en el momento del subscribe es cuando se dispara la llamada
-    this.cService.getClientes()
+    this.lpService.getListaDePrecios()
               .subscribe(
-                (clientesData) => {
-                  this.clientes = clientesData;
-                  console.log(this.clientes);
+                (listaDePreciosData) => {
+                  this.listaDePrecios = listaDePreciosData;
+                  console.log(this.listaDePrecios);
                 },
                 err => console.error("EL ERROR FUE: ", err)
               );
@@ -52,7 +54,7 @@ export class ClienteComponent {
     if (r == true) {
         console.log("You pressed OK!");
         console.log("ID borrado= " + id);
-        this.cService.borrarCliente(id)
+        this.lpService.borrarListaDePrecio(id)
                       .subscribe(
                         () => { 
                       alert("\t\t\t\t¡Se borro existosamente!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
@@ -90,15 +92,15 @@ export class ClienteComponent {
       
       console.log(cliente);
 
-      this.cService.modificar(cliente)
+      this.lpService.modificar(cliente)
                     .subscribe(data => {
                         console.log(data);
                         
-                        alert("\t\t\t\t¡Cliente modificado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
+                        alert("\t\t\t\t¡ListaDePrecio modificado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
                         window.location.reload();                        
                     }, error => {
                         console.log(JSON.stringify(error.json()));
-                        alert("\t\t\t\t¡ERROR al modificar Cliente!\n\nRevise los campos");
+                        alert("\t\t\t\t¡ERROR al modificar ListaDePrecio!\n\nRevise los campos");
                     });;
     } else {
       alert("\t\t\t\t¡ERROR!\n\nDebe proporcionar al menos un nombre");

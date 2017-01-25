@@ -6,25 +6,26 @@ import 'rxjs/add/operator/map';
 import {URL_CLIENTES} from '../rutas';
 
 @Injectable()
-export class ClienteServices {
+export class ListaDePrecioServices {
+  private clientes: Array<any>;
 
   constructor(private http:Http) {
-    console.log("INICIALIZANDO ClienteS SERVIRCE");
+    console.log("INICIALIZANDO ListaDePrecioS SERVIRCE");
   }
 
-  getClientes(): Observable<Response>  {
+  getListaDePrecios(): Observable<Response>  {
     console.log("HACIENDO REQUEST");
     return this.http.get(URL_CLIENTES).map((response) => response.json())
   }
 
-  agregarCliente(body: Object): Observable<Response> {
+  agregarListaDePrecio(body: Object): Observable<Response> {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     console.log("POST REQUEST");
     return this.http.post(URL_CLIENTES, body, {headers: headers});
   }
 
-  borrarCliente(id: string): Observable<Response> {
+  borrarListaDePrecio(id: string): Observable<Response> {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     console.log("DELETE REQUEST");
