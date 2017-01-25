@@ -7,7 +7,7 @@ var proveedorSchema = new mongoose.Schema({
   categoriaFiscal:   { type: String },
   listaPrecioID: 	 { type: String },
   direccion: 	  	 { type: String },
-  condicionPagoID: 	 { type: String }
+  condicionPago: 	 { type: String }
 });
 
 exports.proveedorModel = mongoose.model('Proveedor', proveedorSchema); //crea el modelo y lo exporta para que lo puedan usar otros modulos

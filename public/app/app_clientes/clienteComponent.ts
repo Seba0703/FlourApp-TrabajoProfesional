@@ -20,7 +20,7 @@ export class ClienteComponent {
   private categoriaFiscal: string;
   private listaPrecioID: string;
   private direccion: string;
-  private condicionPagoID: string;
+  private condicionPago: string;
 
   private mostrarModalModificar: boolean = true;
   
@@ -74,7 +74,7 @@ export class ClienteComponent {
     this.categoriaFiscal =    cliente.categoriaFiscal;
     this.listaPrecioID =      cliente.listaPrecioID;
     this.direccion =          cliente.direccion;
-    this.condicionPagoID =    cliente.condicionPagoID;
+    this.condicionPago =    cliente.condicionPago;
   }
 
   guardarModificaciones(){
@@ -87,7 +87,7 @@ export class ClienteComponent {
           categoriaFiscal:    this.categoriaFiscal,
           listaPrecioID:      this.listaPrecioID,
           direccion:          this.direccion,
-          condicionPagoID:    this.condicionPagoID
+          condicionPago:    this.condicionPago
       }
       
       console.log(cliente);

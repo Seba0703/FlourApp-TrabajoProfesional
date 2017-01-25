@@ -20,7 +20,7 @@ export class ProveedorComponent {
   private categoriaFiscal: string;
   private listaPrecioID: string;
   private direccion: string;
-  private condicionPagoID: string;
+  private condicionPago: string;
 
   private mostrarModalModificar: boolean = true;
   
@@ -74,7 +74,7 @@ export class ProveedorComponent {
     this.categoriaFiscal =    proveedor.categoriaFiscal;
     this.listaPrecioID =      proveedor.listaPrecioID;
     this.direccion =          proveedor.direccion;
-    this.condicionPagoID =    proveedor.condicionPagoID;
+    this.condicionPago =    proveedor.condicionPago;
   }
 
   guardarModificaciones(){
@@ -87,7 +87,7 @@ export class ProveedorComponent {
           categoriaFiscal:    this.categoriaFiscal,
           listaPrecioID:      this.listaPrecioID,
           direccion:          this.direccion,
-          condicionPagoID:    this.condicionPagoID
+          condicionPago:    this.condicionPago
       }
       
       console.log(proveedor);

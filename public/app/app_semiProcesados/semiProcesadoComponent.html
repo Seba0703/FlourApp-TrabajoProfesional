@@ -69,23 +69,23 @@
 
                     <input type="text" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="nombre">
 
-                    <input type="number" class="form-control" placeholder="Cantidad" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="cantidad">
+                    <input type="number" class="form-control" placeholder="Cantidad" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="cantidad">
 
                     <input type="text" class="form-control" placeholder="Unidad" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="unidad">
-                    <input type="number" class="form-control" placeholder="Stock Min" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="stockMin">
+                    <input type="number" class="form-control" placeholder="Stock Min" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="stockMin">
 
-                    <input type="number" class="form-control" placeholder="Stock Max" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="stockMax">
+                    <input type="number" class="form-control" placeholder="Stock Max" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="stockMax">
 
                     <input type="number" class="form-control" placeholder="Embolsado (default)" 
-                    aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="embolsado">
+                    aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="embolsado">
 
                     <input type="number" class="form-control" 
                     placeholder="Porcentaje Merma (ej: 10 => equivale 10%)" aria-describedby="basic-addon1" 
-                    style="margin-bottom: 4px;" min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="porcentajeMerma">
+                    style="margin-bottom: 4px;" min="0" onkeypress="return validateChar(event)" [(ngModel)]="porcentajeMerma">
 
                     <input type="text" class="form-control" placeholder="Tipo" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="tipo">
 
-                    <input type="number" class="form-control" placeholder="Precio Venta" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="precioVenta">
+                    <input type="number" class="form-control" placeholder="Precio Venta" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="precioVenta">
                 </div>
             </div>
             <div class="modal-footer">

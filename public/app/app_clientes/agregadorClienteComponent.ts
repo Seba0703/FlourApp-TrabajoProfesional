@@ -12,7 +12,7 @@ export class AgregadorClienteComponent {
   private categoriaFiscal: string;
   private listaPrecioID: string;
   private direccion: string;
-  private condicionPagoID: string;
+  private condicionPago: string;
 
   private mostrarModalAgregar: boolean = true;
 
@@ -28,7 +28,7 @@ export class AgregadorClienteComponent {
           categoriaFiscal:    this.categoriaFiscal,
           listaPrecioID:      this.listaPrecioID,
           direccion:          this.direccion,
-          condicionPagoID:    this.condicionPagoID
+          condicionPago:    this.condicionPago
       }
       
       console.log(cliente);

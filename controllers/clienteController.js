@@ -35,7 +35,7 @@ exports.add = function(req, res) {
         categoriaFiscal:    req.body.categoriaFiscal,
         listaPrecioID:   	req.body.listaPrecioID,
         direccion:  		req.body.direccion,
-        condicionPagoID:    req.body.condicionPagoID
+        condicionPago:    req.body.condicionPago
     });
 
     cliente.save(function(err, cliente) { //almaceno el cliente en la base de datos
@@ -57,7 +57,7 @@ exports.update = function(req, res) {
         cliente.categoriaFiscal=    req.body.categoriaFiscal;
         cliente.listaPrecioID =   	req.body.listaPrecioID;
         cliente.direccion =  		req.body.direccion;
-        cliente.condicionPagoID =   req.body.condicionPagoID;
+        cliente.condicionPago =   req.body.condicionPago;
 
         cliente.save(function(err) { //almaceno en la base "cliente" para que quede actualizada con los nuevos cambios
             if(err) return res.status(500).send(err.message);

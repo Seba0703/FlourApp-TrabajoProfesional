@@ -6,7 +6,7 @@ var clienteSchema = new mongoose.Schema({
   categoriaFiscal: 	 { type: String },
   listaPrecioID: 	 { type: String },
   direccion: 	  	 { type: String },
-  condicionPagoID: 	 { type: String }
+  condicionPago: 	 { type: String }
 });
 
 exports.clienteModel = mongoose.model('Cliente', clienteSchema); //crea el modelo y lo exporta para que lo puedan usar otros modulos
