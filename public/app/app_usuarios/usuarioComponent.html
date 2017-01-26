@@ -34,7 +34,31 @@
 
                     <input type="password" class="form-control" placeholder="Contraseña" aria-describedby="basic-addon1" style="margin-bottom: 4px;" [(ngModel)]="contrasenia">
 
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <label for="example-text-input" class="col-form-label">
+                                <strong>Permisos</strong>
+                            </label>
+                        </div>
+                        <div class="col-12">
+                            <form #f="ngForm">
+                              <input type="radio" value="lectura" name="permiso" 
+                              (click)="onSelectionChange('lectura')"
+                              [checked]="permisos == 'lectura'"
+                              > Lectura
 
+                              <input type="radio" value="escritura" name="permiso" 
+                              (click)="onSelectionChange('escritura')"
+                              [checked]="permisos == 'escritura'"
+                              > Escritura
+
+                              <input type="radio" value="administrador" name="permiso"
+                              (click)="onSelectionChange('administrador')"
+                              [checked]="permisos == 'administrador'"
+                              > Administrador
+                            </form>
+                        </div>
+                    </div>
 				</div>
             </div>
             <div class="modal-footer">
