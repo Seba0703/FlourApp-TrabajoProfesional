@@ -71,6 +71,9 @@ app.use('/api', semiProcesadoRoutersHandler);
 var productoTerminadoRoutersHandler = require("./routersHandlers/productoTerminadoRoutersHandler").getProductoTerminadoRoutersHandler(express);
 app.use('/api', productoTerminadoRoutersHandler);
 
+var listaPrecioRoutersHandler = require("./routersHandlers/listaPrecioRoutersHandler").getListaPrecioRoutersHandler(express);
+app.use('/api', listaPrecioRoutersHandler);
+
 var movProductFinalRoutersHandler = require("./routersHandlers/movProductoFinalRoutersHandler").getMovProductoFinalRoutersHandler(express);
 app.use('/api', movProductFinalRoutersHandler);
 
