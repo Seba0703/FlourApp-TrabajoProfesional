@@ -14,7 +14,7 @@ exports.getMovProductoUsadoRoutersHandler = function(express){
 	  .delete(movProductoUsadoController.delete);
 	  
 	movProductoUsadoRoutersHandler.route('/movProductoUsadoFinal/:id')  
-	  .get(movProductoUsadoController.findByProductoFinal_id);
+	  .get(movProductoUsadoController.deleteMany);
 	  
 	return movProductoUsadoRoutersHandler;  
 }

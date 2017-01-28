@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { RequiredProduct } from './required-product';
 import { RequiredProductService } from './required-product.service';
+import { ProductService } from './product.service';
+
 import { Producto } from './producto';
 import { CommonFunctions } from './common-functions';
 
@@ -45,7 +47,7 @@ import { CommonFunctions } from './common-functions';
     color: white;
 	}
   `],
-  providers: [RequiredProductService]
+  providers: [RequiredProductService, ProductService]
 })
 
 export class RequiredProductComponent implements OnInit{
@@ -56,13 +58,19 @@ export class RequiredProductComponent implements OnInit{
   
   requiredProducts: RequiredProduct[];
   
-  constructor(private requiredProductService: RequiredProductService) { }
+  constructor(private requiredProductService: RequiredProductService, private productService: ProductService) { }
   
   getRequiredProducts(): void {
     this.requiredProductService.getRequiredProducts().then(requiredProducts => {
 		this.requiredProducts = requiredProducts
 		this.notify.emit('Done');
 	});
+  }
+  
+  putNewStock(): void {
+	for (var i = 0; i < this.requiredProducts.length; i++) {
+		this.productService.putNewStock(this.requiredProducts[i]).then();
+	}
   }
   
   ngOnInit(): void {

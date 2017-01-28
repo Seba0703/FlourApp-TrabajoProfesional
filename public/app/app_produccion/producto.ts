@@ -4,4 +4,5 @@ export class Producto {
   unidad: string;
   cant?: number;
   porcentajeMerma?: number;
+  tipo: number;
 }

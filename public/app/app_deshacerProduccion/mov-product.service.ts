@@ -9,6 +9,8 @@ import {URL_MOV_PROD_USADO} from '../rutas';
 @Injectable()
 export class MovProductService {
 	
+	private headers = new Headers({'Content-Type': 'application/json'});
+	
 	constructor(private http: Http) { }
 	
 	getProductsFinal(): Promise<MovProductoFinal[]> {

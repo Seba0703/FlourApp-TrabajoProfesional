@@ -6,4 +6,5 @@ export class RequiredProduct {
   spend?: number;
   percent: number;
   changeColor?: boolean = false;
+  tipo?: number;
 }

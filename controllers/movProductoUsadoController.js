@@ -77,12 +77,8 @@ exports.findByProductoFinal_id = function(req, res) {
         
 		if(err) res.send(500, err.message);
 
-		console.log('GET/MovProductoUsado');
-		
-		
-		
+		console.log('GET/MovProductoUsado');	
 		res.status(200).jsonp(movsProductosUsados);
-		        
     });
 };
 
@@ -95,6 +91,45 @@ exports.delete = function(req, res) {
             if(err) return res.status(500).send(err.message);
 			res.status(200).send(movProductoUsado);
         })
+    });
+};
+
+function actualizar(prodModel, productoU) {
+	prodModel.findById(productoU._id, function(err, producto) { //"producto" es el objeto que me devuelve la busqueda
+				producto.cantidad = productoU.cantidad;
+				producto.save();
+			});
+};
+
+exports.deleteMany = function(req, res) {
+	MovProductoUsado.find({'movimientoProduccionFinalID': req.params.id}).populate('materiaPrimaUsada').populate('prodSemiUsado').populate('prodTermUsado').exec(function(err, movsProductosUsados) { 
+	
+		for (var i = 0; i < movsProductosUsados.length; i++) {
+			var productoU = null;
+			var prodModel = null;
+			
+			if (movsProductosUsados[i].materiaPrimaUsada) {
+				productoU = movsProductosUsados[i].materiaPrimaUsada;
+				prodModel = MateriaPrima;
+			} else if (movsProductosUsados[i].prodSemiUsado) {
+				productoU = movsProductosUsados[i].prodSemiUsado;
+				prodModel = ProductoSemiProcesado;
+			} else {
+				productoU = movsProductosUsados[i].prodTermUsado;
+				prodModel = ProductoTerminado;
+			}
+			
+			productoU.cantidad = productoU.cantidad + movsProductosUsados[i].cantidadUsada;
+			console.log(productoU._id + '  -1- ' + productoU.cantidad);
+			actualizar(prodModel, productoU);
+			movsProductosUsados[i].remove();
+		}
+		
+		if(err) res.send(500, err.message);
+
+		console.log('GET/deleteMany');	
+		res.status(200);
+		
     });
 };
 

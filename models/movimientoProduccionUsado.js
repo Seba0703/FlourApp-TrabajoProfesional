@@ -1,5 +1,5 @@
 var mongoose = require("mongoose"); //instancio objeto "mongoose"
-var Schema = mongoose.Schema
+var Schema = mongoose.Schema;
 
 var movimientoProduccionUsadoSchema = new Schema({  
   movimientoProduccionFinalID:		{type: String},
