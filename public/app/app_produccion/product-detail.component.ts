@@ -2,7 +2,9 @@ import { Component, ViewChild, Input } from '@angular/core';
 import {RequiredProductComponent} from './required-product.component'
 import {RequiredProduct} from './required-product'
 import { ProductService } from './product.service';
+import { MovProductService } from '../app_deshacerProduccion/mov-product.service';
 import { Producto } from './producto';
+import { MovProductoFinal } from '../app_deshacerProduccion/mov-product-final';
 import { CommonFunctions } from './common-functions';
 
 @Component({
@@ -57,7 +59,7 @@ import { CommonFunctions } from './common-functions';
     color: white;
 	}
  `],
-  providers: [ProductService]
+  providers: [ProductService, MovProductService]
 })
 export class ProductDetailComponent {
   
@@ -69,16 +71,14 @@ export class ProductDetailComponent {
   @ViewChild('required') 
   requiredProds: RequiredProductComponent;
   
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private movProductService: MovProductService) { }
   
   fabricar(): void {
 	//no ceros, no NAN, no negativo, aviso de no cumple con porcentaje, aviso excluye merma
 	if (this.producto.cant && this.producto.cant > 0 && this.producto.porcentajeMerma && this.producto.porcentajeMerma > 0 && this.requiredProds.allGastosSetted() ) {
 		console.log('post server');
-		this.productService.putNewStock(this.producto).then(product => {
-			this.requiredProds.putNewStock();
-			alert('Stock actualizado.');
-			});
+		this.productService.putNewStock(this.producto);
+		this.movProductService.postMovimientoFinal(this.producto).then( movFinal => this.requiredProds.putNewStock(movFinal));
 	} else {
 		if (this.producto.cant == null || this.producto.cant <= 0) {
 			alert('Cantidad erronea.');

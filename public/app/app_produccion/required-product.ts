@@ -7,4 +7,5 @@ export class RequiredProduct {
   percent: number;
   changeColor?: boolean = false;
   tipo?: number;
+  movimientoProduccionFinalID?: string;
 }

@@ -30,7 +30,7 @@ export class ProductService {
                .catch(this.handleError);
   }
   
-  putNewStock(producto: any): Promise<Producto[]> {
+  putNewStock(producto: any): Promise<void> {
 	var pruductURL: string;
 	if(producto.tipo = 1) {
 		pruductURL = URL_MATERIAS_PRIMA_STOCK;
@@ -42,7 +42,7 @@ export class ProductService {
 	
     return this.http.put(pruductURL, JSON.stringify(producto),{headers: this.headers})
               .toPromise()	
-              .then(() => producto)
+              .then(() => null)
               .catch(this.handleError);
   }
   

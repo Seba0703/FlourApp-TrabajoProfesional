@@ -33,6 +33,20 @@ export class MovProductService {
 			.then(() => null)
 			.catch(this.handleError);
 	}
+	
+	postMovimientoFinal(producto: any): Promise<MovProductoFinal> {
+		return this.http.post(URL_MOV_PROD_FINAL, JSON.stringify(producto), {headers: this.headers})
+			.toPromise()
+			.then(response => response.json() as MovProductoFinal)
+			.catch(this.handleError);
+	}
+	
+	postMovimientoUsado(producto: any): Promise<void> {
+		return this.http.post(URL_MOV_PROD_USADO, JSON.stringify(producto), {headers: this.headers})
+			.toPromise()
+			.then(() => null)
+			.catch(this.handleError);
+	}
   
 	private handleError(error: any): Promise<any> {
 		console.error('An error occurred', error); // for demo purposes only

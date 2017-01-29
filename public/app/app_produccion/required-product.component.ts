@@ -2,8 +2,10 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { RequiredProduct } from './required-product';
 import { RequiredProductService } from './required-product.service';
 import { ProductService } from './product.service';
+import { MovProductService } from '../app_deshacerProduccion/mov-product.service';
 
 import { Producto } from './producto';
+import { MovProductoFinal } from '../app_deshacerProduccion/mov-product-final';
 import { CommonFunctions } from './common-functions';
 
 @Component({
@@ -47,7 +49,7 @@ import { CommonFunctions } from './common-functions';
     color: white;
 	}
   `],
-  providers: [RequiredProductService, ProductService]
+  providers: [RequiredProductService, ProductService, MovProductService]
 })
 
 export class RequiredProductComponent implements OnInit{
@@ -58,7 +60,7 @@ export class RequiredProductComponent implements OnInit{
   
   requiredProducts: RequiredProduct[];
   
-  constructor(private requiredProductService: RequiredProductService, private productService: ProductService) { }
+  constructor(private requiredProductService: RequiredProductService, private productService: ProductService, private movProductService: MovProductService) { }
   
   getRequiredProducts(): void {
     this.requiredProductService.getRequiredProducts().then(requiredProducts => {
@@ -67,9 +69,12 @@ export class RequiredProductComponent implements OnInit{
 	});
   }
   
-  putNewStock(): void {
+  putNewStock(movFinal: MovProductoFinal): void {
 	for (var i = 0; i < this.requiredProducts.length; i++) {
-		this.productService.putNewStock(this.requiredProducts[i]).then();
+		this.requiredProducts[i].movimientoProduccionFinalID = movFinal._id;
+		this.productService.putNewStock(this.requiredProducts[i]);
+		this.movProductService.postMovimientoUsado(this.requiredProducts[i]);
+
 	}
   }
   
