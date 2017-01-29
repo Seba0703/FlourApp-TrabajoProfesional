@@ -32,9 +32,9 @@ export class ProductService {
   
   putNewStock(producto: any): Promise<void> {
 	var pruductURL: string;
-	if(producto.tipo = 1) {
+	if(producto.tipo == 1) {
 		pruductURL = URL_MATERIAS_PRIMA_STOCK;
-	} else if(producto.tipo = 2) {
+	} else if(producto.tipo == 2) {
 		pruductURL = URL_SEMIPROCESADOS_STOCK;
 	} else {
 		pruductURL = URL_PRODUCTOS_TERMINADOS_STOCK;

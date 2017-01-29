@@ -1,14 +1,8 @@
 import { RequiredProduct } from './required-product';
 
 export const REQUIRED_PRODUCT: RequiredProduct[] = [
-  {id: 11, name: 'Harina de trigo', unit: 'KG', stock:500, spend: null, percent:0.1},
-  {id: 12, name: 'Harina de soja', unit: 'KG', stock: 20, spend: null, percent:0.1},
-  {id: 13, name: 'Harina de arroz', unit: 'KG', stock: 100, spend: null, percent:0.1},
-  {id: 14, name: 'Masa faina', unit: 'KG', stock: 99, spend: null, percent:0.1},
-  {id: 15, name: 'asdad', unit: 'KG', stock: 36, spend: null, percent:0.1},
-  {id: 16, name: 'adasd', unit: 'KG', stock: 65, spend: null, percent:0.1},
-  {id: 17, name: 'ssssss', unit: 'KG', stock: 354, spend: null, percent:0.1},
-  {id: 18, name: 'sdadsd', unit: 'KG', stock: 1565, spend: null, percent:0.1},
-  {id: 19, name: 'adsda ddasdd', unit: 'KG', stock: 584, spend: null,percent:0.1},
-  {id: 20, name: 'ssTosssssro', unit: 'KG', stock: 96, spend: null, percent:0.1}
+  {_id: '5882b1143e194e0dfcd7f716', name: 'Harina de trigo', unit: 'KG', stock:500, cant: null, percent:25, add: false, tipo: 2},
+  {_id: '5883d094d330ac04e461e5de', name: 'Harina de soja', unit: 'KG', stock: 20, cant: null, percent:25, add: false, tipo: 2},
+  {_id: '5883d0a3d330ac04e461e5df', name: 'Harina de arroz', unit: 'KG', stock: 100, cant: null, percent:25, add: false, tipo: 2},
+  {_id: '5883d0b2d330ac04e461e5e0', name: 'Masa faina', unit: 'KG', stock: 99, cant: null, percent:25, add: false, tipo: 2}
 ];

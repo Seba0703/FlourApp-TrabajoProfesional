@@ -1,11 +1,12 @@
 export class RequiredProduct {
-  id: number;
+  _id: string;
   name: string;
   unit: string;
   stock: number;
-  spend?: number;
+  cant?: number;
   percent: number;
   changeColor?: boolean = false;
   tipo?: number;
   movimientoProduccionFinalID?: string;
+  add?: boolean;
 }

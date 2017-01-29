@@ -5,4 +5,5 @@ export class Producto {
   cant?: number;
   porcentajeMerma?: number;
   tipo: number;
+  add?: boolean;
 }
