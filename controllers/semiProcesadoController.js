@@ -77,6 +77,35 @@ exports.update = function(req, res) {
     });
 };
 
+exports.updateStock = function(req, res) {
+	console.log('UPDATE STOCK');
+    console.log(req.body);
+	ProductoSemiProcesado.findById(req.body._id, function(err, semiProcesado) {
+		if (semiProcesado) {
+			if (semiProcesado.cantidad) {
+				if (req.body.add){
+					semiProcesado.cantidad += req.body.cant;
+				} else {
+					semiProcesado.cantidad -= req.body.cant;
+				}
+				
+				if(semiProcesado.cantidad >= 0) { 
+					semiProcesado.save(function(err) { //almaceno en la base "semiProcesado" para que quede actualizada con los nuevos cambios
+						if(err) return res.status(500).send(err.message);
+						res.status(200).jsonp(semiProcesado);
+					});
+				} else {
+					res.status(505).send('No hay stock suficiente para realizar la accion. ' + req.body._id);
+				}
+			} else {
+				res.status(504).send('No una cantidad ingresada para ' + req.body._id);
+			}
+		} else {
+			res.status(503).send('Pruducto no encontrado en Semi Procesados. ' + req.body._id);
+		}
+	});
+}
+
 
 exports.delete = function(req, res) {
 	console.log('DELETE');	

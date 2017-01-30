@@ -72,6 +72,35 @@ exports.update = function(req, res) {
     });
 };
 
+exports.updateStock = function(req, res) {
+	console.log('UPDATE STOCK');
+    console.log(req.body);
+	MateriaPrima.findById(req.body._id, function(err, materiaPrima) {
+		if (materiaPrima) {
+			if (materiaPrima.cantidad) {
+				if (req.body.add){
+					materiaPrima.cantidad += req.body.cant;
+				} else {
+					materiaPrima.cantidad -= req.body.cant;
+				}
+				
+				if(materiaPrima.cantidad >= 0) { 
+					materiaPrima.save(function(err) { //almaceno en la base "materiaPrima" para que quede actualizada con los nuevos cambios
+						if(err) return res.status(500).send(err.message);
+						res.status(200).jsonp(materiaPrima);
+					});
+				} else {
+					res.status(505).send('No hay stock suficiente para realizar la accion. ' + req.body._id);
+				}
+			} else {
+				res.status(504).send('No una cantidad ingresada para ' + req.body._id);
+			}
+		} else {
+			res.status(503).send('Pruducto no encontrado en Materia Prima. ' + req.body._id);
+		}
+	});
+}
+
 
 exports.delete = function(req, res) {
 	console.log('DELETE');	

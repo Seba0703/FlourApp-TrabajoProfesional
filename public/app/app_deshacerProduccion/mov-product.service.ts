@@ -5,6 +5,7 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {URL_MOV_PROD_FINAL} from '../rutas';
 import {URL_MOV_PROD_USADO} from '../rutas';
+import {URL_MOV_PROD_USADO_FINAL} from '../rutas';
 
 @Injectable()
 export class MovProductService {
@@ -21,7 +22,7 @@ export class MovProductService {
 	}
 	
 	getProductsUsado(id: string): Promise<MovProductoUsado[]> {
-     return this.http.get(URL_MOV_PROD_USADO + '/' + id)
+     return this.http.get(URL_MOV_PROD_USADO_FINAL + '/' + id)
                .toPromise()
                .then(response => response.json() as MovProductoUsado[])
                .catch(this.handleError);

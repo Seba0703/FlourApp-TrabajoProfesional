@@ -35,11 +35,11 @@ exports.add = function(req, res) {
     console.log(req.body);
 
     var movProductoFinal = new MovProductoFinal({ //creo un nuevo movProductoFinal en base a lo recibido en el request
-        materiaPrimaFinal:      req.body.productoFinalID,
-		prodSemiFinal:      req.body.productoFinalID,	
-		prodTermFinal:      req.body.productoFinalID,
-        fecha:                req.body.fecha,
-        cantidadFabricada:    req.body.cantidadFabricada,
+        materiaPrimaFinal:      req.body._id,
+		prodSemiFinal:      req.body._id,	
+		prodTermFinal:      req.body._id,
+        fecha:                new Date(),
+        cantidadFabricada:    req.body.cant,
 		tipo:				  req.body.tipo,
     });
 

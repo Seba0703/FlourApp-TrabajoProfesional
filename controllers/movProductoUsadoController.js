@@ -34,10 +34,10 @@ exports.add = function(req, res) {
 
     var movProductoUsado = new MovProductoUsado({ //creo un nuevo movProductoFinal en base a lo recibido en el request
         movimientoProduccionFinalID:      req.body.movimientoProduccionFinalID, 
-        prodSemiUsado:                req.body.productoUsadoID,
-		materiaPrimaUsada:                req.body.productoUsadoID,
-		prodTermUsado:                req.body.productoUsadoID,
-        cantidadUsada:    req.body.cantidadUsada,
+        prodSemiUsado:                req.body._id,
+		materiaPrimaUsada:                req.body._id,
+		prodTermUsado:                req.body._id,
+        cantidadUsada:    req.body.cant,
 		tipo:				  req.body.tipo,
     });
 

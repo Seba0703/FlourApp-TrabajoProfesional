@@ -13,5 +13,8 @@ exports.getMateriaPrimaRoutersHandler = function(express){
 	  .put(materiaPrimaController.update)
 	  .delete(materiaPrimaController.delete);
 	  
+	materiaPrimaRoutersHandler.route('/materiasPrimaStock')  
+	  .put(materiaPrimaController.updateStock)
+	  
 	return materiaPrimaRoutersHandler;  
 }
