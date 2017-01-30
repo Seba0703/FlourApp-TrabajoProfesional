@@ -95,7 +95,7 @@ export class ProductoTerminadoComponent implements OnInit{
   }
 
   guardarModificaciones(){
-    if(this.nombre && this.stockMin && this.stockMax) { 
+    if(this.nombre && this.stockMin && this.stockMax && this.porcentajeMerma<=100) { 
       this.mostrarModalModificar = false;
       let tasaImpositivaID: string;
       switch (this.tasaImpositiva.split("-")[1].split("%")[0]) {
@@ -141,7 +141,7 @@ export class ProductoTerminadoComponent implements OnInit{
                         alert("\t\t\t\t¡ERROR al modificar Producto terminado!\n\nrevise los campos");
                     });;
     } else {
-        alert("\t\t\t\t¡ERROR!\n\nCampos obligatorios: Nombre - Stock Min - Stock Max");
+        alert("¡ERROR en campo/s!\n\nRecuerde que 'Nombre - Stock Min - Stock Max' son obligatorios y que el porcentaje de merma no puede ser mayor que 100%");
     }
   }
 }

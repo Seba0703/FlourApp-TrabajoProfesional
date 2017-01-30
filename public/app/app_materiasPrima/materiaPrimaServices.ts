@@ -3,7 +3,9 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';  
 import 'rxjs/add/operator/map';
 
+import { MateriaPrima } from './materiaPrima';
 import {URL_MATERIAS_PRIMA} from '../rutas';
+
 @Injectable()
 export class MateriaPrimaServices{
   public materiasPrima: Array<any>;
@@ -14,6 +16,10 @@ export class MateriaPrimaServices{
 
   getMateriasPrima(): Observable<Response>  {
     console.log("HACIENDO REQUEST");
+    return this.http.get(URL_MATERIAS_PRIMA).map((response) => response.json())
+  }
+
+  getBasicDataMateriasPrima(): Observable<MateriaPrima[]> {
     return this.http.get(URL_MATERIAS_PRIMA).map((response) => response.json())
   }
 

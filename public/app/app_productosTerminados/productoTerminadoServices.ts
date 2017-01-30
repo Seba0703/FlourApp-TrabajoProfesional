@@ -3,6 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';  
 import 'rxjs/add/operator/map';
 
+import { ProductoTerminado } from './productoTerminado';
 import {URL_PRODUCTOS_TERMINADOS} from '../rutas';
 
 @Injectable()
@@ -16,6 +17,10 @@ export class ProductoTerminadoServices{
   getProductosTerminados(): Observable<Response>  {
   	console.log("HACIENDO REQUEST");
   	return this.http.get(URL_PRODUCTOS_TERMINADOS).map((response) => response.json())
+  }
+
+  getBasicDataProductosTerminados(): Observable<ProductoTerminado[]> {
+    return this.http.get(URL_PRODUCTOS_TERMINADOS).map((response) => response.json())
   }
 
   agregarProductoTerminado(body: Object): Observable<Response> {

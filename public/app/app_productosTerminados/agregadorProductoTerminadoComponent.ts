@@ -22,7 +22,7 @@ export class AgregadorProductoTerminadoComponent{
   constructor(private ptService: ProductoTerminadoServices){}
 
   agregar() {
-    if(this.nombre && this.stockMin && this.stockMax ) { 
+    if(this.nombre && this.stockMin && this.stockMax && this.porcentajeMerma<=100) { 
       let tasaImpositivaID: string;
       if(this.tasaImpositiva) {
         switch (this.tasaImpositiva.split("-")[1].split("%")[0]) {
@@ -71,7 +71,7 @@ export class AgregadorProductoTerminadoComponent{
                         alert("\t\t\t\t¡ERROR al agregar Producto terminado!\n\nRevise los campos");
                     });;
     } else {
-       alert("\t\t\t\t\t¡ERROR!\n\nCampos obligatorios: Nombre - Stock Min - Stock Max");
+       alert("¡ERROR en campo/s!\n\nRecuerde que 'Nombre - Stock Min - Stock Max' son obligatorios y que el porcentaje de merma no puede ser mayor que 100%");
     }
   }
 

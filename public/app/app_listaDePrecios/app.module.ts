@@ -7,8 +7,10 @@ import { AppComponent }  from './app.component';
 import { NavMenuComponent } from '../nav-menu/navMenuComponent';
 import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { ListaDePrecioComponent} from './listaDePrecioComponent';
-import { AgregadorListaDePrecioComponent} from './agregadorListaDePrecioComponent';
 import { ListaDePrecioServices} from './listaDePrecioServices';
+import { MateriaPrimaServices } from '../app_materiasPrima/materiaPrimaServices';
+import { SemiProcesadoServices } from '../app_semiProcesados/semiProcesadoServices';
+import { ProductoTerminadoServices } from '../app_productosTerminados/productoTerminadoServices';
 
 @NgModule({
   imports: [
@@ -20,10 +22,14 @@ import { ListaDePrecioServices} from './listaDePrecioServices';
     AppComponent,
     NavMenuComponent,
     SignOutComponent,
-    ListaDePrecioComponent,
-    AgregadorListaDePrecioComponent
+    ListaDePrecioComponent
   ],
-  providers: [ ListaDePrecioServices ],
+  providers: [ 
+  ListaDePrecioServices,
+  MateriaPrimaServices,
+  SemiProcesadoServices,
+  ProductoTerminadoServices
+   ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

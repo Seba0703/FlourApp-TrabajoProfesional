@@ -4,7 +4,7 @@ function validateChar(e) {
 }
 
 function validarCondPago(e) {
-	console.log("validandoC= " + e.charCode);
+	//console.log("validandoC= " + e.charCode);
 	//console.log("validandoK= " + e.keyCode);
 	return (validateChar(e) || e.charCode == 45)
 }

@@ -3,6 +3,10 @@ body{
 	font-family: 'Roboto', sans-serif; /*defino la fuente que tendra el texto del body*/
 }
 
+.fa.fa-eye:hover {
+  text-decoration: underline;
+}
+
 /* Header */
 header{
 	background-color: #2a1000; /*color del fondo del logo*/
@@ -16,6 +20,18 @@ h1 {
 	padding-bottom: 10px;
 	margin-bottom: 15px;
 }
+
+/* Footer Modal */
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: ridge;
+    border-width: 1px;
+}
+
 /* Main */
 
 .modal-header {

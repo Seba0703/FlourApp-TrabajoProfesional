@@ -3,6 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';  
 import 'rxjs/add/operator/map';
 
+import { SemiProcesado } from './semiProcesado';
 import {URL_SEMIPROCESADOS} from '../rutas';
 
 @Injectable()
@@ -15,6 +16,10 @@ export class SemiProcesadoServices{
 
   getSemiProcesados(): Observable<Response>  {
     console.log("HACIENDO REQUEST");
+    return this.http.get(URL_SEMIPROCESADOS).map((response) => response.json())
+  }
+
+  getBasicDataSemiProcesados(): Observable<SemiProcesado[]> {
     return this.http.get(URL_SEMIPROCESADOS).map((response) => response.json())
   }
 
