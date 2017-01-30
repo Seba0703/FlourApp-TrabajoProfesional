@@ -18,3 +18,4 @@ export const URL_MOV_PROD_FINAL = 		'http://' + ip + ':' + puerto + '/api/movPro
 export const URL_MOV_PROD_USADO = 		'http://' + ip + ':' + puerto + '/api/movProductoUsado';
 export const URL_MOV_PROD_USADO_FINAL = 'http://' + ip + ':' + puerto + '/api/movProductoUsadoFinal';
 export const URL_USUARIOS = 'http://' + ip + ':' + puerto + '/api/usuarios';
+export const URL_LISTA_PRECIOS = 		'http://' + ip + ':' + puerto + '/api/listaPrecios';
