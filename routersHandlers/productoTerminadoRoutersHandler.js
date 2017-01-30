@@ -13,5 +13,8 @@ exports.getProductoTerminadoRoutersHandler = function(express){
 	  .put(productoTerminadoController.update)
 	  .delete(productoTerminadoController.delete);
 	  
+	productoTerminadoRoutersHandler.route('/productosTerminadosStock')  
+	  .put(productoTerminadoController.updateStock)
+	  
 	return productoTerminadoRoutersHandler;  
 }

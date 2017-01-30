@@ -3,9 +3,9 @@ import {Producto} from '../app_produccion/producto';
 
 export class MovProductoFinal {
   _id: string;
-  materiaPrimaUsada: Producto;
-  prodSemiUsado: Producto;
-  prodTermUsado: Producto;
+  materiaPrimaFinal: Producto;
+  prodSemiFinal: Producto;
+  prodTermFinal: Producto;
   fecha: string;
   cantidadFabricada: number;
 }

@@ -75,6 +75,35 @@ exports.update = function(req, res) {
     });
 };
 
+exports.updateStock = function(req, res) {
+	console.log('UPDATE STOCK');
+    console.log(req.body);
+	ProductoTerminado.findById(req.body._id, function(err, productoTerminado) {
+		if (productoTerminado) {
+			if (productoTerminado.cantidad) {
+				if (req.body.add){
+					productoTerminado.cantidad += req.body.cant;
+				} else {
+					productoTerminado.cantidad -= req.body.cant;
+				}
+				
+				if( productoTerminado.cantidad >= 0) { 
+					productoTerminado.save(function(err) { //almaceno en la base "productoTerminado" para que quede actualizada con los nuevos cambios
+						if(err) return res.status(500).send(err.message);
+						res.status(200).jsonp(productoTerminado);
+					});
+				} else {
+					res.status(505).send('No hay stock suficiente para realizar la accion. ' + req.body._id);
+				}
+			} else {
+				res.status(504).send('No hay una cantidad ingresada para ' + req.body._id);
+			}
+		} else {
+			res.status(503).send('Pruducto no encontrado en Terminados. ' + req.body._id);
+		}
+	});
+}
+
 
 exports.delete = function(req, res) {
 	console.log('DELETE');	

@@ -3,7 +3,6 @@ import { MovProductoFinal } from './mov-product-final';
 import { MovProductoUsado } from './mov-product-usado';
 import { MovProductService } from './mov-product.service';
 import { Producto } from '../app_produccion/producto';
-import { ModalDirective } from 'ng2-bootstrap';
 
 @Component({
   selector: 'deshacer-app',
@@ -17,8 +16,6 @@ export class AppComponent implements OnInit {
   productosFinal: MovProductoFinal[];
   productosUsado: MovProductoUsado[];
   selectedProduct: MovProductoFinal;
-  @ViewChild('openB') 
-  public infoModal: ModalDirective;
   
   constructor(private productService: MovProductService) { }
   
@@ -30,7 +27,6 @@ export class AppComponent implements OnInit {
   verProducto(producto: MovProductoFinal): void {
 	this.productService.getProductsUsado(producto._id).then(productosUsado => {
 		this.productosUsado = productosUsado;
-		this.infoModal.show();
 	});
   }
   

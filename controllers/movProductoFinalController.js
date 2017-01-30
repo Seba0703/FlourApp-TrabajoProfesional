@@ -1,9 +1,14 @@
 var mongoose = require('mongoose');
 //Import models
 var MovProductoFinal  = require("../models/movimientoProduccionFinal").movimientoProduccionFinalModel;
+var movProductoUsadoController = require("../controllers/movProductoUsadoController");
+
+var MateriaPrima  = require("../models/materiaPrima").materiaPrimaModel;
+var ProductoSemiProcesado  = require("../models/productoSemiProcesado").productoSemiProcesadoModel;
+var ProductoTerminado  = require("../models/productoTerminado").productoTerminadoModel;
 
 exports.findAll = function(req, res) {  
-    MovProductoFinal.find({}).populate('materiaPrimaUsada').populate('prodSemiUsado').populate('prodTermUsado').exec(function(err, movsProductoFinal){ 
+    MovProductoFinal.find({}).populate('materiaPrimaFinal').populate('prodSemiFinal').populate('prodTermFinal').exec(function(err, movsProductoFinal){ 
 		if(err) res.send(500, err.message);
 
 		console.log('GET/MovProductoFinal');
@@ -21,7 +26,7 @@ exports.findById = function(req, res) {
 		res.status(200).jsonp(movProductoFinal);
     };
 	
-    MovProductoFinal.findById(req.params.id, findByIdCallback); //luego de realizar la busqueda ejecuta el callback
+    MovProductoFinal.findById(req.params.id).populate('materiaPrimaFinal').populate('prodSemiFinal').populate('prodTermFinal').exec(findByIdCallback); //luego de realizar la busqueda ejecuta el callback
 };
 
 
@@ -30,11 +35,11 @@ exports.add = function(req, res) {
     console.log(req.body);
 
     var movProductoFinal = new MovProductoFinal({ //creo un nuevo movProductoFinal en base a lo recibido en el request
-        materiaPrimaUsada:      req.body.productoFinalID,
-		prodSemiUsado:      req.body.productoFinalID,	
-		prodTermUsado:      req.body.productoFinalID,
-        fecha:                req.body.fecha,
-        cantidadFabricada:    req.body.cantidadFabricada,
+        materiaPrimaFinal:      req.body._id,
+		prodSemiFinal:      req.body._id,	
+		prodTermFinal:      req.body._id,
+        fecha:                new Date(),
+        cantidadFabricada:    req.body.cant,
 		tipo:				  req.body.tipo,
     });
 
@@ -52,9 +57,9 @@ exports.update = function(req, res) {
     MovProductoFinal.findById(req.params.id, function(err, movProductoFinal) { //"movProductoFinal" es el objeto que me devuelve la busqueda
         
 		//actualizo todos los campos de ese "movProductoFinal"
-        movProductoFinal.prodSemiUsado =      req.body.productoFinalID;
-		movProductoFinal.prodTermUsado =      req.body.productoFinalID;
-		movProductoFinal.materiaPrimaUsada =      req.body.productoFinalID;
+        movProductoFinal.prodSemiFinal =      req.body.productoFinalID;
+		movProductoFinal.prodTermFinal =      req.body.productoFinalID;
+		movProductoFinal.materiaPrimaFinal =      req.body.productoFinalID;
         movProductoFinal.fecha =                req.body.fecha;
         movProductoFinal.cantidadFabricada =  	 req.body.cantidadFabricada;
 		movProductoFinal.tipo =  	 			 req.body.tipo;
@@ -71,11 +76,37 @@ exports.delete = function(req, res) {
 	console.log('DELETE');	
 	console.log(req.params.id);
 	
-    MovProductoFinal.findById(req.params.id, function(err, movProductoFinal) {
-        movProductoFinal.remove(function(err) {
-            if(err) return res.status(500).send(err.message);
-			res.status(200).send(movProductoFinal);
-        })
+    MovProductoFinal.findById(req.params.id).populate('materiaPrimaFinal').populate('prodSemiFinal').populate('prodTermFinal').exec(function(err, movProductoFinal) {
+		
+		var productoU = null;
+		var prodModel = null;
+			
+		if (movProductoFinal.materiaPrimaFinal) {
+			productoU = movProductoFinal.materiaPrimaFinal;
+			prodModel = MateriaPrima;
+		} else if (movProductoFinal.prodSemiFinal) {
+			productoU = movProductoFinal.prodSemiFinal;
+			prodModel = ProductoSemiProcesado;
+		} else {
+			productoU = movProductoFinal.prodTermFinal;
+			prodModel = ProductoTerminado;
+		}
+			
+		productoU.cantidad = productoU.cantidad - movProductoFinal.cantidadFabricada;
+		
+		prodModel.findById(productoU._id, function(err, producto) { //"producto" es el objeto que me devuelve la busqueda
+				
+				producto.cantidad = productoU.cantidad;
+				producto.save();
+			});
+		
+		movProductoUsadoController.deleteMany(req, res);
+		if (res.statusCode == 200) {
+			movProductoFinal.remove(function(err) {
+				if(err) return res.status(500).send(err.message);
+				res.status(200).send(movProductoFinal);
+			});
+		}
     });
 };
 

@@ -20,9 +20,9 @@
 </thead>
 <tbody *ngFor="let producto of productosFinal">
     <td>{{producto.fecha}}</td>
-    <td>{{producto.materiaPrimaUsada ? producto.materiaPrimaUsada.nombre : (producto.prodSemiUsado ? producto.prodSemiUsado.nombre : producto.prodTermUsado.nombre )}}</td>
+    <td>{{producto.materiaPrimaFinal ? producto.materiaPrimaFinal.nombre : (producto.prodSemiFinal ? producto.prodSemiFinal.nombre : producto.prodTermFinal.nombre )}}</td>
     <td>{{producto.cantidadFabricada}}</td>
-	<td>{{producto.materiaPrimaUsada ? producto.materiaPrimaUsada.unidad : (producto.prodSemiUsado ? producto.prodSemiUsado.unidad : producto.prodTermUsado.unidad )}}</td>
+	<td>{{producto.materiaPrimaFinal ? producto.materiaPrimaFinal.unidad : (producto.prodSemiFinal ? producto.prodSemiFinal.unidad : producto.prodTermFinal.unidad )}}</td>
     <td>
         <button type="button" class="btn btn-success" (click)="verProducto(producto)" title="Modificar"
         data-toggle="modal" data-target="#infoModal" >
@@ -36,7 +36,7 @@
 </table>
 
 <!-- Modal -->
-<div class="modal fade" id="infoModal" #openB tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="productosUsado">
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
