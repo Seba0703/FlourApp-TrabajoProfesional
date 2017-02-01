@@ -97,7 +97,13 @@ export class ProductDetailComponent {
   }
   
   onNotify(message:string):void {
-    this.requiredListDone = true;
+	if (message == 'Done') {
+		this.requiredListDone = true;
+	} else if (message == 'Error'){
+		alert('No se pudo conectar al servidor.');
+	} else if(message == 'Fin'){
+		alert('Stock actualizado con éxito.');
+	}
   }
   
   setGastos(): void {

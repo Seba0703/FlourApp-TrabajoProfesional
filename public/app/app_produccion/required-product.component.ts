@@ -59,6 +59,7 @@ export class RequiredProductComponent implements OnInit{
   @Output() notify: EventEmitter<string> = new EventEmitter<string>();
   
   requiredProducts: RequiredProduct[];
+  okCounter: number;
   
   constructor(private requiredProductService: RequiredProductService, private productService: ProductService, private movProductService: MovProductService) { }
   
@@ -69,13 +70,20 @@ export class RequiredProductComponent implements OnInit{
 	});
   }
   
-  putNewStock(movFinal: MovProductoFinal): void {
+  finish(): void {
+	this.okCounter++;
+	if (this.okCounter == this.requiredProducts.length - 1) { 	
+		this.notify.emit('Fin');
+	}
+  }
+  
+  putNewStock(movFinal: MovProductoFinal): void { 
+	this.okCounter = 0;
 	for (var i = 0; i < this.requiredProducts.length; i++) {
 		this.requiredProducts[i].add = false;
 		this.requiredProducts[i].movimientoProduccionFinalID = movFinal._id;
 		this.productService.putNewStock(this.requiredProducts[i]);
-		this.movProductService.postMovimientoUsado(this.requiredProducts[i]);
-
+		this.movProductService.postMovimientoUsado(this.requiredProducts[i]).then(() => this.finish()).catch(err => this.notify.emit('Error'));
 	}
   }
   

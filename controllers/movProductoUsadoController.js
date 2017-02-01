@@ -102,6 +102,8 @@ function actualizar(prodModel, productoU) {
 };
 
 exports.deleteMany = function(req, res) {
+	console.log("delete many");
+	console.log(req.body);
 	MovProductoUsado.find({'movimientoProduccionFinalID': req.params.id}).populate('materiaPrimaUsada').populate('prodSemiUsado').populate('prodTermUsado').exec(function(err, movsProductosUsados) { 
 	
 		for (var i = 0; i < movsProductosUsados.length; i++) {
@@ -120,7 +122,7 @@ exports.deleteMany = function(req, res) {
 			}
 			
 			productoU.cantidad = productoU.cantidad + movsProductosUsados[i].cantidadUsada;
-			console.log(productoU._id + '  -1- ' + productoU.cantidad);
+			console.log('Actualiza' + productoU._id + '  -1- ' + productoU.cantidad);
 			actualizar(prodModel, productoU);
 			movsProductosUsados[i].remove();
 		}
@@ -128,7 +130,7 @@ exports.deleteMany = function(req, res) {
 		if(err) res.send(500, err.message);
 
 		console.log('GET/deleteMany');	
-		res.status(200);
+		res.status(200).send();
 		
     });
 };
