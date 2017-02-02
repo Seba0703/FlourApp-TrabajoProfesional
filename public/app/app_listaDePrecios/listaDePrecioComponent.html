@@ -14,6 +14,10 @@
 					<i class="fa fa-eye" aria-hidden="true" title="Ver productos" (click)="ver(nombre)" data-toggle="modal" data-target="#productosModal"></i>
 				</td>
 			    <td>
+			        <button type="button" class="btn btn-success" (click)="modificar(nombre)" title="Modificar"
+			        data-toggle="modal" data-target="#modificarLDPmodal" >
+			          <i class="fa fa-pencil" aria-hidden="true"></i>
+			        </button>
 			        <button type="button" class="btn btn-danger" (click)="borrar(nombre)" title="Borrar" >
 			          <i class="fa fa-trash" aria-hidden="true"></i>
 			        </button>
@@ -23,13 +27,13 @@
 	</div>
 
 	<div class="col-md-1" style="padding-left: 0px;">
-		<button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar Lista de Precios" data-toggle="modal" data-target="#nuevaLDPmodal">+</button>
+		<button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar Lista de Precios" data-toggle="modal" data-target="#ldpModal" (click)="limpiarProductosSeleccionados()">+</button>
 	</div>
 
 </div>
 
 <!-- Modal NUEVA LDP-->
-<div class="modal fade" id="nuevaLDPmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="mostrarModal">
+<div class="modal fade" id="ldpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="mostrarModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -39,7 +43,7 @@
 				<div class="container">
 					<div class="form-group">
 					    <label for="text"><strong>Nuevo nombre:</strong></label>
-				    	<input type="text" class="form-control" placeholder="Ingrese nuevo nombre" aria-describedby="basic-addon1" style="margin-bottom: 4px;" #newListName>
+				    	<input type="text" class="form-control" placeholder="Ingrese nuevo nombre" aria-describedby="basic-addon1" style="margin-bottom: 4px;" #listName>
 
 						<label for="text" style="margin-top: 8px;"><strong>Productos seleccionados:</strong></label>
 						<table class="table">
@@ -88,7 +92,7 @@
 					<div class="row" style="margin: 0 auto">
 						<div class="col-md-12">
 			                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-			                <button type="button" class="btn btn-primary" (click)="crear(newListName.value); newListName.value=''">
+			                <button type="button" class="btn btn-primary" (click)="crear(listName.value); listName.value=''">
 			                    Guardar
 			                </button>
 						</div>
@@ -105,20 +109,109 @@
     </div>
 </div>
 
+<!-- Modal MODIFICAR LDP-->
+<div class="modal fade" id="modificarLDPmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="mostrarModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Lista de Precios</h5>
+            </div>
+            <div class="modal-body">
+				<div class="container">
+					<div class="form-group">
+					    <label for="text"><strong>Nombre:</strong></label>
+				    	<input type="text" class="form-control" placeholder="Ingrese un nombre para la lista" aria-describedby="basic-addon1" style="margin-bottom: 4px;" [value]="listaSolicitada" #newListName>
+					</div>
+
+					<label for="text" style="margin-top: 8px;"><strong>Productos seleccionados:</strong></label>
+					<table class="table">
+						<thead class="thead-inverse">
+						    <tr>
+						    <th>Nombre</th>
+						    <th>Precio</th>
+						    <th>Tipo</th>
+						    </tr>
+						</thead>
+						<tbody *ngFor="let producto of productosSeleccionados">
+						    <td>{{producto.nombre}}</td>
+						    <td>{{producto.precio}}</td>
+						    <td>{{producto.tipo}}</td>
+						</tbody>
+					</table>
+
+				</div>
+            </div>
+            <div class="modal-footer">
+	            <div class="container">
+					<div class="row">
+						<div class="row" style="margin-bottom: 8px;">
+							<div class="col-sm-4">
+					                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#mpModal" style="font-size: 11px;">
+					                + Materias Prima
+					                </button>
+							</div>
+
+							<div class="col-sm-4">
+					                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#spModal" style="font-size: 11px;">
+					                + Semiprocesados
+					                </button>
+							</div>
+
+							<div class="col-sm-4">
+					                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ptModal" style="font-size: 11px;">
+					                + Productos Terminados
+					                </button>
+							</div>
+						</div>
+
+						<HR COLOR="grey" WIDTH="60%">
+
+						<div class="row" style="margin: 0 auto">
+							<div class="col-md-12">
+				                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+				                <button type="button" class="btn btn-primary" 
+				                (click)="guardarModificaciones(newListName.value); newListName.value=''">
+				                    Guardar modificaciones
+				                </button>
+							</div>
+						
+						</div>
+
+					</div>
+	            	
+	            </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Modal MP-->
 <div class="modal fade" id="mpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Materias Prima</h5>
-            </div>
+
+	        	<div class="productos-modal-header">
+	                <h5 class="modal-title" id="exampleModalLabel">Materias Prima</h5>
+	            </div>
+
+
             <div class="modal-body">
 				<div class="container">
-					 <span *ngFor="let mp of materiasPrimaDisponibles">                                      
-					   <input type="checkbox"  id="{{mp._id}}" #cv [checked]=false (change)="onChange(mp._id, mp.nombre, mp.precioVenta,'MP',cv.checked)"                                    
-					    >
-					         {{mp.nombre}} - ${{mp.precioVenta}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese precio" value="{{mp.precioVenta}}" #precioVenta (keyup)="onPrecioVentaChange(precioVenta.value, mp._id)" (change)="onPrecioVentaChange(precioVenta.value, mp._id)"> <br>
+					 <span *ngFor="let mp of materiasPrimaDisponibles">
+					 	<div *ngIf="!fueSeleccionada(mp._id)">
+							   <input type="checkbox"  id="{{mp._id}}" #cv (change)="onChange(mp._id, mp.nombre, mp.precioVenta,'MP',cv.checked)"                                    
+							    >
+							         {{mp.nombre}} - ${{mp.precioVenta}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese precio" value="{{mp.precioVenta}}" #precioVenta (keyup)="onPrecioVentaChange(precioVenta.value, mp._id)" (change)="onPrecioVentaChange(precioVenta.value, mp._id)"> <br>
+						</div>
+
+					 	<div *ngIf="fueSeleccionada(mp._id)">
+							   <input type="checkbox" id="{{mp._id}}" checked #cv (change)="onChange(mp._id, mp.nombre, mp.precioVenta,'MP',cv.checked)"                                    
+							    >
+							         {{mp.nombre}} - ${{mp.precioVenta}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese precio" value="{{mp.precioVenta}}" #precioVenta (keyup)="onPrecioVentaChange(precioVenta.value, mp._id)" (change)="onPrecioVentaChange(precioVenta.value, mp._id)"> <br>
+						</div>
+
 					 </span>
 
 				</div>
@@ -140,15 +233,24 @@
 <div class="modal fade" id="spModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="productos-modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Productos Semiprocesados</h5>
             </div>
             <div class="modal-body">
 				<div class="container">
-					 <span *ngFor="let sp of semiProcesadosDisponibles">                                      
-					   <input type="checkbox"  id="{{sp._id}}" #cv [checked]=false (change)="onChange(sp._id, sp.nombre, sp.precioVenta, 'SP', cv.checked)"                                    
-					    >
-					         {{sp.nombre}} - ${{sp.precioVenta}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese precio" value="{{sp.precioVenta}}" #precioVenta (keyup)="onPrecioVentaChange(precioVenta.value, sp._id)" (change)="onPrecioVentaChange(precioVenta.value, mp._id)"> <br>
+					 <span *ngFor="let sp of semiProcesadosDisponibles">
+					 	<div *ngIf="!fueSeleccionada(sp._id)">
+						   <input type="checkbox"  id="{{sp._id}}" #cv (change)="onChange(sp._id, sp.nombre, sp.precioVenta, 'SP', cv.checked)"                                    
+						    >
+						         {{sp.nombre}} - ${{sp.precioVenta}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese precio" value="{{sp.precioVenta}}" #precioVenta (keyup)="onPrecioVentaChange(precioVenta.value, sp._id)" (change)="onPrecioVentaChange(precioVenta.value, mp._id)"> <br>
+					 	</div>
+
+					 	<div *ngIf="fueSeleccionada(sp._id)">
+						   <input type="checkbox"  id="{{sp._id}}" checked #cv (change)="onChange(sp._id, sp.nombre, sp.precioVenta, 'SP', cv.checked)"                                    
+						    >
+						         {{sp.nombre}} - ${{sp.precioVenta}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese precio" value="{{sp.precioVenta}}" #precioVenta (keyup)="onPrecioVentaChange(precioVenta.value, sp._id)" (change)="onPrecioVentaChange(precioVenta.value, mp._id)"> <br>
+					 	</div> 
+
 					 </span>
 
 				</div>
@@ -170,15 +272,23 @@
 <div class="modal fade" id="ptModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="productos-modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Productos Terminados</h5>
             </div>
             <div class="modal-body">
 				<div class="container">
-					 <span *ngFor="let pt of productosTerminadosDisponibles">                                      
-					   <input type="checkbox"  id="{{pt._id}}" #cv [checked]=false (change)="onChange(pt._id, pt.nombre, pt.precioVenta, 'PT', cv.checked)"                                    
-					    >
-					         {{pt.nombre}} - ${{pt.precioVenta}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese precio" value="{{pt.precioVenta}}" #precioVenta (keyup)="onPrecioVentaChange(precioVenta.value, pt._id)" (change)="onPrecioVentaChange(precioVenta.value, mp._id)"> <br>
+					 <span *ngFor="let pt of productosTerminadosDisponibles">
+						 <div *ngIf="!fueSeleccionada(pt._id)">
+						   <input type="checkbox"  id="{{pt._id}}" #cv (change)="onChange(pt._id, pt.nombre, pt.precioVenta, 'PT', cv.checked)"                                    
+						    >
+						         {{pt.nombre}} - ${{pt.precioVenta}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese precio" value="{{pt.precioVenta}}" #precioVenta (keyup)="onPrecioVentaChange(precioVenta.value, pt._id)" (change)="onPrecioVentaChange(precioVenta.value, mp._id)"> <br>
+						 </div>
+
+						 <div *ngIf="fueSeleccionada(pt._id)">
+						   <input type="checkbox"  id="{{pt._id}}" checked #cv (change)="onChange(pt._id, pt.nombre, pt.precioVenta, 'PT', cv.checked)"                                    
+						    >
+						         {{pt.nombre}} - ${{pt.precioVenta}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese precio" value="{{pt.precioVenta}}" #precioVenta (keyup)="onPrecioVentaChange(precioVenta.value, pt._id)" (change)="onPrecioVentaChange(precioVenta.value, mp._id)"> <br>
+						 </div>
 					 </span>
 
 				</div>
@@ -196,64 +306,6 @@
     </div>
 </div>
 
-
-<!-- Modal LDP-->
-<div class="modal fade" id="ldpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="mostrarModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Lista de Precios</h5>
-            </div>
-            <div class="modal-body">
-				<div class="container">
-					<label class="label-inline">
-						<strong>Nombre actual:</strong>
-				    	<input type="text" class="form-control" disabled aria-describedby="basic-addon1" style="margin-bottom: 4px;" [(ngModel)]="listaSolicitada">
-				    </label>
-
-					<div class="form-group">
-					    <label for="text"><strong>Nuevo nombre:</strong></label>
-				    	<input type="text" class="form-control" placeholder="Ingrese nuevo nombre" aria-describedby="basic-addon1" style="margin-bottom: 4px;" #newListName>
-					</div>
-
-				</div>
-            </div>
-            <div class="modal-footer">
-				<div class="row">
-					<div class="col-md-3">
-			                <button type="button" class="btn btn-info">
-			                + MP
-			                </button>
-					</div>
-
-					<div class="col-md-3">
-			                <button type="button" class="btn btn-info">
-			                + SP
-			                </button>
-					</div>
-
-					<div class="col-md-3">
-			                <button type="button" class="btn btn-info">
-			                + PT
-			                </button>
-					</div>
-
-
-					<div class="col-md-12">
-		                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-		                <button type="button" class="btn btn-primary" (click)="guardar(newListName.value); newListName.value=''">
-		                    Guardar
-		                </button>
-					</div>
-
-				</div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <!-- Modal Mostrar Productos de la LDP-->
 <div class="modal fade" id="productosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -269,11 +321,13 @@
 						    <tr>
 						    <th>Nombre</th>
 						    <th>Precio</th>
+						    <th>Tipo</th>
 						    </tr>
 						</thead>
 						<tbody *ngFor="let producto of getProductos()">
 						    <td>{{producto.nombre}}</td>
 						    <td>{{producto.precio}}</td>
+						    <td>{{producto.tipo}}</td>
 						</tbody>
 					</table>
 
@@ -285,6 +339,12 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
 
 
 

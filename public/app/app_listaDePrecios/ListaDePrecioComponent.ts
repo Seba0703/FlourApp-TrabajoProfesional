@@ -31,10 +31,9 @@ export class ListaDePrecioComponent {
 
   private listaSolicitada: string;
   private productosListos: boolean;
-  private mpListas: boolean;
 
   private mostrarModal: boolean = true;
-  
+
   constructor(
   	private lpService: ListaDePrecioServices,
   	private mpService: MateriaPrimaServices,
@@ -51,7 +50,6 @@ export class ListaDePrecioComponent {
   ngOnInit() {
     console.log("ON INIT");
     this.productosListos = false;
-    this.mpListas = false;
     this.cargarListaDePrecios();
   }
 
@@ -86,7 +84,6 @@ export class ListaDePrecioComponent {
                     err => console.error("EL ERROR FUE: ", err)
                   );
 
-    //this.materiasPrimaDisponibles = new Array<MateriaPrima>();
 
     this.mpService.getBasicDataMateriasPrima()
     			  .subscribe(
@@ -119,6 +116,10 @@ export class ListaDePrecioComponent {
 
   }
 
+  limpiarProductosSeleccionados(){
+    this.productosSeleccionados = new Array<ProductoSeleccionado>();
+  }
+
 	onChange(id: string, nombre: string, precioVenta: number ,tipo: string,valorCheck:boolean){
 	    if(valorCheck == true) {
 	    	this.productosSeleccionados.push(new ProductoSeleccionado(id, nombre, precioVenta, tipo));
@@ -141,27 +142,39 @@ export class ListaDePrecioComponent {
 		}
 	}
 
+	fueSeleccionada(id: string): boolean {
+		//console.log("CHECKEANDO ID= " + id);
+		for (let productoSeleccionado of this.productosSeleccionados){
+			if (id == productoSeleccionado.id) {
+				console.log("ENCONTRADO");
+				return true;
+			}
+		}
+		//console.log(" NO ENCONTRADO");
+		return false;
+	}
+
   ver(nombreLista: string){
     console.log("MOSTRANDO= " + nombreLista);
     this.listaSolicitada = nombreLista;
     this.productosListos = true;
   }
 
-  getProductos(): Array<ElementoListaDePrecios>{
+  getProductos(): Array<ProductoSeleccionado>{
     console.log("OBTENIENDO PRODUCTOS");
-    let productos = new Array<any>();
+    let productos = new Array<ProductoSeleccionado>();
 
     for (let producto of this.mapListaDePrecios.get(this.listaSolicitada)){
       if(producto.mp_ID) {
-        productos.push({nombre: producto.mp_ID.nombre, precio: producto.precio})
+        productos.push(new ProductoSeleccionado(producto.mp_ID._id, producto.mp_ID.nombre, producto.precio, "MP"));
       }
 
       if(producto.sp_ID) {
-        productos.push({nombre: producto.sp_ID.nombre, precio: producto.precio})
+        productos.push(new ProductoSeleccionado(producto.sp_ID._id, producto.sp_ID.nombre, producto.precio, "SP"));
       }
 
       if(producto.pt_ID) {
-        productos.push({nombre: producto.pt_ID.nombre, precio: producto.precio})
+        productos.push(new ProductoSeleccionado(producto.pt_ID._id, producto.pt_ID.nombre, producto.precio, "PT"));
       }
     }
 
@@ -190,6 +203,7 @@ export class ListaDePrecioComponent {
 
   crear(nombreLista: string){
   	if(nombreLista){
+      this.mostrarModal=false;
 	  	for (let productoSeleccionado of this.productosSeleccionados){
 	  		let productoBody = {
 	  			nombre: nombreLista,
@@ -206,23 +220,64 @@ export class ListaDePrecioComponent {
 	                        
 		                    }, error => {
 		                        console.log(JSON.stringify(error.json()));
-		                        alert("\t\t\t¡ERROR al crear Lista De Precio!\n\nRevise los campos");
+		                        alert("\t\t\t¡ERROR Lista De Precio!\n\nRevise los campos");
 		                    });
 
 	  	}
 
-	    alert("\t\t\t¡Lista de Precio creada!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
+	    alert("\t\t\t¡Lista de Precio: '" + nombreLista + "' OK!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
 	    window.location.reload();
 	} else {
 		alert("\t\t\t\t¡ERROR!\n\nDebe proporcionar al menos un nombre");
 	}
   }
 
+  modificar(nombreLista: string){
+  	console.log("modificando= " + nombreLista);
+  	this.listaSolicitada = nombreLista;
+
+  	this.productosSeleccionados = this.getProductos();
 
 
-  guardar(nombreLista: string){
+/*  	this.lpService.getListaDePreciosByName(nombreLista)
+  				  .subscribe(
+  				  	listaDePrecios => {
+  				  		this.listaDePrecios = listaDePrecios;
+  				  		console.log("LISTA= "+this.listaDePrecios);
+  				  		for(let elemLDP of this.listaDePrecios){
+  				  			let tipo: string = "";
+  				  			tipo = elemLDP.mp_ID ? "MP" : "";
+  				  			tipo = elemLDP.sp_ID ? "SP" : "";
+  				  			tipo = elemLDP.pt_ID ? "PT" : "";
+
+  				  			this.productosSeleccionados.push(
+  				  				new ProductoSeleccionado(
+  				  					elemLDP._id,
+  				  					elemLDP.nombre,
+  				  					elemLDP.precio,
+  				  					tipo
+  				  				)
+  				  			)
+
+
+  				  		}
+  				  	},
+  				  	err => console.error("EL ERROR FUE: ", err)
+  				  	);*/
+  				  
+  }
+
+  guardarModificaciones(nombreLista: string){
   	if(nombreLista){
-	    this.lpService.modificarNombre({actualName: this.listaSolicitada, nombre: nombreLista})
+        this.lpService.borrarListaDePrecio(this.listaSolicitada)
+                      .subscribe(
+                        () => {
+                        	this.crear(nombreLista); 
+                      },
+                        err => console.error("EL ERROR FUE: ", err)
+                      );
+		                     
+/*	    this.lpService.modificarNombre({actualName: this.listaSolicitada, nombre: nombreLista})
 	        .subscribe(data => {
 	            console.log(data);
 	            
@@ -230,8 +285,8 @@ export class ListaDePrecioComponent {
 	            window.location.reload();                        
 	        }, error => {
 	            console.log(JSON.stringify(error.json()));
-	            alert("\t\t\t\t¡ERROR al modificar Lista De Precio!\n\nRevise los campos");
-	        });
+	            alert("\t\t\t\t¡ERROR al guardar Lista De Precio!\n\nRevise los campos");
+	        });*/
   	} else {
   		alert("\t\t\t\t¡ERROR!\n\nDebe proporcionar al menos un nombre");
 	}

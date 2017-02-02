@@ -8,7 +8,8 @@ exports.getListaPrecioRoutersHandler = function(express){
 	  .get(listaPrecioController.findAll)
 	  .post(listaPrecioController.add);
 
-	listaPrecioRoutersHandler.route('/listaPrecios/list/:name')  
+	listaPrecioRoutersHandler.route('/listaPrecios/list/:name')
+	  .get(listaPrecioController.findByName)
 	  .put(listaPrecioController.updateListName)
 	  .delete(listaPrecioController.deleteList);
 

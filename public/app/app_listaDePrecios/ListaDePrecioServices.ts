@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { ElementoListaDePrecios } from './elementoListaDePrecios';
-import { URL_LISTA_PRECIOS } from '../rutas';
+import { URL_LISTA_PRECIOS, URL_LISTA_PRECIOS_LISTNAME } from '../rutas';
 
 @Injectable()
 export class ListaDePrecioServices {
@@ -17,6 +17,12 @@ export class ListaDePrecioServices {
   getListaDePrecios(): Observable<ElementoListaDePrecios[]>  {
     console.log("HACIENDO REQUEST");
     return this.http.get(URL_LISTA_PRECIOS)
+                    .map((response:Response) => response.json())
+                    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  getListaDePreciosByName(nombre: string): Observable<ElementoListaDePrecios[]>{
+    return this.http.get(URL_LISTA_PRECIOS_LISTNAME + "/" + nombre)
                     .map((response:Response) => response.json())
                     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }

@@ -1,28 +1,9 @@
 var mongoose = require('mongoose');
 //Import models
 var ListaPrecio  = require("../models/listaDePrecios").listaDePreciosModel;
-/*var MateriaPrima = require("../models/materiaPrima").materiaPrimaModel;
-var ProductoSemiProcesado = require("../models/productoSemiProcesado").productoSemiProcesadoModel;
-var ProductoTerminado = require("../models/productoTerminado").productoTerminadoModel;*/
 
 exports.findAll = function(req, res) {
     console.log('GET/listaPrecios'); 
-/*    ListaPrecio.find({}, function(err, listaPrecios){
-        MateriaPrima.populate(listaPrecios, {path: "mp_ID"}, function(err, listaPrecios){
-            if(err) res.send(500, err.message);
-            res.status(200).jsonp(listaPrecios);
-        });
-
-        ProductoSemiProcesado.populate(listaPrecios, {path: "sp_ID"}, function(err, listaPrecios){
-            if(err) res.send(500, err.message);
-            res.status(200).jsonp(listaPrecios);
-        }); 
-
-        ProductoTerminado.populate(listaPrecios, {path: "pt_ID"}, function(err, listaPrecios){
-            if(err) res.send(500, err.message);
-            res.status(200).jsonp(listaPrecios);
-        }); 
-	});*/
     ListaPrecio.find({}).populate('mp_ID').populate('sp_ID').populate('pt_ID').exec(function(err, listaPrecios){ 
         if(err) res.send(500, err.message);
         res.status(200).jsonp(listaPrecios);
@@ -95,6 +76,18 @@ exports.delete = function(req, res) {
     });
 };
 
+exports.findByName = function(req, res) {
+    console.log('GET/listaPrecio/list' + req.params.name);
+
+    var findByNameCallback = 
+    function(err, listaPrecios){
+        if(err) return res.send(500, err.message);
+
+        res.status(200).jsonp(listaPrecios);
+    };
+
+    ListaPrecio.find({nombre: req.params.name}, findByNameCallback);
+}
 
 exports.updateListName = function(req, res) {
     console.log('UPDATE LIST NAME');
