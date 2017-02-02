@@ -86,7 +86,7 @@ app.use('/api', movProductUsadoRoutersHandler);
 // Connection to DB
 mongoose.connect('mongodb://localhost/flourapp', function(err, res) {  //se conecta a la base de datos
   if(err) {
-    console.log('ERROR: al conectarse con Database. ' + err);
+    console.log('ERROR: al conectarse con Database.' + err);
   } else {
 	console.log("Connected to Database ¡OK!");  
   }
