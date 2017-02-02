@@ -94,19 +94,29 @@ exports.delete = function(req, res) {
 			
 		productoU.cantidad = productoU.cantidad - movProductoFinal.cantidadFabricada;
 		
-		prodModel.findById(productoU._id, function(err, producto) { //"producto" es el objeto que me devuelve la busqueda
-				
-				producto.cantidad = productoU.cantidad;
-				producto.save();
-			});
-		
-		movProductoUsadoController.deleteMany(req, res);
-		if (res.statusCode == 200) {
-			movProductoFinal.remove(function(err) {
-				if(err) return res.status(500).send(err.message);
-				res.status(200).send(movProductoFinal);
-			});
+		if (productoU.cantidad < 0) {
+			productoU.cantidad = 0;
 		}
+		
+		prodModel.findById(productoU._id, function(err, producto) { //"producto" es el objeto que me devuelve la busqueda
+			console.log('setea cantidad');
+			producto.cantidad = productoU.cantidad;
+			producto.save(function(err) {
+				if (err) {
+					return res.status(500).send(err.message);
+				} else {
+					console.log('remueve mov prod final');			
+					movProductoFinal.remove(function(err) {
+						if(err) {
+							return res.status(500).send(err.message);
+						}else {
+							console.log('hace delete many');	
+							movProductoUsadoController.deleteMany(req, res);
+						}
+					});
+				}
+			});
+		});
     });
 };
 
