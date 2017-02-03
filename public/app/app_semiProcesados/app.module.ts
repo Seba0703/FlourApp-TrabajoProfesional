@@ -8,7 +8,11 @@ import { NavMenuComponent } from '../nav-menu/navMenuComponent';
 import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { SemiProcesadoComponent} from './semiProcesadoComponent';
 import { AgregadorSemiProcesadoComponent} from './agregadorSemiProcesadoComponent';
-import { SemiProcesadoServices} from './semiProcesadoServices';
+
+import { ListaPorcentajeServices } from '../listaPorcentaje/ListaPorcentajeServices'
+import { MateriaPrimaServices } from '../app_materiasPrima/materiaPrimaServices';
+import { SemiProcesadoServices } from '../app_semiProcesados/semiProcesadoServices';
+import { ProductoTerminadoServices } from '../app_productosTerminados/productoTerminadoServices';
 
 @NgModule({
   imports: [
@@ -23,7 +27,12 @@ import { SemiProcesadoServices} from './semiProcesadoServices';
     SemiProcesadoComponent,
     AgregadorSemiProcesadoComponent
   ],
-  providers: [ SemiProcesadoServices ],
+  providers: [
+    ListaPorcentajeServices,
+    MateriaPrimaServices,
+    SemiProcesadoServices,
+    ProductoTerminadoServices
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

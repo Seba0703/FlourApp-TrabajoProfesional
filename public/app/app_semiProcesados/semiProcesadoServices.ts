@@ -4,13 +4,15 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { SemiProcesado } from './semiProcesado';
+import { ListaPorcentajeServices } from '../listaPorcentaje/ListaPorcentajeServices'
+
 import {URL_SEMIPROCESADOS} from '../rutas';
 
 @Injectable()
 export class SemiProcesadoServices{
   public semiProcesados: Array<any>;
 
-  constructor(private http:Http) {
+  constructor(private http:Http, private lpService: ListaPorcentajeServices) {
     console.log("INICIALIZANDO SemiProcesadoS SERVIRCE");
   }
 
@@ -30,10 +32,21 @@ export class SemiProcesadoServices{
     return this.http.post(URL_SEMIPROCESADOS, body, {headers: headers});
   }
 
+  agregarComponente(body: Object) : Observable<Response> {
+    return this.lpService.agregarComponente(body);
+/*    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log("POST REQUEST");
+    return this.http.post(URL_LISTA_PRECIOS, body, {headers: headers});*/
+  }
+
   borrarSemiProcesado(id: string): Observable<Response> {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     console.log("DELETE REQUEST");
+    this.lpService.borrarListaPorcentajes(id)
+                  .subscribe(()=>{}, (error:any) => Observable.throw(error.json().error || 'Server error'))
+                  
     return this.http.delete(URL_SEMIPROCESADOS + "/" + id, {headers: headers});
   }
 

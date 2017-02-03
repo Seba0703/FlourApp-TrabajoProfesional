@@ -7,6 +7,7 @@ import { AppComponent }  from './app.component';
 import { NavMenuComponent } from '../nav-menu/navMenuComponent';
 import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { ListaDePrecioComponent} from './listaDePrecioComponent';
+
 import { ListaDePrecioServices} from './listaDePrecioServices';
 import { MateriaPrimaServices } from '../app_materiasPrima/materiaPrimaServices';
 import { SemiProcesadoServices } from '../app_semiProcesados/semiProcesadoServices';
@@ -25,10 +26,10 @@ import { ProductoTerminadoServices } from '../app_productosTerminados/productoTe
     ListaDePrecioComponent
   ],
   providers: [ 
-  ListaDePrecioServices,
-  MateriaPrimaServices,
-  SemiProcesadoServices,
-  ProductoTerminadoServices
+    ListaDePrecioServices,
+    MateriaPrimaServices,
+    SemiProcesadoServices,
+    ProductoTerminadoServices
    ],
   bootstrap: [ AppComponent ]
 })

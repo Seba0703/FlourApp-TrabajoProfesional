@@ -10,6 +10,7 @@
     <th>Porcentaje Merma</th>
     <th>Tipo</th>
     <th>Precio Venta</th>
+    <th>Componentes</th>
     <th>Acciones</th>
   </tr>
   </thead>
@@ -20,9 +21,19 @@
     <td>{{semiProcesado.stockMin}}</td>
     <td>{{semiProcesado.stockMax}}</td>
     <td>{{semiProcesado.embolsadoCantDefault}}</td>
-    <td>{{semiProcesado.porcentajeMerma}}%</td>
+    <td *ngIf="semiProcesado.porcentajeMerma">{{semiProcesado.porcentajeMerma}}%</td>
+    <td *ngIf="!semiProcesado.porcentajeMerma"></td>
     <td>{{semiProcesado.tipo}}</td>
     <td>{{semiProcesado.precioVenta}}</td>
+    <td>
+      <div class="row" style="margin: 0 auto">
+        <button type="button" class="btn btn-warning" (click)="componentes(semiProcesado._id)" title="Definir componentes" 
+        data-toggle="modal" data-target="#componentesModal">
+          <i class="fa fa-eyedropper" aria-hidden="true"></i>
+        </button>
+      </div>
+
+    </td>
     <td>
       <div class="row">
           <div class="col-md-6">
@@ -46,7 +57,7 @@
 <div class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="mostrarModalModificar">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modificar-modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Modificar producto semiprocesado</h5>
             </div>
             <div class="modal-body">
@@ -89,9 +100,54 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" (click)="guardarModificaciones()">
+                <button type="button" class="btn btn-success" (click)="guardarModificaciones()">
                     Guardar modificaciones
                 </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal COMPONETES-->
+<div class="modal fade" id="componentesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="mostrarModalComponentes">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="componentes-modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Lista de Porcentajes</h5>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+                <label for="text" style="margin-top: 8px;"><strong>Componentes seleccionados:</strong></label>
+
+                 <span *ngFor="let componente of componentesDisponibles">
+                  <div *ngIf="!fueSeleccionada(componente._id)">
+                       <input type="checkbox" #cv (change)="onChange(componente._id, componente.nombre, 0,'MP', cv.checked)"                                    
+                        >
+                             {{componente.nombre}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese porcentaje"  #porcentaje (keyup)="onPorcentajeChange(porcentaje.value, componente._id)" (change)="onPorcentajeChange(porcentaje.value, componente._id)"> <br>
+                  </div>
+
+<!--                   <div *ngIf="fueSeleccionada(componente._id)">
+                       <input type="checkbox"  id="{{componente._id}}" checked #cv (change)="onChange(componente._id, componente.nombre, componente.porcentaje,'MP', cv.checked)"                                    
+                        >
+                             {{componente.nombre}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese porcentaje"  #porcentaje (keyup)="onPorcentajeChange(porcentaje.value, componente._id)" (change)="onPorcentajeChange(porcentaje.value, componente._id)"> <br>
+                  </div> -->
+
+                 </span>
+
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div class="container">
+                <div class="row" style="margin: 0 auto">
+                  <div class="col-md-12">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-warning" 
+                            (click)="guardarComponentes()">
+                                Guardar componentes
+                            </button>
+                  </div>
+                </div>
+              </div>
             </div>
         </div>
     </div>
