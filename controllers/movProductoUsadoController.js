@@ -74,11 +74,14 @@ exports.findByProductoFinal_id = function(req, res) {
     console.log(req.body);
 	
     MovProductoUsado.find({'movimientoProduccionFinalID': req.params.id}).populate('materiaPrimaUsada').populate('prodSemiUsado').populate('prodTermUsado').exec(function(err, movsProductosUsados) { //"movProductoFinal" es el objeto que me devuelve la busqueda
-        
-		if(err) res.send(500, err.message);
+        if(movsProductosUsados) {
+			if(err) res.send(500, err.message);
 
-		console.log('GET/MovProductoUsado');	
-		res.status(200).jsonp(movsProductosUsados);
+			console.log('GET/MovProductoUsado');	
+			res.status(200).jsonp(movsProductosUsados);
+		} else {
+			res.send(505, 'No encontrado.');
+		}
     });
 };
 
@@ -87,10 +90,14 @@ exports.delete = function(req, res) {
 	console.log(req.params.id);
 	
     MovProductoUsado.findById(req.params.id, function(err, movProductoUsado) {
-        movProductoUsado.remove(function(err) {
-            if(err) return res.status(500).send(err.message);
-			res.status(200).send(movProductoUsado);
-        })
+		if(movProductoUsado) {
+			movProductoUsado.remove(function(err) {
+				if(err) return res.status(500).send(err.message);
+				res.status(200).send(movProductoUsado);
+			});
+		} else {
+			return res.status(505).send('No encontrado');
+		}
     });
 };
 

@@ -60,6 +60,7 @@ export class RequiredProductComponent implements OnInit{
   
   requiredProducts: RequiredProduct[];
   okCounter: number;
+  errorStck: boolean;
   
   constructor(private requiredProductService: RequiredProductService, private productService: ProductService, private movProductService: MovProductService) { }
   
@@ -70,20 +71,44 @@ export class RequiredProductComponent implements OnInit{
 	});
   }
   
-  finish(): void {
+  finish(mssgSucces: string): void {
 	this.okCounter++;
-	if (this.okCounter == this.requiredProducts.length - 1) { 	
-		this.notify.emit('Fin');
+	if (this.okCounter == this.requiredProducts.length && !this.errorStck) { 	
+		this.notify.emit(mssgSucces);
 	}
+  }
+  
+  canUpdate(): void {
+	this.okCounter = 0;
+	this.errorStck = false;
+	for (var i = 0; i < this.requiredProducts.length && !this.errorStck; i++) {
+		this.requiredProducts[i].add = false;
+		this.productService.canPutNewStock(this.requiredProducts[i])
+			.then(() =>  this.finish('Can'))
+			.catch(err => {
+				this.errorStck = true;
+				if(err.status = 505) {
+					this.notify.emit('StckEr');
+				}else {
+					this.notify.emit('Error');
+				}
+			});
+	}  
   }
   
   putNewStock(movFinal: MovProductoFinal): void { 
 	this.okCounter = 0;
+	this.errorStck = false;
 	for (var i = 0; i < this.requiredProducts.length; i++) {
 		this.requiredProducts[i].add = false;
 		this.requiredProducts[i].movimientoProduccionFinalID = movFinal._id;
 		this.productService.putNewStock(this.requiredProducts[i]);
-		this.movProductService.postMovimientoUsado(this.requiredProducts[i]).then(() => this.finish()).catch(err => this.notify.emit('Error'));
+		this.movProductService.postMovimientoUsado(this.requiredProducts[i])
+			.then(() => this.finish('Fin'))
+			.catch(err => {
+				this.errorStck = true;
+				this.notify.emit('Error');
+			});
 	}
   }
   
@@ -115,6 +140,10 @@ export class RequiredProductComponent implements OnInit{
 	} else if (requiredProduct.cant && requiredProduct.cant <= requiredProduct.stock && requiredProduct.cant > 0) {
 		requiredProduct.changeColor = false;
 	}
+  }
+  
+  clean(): void {
+	this.requiredProducts = null;
   }
   
   allGastosSetted(): boolean {

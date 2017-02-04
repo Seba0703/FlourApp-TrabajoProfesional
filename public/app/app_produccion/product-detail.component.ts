@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import {RequiredProductComponent} from './required-product.component'
 import {RequiredProduct} from './required-product'
 import { ProductService } from './product.service';
@@ -61,30 +61,32 @@ import { CommonFunctions } from './common-functions';
  `],
   providers: [ProductService, MovProductService]
 })
-export class ProductDetailComponent {
+export class ProductDetailComponent implements OnInit{
   
   @Input()
   producto: Producto;
-  
+  mermaAnt: number;
   requiredListDone: boolean = false;
+  hasErrorsEmitted: boolean = false;
   
-  @ViewChild('required') 
+  @ViewChild('required') 	
   requiredProds: RequiredProductComponent;
   
   constructor(private productService: ProductService, private movProductService: MovProductService) { }
   
+  ngOnInit(): void {
+	if (this.producto)
+		this.mermaAnt = this.producto.porcentajeMerma;
+  }
+  
   fabricar(): void {
+	this.hasErrorsEmitted = false;
 	//no ceros, no NAN, no negativo, aviso de no cumple con porcentaje, aviso excluye merma
 	if (this.producto.cant && this.producto.cant > 0 && this.producto.porcentajeMerma && this.producto.porcentajeMerma > 0 && this.requiredProds.allGastosSetted() ) {
 		console.log('post server');
 		this.producto.add = true;
-		this.productService.putNewStock(this.producto).then(() => {
-			this.movProductService.postMovimientoFinal(this.producto).then( movFinal => this.requiredProds.putNewStock(movFinal));
-		}).catch(err => {
-			if(err.status == 505) {
-				alert(err._body);
-			}
-		});
+		//solo me fijo de los productos requeridos, ya que hace una resta, al sacar del stock (al agregar no hace falta);
+		this.requiredProds.canUpdate(); //si puede va al onNotify
 	} else {
 		if (this.producto.cant == null || this.producto.cant <= 0) {
 			alert('Cantidad erronea.');
@@ -99,10 +101,24 @@ export class ProductDetailComponent {
   onNotify(message:string):void {
 	if (message == 'Done') {
 		this.requiredListDone = true;
+	} else if (message == 'Can'){//Si puede viene aca
+		this.productService.putNewStock(this.producto).then(() => {
+			this.movProductService.postMovimientoFinal(this.producto).then( movFinal => this.requiredProds.putNewStock(movFinal));
+		}).catch(err => {
+			if(err.status == 505) {
+				alert(err._body);
+			}
+		});
 	} else if (message == 'Error'){
 		alert('No se pudo conectar al servidor.');
 	} else if(message == 'Fin'){
 		alert('Stock actualizado con éxito.');
+		this.producto.porcentajeMerma = this.mermaAnt;
+		this.producto.cant = null;
+		this.producto = null;
+	} else if (message == 'StckEr' && !this.hasErrorsEmitted) {
+		this.hasErrorsEmitted = true;
+		alert('No hay stock suficiente para realizar la acción.');
 	}
   }
   

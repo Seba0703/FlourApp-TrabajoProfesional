@@ -50,6 +50,37 @@ exports.add = function(req, res) {
     });
 };
 
+exports.canUpdateStock = function(req, res) {
+	console.log('CAN UPDATE STOCK');
+	console.log(req.query);
+	ProductoSemiProcesado.findById(req.query.id, function(err, semiProcesado) {
+		if (semiProcesado) {
+			if (semiProcesado.cantidad) {
+				console.log(semiProcesado.cantidad);
+				if (+req.query.add == 'true'){
+					console.log('SUMA');
+					semiProcesado.cantidad = +semiProcesado.cantidad + +req.query.cant;
+				} else {
+					console.log('resta');
+					semiProcesado.cantidad = +semiProcesado.cantidad - +req.query.cant;
+				}
+				
+				console.log(semiProcesado.cantidad);
+				
+				if(semiProcesado.cantidad >= 0) { 
+					res.status(200).jsonp(semiProcesado);
+				} else {
+					res.status(505).send('No hay stock suficiente para realizar la accion. ' + req.query.id);
+				}
+			} else {
+				res.status(504).send('No una cantidad ingresada para ' + req.query.id);
+			}
+		} else {
+			res.status(503).send('Pruducto no encontrado en Materia Prima. ' + req.query.id);
+		}
+	});
+}
+
 
 exports.update = function(req, res) {
 	console.log('UPDATE');
@@ -83,10 +114,10 @@ exports.updateStock = function(req, res) {
 	ProductoSemiProcesado.findById(req.body._id, function(err, semiProcesado) {
 		if (semiProcesado) {
 			if (semiProcesado.cantidad) {
-				if (req.body.add){
-					semiProcesado.cantidad += req.body.cant;
+				if (req.body.add == 'true'){
+					semiProcesado.cantidad = +semiProcesado.cantidad + +req.body.cant;
 				} else {
-					semiProcesado.cantidad -= req.body.cant;
+					semiProcesado.cantidad = +semiProcesado.cantidad - +req.body.cant;
 				}
 				
 				if(semiProcesado.cantidad >= 0) { 

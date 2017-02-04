@@ -14,6 +14,7 @@ exports.getSemiProcesadoRoutersHandler = function(express){
 	  .delete(semiProcesadoController.delete);
 	  
 	semiProcesadoRoutersHandler.route('/semiProcesadosStock')  
+	  .get(semiProcesadoController.canUpdateStock)
 	  .put(semiProcesadoController.updateStock)
 	  
 	return semiProcesadoRoutersHandler;  

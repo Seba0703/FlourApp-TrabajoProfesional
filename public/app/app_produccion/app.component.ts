@@ -31,7 +31,7 @@ import { ProductService } from './product.service';
 				</div>
 			</div>
 		
-			<my-product-detail [producto]="selectedProduct"></my-product-detail> 
+			<my-product-detail *ngIf="selectedProduct" [producto]="selectedProduct"></my-product-detail> 
 			
 		</div>
 	</div>
@@ -55,7 +55,9 @@ export class AppComponent implements OnInit {
 	
     this.productService.getProductsSemi().then(productosSemi => {
 		this.auxProds = productosSemi;
-		this.productService.getProductsTerm().then(productosTerm => this.productos = this.auxProds.concat(productosTerm));
+		this.productService.getProductsTerm().then(productosTerm => {
+			this.productos = this.auxProds.concat(productosTerm)
+		});
 	});
   }
  
@@ -64,6 +66,7 @@ export class AppComponent implements OnInit {
   }
   
   onSelect(producto: Producto): void {
+	producto.cant = null;
     this.selectedProduct = producto;
   }
 }
