@@ -103,6 +103,9 @@ hr {
   font-size: 30px;
   line-height: 1.33;
   border-radius: 35px;
+  -webkit-box-shadow: 8px 8px 3px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 8px 8px 3px 0px rgba(0,0,0,0.75);
+  box-shadow: 8px 8px 3px 0px rgba(0,0,0,0.75);
 }
 
 .btn-circle.signout-lg {
