@@ -5,7 +5,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { ComponenteSeleccionado } from './componenteSeleccionado';
-import { URL_LISTA_PORCENTAJES } from '../rutas';
+import { ElementoListaPorcentajes } from './elementoListaPorcentaje';
+import { URL_LISTA_PORCENTAJES, URL_LISTA_PORCENTAJES_LIST_PROD_FAB } from '../rutas';
 
 @Injectable()
 export class ListaPorcentajeServices {
@@ -17,6 +18,13 @@ export class ListaPorcentajeServices {
   getListaPorcentajes(): Observable<ComponenteSeleccionado[]>  {
     console.log("HACIENDO REQUEST");
     return this.http.get(URL_LISTA_PORCENTAJES)
+                    .map((response:Response) => response.json())
+                    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  getListaPorcentajesByIDproductoNecesario(idProductoNecesario: string): Observable<ElementoListaPorcentajes[]>  {
+    console.log("HACIENDO REQUEST BY PRODUCT NECESARIO ID");
+    return this.http.get(URL_LISTA_PORCENTAJES_LIST_PROD_FAB + "/" + idProductoNecesario)
                     .map((response:Response) => response.json())
                     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
@@ -43,14 +51,4 @@ export class ListaPorcentajeServices {
     console.log("PUT REQUEST");
     return this.http.put(URL_LISTA_PORCENTAJES + "/" + body._id, body, {headers: headers});
   }
-
-/*  modificarNombre(body: any): Observable<ElementoListaPorcentajes[]> {
-    var headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    console.log("PUT REQUEST");
-    return this.http.put(URL_LISTA_PORCENTAJES + "/list/" + body.actualName, body, {headers: headers})
-                    .map((response:Response) => response.json())
-                    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
-  }*/
-
 }

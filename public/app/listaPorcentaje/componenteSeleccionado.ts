@@ -1,8 +1,8 @@
 export class ComponenteSeleccionado {
     constructor(
-        public id: string,
+        public productoNecesarioID: string,
         public nombre: string, 
-        public porcentaje: number,
+        public porcentajeNecesario: number,
         public tipo: string
         ){}
 }

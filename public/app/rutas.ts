@@ -21,3 +21,4 @@ export const URL_USUARIOS = 'http://' + ip + ':' + puerto + '/api/usuarios';
 export const URL_LISTA_PRECIOS = 		'http://' + ip + ':' + puerto + '/api/listaPrecios';
 export const URL_LISTA_PRECIOS_LISTNAME = 		'http://' + ip + ':' + puerto + '/api/listaPrecios/list';
 export const URL_LISTA_PORCENTAJES = 		'http://' + ip + ':' + puerto + '/api/listaPorcentajes';
+export const URL_LISTA_PORCENTAJES_LIST_PROD_FAB = 		'http://' + ip + ':' + puerto + '/api/listaPorcentajes/productoList';

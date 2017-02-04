@@ -54,7 +54,7 @@
 </table>
 
 <!-- Modal -->
-<div class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="mostrarModalModificar">
+<div class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="mostrarModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modificar-modal-header">
@@ -109,7 +109,8 @@
 </div>
 
 <!-- Modal COMPONETES-->
-<div class="modal fade" id="componentesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="mostrarModalComponentes">
+<div class="modal fade" id="componentesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" 
+[hidden]="!mostrarModal"> <!-- hidden es true si mostrarModal es false-->
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="componentes-modal-header">
@@ -118,22 +119,20 @@
             <div class="modal-body">
               <div class="container">
                 <label for="text" style="margin-top: 8px;"><strong>Componentes seleccionados:</strong></label>
+                   <span *ngFor="let componente of componentesDisponibles">
+                    <div *ngIf="!fueSeleccionado(componente._id)">
+                         <input type="checkbox" #cv (change)="onChange(componente._id, componente.nombre, 0, cv.checked)"                                    
+                          >
+                               {{componente.nombre}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese porcentaje"  #porcentaje (keyup)="onPorcentajeChange(porcentaje.value, componente._id)" (change)="onPorcentajeChange(porcentaje.value, componente._id)"> <br>
+                    </div>
 
-                 <span *ngFor="let componente of componentesDisponibles">
-                  <div *ngIf="!fueSeleccionada(componente._id)">
-                       <input type="checkbox" #cv (change)="onChange(componente._id, componente.nombre, 0,'MP', cv.checked)"                                    
-                        >
-                             {{componente.nombre}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese porcentaje"  #porcentaje (keyup)="onPorcentajeChange(porcentaje.value, componente._id)" (change)="onPorcentajeChange(porcentaje.value, componente._id)"> <br>
-                  </div>
+                    <div *ngIf="fueSeleccionado(componente._id)">
+                         <input type="checkbox" checked #cv (change)="onChange(componente._id, componente.nombre, 0, cv.checked)"                                    
+                          >
+                               {{componente.nombre}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese porcentaje"  [value]="getPorcentaje(componente._id)" #porcentaje (keyup)="onPorcentajeChange(porcentaje.value, componente._id)" (change)="onPorcentajeChange(porcentaje.value, componente._id)"> <br>
+                    </div>
 
-<!--                   <div *ngIf="fueSeleccionada(componente._id)">
-                       <input type="checkbox"  id="{{componente._id}}" checked #cv (change)="onChange(componente._id, componente.nombre, componente.porcentaje,'MP', cv.checked)"                                    
-                        >
-                             {{componente.nombre}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese porcentaje"  #porcentaje (keyup)="onPorcentajeChange(porcentaje.value, componente._id)" (change)="onPorcentajeChange(porcentaje.value, componente._id)"> <br>
-                  </div> -->
-
-                 </span>
-
+                   </span>
               </div>
             </div>
             <div class="modal-footer">
@@ -141,7 +140,7 @@
                 <div class="row" style="margin: 0 auto">
                   <div class="col-md-12">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-warning" 
+                            <button type="button" class="btn btn-warning" data-dismiss="modal"
                             (click)="guardarComponentes()">
                                 Guardar componentes
                             </button>

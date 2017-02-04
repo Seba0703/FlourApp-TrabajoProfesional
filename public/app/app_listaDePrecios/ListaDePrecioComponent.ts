@@ -237,33 +237,6 @@ export class ListaDePrecioComponent {
   	this.listaSolicitada = nombreLista;
 
   	this.productosSeleccionados = this.getProductos();
-
-
-/*  	this.lpService.getListaDePreciosByName(nombreLista)
-  				  .subscribe(
-  				  	listaDePrecios => {
-  				  		this.listaDePrecios = listaDePrecios;
-  				  		console.log("LISTA= "+this.listaDePrecios);
-  				  		for(let elemLDP of this.listaDePrecios){
-  				  			let tipo: string = "";
-  				  			tipo = elemLDP.mp_ID ? "MP" : "";
-  				  			tipo = elemLDP.sp_ID ? "SP" : "";
-  				  			tipo = elemLDP.pt_ID ? "PT" : "";
-
-  				  			this.productosSeleccionados.push(
-  				  				new ProductoSeleccionado(
-  				  					elemLDP._id,
-  				  					elemLDP.nombre,
-  				  					elemLDP.precio,
-  				  					tipo
-  				  				)
-  				  			)
-
-
-  				  		}
-  				  	},
-  				  	err => console.error("EL ERROR FUE: ", err)
-  				  	);*/
   				  
   }
 
@@ -276,17 +249,6 @@ export class ListaDePrecioComponent {
                       },
                         err => console.error("EL ERROR FUE: ", err)
                       );
-		                     
-/*	    this.lpService.modificarNombre({actualName: this.listaSolicitada, nombre: nombreLista})
-	        .subscribe(data => {
-	            console.log(data);
-	            
-	            alert("\t\t\t\t¡Lista de Precio modificado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
-	            window.location.reload();                        
-	        }, error => {
-	            console.log(JSON.stringify(error.json()));
-	            alert("\t\t\t\t¡ERROR al guardar Lista De Precio!\n\nRevise los campos");
-	        });*/
   	} else {
   		alert("\t\t\t\t¡ERROR!\n\nDebe proporcionar al menos un nombre");
 	}

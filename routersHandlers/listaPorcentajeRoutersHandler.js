@@ -14,7 +14,7 @@ exports.getListaPorcentajeRoutersHandler = function(express){
 	  .delete(listaPorcentajeController.delete);
 
 	listaPorcentajeRoutersHandler.route('/listaPorcentajes/productoList/:productoAfabricarID')  
-	  .put(listaPorcentajeController.findByProductoAfabricarID)
+	  .get(listaPorcentajeController.findByProductoAfabricarID)
 	  .delete(listaPorcentajeController.deleteList);
 	  
 	return listaPorcentajeRoutersHandler;  

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Response } from '@angular/http';
 
-import { ComponenteSeleccionado } from './componenteSeleccionado';
+import { ComponenteSeleccionado } from '../listaPorcentaje/componenteSeleccionado';
 
 import { MateriaPrimaServices } from '../app_materiasPrima/materiaPrimaServices';
 import { SemiProcesadoServices } from '../app_semiProcesados/semiProcesadoServices';
@@ -35,8 +35,7 @@ export class SemiProcesadoComponent implements OnInit{
 
   private idProductoActual: string;
 
-  private mostrarModalModificar: boolean = true;
-  private mostrarModalComponentes: boolean = true;
+  private mostrarModal: boolean = true;
   
   constructor(
     private mpService: MateriaPrimaServices,
@@ -49,6 +48,7 @@ export class SemiProcesadoComponent implements OnInit{
 
     this.componentesDisponibles = new Array<any>();
     this.componentesSeleccionados = new Array<ComponenteSeleccionado>();
+
   }
 
   ngOnInit() {
@@ -69,9 +69,6 @@ export class SemiProcesadoComponent implements OnInit{
               );
 
     this.cargarComponentesDisponibles();
-
-
-
   }
 
   cargarComponentesDisponibles() {
@@ -110,36 +107,75 @@ export class SemiProcesadoComponent implements OnInit{
   componentes(idProductoSeleccionado: string){
     this.idProductoActual = idProductoSeleccionado;
 
-    //this.componentesSeleccionados = new Array<ComponenteSeleccionado>();
     this.cargarComponentesDisponibles();
+
+    this.cargarComponentesSeleccionados();
+  }
+
+  cargarComponentesSeleccionados(){
+  	console.log("CARGANDO COMPONENTES SELECCIONADOS");
+  	this.spService.getComponentesSeleccionados(this.idProductoActual)
+  				  .subscribe(
+  				  	(componentesSeleccionados) => {
+  				  		this.componentesSeleccionados = componentesSeleccionados;
+  				  	},
+  				  	error => {
+                            console.log(JSON.stringify(error.json()));
+                            alert("\t\t\t¡ERROR Lista De Porcentaje!\n\nRevise los campos");
+                        }
+  				  	);
   }
 
   guardarComponentes(){
-      for (let componenteSeleccionado of this.componentesSeleccionados){
-        let componenteBody = {
-          productoAFabricarID: this.idProductoActual,
-          productoNecesarioID: componenteSeleccionado.id,
-          porcentajeNecesario: componenteSeleccionado.porcentaje
-        }
+  	if(this.laSumaDePorcentajesDa100()) {//VALIDAR 100%
+  		this.mostrarModal = false;
 
-        this.spService.agregarComponente(componenteBody)
-                        .subscribe(data => {
-                            console.log(data);
-                        }, error => {
+        this.spService.borrarComponentes(this.idProductoActual)
+                      .subscribe(
+                        () => {
+					      	for (let componenteSeleccionado of this.componentesSeleccionados){
+						        let componenteBody = {
+						          productoAFabricarID: this.idProductoActual,
+						          productoNecesarioID: componenteSeleccionado.productoNecesarioID,
+						          porcentajeNecesario: componenteSeleccionado.porcentajeNecesario
+						        }
+					        	this.spService.agregarComponente(componenteBody)
+					                        .subscribe(data => {
+					                            console.log(data);
+					                        }, 
+					                        error => {
+					                            console.log(JSON.stringify(error.json()));
+					                            alert("\t\t\t¡ERROR Lista De Porcentaje!\n\nRevise los campos");
+					                        }
+					                        );
+							}
+							this.mostrarModal = true;
+                      },
+                        error => {
                             console.log(JSON.stringify(error.json()));
-                            alert("\t\t\t¡ERROR Lista De Precio!\n\nRevise los campos");
-                        });
-
-      }
-
+                            alert("\t\t\t¡ERROR Lista De Porcentaje!\n\nRevise los campos");
+	                    }
+                      );
+      	
+  	} else {
+  		alert("\t\t\t¡ERROR!\n\nLa suma de los porcentajes no da 100%");
+  	}
   }
 
-  onChange(id: string, nombre: string, porcentaje: number, tipo: string, valorCheck:boolean){
+  laSumaDePorcentajesDa100(): boolean {
+  	let porcentajeParcial: number = 0;
+  	for (let componenteSelec of this.componentesSeleccionados){
+  		porcentajeParcial += parseInt(""+componenteSelec.porcentajeNecesario, 10);
+  	}
+  	return parseInt(""+porcentajeParcial, 10) == 100 ? true : false
+  }
+
+  onChange(id: string, nombre: string, porcentaje: number, valorCheck:boolean){
       if(valorCheck == true) {
-        this.componentesSeleccionados.push(new ComponenteSeleccionado(id, nombre, porcentaje, tipo));
+        this.componentesSeleccionados.push(new ComponenteSeleccionado(id, nombre, porcentaje, ""));
       } else {
         for (let componenteSeleccionado of this.componentesSeleccionados){
-          if(componenteSeleccionado.id == id) {
+          if(componenteSeleccionado.productoNecesarioID == id) {
             let index = this.componentesSeleccionados.indexOf(componenteSeleccionado);
             this.componentesSeleccionados.splice(index, 1);
           }
@@ -150,14 +186,33 @@ export class SemiProcesadoComponent implements OnInit{
 
   onPorcentajeChange(porcentaje: number, id: string){
     for (var i = 0; i < this.componentesSeleccionados.length; ++i) {
-      if(this.componentesSeleccionados[i].id == id) {
-        this.componentesSeleccionados[i].porcentaje = porcentaje;
+      if(this.componentesSeleccionados[i].productoNecesarioID == id) {
+        this.componentesSeleccionados[i].porcentajeNecesario = porcentaje;
       }
     }
   }
 
-  fueSeleccionada(idComponente: string): boolean {
-    return false;
+  fueSeleccionado(idComponente: string): boolean {
+	//console.log("TAM= " + this.componentesSeleccionados.length);
+	for (let componenteSeleccionado of this.componentesSeleccionados){
+		if (idComponente == componenteSeleccionado.productoNecesarioID) {
+			console.log("ENCONTRADO");
+			return true;
+		}
+	}
+	//console.log(" NO ENCONTRADO");
+	return false;
+  }
+
+  getPorcentaje(componenteID: string): number{
+  	var callBackFilterID = 
+  	function (componenteSelec: ComponenteSeleccionado) {
+		return componenteSelec.productoNecesarioID == componenteID;
+	}
+
+  	return this.componentesSeleccionados.filter(callBackFilterID)[0].porcentajeNecesario;
+  	//El filter retorna una lista con los elementos que hayan coincidido con el criterio de busqueda
+  	//como ya se que el ID es unico, la lista solo va a tener un elemento
   }
 
   borrar(id: string){
@@ -213,7 +268,7 @@ export class SemiProcesadoComponent implements OnInit{
   guardarModificaciones(){
     if(this.nombre && this.stockMin && this.stockMax ) { 
       if((this.porcentajeMerma && this.porcentajeMerma<=100) || (!this.porcentajeMerma)){
-        this.mostrarModalModificar = false;
+        this.mostrarModal = false;
         let tasaImpositivaID: string;
         switch (this.tasaImpositiva.split("-")[1].split("%")[0]) {
           case "0":
