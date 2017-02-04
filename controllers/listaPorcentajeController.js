@@ -33,7 +33,9 @@ exports.add = function(req, res) {
 		productoNecesarioIDPrima:	req.body.productoNecesarioID,
 		productoNecesarioIDSemi:	req.body.productoNecesarioID,
 		productoNecesarioIDTerm:	req.body.productoNecesarioID,
-        porcentajeNecesario:        req.body.porcentajeNecesario
+        porcentajeNecesario:        req.body.porcentajeNecesario,
+		tipoNecesario:        req.body.tipoNecesario,
+		tipoAFabricar:        req.body.tipoAFabricar
     });
 
     listaPorcentaje.save(function(err, listaPorcentaje) { //almaceno el listaPorcentaje en la base de datos
@@ -57,6 +59,8 @@ exports.update = function(req, res) {
 		listaPorcentaje.productoNecesarioIDSemi = req.body.productoNecesarioID;
 		listaPorcentaje.productoNecesarioIDTerm = req.body.productoNecesarioID;
         listaPorcentaje.porcentajeNecesario 	= req.body.porcentajeNecesario;
+		listaPorcentaje.tipoNecesario 			= req.body.tipoNecesario;
+		listaPorcentaje.tipoAFabricar			= req.body.tipoAFabricar;
 
         listaPorcentaje.save(function(err) { //almaceno en la base "listaPorcentaje" para que quede actualizada con los nuevos cambios
             if(err) return res.status(500).send(err.message);

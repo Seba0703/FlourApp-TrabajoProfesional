@@ -136,8 +136,10 @@ export class SemiProcesadoComponent implements OnInit{
 					      	for (let componenteSeleccionado of this.componentesSeleccionados){
 						        let componenteBody = {
 						          productoAFabricarID: this.idProductoActual,
+								  tipoAFabricar: 2,
 						          productoNecesarioID: componenteSeleccionado.productoNecesarioID,
-						          porcentajeNecesario: componenteSeleccionado.porcentajeNecesario
+						          porcentajeNecesario: componenteSeleccionado.porcentajeNecesario,
+								  tipoNecesario: componenteSeleccionado.tipo
 						        }
 					        	this.spService.agregarComponente(componenteBody)
 					                        .subscribe(data => {
