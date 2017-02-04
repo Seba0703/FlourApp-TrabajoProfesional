@@ -17,5 +17,8 @@ exports.getListaPorcentajeRoutersHandler = function(express){
 	  .get(listaPorcentajeController.findByProductoAfabricarID)
 	  .delete(listaPorcentajeController.deleteList);
 	  
+	listaPorcentajeRoutersHandler.route('/listaPorcentajes/conDatos/:productoAfabricarID')  
+	  .get(listaPorcentajeController.findByProductoAfabricarIDconDatos)
+	  
 	return listaPorcentajeRoutersHandler;  
 }
