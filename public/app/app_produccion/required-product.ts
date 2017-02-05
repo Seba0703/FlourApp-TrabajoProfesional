@@ -1,10 +1,13 @@
+import { Producto } from './producto';
+
 export class RequiredProduct {
   _id: string;
-  name: string;
-  unit: string;
-  stock: number;
+  productoNecesarioIDPrima: Producto;
+  productoNecesarioIDSemi: Producto;
+  productoNecesarioIDTerm: Producto;
+  productoNecesario?: Producto;//Este es el producto necesario real, ya sea prima, semi o term
+  porcentajeNecesario: number;
   cant?: number;
-  percent: number;
   changeColor?: boolean = false;
   tipo?: number;
   movimientoProduccionFinalID?: string;

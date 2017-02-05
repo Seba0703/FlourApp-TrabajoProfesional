@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { Producto } from './producto';
 import { ProductService } from './product.service';
+import {ProductDetailComponent} from './product-detail.component'
+
 @Component({
   selector: 'my-app',
   template: `
@@ -31,7 +33,7 @@ import { ProductService } from './product.service';
 				</div>
 			</div>
 		
-			<my-product-detail *ngIf="selectedProduct" [producto]="selectedProduct"></my-product-detail> 
+			<my-product-detail #detail *ngIf="selectedProduct" [productoID]="selectedProduct"></my-product-detail> 
 			
 		</div>
 	</div>
@@ -48,6 +50,8 @@ export class AppComponent implements OnInit {
   productos: Producto[];
   auxProds: Producto[];
   selectedProduct: Producto;
+  @ViewChild('detail') 	
+  detailProduct: ProductDetailComponent;
   
   constructor(private productService: ProductService) { }
   

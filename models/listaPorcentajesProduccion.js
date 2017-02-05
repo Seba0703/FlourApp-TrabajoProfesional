@@ -7,8 +7,6 @@ var listaPorcentajesProduccionSchema = Schema({
   productoNecesarioIDPrima:	{ type: Schema.Types.ObjectId, ref: 'MateriaPrima'},
   productoNecesarioIDSemi:	{ type: Schema.Types.ObjectId, ref: 'ProductoSemiProcesado' },
   productoNecesarioIDTerm:	{ type: Schema.Types.ObjectId, ref: 'ProductoTerminado'  },
-  tipoNecesario:			{ type: Number },
-  tipoAFabricar:			{ type: Number },
   porcentajeNecesario:		{ type: Number }
 });
 

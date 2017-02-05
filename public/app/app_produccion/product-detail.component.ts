@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChange, ViewChild, Input } from '@angular/core';
 import {RequiredProductComponent} from './required-product.component'
 import {RequiredProduct} from './required-product'
 import { ProductService } from './product.service';
@@ -61,11 +61,11 @@ import { CommonFunctions } from './common-functions';
  `],
   providers: [ProductService, MovProductService]
 })
-export class ProductDetailComponent implements OnInit{
+export class ProductDetailComponent implements OnChanges {
   
   @Input()
+  productoID: Producto;
   producto: Producto;
-  mermaAnt: number;
   requiredListDone: boolean = false;
   hasErrorsEmitted: boolean = false;
   
@@ -74,9 +74,11 @@ export class ProductDetailComponent implements OnInit{
   
   constructor(private productService: ProductService, private movProductService: MovProductService) { }
   
-  ngOnInit(): void {
-	if (this.producto)
-		this.mermaAnt = this.producto.porcentajeMerma;
+  ngOnChanges(changes: { [key: string]: SimpleChange}) {		
+	this.productService.getProduct(this.productoID)
+		.then(product => {
+			this.producto = product;
+		});
   }
   
   fabricar(): void {
@@ -113,7 +115,6 @@ export class ProductDetailComponent implements OnInit{
 		alert('No se pudo conectar al servidor.');
 	} else if(message == 'Fin'){
 		alert('Stock actualizado con éxito.');
-		this.producto.porcentajeMerma = this.mermaAnt;
 		this.producto.cant = null;
 		this.producto = null;
 	} else if (message == 'StckEr' && !this.hasErrorsEmitted) {

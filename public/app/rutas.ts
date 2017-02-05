@@ -22,3 +22,4 @@ export const URL_LISTA_PRECIOS = 		'http://' + ip + ':' + puerto + '/api/listaPr
 export const URL_LISTA_PRECIOS_LISTNAME = 		'http://' + ip + ':' + puerto + '/api/listaPrecios/list';
 export const URL_LISTA_PORCENTAJES = 		'http://' + ip + ':' + puerto + '/api/listaPorcentajes';
 export const URL_LISTA_PORCENTAJES_LIST_PROD_FAB = 		'http://' + ip + ':' + puerto + '/api/listaPorcentajes/productoList';
+export const URL_LISTA_PORCENTAJES_CON_DATOS = 'http://' + ip + ':' + puerto + '/api/listaPorcentajes/conDatos'

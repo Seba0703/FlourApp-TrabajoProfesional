@@ -16,6 +16,22 @@ export class ProductService {
   private headers = new Headers({'Content-Type': 'application/json'});
 	
   constructor(private http: Http) { }
+  
+  getProduct(producto: Producto): Promise<Producto> {
+	var pruductURL: string;
+	if(producto.tipo == 1) {
+		pruductURL = URL_MATERIAS_PRIMA;
+	} else if(producto.tipo == 2) {
+		pruductURL = URL_SEMIPROCESADOS;
+	} else {
+		pruductURL = URL_PRODUCTOS_TERMINADOS;
+	}
+	  
+    return this.http.get(pruductURL + '/' + producto._id)
+               .toPromise()
+               .then(response => response.json() as Producto)
+               .catch(this.handleError);
+  }
 	
   getProductsSemi(): Promise<Producto[]> {
      return this.http.get(URL_SEMIPROCESADOS)

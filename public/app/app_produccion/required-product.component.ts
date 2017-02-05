@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChange, Output, EventEmitter } from '@angular/core';
 import { RequiredProduct } from './required-product';
 import { RequiredProductService } from './required-product.service';
 import { ProductService } from './product.service';
@@ -23,13 +23,13 @@ import { CommonFunctions } from './common-functions';
 			  </tr>
 			</thead>
 			<tbody *ngFor="let requiredProduct of requiredProducts">
-				<td [ngClass]= '{red: requiredProduct.changeColor, black: !requiredProduct.changeColor}'>{{requiredProduct.name}}</td>
-				<td [ngClass]= '{red: requiredProduct.changeColor, black: !requiredProduct.changeColor}'>{{requiredProduct.stock}}</td>
-				<td [ngClass]= '{red: requiredProduct.changeColor, black: !requiredProduct.changeColor}'>{{requiredProduct.unit}}</td>
+				<td [ngClass]= '{red: requiredProduct.changeColor, black: !requiredProduct.changeColor}'>{{requiredProduct.productoNecesario.nombre}}</td>
+				<td [ngClass]= '{red: requiredProduct.changeColor, black: !requiredProduct.changeColor}'>{{requiredProduct.productoNecesario.cantidad}}</td>
+				<td [ngClass]= '{red: requiredProduct.changeColor, black: !requiredProduct.changeColor}'>{{requiredProduct.productoNecesario.unidad}}</td>
 				<td [ngClass]= '{red: requiredProduct.changeColor, black: !requiredProduct.changeColor}'>
 					<input [(ngModel)]="requiredProduct.cant" type="number" min="0.01" step="0.01" (blur)="executeComportamientos(requiredProduct)" placeholder="Cantidad"/>
 				</td>
-				<td [ngClass]= '{red: requiredProduct.changeColor, black: !requiredProduct.changeColor}'>{{requiredProduct.percent}}</td>
+				<td [ngClass]= '{red: requiredProduct.changeColor, black: !requiredProduct.changeColor}'>{{requiredProduct.porcentajeNecesario}}</td>
 			</tbody>
 		</table>
 	</div>
@@ -52,7 +52,7 @@ import { CommonFunctions } from './common-functions';
   providers: [RequiredProductService, ProductService, MovProductService]
 })
 
-export class RequiredProductComponent implements OnInit{
+export class RequiredProductComponent implements OnChanges{
   @Input()
   product: Producto;
   
@@ -65,7 +65,19 @@ export class RequiredProductComponent implements OnInit{
   constructor(private requiredProductService: RequiredProductService, private productService: ProductService, private movProductService: MovProductService) { }
   
   getRequiredProducts(): void {
-    this.requiredProductService.getRequiredProducts().then(requiredProducts => {
+    this.requiredProductService.getRequiredProducts(this.product._id).then(requiredProducts => {
+		for (var i = 0; i < requiredProducts.length; i++) {
+			if (requiredProducts[i].productoNecesarioIDPrima) {
+				requiredProducts[i].productoNecesario = requiredProducts[i].productoNecesarioIDPrima;
+			} else if (requiredProducts[i].productoNecesarioIDSemi) {
+				requiredProducts[i].productoNecesario = requiredProducts[i].productoNecesarioIDSemi;
+			} else {
+				requiredProducts[i].productoNecesario = requiredProducts[i].productoNecesarioIDTerm;
+			}
+			
+			requiredProducts[i]._id = requiredProducts[i].productoNecesario._id;
+			requiredProducts[i].tipo = requiredProducts[i].productoNecesario.tipo;
+		}
 		this.requiredProducts = requiredProducts
 		this.notify.emit('Done');
 	});
@@ -112,8 +124,8 @@ export class RequiredProductComponent implements OnInit{
 	}
   }
   
-  ngOnInit(): void {
-    this.getRequiredProducts();
+  ngOnChanges(changes: { [key: string]: SimpleChange }) {		
+	this.getRequiredProducts();
   }
   
   executeComportamientos(requiredProduct: RequiredProduct): void {
@@ -122,22 +134,22 @@ export class RequiredProductComponent implements OnInit{
 	  
 	//para poner una cantidad al producto que se va a producir, tienen que estar todos los gastos seteados, distintos de cero y con una numero correct al porcentaje.
 	if ( ( this.product.cant == null || this.product.cant == 0 )  && this.allGastosSetted() && this.correctQuantityPercent()) {
-		this.product.cant = CommonFunctions.round( ((this.requiredProducts[0].cant * 100 / this.requiredProducts[0].percent) * ( 1 - (this.product.porcentajeMerma/100))), 2);
+		this.product.cant = CommonFunctions.round( ((this.requiredProducts[0].cant * 100 / this.requiredProducts[0].porcentajeNecesario) * ( 1 - (this.product.porcentajeMerma/100))), 2);
 	}
   }
   
   setGastos(cantSinMerma: number): void {
 	for (var i = 0; i < this.requiredProducts.length; i++) {
-		this.requiredProducts[i].cant = CommonFunctions.round( (cantSinMerma * this.requiredProducts[i].percent) / 100, 2);
+		this.requiredProducts[i].cant = CommonFunctions.round( (cantSinMerma * this.requiredProducts[i].porcentajeNecesario) / 100, 2);
 		this.changeAlertColor(this.requiredProducts[i]);
 	}
   }
 
   //si no hay stock se cambia el color.
   changeAlertColor(requiredProduct: RequiredProduct): void {
-	 if ( requiredProduct.cant != null && (requiredProduct.cant > requiredProduct.stock || requiredProduct.cant <= 0) ) {
+	 if ( requiredProduct.cant != null && (requiredProduct.cant > requiredProduct.productoNecesario.cantidad || requiredProduct.cant <= 0) ) {
 		requiredProduct.changeColor = true;
-	} else if (requiredProduct.cant && requiredProduct.cant <= requiredProduct.stock && requiredProduct.cant > 0) {
+	} else if (requiredProduct.cant && requiredProduct.cant <= requiredProduct.productoNecesario.cantidad && requiredProduct.cant > 0) {
 		requiredProduct.changeColor = false;
 	}
   }
@@ -164,11 +176,11 @@ export class RequiredProductComponent implements OnInit{
   correctQuantityPercent(): boolean {
 	var total = 0;
 	
-	for(var i = 0; i < this.requiredProducts.length && this.requiredProducts[i].cant && this.requiredProducts[i].cant > 0 && this.requiredProducts[i].cant <= this.requiredProducts[i].stock ; i++) {
+	for(var i = 0; i < this.requiredProducts.length && this.requiredProducts[i].cant && this.requiredProducts[i].cant > 0 && this.requiredProducts[i].cant <= this.requiredProducts[i].productoNecesario.cantidad ; i++) {
 		total += this.requiredProducts[i].cant;
 	}
 	
-	return CommonFunctions.round(total,2) == CommonFunctions.round(this.requiredProducts[0].cant * 100 / this.requiredProducts[0].percent, 2);
+	return CommonFunctions.round(total,2) == CommonFunctions.round(this.requiredProducts[0].cant * 100 / this.requiredProducts[0].porcentajeNecesario, 2);
   }
   
 }
