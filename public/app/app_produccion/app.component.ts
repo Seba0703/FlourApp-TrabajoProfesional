@@ -40,7 +40,7 @@ import {ProductDetailComponent} from './product-detail.component'
   `,
   styles: [`
   .selected {
-      background-color: #CFD8DC !important;
+      background-color: #9aa2a6 !important;
       color: white;
     }
   `],

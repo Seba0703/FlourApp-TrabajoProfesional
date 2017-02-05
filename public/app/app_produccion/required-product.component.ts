@@ -13,7 +13,7 @@ import { CommonFunctions } from './common-functions';
   template: `
 	<div *ngIf="requiredProducts" style="overflow-x:auto;">
 		<table class="table table-hover table-bordered">
-			<thead>
+			<thead class="thead-inverse">
 			  <tr>
 				<th>Productos necesarios</th>
 				<th>Stock</th>

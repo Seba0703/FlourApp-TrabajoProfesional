@@ -13,19 +13,21 @@ import { CommonFunctions } from './common-functions';
 	<div *ngIf="producto">
 		<table class="table table-bordered">
 			
-			<thead>
+			<thead class="thead-inverse">
 			  <tr>
 				<th>A producir</th>
-				<th>Cantidad</th>
+				<th>Stock actual</th>
 				<th>Unidad</th>
+				<th>Cantidad</th>
 				<th>Merma</th>
 			  </tr>
 			</thead>
 			
 			<tbody>
 				<td>{{producto.nombre}}</td>
+				<td>{{producto.cantidad}}</td>
+				<td>{{producto.unidad}}</td>
 				<td><input [(ngModel)]="producto.cant" type="number" min="0.01" step="0.01" (blur)="setGastos()" placeholder="Cantidad"/></td>
-				<td>{{producto.unit}}</td>
 				<td><input [(ngModel)]="producto.porcentajeMerma" type="number" min="0.01" max="99.99" step="0.01" (blur)="overideGastos()" placeholder="Merma"/></td>
 			</tbody>
 			
