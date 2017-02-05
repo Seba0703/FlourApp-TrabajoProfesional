@@ -1,4 +1,4 @@
-let ip = "152.169.160.251";
+let ip = "localhost";
 let puerto = 3000;
 
 //VIEWs

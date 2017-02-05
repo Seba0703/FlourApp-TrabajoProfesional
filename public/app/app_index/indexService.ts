@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import {URL_USUARIOS} from '../rutas'
 import 'rxjs/add/operator/map';
-
-const URL_USUARIOS: string = 'http://localhost:3000/api/usuarios';
 
 @Injectable()
 export class IndexService {
