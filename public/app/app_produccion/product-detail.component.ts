@@ -10,7 +10,7 @@ import { CommonFunctions } from './common-functions';
 @Component({
   selector: 'my-product-detail',
   template: `
-	<div *ngIf="producto">
+	<div *ngIf="producto" style="overflow-x:auto;">
 		<table class="table table-bordered">
 			
 			<thead class="thead-inverse">

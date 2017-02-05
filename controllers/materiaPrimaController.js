@@ -77,9 +77,12 @@ exports.updateStock = function(req, res) {
     console.log(req.body);
 	MateriaPrima.findById(req.body._id, function(err, materiaPrima) {
 		if (materiaPrima) {
-			if (materiaPrima.cantidad) {
-				if (req.body.add == 'true'){
-					materiaPrima.cantidad = +materiaPrima.cantidad + +req.body.cant;
+			if (materiaPrima.cantidad || +req.body.add == 1) {
+				if (+req.body.add == 1){
+					if (materiaPrima.cantidad)
+						materiaPrima.cantidad = +materiaPrima.cantidad + +req.body.cant;
+					else 
+						materiaPrima.cantidad = +req.body.cant;
 				} else {
 					materiaPrima.cantidad = +materiaPrima.cantidad - +req.body.cant;
 				}
@@ -106,9 +109,12 @@ exports.canUpdateStock = function(req, res) {
 	console.log(req.query);
 	MateriaPrima.findById(req.query.id, function(err, materiaPrima) {
 		if (materiaPrima) {
-			if (materiaPrima.cantidad) {
-				if (req.query.add == 'true'){
-					materiaPrima.cantidad = +materiaPrima.cantidad + +req.query.cant;
+			if (materiaPrima.cantidad || req.query.add == 'true') {
+				if (req.query.add == 'true') {
+					if (materiaPrima.cantidad)
+						materiaPrima.cantidad = +materiaPrima.cantidad + +req.query.cant;
+					else 
+						materiaPrima.cantidad = +req.query.cant;
 				} else {
 					materiaPrima.cantidad = +materiaPrima.cantidad - +req.query.cant;
 				}

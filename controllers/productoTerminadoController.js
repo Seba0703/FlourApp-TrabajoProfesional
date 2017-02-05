@@ -54,9 +54,12 @@ exports.canUpdateStock = function(req, res) {
 	console.log(req.query);
 	ProductoTerminado.findById(req.query.id, function(err, productoTerminado) {
 		if (productoTerminado) {
-			if (productoTerminado.cantidad) {
-				if (req.query.add == 'true'){
-					productoTerminado.cantidad = +productoTerminado.cantidad + +req.query.cant;
+			if (productoTerminado.cantidad || +req.query.add == 1) {
+				if (+req.query.add == 1){
+					if (productoTerminado.cantidad)
+						productoTerminado.cantidad = +productoTerminado.cantidad + +req.query.cant;
+					else 
+						productoTerminado.cantidad = +req.query.cant;
 				} else {
 					productoTerminado.cantidad = +productoTerminado.cantidad - +req.query.cant;
 				}
@@ -106,9 +109,12 @@ exports.updateStock = function(req, res) {
     console.log(req.body);
 	ProductoTerminado.findById(req.body._id, function(err, productoTerminado) {
 		if (productoTerminado) {
-			if (productoTerminado.cantidad) {
-				if (req.body.add == 'true'){
-					productoTerminado.cantidad = +productoTerminado.cantidad + +req.body.cant;
+			if (productoTerminado.cantidad || +req.body.add == 1) {
+				if (+req.body.add == 1){
+					if (productoTerminado.cantidad)
+						productoTerminado.cantidad = +productoTerminado.cantidad + +req.body.cant;
+					else 
+						productoTerminado.cantidad = +req.body.cant;
 				} else {
 					productoTerminado.cantidad = +productoTerminado.cantidad - +req.body.cant;
 				}

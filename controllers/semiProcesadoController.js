@@ -55,11 +55,14 @@ exports.canUpdateStock = function(req, res) {
 	console.log(req.query);
 	ProductoSemiProcesado.findById(req.query.id, function(err, semiProcesado) {
 		if (semiProcesado) {
-			if (semiProcesado.cantidad) {
+			if (semiProcesado.cantidad || +req.query.add == 1) {
 				console.log(semiProcesado.cantidad);
-				if (+req.query.add == 'true'){
+				if (+req.query.add == 1){
 					console.log('SUMA');
-					semiProcesado.cantidad = +semiProcesado.cantidad + +req.query.cant;
+					if (semiProcesado.cantidad)
+						semiProcesado.cantidad = +semiProcesado.cantidad + +req.query.cant;
+					else 
+						semiProcesado.cantidad = +req.query.cant;
 				} else {
 					console.log('resta');
 					semiProcesado.cantidad = +semiProcesado.cantidad - +req.query.cant;
@@ -113,9 +116,12 @@ exports.updateStock = function(req, res) {
     console.log(req.body);
 	ProductoSemiProcesado.findById(req.body._id, function(err, semiProcesado) {
 		if (semiProcesado) {
-			if (semiProcesado.cantidad) {
-				if (req.body.add == 'true'){
-					semiProcesado.cantidad = +semiProcesado.cantidad + +req.body.cant;
+			if (semiProcesado.cantidad || +req.body.add == 1) {
+				if (+req.body.add == 1){
+					if (semiProcesado.cantidad)
+						semiProcesado.cantidad = +semiProcesado.cantidad + +req.body.cant;
+					else
+						semiProcesado.cantidad = +req.body.cant;
 				} else {
 					semiProcesado.cantidad = +semiProcesado.cantidad - +req.body.cant;
 				}
@@ -129,7 +135,7 @@ exports.updateStock = function(req, res) {
 					res.status(505).send('No hay stock suficiente para realizar la accion. ' + req.body._id);
 				}
 			} else {
-				res.status(504).send('No una cantidad ingresada para ' + req.body._id);
+				res.status(504).send('No una cantidad ingresada para ' + req.body._id + req.body.add);
 			}
 		} else {
 			res.status(503).send('Pruducto no encontrado en Semi Procesados. ' + req.body._id);
