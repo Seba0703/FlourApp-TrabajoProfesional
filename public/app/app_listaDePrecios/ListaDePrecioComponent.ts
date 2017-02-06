@@ -216,7 +216,6 @@ export class ListaDePrecioComponent {
 		    this.lpService.agregarListaDePrecio(productoBody)
 		                    .subscribe(data => {
 		                        console.log(data);
-		                        
 	                        
 		                    }, error => {
 		                        console.log(JSON.stringify(error.json()));

@@ -1,30 +1,32 @@
 <table class="table">
-<thead class="thead-inverse">
-    <tr>
-    <th>Nombre Empresa</th>
-    <th>CUIT</th>
-    <th>Categoría Fiscal</th>
-    <th>Dirección</th>
-    <th>Condición de Pago</th>
-    <th>Acciones</th>
-    </tr>
-</thead>
-<tbody *ngFor="let cliente of clientes">
-    <td>{{cliente.nombreEmpresa}}</td>
-    <td>{{cliente.cuit}}</td>
-    <td>{{cliente.categoriaFiscal}}</td>
-    <td>{{cliente.direccion}}</td>
-    <td>{{cliente.condicionPago}}</td>
-    <td>
-        <button type="button" class="btn btn-success" (click)="modificar(cliente)" title="Modificar"
-        data-toggle="modal" data-target="#modificarModal" >
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-        </button>
-        <button type="button" class="btn btn-danger" (click)="borrar(cliente._id)" title="Borrar" >
-          <i class="fa fa-trash" aria-hidden="true"></i>
-        </button>
-    </td>
-</tbody>
+    <thead class="thead-inverse">
+        <tr>
+        <th>Nombre Empresa</th>
+        <th>CUIT</th>
+        <th>Categoría Fiscal</th>
+        <th>Lista de Precios</th>
+        <th>Dirección</th>
+        <th>Condición de Pago</th>
+        <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let cliente of clientes">
+        <td>{{cliente.nombreEmpresa}}</td>
+        <td>{{cliente.cuit}}</td>
+        <td>{{cliente.categoriaFiscal}}</td>
+        <td>{{cliente.listaPrecioNombre}}</td>
+        <td>{{cliente.direccion}}</td>
+        <td>{{cliente.condicionPago}}</td>
+        <td>
+            <button type="button" class="btn btn-success" (click)="modificar(cliente)" title="Modificar"
+            data-toggle="modal" data-target="#modificarModal" >
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-danger" (click)="borrar(cliente._id)" title="Borrar" >
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+        </td>
+    </tbody>
 </table>
 
 <!-- Modal -->
@@ -63,9 +65,12 @@
                             <label for="example-text-input" class="col-form-label">Lista de Precios</label>
                         </div>
                         <div class="col-8">
-                            <select class="form-control" id="listaPrecioID" [(ngModel)]="listaPrecioID">
-                              <option>lp1</option>
-                              <option>lp2</option>
+                            <select class="form-control" [(ngModel)]="listaPrecioNombreSeleccionada">
+                                <option *ngFor="let precioDisponible of listaDePreciosDisponible" 
+                                    [value]="precioDisponible" 
+                                >
+                                  {{precioDisponible}}
+                                </option>
                             </select>
                         </div>
                     </div>

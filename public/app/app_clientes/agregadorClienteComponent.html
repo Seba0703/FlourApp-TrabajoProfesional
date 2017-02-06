@@ -37,9 +37,12 @@ data-toggle="modal" data-target="#exampleModal">+</button>
                             <label for="example-text-input" class="col-form-label">Lista de Precios</label>
                         </div>
                         <div class="col-8">
-                            <select class="form-control" id="listaPrecioID" [(ngModel)]="listaPrecioID">
-                              <option>lp1</option>
-                              <option>lp2</option>
+                            <select class="form-control" [(ngModel)]="listaPrecioNombreSeleccionada">
+                                <option *ngFor="let precioDisponible of listaDePreciosDisponible" 
+                                    [value]="precioDisponible" 
+                                >
+                                  {{precioDisponible}}
+                                </option>
                             </select>
                         </div>
                     </div>

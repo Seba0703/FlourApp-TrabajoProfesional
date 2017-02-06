@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Response } from '@angular/http';
 
 import { ClienteServices } from './clienteServices';
+import { ListaDePrecioServices} from '../app_listaDePrecios/ListaDePrecioServices';
 
 @Component({
   selector: 'tabla-clientes',
@@ -17,24 +18,27 @@ export class ClienteComponent {
   private nombreEmpresa: string;
   private cuit: string;
   private categoriaFiscal: string;
-  private listaPrecioID: string;
+  private listaPrecioNombreSeleccionada: string;
   private direccion: string;
   private condicionPago: string;
 
+  private listaDePreciosDisponible: Array<string>;
+
   private mostrarModalModificar: boolean = true;
   
-  constructor(private cService: ClienteServices){
+  constructor(private cService: ClienteServices, private lpService: ListaDePrecioServices){
     let dataLogin = JSON.parse(sessionStorage.getItem("dataLogin"));
-    
     this.accionesEjecutables = dataLogin.permisos;
+
+    this.listaDePreciosDisponible = new Array<string>();
   }
 
   ngOnInit() {
     console.log("ON INIT");
-    this.cargarProductosTerminados();
+    this.cargarClientes();
   }
 
-  cargarProductosTerminados(){
+  cargarClientes(){
     console.log("CARGANDO CLIENTES");
     // en el momento del subscribe es cuando se dispara la llamada
     this.cService.getClientes()
@@ -45,6 +49,22 @@ export class ClienteComponent {
                 },
                 err => console.error("EL ERROR FUE: ", err)
               );
+
+    this.lpService.getListaDePrecios()
+                  .subscribe(
+                    (listaDePreciosInDataBase) => {
+                      for(let elementoLDPinDB of listaDePreciosInDataBase){
+                        this.listaDePreciosDisponible.push(elementoLDPinDB.nombre);
+                      }
+                      this.listaDePreciosDisponible = Array.from(new Set(this.listaDePreciosDisponible));//filtro repetidos
+                      
+                      console.log(this.listaDePreciosDisponible);
+                    },
+                    error => {
+                            console.log(JSON.stringify(error.json()));
+                            alert("\t\t\t¡ERROR al cargar Lista De Precios!");
+                        }
+                  );
   }
 
   borrar(id: string){
@@ -66,13 +86,13 @@ export class ClienteComponent {
   }
 
   modificar(cliente: any){
-    this._id =                cliente._id;
-    this.nombreEmpresa =      cliente.nombreEmpresa;
-    this.cuit =               cliente.cuit;
-    this.categoriaFiscal =    cliente.categoriaFiscal;
-    this.listaPrecioID =      cliente.listaPrecioID;
-    this.direccion =          cliente.direccion;
-    this.condicionPago =    cliente.condicionPago;
+    this._id =                            cliente._id;
+    this.nombreEmpresa =                  cliente.nombreEmpresa;
+    this.cuit =                           cliente.cuit;
+    this.categoriaFiscal =                cliente.categoriaFiscal;
+    this.listaPrecioNombreSeleccionada =  cliente.listaPrecioNombre;
+    this.direccion =                      cliente.direccion;
+    this.condicionPago =                  cliente.condicionPago;
   }
 
   guardarModificaciones(){
@@ -83,9 +103,9 @@ export class ClienteComponent {
           nombreEmpresa:      this.nombreEmpresa,
           cuit:               this.cuit,
           categoriaFiscal:    this.categoriaFiscal,
-          listaPrecioID:      this.listaPrecioID,
+          listaPrecioNombre:  this.listaPrecioNombreSeleccionada,
           direccion:          this.direccion,
-          condicionPago:    this.condicionPago
+          condicionPago:      this.condicionPago
       }
       
       console.log(cliente);

@@ -8,7 +8,15 @@ import { NavMenuComponent } from '../nav-menu/navMenuComponent';
 import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { ClienteComponent} from './clienteComponent';
 import { AgregadorClienteComponent} from './agregadorClienteComponent';
+
 import { ClienteServices} from './clienteServices';
+
+import { ListaDePrecioServices} from '../app_listaDePrecios/ListaDePrecioServices';
+import { ListaPorcentajeServices } from '../listaPorcentaje/ListaPorcentajeServices'
+
+import { MateriaPrimaServices } from '../app_materiasPrima/materiaPrimaServices';
+import { SemiProcesadoServices } from '../app_semiProcesados/semiProcesadoServices';
+import { ProductoTerminadoServices } from '../app_productosTerminados/productoTerminadoServices';
 
 @NgModule({
   imports: [
@@ -23,7 +31,10 @@ import { ClienteServices} from './clienteServices';
     ClienteComponent,
     AgregadorClienteComponent
   ],
-  providers: [ ClienteServices ],
+  providers: [ 
+  	ClienteServices,
+  	ListaDePrecioServices
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
