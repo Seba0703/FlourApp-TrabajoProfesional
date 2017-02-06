@@ -1,13 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Response } from '@angular/http';
 
-import { ProductoTerminadoServices } from './productoTerminadoServices';
+import { ComponenteSeleccionado } from '../listaPorcentaje/componenteSeleccionado';
+
+import { MateriaPrimaServices } from '../app_materiasPrima/materiaPrimaServices';
+import { SemiProcesadoServices } from '../app_semiProcesados/semiProcesadoServices';
+import { ProductoTerminadoServices } from '../app_productosTerminados/productoTerminadoServices';
 
 @Component({
   selector: 'tabla-productos-terminados',
   templateUrl: "app/app_productosTerminados/productoTerminadoComponent.html"
 })
 export class ProductoTerminadoComponent implements OnInit{
+  private nombreUsuario: string;
+  private permisos: string;
+
+  private componentesSeleccionados: Array<ComponenteSeleccionado>;
+  private componentesDisponibles: Array<any>;
+
   private productosTerminados: Response;
 
   private _id : string;
@@ -22,9 +32,23 @@ export class ProductoTerminadoComponent implements OnInit{
   private tipo: string;
   private precioVenta: number;
 
-  private mostrarModalModificar: boolean = true;
+  private idProductoActual: string;
+
+  private mostrarModal: boolean = true;
   
-  constructor(private ptService: ProductoTerminadoServices){}
+  constructor(
+    private mpService: MateriaPrimaServices,
+    private spService: SemiProcesadoServices,
+    private ptService: ProductoTerminadoServices){
+    let dataLogin = JSON.parse(sessionStorage.getItem("dataLogin"));
+    
+    this.nombreUsuario = dataLogin.nombreUsuario;
+    this.permisos = dataLogin.permisos;
+
+    this.componentesDisponibles = new Array<any>();
+    this.componentesSeleccionados = new Array<ComponenteSeleccionado>();
+
+  }
 
   ngOnInit() {
     console.log("ON INIT");
@@ -42,12 +66,159 @@ export class ProductoTerminadoComponent implements OnInit{
                 },
                 err => console.error("EL ERROR FUE: ", err)
               );
+
+    this.cargarComponentesDisponibles();
+  }
+
+  cargarComponentesDisponibles() {
+    this.componentesDisponibles = new Array<any>();
+
+    this.mpService.getBasicDataMateriasPrima()
+            .subscribe(
+              materiasPrimas => {
+                this.componentesDisponibles.push.apply(this.componentesDisponibles, materiasPrimas);
+
+                this.spService.getBasicDataSemiProcesados()
+                        .subscribe(
+                          sp => {
+                            this.componentesDisponibles.push.apply(this.componentesDisponibles, sp);
+
+                            this.ptService.getBasicDataProductosTerminados()
+                                    .subscribe(
+                                      pt => {
+                                        this.componentesDisponibles.push.apply(this.componentesDisponibles, pt);
+
+                                        console.log("COMPONENTES DISPONIBLES CARGADOS= " + this.componentesDisponibles);
+                                      }
+                                        ,
+                                      err => console.error("EL ERROR FUE: ", err)
+                                    );
+                          }
+                            ,
+                          err => console.error("EL ERROR FUE: ", err)
+                        );
+              }
+                ,
+              err => console.error("EL ERROR FUE: ", err)
+            );
+  }
+
+  componentes(idProductoSeleccionado: string){
+    this.idProductoActual = idProductoSeleccionado;
+
+    this.cargarComponentesDisponibles();
+
+    this.cargarComponentesSeleccionados();
+  }
+
+  cargarComponentesSeleccionados(){
+    console.log("CARGANDO COMPONENTES SELECCIONADOS");
+    this.spService.getComponentesSeleccionados(this.idProductoActual)
+            .subscribe(
+              (componentesSeleccionados) => {
+                this.componentesSeleccionados = componentesSeleccionados;
+              },
+              error => {
+                            console.log(JSON.stringify(error.json()));
+                            alert("\t\t\t¡ERROR Lista De Porcentaje!\n\nRevise los campos");
+                        }
+              );
+  }
+
+  guardarComponentes(){
+    if(this.componentesSeleccionados.length == 0) {
+      this.spService.borrarComponentes(this.idProductoActual)
+              .subscribe(() => {}, error => {alert("\t\t\t¡ERROR Lista De Porcentaje!");})
+  } else  if(this.laSumaDePorcentajesDa100()) {//VALIDAR 100%
+            this.mostrarModal = false;
+
+            this.spService.borrarComponentes(this.idProductoActual)
+                          .subscribe(
+                            () => {
+                            for (let componenteSeleccionado of this.componentesSeleccionados){
+                              let componenteBody = {
+                                productoAFabricarID: this.idProductoActual,
+                                productoNecesarioID: componenteSeleccionado.productoNecesarioID,
+                                porcentajeNecesario: componenteSeleccionado.porcentajeNecesario
+                              }
+                              this.spService.agregarComponente(componenteBody)
+                                            .subscribe(data => {
+                                                console.log(data);
+                                            }, 
+                                            error => {
+                                                console.log(JSON.stringify(error.json()));
+                                                alert("\t\t\t¡ERROR Lista De Porcentaje!\n\nRevise los campos");
+                                            }
+                                            );
+                            }
+                            this.mostrarModal = true;
+                          },
+                            error => {
+                                console.log(JSON.stringify(error.json()));
+                                alert("\t\t\t¡ERROR Lista De Porcentaje!\n\nRevise los campos");
+                          }
+                          );
+        } else {
+          alert("\t\t\t¡ERROR!\n\nLa suma de los porcentajes no da 100%");
+        }
+  }
+
+  laSumaDePorcentajesDa100(): boolean {
+    let porcentajeParcial: number = 0;
+    for (let componenteSelec of this.componentesSeleccionados){
+      porcentajeParcial += parseInt(""+componenteSelec.porcentajeNecesario, 10);
+    }
+    return parseInt(""+porcentajeParcial, 10) == 100 ? true : false
+  }
+
+  onChange(id: string, nombre: string, porcentaje: number, valorCheck:boolean){
+      if(valorCheck == true) {
+        this.componentesSeleccionados.push(new ComponenteSeleccionado(id, nombre, porcentaje, ""));
+      } else {
+        for (let componenteSeleccionado of this.componentesSeleccionados){
+          if(componenteSeleccionado.productoNecesarioID == id) {
+            let index = this.componentesSeleccionados.indexOf(componenteSeleccionado);
+            this.componentesSeleccionados.splice(index, 1);
+          }
+        }
+      }
+      console.log(id+" : "+nombre+" : "+valorCheck);
+  }
+
+  onPorcentajeChange(porcentaje: number, id: string){
+    for (var i = 0; i < this.componentesSeleccionados.length; ++i) {
+      if(this.componentesSeleccionados[i].productoNecesarioID == id) {
+        this.componentesSeleccionados[i].porcentajeNecesario = porcentaje;
+      }
+    }
+  }
+
+  fueSeleccionado(idComponente: string): boolean {
+  //console.log("TAM= " + this.componentesSeleccionados.length);
+  for (let componenteSeleccionado of this.componentesSeleccionados){
+    if (idComponente == componenteSeleccionado.productoNecesarioID) {
+      console.log("ENCONTRADO");
+      return true;
+    }
+  }
+  //console.log(" NO ENCONTRADO");
+  return false;
+  }
+
+  getPorcentaje(componenteID: string): number{
+    var callBackFilterID = 
+    function (componenteSelec: ComponenteSeleccionado) {
+    return componenteSelec.productoNecesarioID == componenteID;
+  }
+
+    return this.componentesSeleccionados.filter(callBackFilterID)[0].porcentajeNecesario;
+    //El filter retorna una lista con los elementos que hayan coincidido con el criterio de busqueda
+    //como ya se que el ID es unico, la lista solo va a tener un elemento
   }
 
   borrar(id: string){
     let r = confirm("¿Realmente desea realizar el borrado?");
     if (r == true) {
-        console.log("You pressed OK!");
         console.log("ID borrado= " + id);
         this.ptService.borrarProductoTerminado(id)
                       .subscribe(
@@ -96,7 +267,7 @@ export class ProductoTerminadoComponent implements OnInit{
 
   guardarModificaciones(){
     if(this.nombre && this.stockMin && this.stockMax && this.porcentajeMerma<=100) { 
-      this.mostrarModalModificar = false;
+      this.mostrarModal = false;
       let tasaImpositivaID: string;
       switch (this.tasaImpositiva.split("-")[1].split("%")[0]) {
         case "0":

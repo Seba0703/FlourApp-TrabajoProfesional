@@ -39,7 +39,7 @@ export class ListaPorcentajeServices {
   borrarListaPorcentajes(id: string): Observable<Response> {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    console.log("DELETE COMPONENTS REQUEST");
+    console.log("LP SERVICE: DELETE COMPONENTS REQUEST");
     return this.http.delete(URL_LISTA_PORCENTAJES + "/productoList/" + id, {headers: headers})
                     .map((response:Response) => response.json())
                     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));

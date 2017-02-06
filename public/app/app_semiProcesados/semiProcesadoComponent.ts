@@ -57,7 +57,7 @@ export class SemiProcesadoComponent implements OnInit{
   }
 
   cargarSemiProcesados(){
-    console.log("CARGANDO PRODUCTOS TERM");
+    console.log("CARGANDO SEMI PROCESADOS");
     // en el momento del subscribe es cuando se dispara la llamada
     this.spService.getSemiProcesados()
               .subscribe(
@@ -127,39 +127,41 @@ export class SemiProcesadoComponent implements OnInit{
   }
 
   guardarComponentes(){
-  	if(this.laSumaDePorcentajesDa100()) {//VALIDAR 100%
-  		this.mostrarModal = false;
+  	if(this.componentesSeleccionados.length == 0) {
+  		this.spService.borrarComponentes(this.idProductoActual)
+  					  .subscribe(() => {}, error => {alert("\t\t\t¡ERROR Lista De Porcentaje!");})
+	} else  if(this.laSumaDePorcentajesDa100()) {//VALIDAR 100%
+		  		this.mostrarModal = false;
 
-        this.spService.borrarComponentes(this.idProductoActual)
-                      .subscribe(
-                        () => {
-					      	for (let componenteSeleccionado of this.componentesSeleccionados){
-						        let componenteBody = {
-						          productoAFabricarID: this.idProductoActual,
-						          productoNecesarioID: componenteSeleccionado.productoNecesarioID,
-						          porcentajeNecesario: componenteSeleccionado.porcentajeNecesario
-						        }
-					        	this.spService.agregarComponente(componenteBody)
-					                        .subscribe(data => {
-					                            console.log(data);
-					                        }, 
-					                        error => {
-					                            console.log(JSON.stringify(error.json()));
-					                            alert("\t\t\t¡ERROR Lista De Porcentaje!\n\nRevise los campos");
-					                        }
-					                        );
-							}
-							this.mostrarModal = true;
-                      },
-                        error => {
-                            console.log(JSON.stringify(error.json()));
-                            alert("\t\t\t¡ERROR Lista De Porcentaje!\n\nRevise los campos");
-	                    }
-                      );
-      	
-  	} else {
-  		alert("\t\t\t¡ERROR!\n\nLa suma de los porcentajes no da 100%");
-  	}
+		        this.spService.borrarComponentes(this.idProductoActual)
+		                      .subscribe(
+		                        () => {
+							      	for (let componenteSeleccionado of this.componentesSeleccionados){
+								        let componenteBody = {
+								          productoAFabricarID: this.idProductoActual,
+								          productoNecesarioID: componenteSeleccionado.productoNecesarioID,
+								          porcentajeNecesario: componenteSeleccionado.porcentajeNecesario
+								        }
+							        	this.spService.agregarComponente(componenteBody)
+							                        .subscribe(data => {
+							                            console.log(data);
+							                        }, 
+							                        error => {
+							                            console.log(JSON.stringify(error.json()));
+							                            alert("\t\t\t¡ERROR Lista De Porcentaje!\n\nRevise los campos");
+							                        }
+							                        );
+									}
+									this.mostrarModal = true;
+		                      },
+		                        error => {
+		                            console.log(JSON.stringify(error.json()));
+		                            alert("\t\t\t¡ERROR Lista De Porcentaje!\n\nRevise los campos");
+			                    }
+		                      );
+	  		} else {
+	  			alert("\t\t\t¡ERROR!\n\nLa suma de los porcentajes no da 100%");
+	  		}
   }
 
   laSumaDePorcentajesDa100(): boolean {
@@ -218,7 +220,6 @@ export class SemiProcesadoComponent implements OnInit{
   borrar(id: string){
     let r = confirm("¿Realmente desea realizar el borrado?");
     if (r == true) {
-        console.log("You pressed OK!");
         console.log("ID borrado= " + id);
         this.spService.borrarSemiProcesado(id)
                       .subscribe(
