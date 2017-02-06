@@ -3,6 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';  
 import 'rxjs/add/operator/map';
 
+import { Proveedor } from './proveedor'
 import {URL_PROVEEDORES} from '../rutas';
 
 @Injectable()
@@ -14,6 +15,11 @@ export class ProveedorServices {
   }
 
   getProveedores(): Observable<Response>  {
+    console.log("HACIENDO REQUEST");
+    return this.http.get(URL_PROVEEDORES).map((response) => response.json())
+  }
+
+  getBasicDataProveedores(): Observable<Proveedor[]>  {
     console.log("HACIENDO REQUEST");
     return this.http.get(URL_PROVEEDORES).map((response) => response.json())
   }

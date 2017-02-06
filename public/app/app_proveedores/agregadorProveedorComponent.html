@@ -17,7 +17,7 @@ data-toggle="modal" data-target="#exampleModal">+</button>
 
                     <input type="number" class="form-control" placeholder="CUIT ( sin los &quot;-&quot; )" 
                     aria-describedby="basic-addon1" style="margin-bottom: 4px;" 
-                    onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="cuit">
+                    onkeypress="return validateChar(event)" [(ngModel)]="cuit">
 
                     <div class="form-group row">
                         <div class="col-4">

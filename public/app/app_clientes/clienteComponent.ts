@@ -23,6 +23,7 @@ export class ClienteComponent {
   private condicionPago: string;
 
   private listaDePreciosDisponible: Array<string>;
+  private cuitsExistentes: Array<string>;
 
   private mostrarModalModificar: boolean = true;
   
@@ -36,6 +37,7 @@ export class ClienteComponent {
   ngOnInit() {
     console.log("ON INIT");
     this.cargarClientes();
+    this.cargarCUITsExistentes();
   }
 
   cargarClientes(){
@@ -67,6 +69,17 @@ export class ClienteComponent {
                   );
   }
 
+  cargarCUITsExistentes(){
+    this.cService.getBasicDataClientes()
+                 .subscribe((basicDataClientesInDataBase) => this.cuitsExistentes = basicDataClientesInDataBase.map(function(bdCliente) {return bdCliente.cuit}), 
+                             error => {
+                              console.log(JSON.stringify(error.json()));
+                              alert("\t\t\t¡ERROR al cargar CUITS existentes!");
+                             }
+                            ); 
+
+  }
+
   borrar(id: string){
     let r = confirm("¿Realmente desea realizar el borrado?");
     if (r == true) {
@@ -96,33 +109,43 @@ export class ClienteComponent {
   }
 
   guardarModificaciones(){
-    if(this.nombreEmpresa){
-      this.mostrarModalModificar = false;
-      let cliente = {
-          _id:                this._id,
-          nombreEmpresa:      this.nombreEmpresa,
-          cuit:               this.cuit,
-          categoriaFiscal:    this.categoriaFiscal,
-          listaPrecioNombre:  this.listaPrecioNombreSeleccionada,
-          direccion:          this.direccion,
-          condicionPago:      this.condicionPago
-      }
-      
-      console.log(cliente);
+    if(this.cuit && this.elCUITseRepite()) { 
+      alert("\t¡ERROR! Ya existe un cliente con ese CUIT")
+    } else  if(this.nombreEmpresa){
+              this.mostrarModalModificar = false;
+              let cliente = {
+                  _id:                this._id,
+                  nombreEmpresa:      this.nombreEmpresa,
+                  cuit:               this.cuit,
+                  categoriaFiscal:    this.categoriaFiscal,
+                  listaPrecioNombre:  this.listaPrecioNombreSeleccionada,
+                  direccion:          this.direccion,
+                  condicionPago:      this.condicionPago
+              }
+              
+              console.log(cliente);
 
-      this.cService.modificar(cliente)
-                    .subscribe(data => {
-                        console.log(data);
-                        
-                        alert("\t\t\t\t¡Cliente modificado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
-                        window.location.reload();                        
-                    }, error => {
-                        console.log(JSON.stringify(error.json()));
-                        alert("\t\t\t\t¡ERROR al modificar Cliente!\n\nRevise los campos");
-                    });;
-    } else {
-      alert("\t\t\t\t¡ERROR!\n\nDebe proporcionar al menos un nombre");
+              this.cService.modificar(cliente)
+                            .subscribe(data => {
+                                console.log(data);
+                                
+                                alert("\t\t\t\t¡Cliente modificado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
+                                window.location.reload();                        
+                            }, error => {
+                                console.log(JSON.stringify(error.json()));
+                                alert("\t\t\t\t¡ERROR al modificar Cliente!\n\nRevise los campos");
+                            });;
+            } else {
+              alert("\t\t\t\t¡ERROR!\n\nDebe proporcionar al menos un nombre");
+            }
+  }
+
+
+  elCUITseRepite(): boolean {
+    for (let cuit of this.cuitsExistentes){
+      if(this.cuit == cuit) return true; //this.cuit es el cuit insertado en el input
     }
+    return false;
   }
 
 }
