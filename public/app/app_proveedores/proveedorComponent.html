@@ -31,7 +31,7 @@
 <div class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="mostrarModalModificar">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modificar-modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Modificar proveedor</h5>
             </div>
             <div class="modal-body">
@@ -80,7 +80,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" (click)="guardarModificaciones()">
+                <button type="button" class="btn btn-success" (click)="guardarModificaciones()">
                     Guardar modificaciones
                 </button>
             </div>
