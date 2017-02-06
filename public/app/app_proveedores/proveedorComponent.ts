@@ -18,7 +18,6 @@ export class ProveedorComponent {
   private nombreEmpresa: string;
   private cuit: string;
   private categoriaFiscal: string;
-  private listaPrecioID: string;
   private direccion: string;
   private condicionPago: string;
 
@@ -72,7 +71,6 @@ export class ProveedorComponent {
     this.nombreEmpresa =      proveedor.nombreEmpresa;
     this.cuit =               proveedor.cuit;
     this.categoriaFiscal =    proveedor.categoriaFiscal;
-    this.listaPrecioID =      proveedor.listaPrecioID;
     this.direccion =          proveedor.direccion;
     this.condicionPago =    proveedor.condicionPago;
   }
@@ -85,7 +83,6 @@ export class ProveedorComponent {
           nombreEmpresa:      this.nombreEmpresa,
           cuit:               this.cuit,
           categoriaFiscal:    this.categoriaFiscal,
-          listaPrecioID:      this.listaPrecioID,
           direccion:          this.direccion,
           condicionPago:    this.condicionPago
       }

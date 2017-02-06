@@ -10,7 +10,6 @@ export class AgregadorProveedorComponent {
   private nombreEmpresa: string;
   private cuit: string;
   private categoriaFiscal: string;
-  private listaPrecioID: string;
   private direccion: string;
   private condicionPago: string;
 
@@ -25,7 +24,6 @@ export class AgregadorProveedorComponent {
           nombreEmpresa:      this.nombreEmpresa,
           cuit:               this.cuit,
           categoriaFiscal:    this.categoriaFiscal,
-          listaPrecioID:      this.listaPrecioID,
           direccion:          this.direccion,
           condicionPago:    this.condicionPago
       }
