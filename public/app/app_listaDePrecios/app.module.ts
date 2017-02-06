@@ -9,6 +9,8 @@ import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { ListaDePrecioComponent} from './listaDePrecioComponent';
 
 import { ListaDePrecioServices} from './listaDePrecioServices';
+import { ListaPorcentajeServices } from '../listaPorcentaje/ListaPorcentajeServices'
+
 import { MateriaPrimaServices } from '../app_materiasPrima/materiaPrimaServices';
 import { SemiProcesadoServices } from '../app_semiProcesados/semiProcesadoServices';
 import { ProductoTerminadoServices } from '../app_productosTerminados/productoTerminadoServices';
@@ -27,6 +29,7 @@ import { ProductoTerminadoServices } from '../app_productosTerminados/productoTe
   ],
   providers: [ 
     ListaDePrecioServices,
+    ListaPorcentajeServices,
     MateriaPrimaServices,
     SemiProcesadoServices,
     ProductoTerminadoServices
