@@ -14,7 +14,6 @@ export class AgregadorMateriaPrimaComponent {
   private stockMin: number;
   private stockMax: number;
   private embolsadoCantDefault: number;
-  private tipo: string;
   private precioVenta: number;
 
 
@@ -52,7 +51,7 @@ export class AgregadorMateriaPrimaComponent {
           stockMin:           this.stockMin,
           stockMax:           this.stockMax,
           embolsadoCantDefault: this.embolsadoCantDefault,
-          tipo:               this.tipo,
+          tipo:               "1",
           precioVenta:        this.precioVenta
       }
       

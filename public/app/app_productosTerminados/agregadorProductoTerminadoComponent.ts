@@ -14,7 +14,6 @@ export class AgregadorProductoTerminadoComponent{
   private stockMax: number;
   private embolsado: number;
   private porcentajeMerma: number;
-  private tipo: string;
   private precioVenta: number;
 
   private mostrarModalAgregar: boolean = true;
@@ -53,7 +52,7 @@ export class AgregadorProductoTerminadoComponent{
           stockMax:           this.stockMax,
           embolsadoCantDefault: this.embolsado,
           porcentajeMerma:    this.porcentajeMerma,
-          tipo:               this.tipo,
+          tipo:               "3",
           precioVenta:        this.precioVenta
       }
       

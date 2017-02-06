@@ -29,7 +29,6 @@ export class ProductoTerminadoComponent implements OnInit{
   private stockMax: number;
   private embolsado: number;
   private porcentajeMerma: number;
-  private tipo: string;
   private precioVenta: number;
 
   private idProductoActual: string;
@@ -261,7 +260,6 @@ export class ProductoTerminadoComponent implements OnInit{
     this.stockMax =          productoTerminado.stockMax;
     this.embolsado =         productoTerminado.embolsadoCantDefault;
     this.porcentajeMerma =   productoTerminado.porcentajeMerma;
-    this.tipo =              productoTerminado.tipo;
     this.precioVenta=        productoTerminado.precioVenta;
   }
 
@@ -296,7 +294,7 @@ export class ProductoTerminadoComponent implements OnInit{
           stockMax:             this.stockMax,
           embolsadoCantDefault: this.embolsado,
           porcentajeMerma:      this.porcentajeMerma,
-          tipo:                 this.tipo,
+          tipo:                 "3",
           precioVenta:          this.precioVenta
       }
       

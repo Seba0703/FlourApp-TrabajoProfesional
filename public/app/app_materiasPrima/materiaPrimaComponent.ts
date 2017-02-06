@@ -23,7 +23,6 @@ export class MateriaPrimaComponent {
   private stockMax: number;
   private embolsadoCantDefault: number;
   private precioVenta: number;
-  private tipo: string;
 
   private mostrarModalModificar: boolean = true;
   
@@ -97,7 +96,6 @@ export class MateriaPrimaComponent {
     this.stockMin =          materiaPrima.stockMin;
     this.stockMax =           materiaPrima.stockMax;
     this.embolsadoCantDefault = materiaPrima.embolsadoCantDefault;
-    this.tipo =               materiaPrima.tipo;
     this.precioVenta=        materiaPrima.precioVenta;
   }
 
@@ -133,7 +131,7 @@ export class MateriaPrimaComponent {
           stockMin:             this.stockMin,
           stockMax:             this.stockMax,
           embolsadoCantDefault: this.embolsadoCantDefault,
-          tipo:                 this.tipo,
+          tipo:                 "1",
           precioVenta:          this.precioVenta
       }
       

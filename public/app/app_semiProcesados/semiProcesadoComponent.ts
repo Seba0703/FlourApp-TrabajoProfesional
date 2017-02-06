@@ -30,7 +30,6 @@ export class SemiProcesadoComponent implements OnInit{
   private stockMax: number;
   private embolsado: number;
   private porcentajeMerma: number;
-  private tipo: string;
   private precioVenta: number;
 
   private idProductoActual: string;
@@ -262,7 +261,6 @@ export class SemiProcesadoComponent implements OnInit{
     this.stockMax =           semiProcesado.stockMax;
     this.embolsado =           semiProcesado.embolsadoCantDefault;
     this.porcentajeMerma =     semiProcesado.porcentajeMerma;
-    this.tipo =               semiProcesado.tipo;
     this.precioVenta=        semiProcesado.precioVenta;
   }
 
@@ -298,7 +296,7 @@ export class SemiProcesadoComponent implements OnInit{
             stockMax:             this.stockMax,
             embolsadoCantDefault: this.embolsado,
             porcentajeMerma:      this.porcentajeMerma,
-            tipo:                 this.tipo,
+            tipo:                 "2",
             precioVenta:          this.precioVenta
         }
         

@@ -15,7 +15,6 @@ export class AgregadorSemiProcesadoComponent {
   private stockMax: number;
   private embolsado: number;
   private porcentajeMerma: number;
-  private tipo: string;
   private precioVenta: number;
 
   private mostrarModalAgregar: boolean = true;
@@ -54,7 +53,7 @@ export class AgregadorSemiProcesadoComponent {
             stockMax:           this.stockMax,
             embolsadoCantDefault: this.embolsado,
             porcentajeMerma:    this.porcentajeMerma,
-            tipo:               this.tipo,
+            tipo:               "2",
             precioVenta:        this.precioVenta
         }
         
