@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   productosFinal: MovProductoFinal[];
   productosUsado: MovProductoUsado[];
   selectedProduct: MovProductoFinal;
+  afectaStock: boolean = false;
   
   constructor(private productService: MovProductService) { }
   
@@ -31,11 +32,17 @@ export class AppComponent implements OnInit {
   }
   
   borrar(producto: MovProductoFinal): void {
-	this.productService.deleteProductFinal(producto._id)
-		.then(() => {
-			this.productosFinal = this.productosFinal.filter(p => p !== producto);
-		}
-	);
+	if (this.afectaStock) {
+		this.productService.deleteProductFinal(producto._id)
+			.then(() => {
+				this.productosFinal = this.productosFinal.filter(p => p !== producto);
+			});
+	} else {
+		this.productService.deleteProductFinalSinAfectarStock(producto._id)
+			.then(() => {
+				this.productosFinal = this.productosFinal.filter(p => p !== producto);
+			});
+	}
   }
   
   

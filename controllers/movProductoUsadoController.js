@@ -142,4 +142,26 @@ exports.deleteMany = function(req, res) {
     });
 };
 
+exports.deleteManySinAfectarStock = function(req, res) {
+	console.log("delete many - sin afectar stock ");
+	console.log(req.params.id);
+	
+	MovProductoUsado.find({'movimientoProduccionFinalID': req.params.id}, function(err, movProdUsados) {
+		
+		if (movProdUsados) {
+			for (var i = 0; i < movProdUsados.length; i++) {
+				movProdUsados[i].remove();
+			}
+			if(err) res.send(500, err.message);
+
+			console.log('GET/deleteMany');	
+			res.status(200).send();
+			
+		} else {
+			res.send(500, 'No encontrado');
+		}
+	});
+
+};
+
 

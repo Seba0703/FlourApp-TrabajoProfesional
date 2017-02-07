@@ -6,6 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import {URL_MOV_PROD_FINAL} from '../rutas';
 import {URL_MOV_PROD_USADO} from '../rutas';
 import {URL_MOV_PROD_USADO_FINAL} from '../rutas';
+import {URL_MOV_PROD_FINAL_SIN_AFECTAR_STOCK} from '../rutas';
 
 @Injectable()
 export class MovProductService {
@@ -30,6 +31,13 @@ export class MovProductService {
 	
 	deleteProductFinal(id: string): Promise<void> {
 		return this.http.delete(URL_MOV_PROD_FINAL + '/' + id)
+			.toPromise()
+			.then(() => null)
+			.catch(this.handleError);
+	}
+	
+	deleteProductFinalSinAfectarStock(id: string): Promise<void> {
+		return this.http.delete(URL_MOV_PROD_FINAL_SIN_AFECTAR_STOCK + '/' + id)
 			.toPromise()
 			.then(() => null)
 			.catch(this.handleError);

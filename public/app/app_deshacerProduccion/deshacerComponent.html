@@ -16,6 +16,7 @@
     <th>Cantidad Fabricada</th>
     <th>Unidad</th>
 	<th>Acciones</th>
+	<th> <input [(ngModel)]="afectaStock" type="checkbox"> Afecta Stock</th>
     </tr>
 </thead>
 <tbody *ngFor="let producto of productosFinal">
@@ -26,7 +27,7 @@
     <td>
         <button type="button" class="btn btn-success" (click)="verProducto(producto)" title="Modificar"
         data-toggle="modal" data-target="#infoModal" >
-          <i class="fa fa-pencil" aria-hidden="true"></i>
+          <i class="fa fa-eye" aria-hidden="true"></i>
         </button>
         <button type="button" class="btn btn-danger" (click)="borrar(producto)" title="Borrar" >
           <i class="fa fa-trash" aria-hidden="true"></i>

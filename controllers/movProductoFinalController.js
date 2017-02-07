@@ -8,7 +8,7 @@ var ProductoSemiProcesado  = require("../models/productoSemiProcesado").producto
 var ProductoTerminado  = require("../models/productoTerminado").productoTerminadoModel;
 
 exports.findAll = function(req, res) {  
-    MovProductoFinal.find({}).populate('materiaPrimaFinal').populate('prodSemiFinal').populate('prodTermFinal').exec(function(err, movsProductoFinal){ 
+    MovProductoFinal.find({}).sort('-fecha').populate('materiaPrimaFinal').populate('prodSemiFinal').populate('prodTermFinal').exec(function(err, movsProductoFinal){ 
 		if(err) res.send(500, err.message);
 
 		console.log('GET/MovProductoFinal');
@@ -71,9 +71,24 @@ exports.update = function(req, res) {
     });
 };
 
+exports.deleteSinAfectarStock = function(req, res) {
+	console.log('DELETE - sin afectar stock');	
+	console.log(req.params.id);
+	
+	MovProductoFinal.findById(req.params.id, function (err, movProdFinal) {
+		movProdFinal.remove(function(err) {
+			if(err) {
+				return res.status(500).send(err.message);
+			} else { 
+				movProductoUsadoController.deleteManySinAfectarStock(req,res);
+			}
+		});
+	});
+}
+
 
 exports.delete = function(req, res) {
-	console.log('DELETE');	
+	console.log('DELETE - afecta stock');	
 	console.log(req.params.id);
 	
     MovProductoFinal.findById(req.params.id).populate('materiaPrimaFinal').populate('prodSemiFinal').populate('prodTermFinal').exec(function(err, movProductoFinal) {

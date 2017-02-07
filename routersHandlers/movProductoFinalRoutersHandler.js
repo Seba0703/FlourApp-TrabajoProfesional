@@ -12,6 +12,9 @@ exports.getMovProductoFinalRoutersHandler = function(express){
 	  .get(movProductoFinalController.findById)
 	  .put(movProductoFinalController.update)
 	  .delete(movProductoFinalController.delete);
+	
+	movProductoFinalRoutersHandler.route('/movProductoFinal/sinAfectar/:id')
+	  .delete(movProductoFinalController.deleteSinAfectarStock);
 	  
 	return movProductoFinalRoutersHandler;  
 }
