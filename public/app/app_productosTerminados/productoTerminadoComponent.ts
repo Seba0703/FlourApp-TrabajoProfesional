@@ -264,53 +264,57 @@ export class ProductoTerminadoComponent implements OnInit{
   }
 
   guardarModificaciones(){
-    if(this.nombre && this.stockMin && this.stockMax && this.porcentajeMerma<=100) { 
-      this.mostrarModal = false;
-      let tasaImpositivaID: string;
-      switch (this.tasaImpositiva.split("-")[1].split("%")[0]) {
-        case "0":
-          tasaImpositivaID = "ti1";
-          break;
-        case "10.5":
-          tasaImpositivaID = "ti2";
-          break;  
-        case "21":
-          tasaImpositivaID = "ti3";
-          break;
-        case "27":
-          tasaImpositivaID = "ti4";
-          break;  
-        default:
-          tasaImpositivaID = "ti1";
-          break;
-      }
-      let productoTerminado = {
-          _id:                  this._id,
-          tasaImpositivaID:     tasaImpositivaID,
-          nombre:               this.nombre,
-          cantidad:             this.cantidad,
-          unidad:               this.unidad,
-          stockMin:             this.stockMin,
-          stockMax:             this.stockMax,
-          embolsadoCantDefault: this.embolsado,
-          porcentajeMerma:      this.porcentajeMerma,
-          tipo:                 "3",
-          precioVenta:          this.precioVenta
-      }
-      
-      console.log(productoTerminado);
+    if(this.nombre && this.stockMin && this.stockMax) {
+      if((this.porcentajeMerma && this.porcentajeMerma<=100) || (!this.porcentajeMerma)){
+        this.mostrarModal = false;
+        let tasaImpositivaID: string;
+        switch (this.tasaImpositiva.split("-")[1].split("%")[0]) {
+          case "0":
+            tasaImpositivaID = "ti1";
+            break;
+          case "10.5":
+            tasaImpositivaID = "ti2";
+            break;  
+          case "21":
+            tasaImpositivaID = "ti3";
+            break;
+          case "27":
+            tasaImpositivaID = "ti4";
+            break;  
+          default:
+            tasaImpositivaID = "ti1";
+            break;
+        }
+        let productoTerminado = {
+            _id:                  this._id,
+            tasaImpositivaID:     tasaImpositivaID,
+            nombre:               this.nombre,
+            cantidad:             this.cantidad,
+            unidad:               this.unidad,
+            stockMin:             this.stockMin,
+            stockMax:             this.stockMax,
+            embolsadoCantDefault: this.embolsado,
+            porcentajeMerma:      this.porcentajeMerma,
+            tipo:                 "3",
+            precioVenta:          this.precioVenta
+        }
+        
+        console.log(productoTerminado);
 
-      this.ptService.modificar(productoTerminado)
-                    .subscribe(data => {
-                        console.log(data);
-                        alert("\t\t\t\t¡Producto terminado modificado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
-                        window.location.reload();                        
-                    }, error => {
-                        console.log(JSON.stringify(error.json()));
-                        alert("\t\t\t\t¡ERROR al modificar Producto terminado!\n\nrevise los campos");
-                    });;
+        this.ptService.modificar(productoTerminado)
+                      .subscribe(data => {
+                          console.log(data);
+                          alert("\t\t\t\t¡Producto terminado modificado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
+                          window.location.reload();                        
+                      }, error => {
+                          console.log(JSON.stringify(error.json()));
+                          alert("\t\t\t\t¡ERROR al modificar Producto terminado!\n\nrevise los campos");
+                      });;
+      } else {
+        alert("¡ERROR en porcentaje de merma!\n\nRecuerde que el porcentaje de merma no puede ser mayor que 100%");
+      }
     } else {
-        alert("¡ERROR en campo/s!\n\nRecuerde que 'Nombre - Stock Min - Stock Max' son obligatorios y que el porcentaje de merma no puede ser mayor que 100%");
+        alert("¡ERROR en campo/s!\n\nRecuerde que 'Nombre - Stock Min - Stock Max' son obligatorios");
     }
   }
 }
