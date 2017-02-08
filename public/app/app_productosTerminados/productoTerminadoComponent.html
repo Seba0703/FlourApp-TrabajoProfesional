@@ -8,8 +8,8 @@
     <th>Stock Max</th>
     <th>Embolsado (default)</th>
     <th>Porcentaje Merma</th>
-    <th>Tipo</th>
     <th>Precio Venta</th>
+    <th>Componentes</th>
     <th>Acciones</th>
   </tr>
   </thead>
@@ -20,9 +20,18 @@
     <td>{{productoTerminado.stockMin}}</td>
     <td>{{productoTerminado.stockMax}}</td>
     <td>{{productoTerminado.embolsadoCantDefault}}</td>
-    <td>{{productoTerminado.porcentajeMerma}}%</td>
-    <td>{{productoTerminado.tipo}}</td>
-    <td>{{productoTerminado.precioVenta}}</td>
+    <td *ngIf="productoTerminado.porcentajeMerma">{{productoTerminado.porcentajeMerma}}%</td>
+    <td *ngIf="!productoTerminado.porcentajeMerma"></td>
+    <td *ngIf="productoTerminado.precioVenta">${{productoTerminado.precioVenta}}</td>
+    <td *ngIf="!productoTerminado.precioVenta"></td>
+    <td>
+      <div class="row" style="margin: 0 auto">
+        <button type="button" class="btn btn-warning" (click)="componentes(productoTerminado._id)" title="Definir componentes" 
+        data-toggle="modal" data-target="#componentesModal">
+          <i class="fa fa-eyedropper" aria-hidden="true"></i>
+        </button>
+      </div>
+    </td>
     <td>
       <div class="row">
           <div class="col-md-6">
@@ -42,8 +51,8 @@
   </tbody>
 </table>
 
-<!-- Modal -->
-<div class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="mostrarModalModificar">
+<!-- Modal MODIFICAR PROD TERMINADO -->
+<div class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="mostrarModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -82,9 +91,7 @@
                     placeholder="Porcentaje Merma (ej: 10 => equivale 10%)" aria-describedby="basic-addon1" 
                     style="margin-bottom: 4px;" min="0" max="100" onkeypress="return validateChar(event)" [(ngModel)]="porcentajeMerma">
 
-                    <input type="text" class="form-control" placeholder="Tipo" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="tipo">
-
-                    <input type="number" class="form-control" placeholder="Precio Venta" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="precioVenta">
+                    <input type="number" step="0.01" class="form-control" placeholder="Precio Venta" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validarPrecioVenta(event)" [(ngModel)]="precioVenta">
                 </div>
             </div>
             <div class="modal-footer">
@@ -92,6 +99,50 @@
                 <button type="button" class="btn btn-primary" (click)="guardarModificaciones()">
                     Guardar modificaciones
                 </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal COMPONETES-->
+<div class="modal fade" id="componentesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" 
+[hidden]="!mostrarModal"> <!-- hidden es true si mostrarModal es false-->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="componentes-modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Lista de Porcentajes</h5>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+                <label for="text" style="margin-top: 8px;"><strong>Componentes seleccionados:</strong></label>
+                   <span *ngFor="let componente of componentesDisponibles">
+                    <div *ngIf="!fueSeleccionado(componente._id)">
+                         <input type="checkbox" #cv (change)="onChange(componente._id, componente.nombre, 0, cv.checked)"                                    
+                          >
+                               {{componente.nombre}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese porcentaje"  #porcentaje (keyup)="onPorcentajeChange(porcentaje.value, componente._id)" (change)="onPorcentajeChange(porcentaje.value, componente._id)"> <br>
+                    </div>
+
+                    <div *ngIf="fueSeleccionado(componente._id)">
+                         <input type="checkbox" checked #cv (change)="onChange(componente._id, componente.nombre, 0, cv.checked)"                                    
+                          >
+                               {{componente.nombre}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese porcentaje"  [value]="getPorcentaje(componente._id)" #porcentaje (keyup)="onPorcentajeChange(porcentaje.value, componente._id)" (change)="onPorcentajeChange(porcentaje.value, componente._id)"> <br>
+                    </div>
+
+                   </span>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div class="container">
+                <div class="row" style="margin: 0 auto">
+                  <div class="col-md-12">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-warning" data-dismiss="modal"
+                            (click)="guardarComponentes()">
+                                Guardar componentes
+                            </button>
+                  </div>
+                </div>
+              </div>
             </div>
         </div>
     </div>

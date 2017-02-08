@@ -8,7 +8,6 @@
     <th>Stock Max</th>
     <th>Embolsado (default)</th>
     <th>Porcentaje Merma</th>
-    <th>Tipo</th>
     <th>Precio Venta</th>
     <th>Componentes</th>
     <th>Acciones</th>
@@ -23,8 +22,8 @@
     <td>{{semiProcesado.embolsadoCantDefault}}</td>
     <td *ngIf="semiProcesado.porcentajeMerma">{{semiProcesado.porcentajeMerma}}%</td>
     <td *ngIf="!semiProcesado.porcentajeMerma"></td>
-    <td>{{semiProcesado.tipo}}</td>
-    <td>{{semiProcesado.precioVenta}}</td>
+    <td *ngIf="semiProcesado.precioVenta">${{semiProcesado.precioVenta}}</td>
+    <td *ngIf="!semiProcesado.precioVenta"></td>
     <td>
       <div class="row" style="margin: 0 auto">
         <button type="button" class="btn btn-warning" (click)="componentes(semiProcesado._id)" title="Definir componentes" 
@@ -32,7 +31,6 @@
           <i class="fa fa-eyedropper" aria-hidden="true"></i>
         </button>
       </div>
-
     </td>
     <td>
       <div class="row">
@@ -53,7 +51,7 @@
   </tbody>
 </table>
 
-<!-- Modal -->
+<!-- Modal MODIFICAR SEMIPROCESADO-->
 <div class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="mostrarModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -93,9 +91,7 @@
                     placeholder="Porcentaje Merma (ej: 10 => equivale 10%)" aria-describedby="basic-addon1" 
                     style="margin-bottom: 4px;" min="0" max="100" onkeypress="return validateChar(event)" [(ngModel)]="porcentajeMerma">
 
-                    <input type="text" class="form-control" placeholder="Tipo" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="tipo">
-
-                    <input type="number" class="form-control" placeholder="Precio Venta" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="precioVenta">
+                    <input type="number" step="0.01" class="form-control" placeholder="Precio Venta" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validarPrecioVenta(event)" [(ngModel)]="precioVenta">
                 </div>
             </div>
             <div class="modal-footer">

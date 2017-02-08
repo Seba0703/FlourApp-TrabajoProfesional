@@ -3,6 +3,12 @@ function validateChar(e) {
 	return ((e.charCode >= 48 && e.charCode <= 57) || e.charCode == 0)
 }
 
+function validarPrecioVenta(e) {
+	//console.log("validandoC= " + e.charCode);
+	//console.log("validandoK= " + e.keyCode);
+	return (validateChar(e)|| e.charCode == 46)
+}
+
 function validarCondPago(e) {
 	//console.log("validandoC= " + e.charCode);
 	//console.log("validandoK= " + e.keyCode);

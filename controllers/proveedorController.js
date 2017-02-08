@@ -33,7 +33,6 @@ exports.add = function(req, res) {
         nombreEmpresa:    	req.body.nombreEmpresa,
         cuit:     		  	req.body.cuit,
         categoriaFiscal:    req.body.categoriaFiscal,
-        listaPrecioID:   	req.body.listaPrecioID,
         direccion:  		req.body.direccion,
         condicionPago:    req.body.condicionPago
     });
@@ -55,7 +54,6 @@ exports.update = function(req, res) {
         proveedor.nombreEmpresa =   	req.body.nombreEmpresa;
         proveedor.cuit =     		  	req.body.cuit;
         proveedor.categoriaFiscal =  	req.body.categoriaFiscal;
-        proveedor.listaPrecioID =   	req.body.listaPrecioID;
         proveedor.direccion =  			req.body.direccion;
         proveedor.condicionPago =     req.body.condicionPago;
 

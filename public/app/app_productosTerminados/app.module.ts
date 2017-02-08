@@ -9,7 +9,10 @@ import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { ProductoTerminadoComponent} from './productoTerminadoComponent';
 import { AgregadorProductoTerminadoComponent} from './agregadorProductoTerminadoComponent';
 
-import { ProductoTerminadoServices} from './productoTerminadoServices';
+import { ListaPorcentajeServices } from '../listaPorcentaje/ListaPorcentajeServices'
+import { MateriaPrimaServices } from '../app_materiasPrima/materiaPrimaServices';
+import { SemiProcesadoServices } from '../app_semiProcesados/semiProcesadoServices';
+import { ProductoTerminadoServices } from '../app_productosTerminados/productoTerminadoServices';
 
 @NgModule({
   imports: [
@@ -24,7 +27,12 @@ import { ProductoTerminadoServices} from './productoTerminadoServices';
     ProductoTerminadoComponent,
     AgregadorProductoTerminadoComponent
   ],
-  providers: [ ProductoTerminadoServices ],
+  providers: [
+    ListaPorcentajeServices,
+    MateriaPrimaServices,
+    SemiProcesadoServices,
+    ProductoTerminadoServices
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

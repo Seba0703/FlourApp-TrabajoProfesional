@@ -3,6 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';  
 import 'rxjs/add/operator/map';
 
+import { Cliente } from './cliente'
 import {URL_CLIENTES} from '../rutas';
 
 @Injectable()
@@ -13,6 +14,11 @@ export class ClienteServices {
   }
 
   getClientes(): Observable<Response>  {
+    console.log("HACIENDO REQUEST");
+    return this.http.get(URL_CLIENTES).map((response) => response.json())
+  }
+  
+  getBasicDataClientes(): Observable<Cliente[]>  {
     console.log("HACIENDO REQUEST");
     return this.http.get(URL_CLIENTES).map((response) => response.json())
   }

@@ -113,7 +113,7 @@
 <div class="modal fade" id="modificarLDPmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="mostrarModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modificar-modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Lista de Precios</h5>
             </div>
             <div class="modal-body">
@@ -169,7 +169,7 @@
 						<div class="row" style="margin: 0 auto">
 							<div class="col-md-12">
 				                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-				                <button type="button" class="btn btn-primary" 
+				                <button type="button" class="btn btn-success" 
 				                (click)="guardarModificaciones(newListName.value); newListName.value=''">
 				                    Guardar modificaciones
 				                </button>
@@ -219,7 +219,7 @@
             <div class="modal-footer">
 				<div class="row" style="margin: 0 auto">
 					<div class="col-md-12">
-		                <button type="button" class="btn btn-success" data-dismiss="modal">Listo</button>
+		                <button type="button" class="btn btn-info" data-dismiss="modal">Listo</button>
 					</div>
 
 				</div>
@@ -242,13 +242,13 @@
 					 	<div *ngIf="!fueSeleccionada(sp._id)">
 						   <input type="checkbox"  id="{{sp._id}}" #cv (change)="onChange(sp._id, sp.nombre, sp.precioVenta, 'SP', cv.checked)"                                    
 						    >
-						         {{sp.nombre}} - ${{sp.precioVenta}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese precio" value="{{sp.precioVenta}}" #precioVenta (keyup)="onPrecioVentaChange(precioVenta.value, sp._id)" (change)="onPrecioVentaChange(precioVenta.value, mp._id)"> <br>
+						         {{sp.nombre}} - ${{sp.precioVenta}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese precio" value="{{sp.precioVenta}}" #precioVenta (keyup)="onPrecioVentaChange(precioVenta.value, sp._id)" (change)="onPrecioVentaChange(precioVenta.value, sp._id)"> <br>
 					 	</div>
 
 					 	<div *ngIf="fueSeleccionada(sp._id)">
 						   <input type="checkbox"  id="{{sp._id}}" checked #cv (change)="onChange(sp._id, sp.nombre, sp.precioVenta, 'SP', cv.checked)"                                    
 						    >
-						         {{sp.nombre}} - ${{sp.precioVenta}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese precio" value="{{sp.precioVenta}}" #precioVenta (keyup)="onPrecioVentaChange(precioVenta.value, sp._id)" (change)="onPrecioVentaChange(precioVenta.value, mp._id)"> <br>
+						         {{sp.nombre}} - ${{sp.precioVenta}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese precio" value="{{sp.precioVenta}}" #precioVenta (keyup)="onPrecioVentaChange(precioVenta.value, sp._id)" (change)="onPrecioVentaChange(precioVenta.value, sp._id)"> <br>
 					 	</div> 
 
 					 </span>
@@ -258,7 +258,7 @@
             <div class="modal-footer">
 				<div class="row">
 					<div class="col-md-12">
-		                <button type="button" class="btn btn-success" data-dismiss="modal">Listo</button>
+		                <button type="button" class="btn btn-info" data-dismiss="modal">Listo</button>
 					</div>
 
 				</div>
@@ -281,13 +281,13 @@
 						 <div *ngIf="!fueSeleccionada(pt._id)">
 						   <input type="checkbox"  id="{{pt._id}}" #cv (change)="onChange(pt._id, pt.nombre, pt.precioVenta, 'PT', cv.checked)"                                    
 						    >
-						         {{pt.nombre}} - ${{pt.precioVenta}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese precio" value="{{pt.precioVenta}}" #precioVenta (keyup)="onPrecioVentaChange(precioVenta.value, pt._id)" (change)="onPrecioVentaChange(precioVenta.value, mp._id)"> <br>
+						         {{pt.nombre}} - ${{pt.precioVenta}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese precio" value="{{pt.precioVenta}}" #precioVenta (keyup)="onPrecioVentaChange(precioVenta.value, pt._id)" (change)="onPrecioVentaChange(precioVenta.value, pt._id)"> <br>
 						 </div>
 
 						 <div *ngIf="fueSeleccionada(pt._id)">
 						   <input type="checkbox"  id="{{pt._id}}" checked #cv (change)="onChange(pt._id, pt.nombre, pt.precioVenta, 'PT', cv.checked)"                                    
 						    >
-						         {{pt.nombre}} - ${{pt.precioVenta}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese precio" value="{{pt.precioVenta}}" #precioVenta (keyup)="onPrecioVentaChange(precioVenta.value, pt._id)" (change)="onPrecioVentaChange(precioVenta.value, mp._id)"> <br>
+						         {{pt.nombre}} - ${{pt.precioVenta}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese precio" value="{{pt.precioVenta}}" #precioVenta (keyup)="onPrecioVentaChange(precioVenta.value, pt._id)" (change)="onPrecioVentaChange(precioVenta.value, pt._id)"> <br>
 						 </div>
 					 </span>
 
@@ -296,7 +296,7 @@
             <div class="modal-footer">
 				<div class="row">
 					<div class="col-md-12">
-		                <button type="button" class="btn btn-success" data-dismiss="modal">Listo</button>
+		                <button type="button" class="btn btn-info" data-dismiss="modal">Listo</button>
 					</div>
 
 				</div>
@@ -326,7 +326,7 @@
 						</thead>
 						<tbody *ngFor="let producto of getProductos()">
 						    <td>{{producto.nombre}}</td>
-						    <td>{{producto.precio}}</td>
+						    <td>${{producto.precio}}</td>
 						    <td>{{producto.tipo}}</td>
 						</tbody>
 					</table>

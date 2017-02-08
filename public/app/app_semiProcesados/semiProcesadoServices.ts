@@ -48,17 +48,19 @@ export class SemiProcesadoServices{
   borrarSemiProcesado(id: string): Observable<Response> {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    console.log("DELETE REQUEST");
+    
+    console.log("CALLING LP SERVICE TO DELETE COMPONENTS ...");
     this.lpService.borrarListaPorcentajes(id)
                   .subscribe(()=>{}, (error:any) => Observable.throw(error.json().error || 'Server error'))
                   
+    console.log("DELETE SEMI PROCESADO ...");
     return this.http.delete(URL_SEMIPROCESADOS + "/" + id, {headers: headers});
   }
 
   borrarComponentes(productoAfabricarID: string): Observable<Response> {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    console.log("DELETE REQUEST BY PRODUCTO");
+    console.log("CALLING LP SERVICE TO DELETE COMPONENTS ...");
     return this.lpService.borrarListaPorcentajes(productoAfabricarID)
   }
 

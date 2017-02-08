@@ -4,7 +4,7 @@ var clienteSchema = new mongoose.Schema({
   nombreEmpresa:	 { type: String },
   cuit:   	  		 { type: Number },
   categoriaFiscal: 	 { type: String },
-  listaPrecioID: 	 { type: String },
+  listaPrecioNombre: { type: String },
   direccion: 	  	 { type: String },
   condicionPago: 	 { type: String }
 });
