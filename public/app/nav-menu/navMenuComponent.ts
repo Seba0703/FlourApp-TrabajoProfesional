@@ -19,6 +19,12 @@ export class NavMenuComponent {
   activeF: string = "";
   activeD: string = "";
 
+  activeFacturacion: string = "";
+  activeFC: string = "";
+  activeFV: string = "";
+  activeOC: string = "";
+  activeR: string = "";
+
   activeLP: string = "";
   activeU: string = "";
   
@@ -49,18 +55,34 @@ export class NavMenuComponent {
           this.activePT = "active";
           this.activeProductos = "active";
           break;
-          case "fabricar":
+        case "fabricar":
           this.activeF = "active";
           this.activeProduccion = "active";
           break; 
-          case "deshacer":
+        case "deshacer":
           this.activeD = "active";
           this.activeProduccion = "active";
           break;
-          case "listaDePrecios":
+        case "facturaCompra":
+          this.activeFC = "active";
+          this.activeFacturacion = "active";
+          break;
+        case "facturaVenta":
+          this.activeFV = "active";
+          this.activeFacturacion = "active";
+          break;
+        case "ordenCompra":
+          this.activeOC = "active";
+          this.activeFacturacion = "active";
+          break;
+        case "remito":
+          this.activeR = "active";
+          this.activeFacturacion = "active";
+          break;
+        case "listaDePrecios":
           this.activeLP = "active";
           break;
-          case "usuarios":
+        case "usuarios":
           this.activeU = "active";
           break;           
         default:
