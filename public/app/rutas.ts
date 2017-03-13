@@ -3,6 +3,7 @@ let puerto = 3000;
 
 //VIEWs
 export const URL_VIEW_INDEX = 			'http://' + ip + ':' + puerto + '/index.html';
+export const URL_VIEW_HOME = 			'http://' + ip + ':' + puerto + '/home.html';
 export const URL_VIEW_CLIENTES =		'http://' + ip + ':' + puerto + '/clientes.html';
 
 //API 
