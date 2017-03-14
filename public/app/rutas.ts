@@ -6,7 +6,7 @@ export const URL_VIEW_INDEX = 			'http://' + ip + ':' + puerto + '/index.html';
 export const URL_VIEW_HOME = 			'http://' + ip + ':' + puerto + '/home.html';
 export const URL_VIEW_CLIENTES =		'http://' + ip + ':' + puerto + '/clientes.html';
 
-//API 
+//API
 export const URL_CLIENTES = 			'http://' + ip + ':' + puerto + '/api/clientes';
 export const URL_PROVEEDORES = 			'http://' + ip + ':' + puerto + '/api/proveedores';
 export const URL_MATERIAS_PRIMA = 		'http://' + ip + ':' + puerto + '/api/materiasPrima';
@@ -24,4 +24,5 @@ export const URL_LISTA_PRECIOS = 		'http://' + ip + ':' + puerto + '/api/listaPr
 export const URL_LISTA_PRECIOS_LISTNAME = 		'http://' + ip + ':' + puerto + '/api/listaPrecios/list';
 export const URL_LISTA_PORCENTAJES = 		'http://' + ip + ':' + puerto + '/api/listaPorcentajes';
 export const URL_LISTA_PORCENTAJES_LIST_PROD_FAB = 		'http://' + ip + ':' + puerto + '/api/listaPorcentajes/productoList';
-export const URL_LISTA_PORCENTAJES_CON_DATOS = 'http://' + ip + ':' + puerto + '/api/listaPorcentajes/conDatos'
+export const URL_LISTA_PORCENTAJES_CON_DATOS = 'http://' + ip + ':' + puerto + '/api/listaPorcentajes/conDatos';
+export const URL_INFORMECOMPRAS = 		'http://' + ip + ':' + puerto + '/api/informeCompras';

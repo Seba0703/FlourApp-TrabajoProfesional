@@ -14,7 +14,7 @@ export class NavMenuComponent {
   activeMP: string = "";
   activeSP: string = "";
   activePT: string = "";
-  
+
   activeProduccion: string = "";
   activeF: string = "";
   activeD: string = "";
@@ -25,9 +25,13 @@ export class NavMenuComponent {
   activeOC: string = "";
   activeR: string = "";
 
+  activeInformes: string = "";
+  activeIC: string = "";
+  activeIV: string = "";
+
   activeLP: string = "";
   activeU: string = "";
-  
+
   constructor(){}
 
   ngOnInit() {
@@ -58,7 +62,7 @@ export class NavMenuComponent {
         case "fabricar":
           this.activeF = "active";
           this.activeProduccion = "active";
-          break; 
+          break;
         case "deshacer":
           this.activeD = "active";
           this.activeProduccion = "active";
@@ -79,12 +83,20 @@ export class NavMenuComponent {
           this.activeR = "active";
           this.activeFacturacion = "active";
           break;
+        case "informeCompras":
+          this.activeIC = "active";
+          this.activeInformes = "active";
+          break;
+        case "informeVentas":
+          this.activeIV = "active";
+          this.activeInformes = "active";
+          break;
         case "listaDePrecios":
           this.activeLP = "active";
           break;
         case "usuarios":
           this.activeU = "active";
-          break;           
+          break;
         default:
           this.activeH = "active";
           break;
