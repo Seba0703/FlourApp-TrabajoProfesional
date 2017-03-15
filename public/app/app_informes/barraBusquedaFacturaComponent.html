@@ -13,16 +13,24 @@
 	input[type="text"] {
 		width: 100px;
 	}
+	#btnBuscarFacturas {
+		margin-left: 20px;
+		cursor: pointer;
+	}
 </style>
 <div class="col-md-12">
 	<label for="#nfact">Nro. Fact.:</label>
 	<input id="nfact" type="number"/>
 	<label for="#cuit">CUIT:</label>
 	<input id="cuit" type="number"/>
-	<label for="#cliente">Cliente:</label>
+	<label for="#cliente">Razón Social:</label>
 	<input id="cliente" type="text"/>
 	<label for="#desde">Desde:</label>
 	<input id="desde" type="date"/>
 	<label for="#hasta">Hasta:</label>
 	<input id="hasta" type="date"/>
+	<button id="btnBuscarFacturas" class="btn btn-primary" type="button" title="Buscar">
+		<i class="fa fa-search" aria-hidden="true">
+			Buscar</i>
+	</button>
 </div>

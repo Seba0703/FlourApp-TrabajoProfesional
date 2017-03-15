@@ -1,3 +1,8 @@
+<style>
+	#btnPDF {
+		cursor: pointer;
+	}
+</style>
 <td style="text-align: right">{{factura.numero}}</td>
 <td>{{factura.cliente}}</td>
 <td>{{factura.categ_fiscal}}</td>
@@ -11,5 +16,24 @@
 		{{(subtotal+(subtotal*factura.iva/100)).toFixed(2)}}</b>
 </td>
 <td>
-	<i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+	<button id="btnPDF" class="btn btn-sm btn-secondary" type="button" title="Exportar factura a PDF" data-toggle="modal" data-target="#exportarFactura">
+		<i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+	</button>
 </td>
+<!-- Modal -->
+<div class="modal fade" id="exportarFactura" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">PDF Factura</h5>
+			</div>
+			<div class="modal-body">
+				<p>En contrucción..</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -8,7 +8,7 @@ import { NavMenuComponent } from '../nav-menu/navMenuComponent';
 import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { FacturaHeaderComponent } from './facturaHeaderComponent';
 import { FacturaBodyComponent } from './facturaBodyComponent';
-import { BarraBusquedaFacturaComponent } from './barraBusquedaFacturaComponent';
+import { BarraBusquedaFacturaComponent } from '../app_informes/barraBusquedaFacturaComponent';
 
 import { InformeVentasServices } from './informeVentasServices';
 

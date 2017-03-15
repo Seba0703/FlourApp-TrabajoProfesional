@@ -8,6 +8,7 @@ import { NavMenuComponent } from '../nav-menu/navMenuComponent';
 import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { FacturaHeaderComponent } from './facturaHeaderComponent';
 import { FacturaBodyComponent } from './facturaBodyComponent';
+import { BarraBusquedaFacturaComponent } from '../app_informes/barraBusquedaFacturaComponent';
 
 import { InformeComprasServices } from './informeComprasServices';
 
@@ -22,7 +23,8 @@ import { InformeComprasServices } from './informeComprasServices';
     NavMenuComponent,
     SignOutComponent,
     FacturaHeaderComponent,
-    FacturaBodyComponent
+    FacturaBodyComponent,
+    BarraBusquedaFacturaComponent
   ],
   providers: [
     InformeComprasServices
