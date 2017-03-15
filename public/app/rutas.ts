@@ -26,4 +26,4 @@ export const URL_LISTA_PORCENTAJES = 		'http://' + ip + ':' + puerto + '/api/lis
 export const URL_LISTA_PORCENTAJES_LIST_PROD_FAB = 		'http://' + ip + ':' + puerto + '/api/listaPorcentajes/productoList';
 export const URL_LISTA_PORCENTAJES_CON_DATOS = 'http://' + ip + ':' + puerto + '/api/listaPorcentajes/conDatos';
 export const URL_INFORMECOMPRAS = 		'http://' + ip + ':' + puerto + '/api/informeCompras';
-export const URL_INFORMECOMPRAS = 		'http://' + ip + ':' + puerto + '/api/informeVentas';
+export const URL_INFORMEVENTAS = 		'http://' + ip + ':' + puerto + '/api/informeVentas';
