@@ -1,14 +1,41 @@
 <div class="container">
 	<div class="row">
-		<!-- inserto dentro del container una fila  -->
 		<div class="col-md-12">
 			<nav-menu [origen]="'informeCompras'"></nav-menu>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-11" style="padding-right: 0px;">
-			<!-- <tabla-semi-procesados></tabla-semi-procesados> -->
-			ok
+			<table class="table table-hover">
+				<thead class="thead-inverse">
+					<tr>
+						<th style="text-align: right">Nro Fact.</th>
+						<th>Vendedor</th>
+						<th>Categ. Fiscal</th>
+						<th>Cond. Pago</th>
+						<th>Subtotal</th>
+						<th>% IVA</th>
+						<th>Total</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody *ngFor="let factura of facturas; let i = index">
+					<tr factura-header data-toggle="collapse" [attr.data-target]="'#'+i" class="clickable" style="cursor: pointer;" [factura]="factura" [subtotal]="calcularSubtotal(factura.productos)"></tr>
+					<tr factura-body [id]="i" [factura]="factura.productos"></tr>
+				</tbody>
+				<tfoot>
+					<tr style="background-color: #F5F5F5; border-top: 2px solid;">
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th>${{sumaSubtotales().toFixed(2)}}</th>
+						<th></th>
+						<th>${{sumaTotales().toFixed(2)}}</th>
+						<th></th>
+					</tr>
+				</tfoot>
+			</table>
 		</div>
 	</div>
 </div>

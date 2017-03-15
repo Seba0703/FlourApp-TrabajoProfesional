@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 import { AppComponent }  from './app.component';
 import { NavMenuComponent } from '../nav-menu/navMenuComponent';
 import { SignOutComponent }  from '../sign-out/signOutComponent';
+import { FacturaHeaderComponent } from './facturaHeaderComponent';
+import { FacturaBodyComponent } from './facturaBodyComponent';
 
 import { InformeComprasServices } from './informeComprasServices';
 
@@ -18,7 +20,9 @@ import { InformeComprasServices } from './informeComprasServices';
   declarations: [
     AppComponent,
     NavMenuComponent,
-    SignOutComponent
+    SignOutComponent,
+    FacturaHeaderComponent,
+    FacturaBodyComponent
   ],
   providers: [
     InformeComprasServices
