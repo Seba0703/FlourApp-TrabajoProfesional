@@ -1,0 +1,157 @@
+<div class="row">
+	<div class="col-md-11">
+		<table class="table">
+			<thead class="thead-inverse">
+			    <tr>
+			    <th>Nº</th>
+			    <th>Acciones</th>
+			    </tr>
+			</thead>
+			<tbody *ngFor="let numero of numeros">
+			    <td>{{numero}}</td>
+			    <td>
+			        <button type="button" class="btn btn-danger" (click)="borrar(numero)" title="Borrar" >
+			          <i class="fa fa-trash" aria-hidden="true"></i>
+			        </button>
+			    </td>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="col-md-1" style="padding-left: 0px;">
+		<button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar Factura de Venta" data-toggle="modal" 
+		data-target="#facturaModal">
+			+
+		</button>
+	</div>
+
+</div>
+
+
+
+<!-- Modal FACTURA-->
+<div class="modal fade" id="facturaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" 
+> <!-- hidden es true si mostrarModal es false-->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Factura de Venta</h5>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+				  <li class="nav-item">
+				    <a class="nav-link active" data-toggle="tab" href="#datos" role="tab">Datos</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" data-toggle="tab" href="#productos" role="tab">Productos</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" data-toggle="tab" href="#item3" role="tab">Item3</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" data-toggle="tab" href="#item4" role="tab">Item4</a>
+				  </li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+
+				  	<div class="tab-pane active" id="datos" role="tabpanel">
+
+				  		<div class="form-group row" style="margin-top: 8px;">
+	                        <div class="col-2">
+	                            <label for="example-text-input" class="col-form-label">Fecha</label>
+	                        </div>
+	                        <div class="col-10">
+	                    		<input type="text" class="form-control" placeholder="Fecha" aria-describedby="basic-addon1" 
+	                    		>
+	                        </div>
+                    	</div>
+
+						<div class="form-group row" style="margin-top: 4px;">
+							<div class="col-md-12">
+							    <div class="input-group">
+							      <input type="text" class="form-control" placeholder="Cliente">
+							      <span class="input-group-btn">
+							        <button class="btn btn-secondary" type="button" aria-pressed="true" title="Agregar Cliente" data-toggle="modal" data-target="#clientesModal">
+							        	<i class="fa fa-user-plus" aria-hidden="true"></i>
+							        </button>
+							      </span>
+							    </div>
+							</div>
+						</div>
+
+						<div class="form-group row" style="margin-top: 4px;">
+							<div class="col-md-12">
+							    <div class="input-group">
+							      <input type="text" class="form-control" placeholder="Condición de Pago (ej: 30-60-90)">
+							    </div>
+							</div>
+						</div>
+				  	</div>
+
+				  	<div class="tab-pane" id="productos" role="tabpanel">Nombre-Cant-Precio</div>
+
+				  	<div class="tab-pane" id="item3" role="tabpanel">....</div>
+
+				  	<div class="tab-pane" id="item4" role="tabpanel">....</div>
+				</div>
+
+
+            </div>
+            <div class="modal-footer">
+              <div class="container">
+                <div class="row" style="margin: 0 auto">
+                  <div class="col-md-12">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary"
+                            (click)="guardarFactura()">
+                                Guardar factura
+                            </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal CLIENTES-->
+<div class="modal fade" id="clientesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+	        <div class="modal-header">
+	            <h5 class="modal-title" id="exampleModalLabel">Clientes</h5>
+	        </div>
+
+            <div class="modal-body">
+				<div class="container">
+	                <label for="text" style="margin-top: 8px;"><strong>Seleccione un cliente:</strong></label>
+	                   <span *ngFor="let cliente of clientesDisponibles">
+	                   		<div>
+                   		        <label>
+							        <input type="radio" name="radiogroup" (change)="onClienteSelecionadoChange(cliente)">
+							        {{cliente.nombreEmpresa}} / {{cliente.cuit}}
+						        </label>
+	                   		</div>
+	                   		
+	                   </span>
+				</div>
+            </div>
+
+            <div class="modal-footer">
+				<div class="row" style="margin: 0 auto">
+					<div class="col-md-12">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">Agregar</button>
+					</div>
+
+				</div>
+            </div>
+        </div>
+    </div>
+</div>

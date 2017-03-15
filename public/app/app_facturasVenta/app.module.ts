@@ -6,6 +6,9 @@ import { HttpModule } from '@angular/http';
 import { AppComponent }  from './app.component';
 import { NavMenuComponent } from '../nav-menu/navMenuComponent';
 import { SignOutComponent }  from '../sign-out/signOutComponent';
+import { FacturaVentaComponent }  from './FacturaVentaComponent';
+
+import { ClienteServices} from '../app_clientes/clienteServices';
 
 @NgModule({
   imports: [
@@ -16,9 +19,11 @@ import { SignOutComponent }  from '../sign-out/signOutComponent';
   declarations: [
     AppComponent,
     NavMenuComponent,
-    SignOutComponent
+    SignOutComponent,
+    FacturaVentaComponent
   ],
-  providers: [ 
+  providers: [
+    ClienteServices
   ],
   bootstrap: [ AppComponent ]
 })
