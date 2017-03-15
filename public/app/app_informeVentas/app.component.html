@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<nav-menu [origen]="'informeCompras'"></nav-menu>
+			<nav-menu [origen]="'informeVentas'"></nav-menu>
 		</div>
 	</div>
 	<div class="row">
@@ -10,12 +10,13 @@
 				<thead class="thead-inverse">
 					<tr>
 						<th style="text-align: right">Nro Fact.</th>
-						<th>Vendedor</th>
+						<th>Cliente</th>
 						<th>Categ. Fiscal</th>
 						<th>Cond. Pago</th>
 						<th>Subtotal</th>
 						<th>% IVA</th>
 						<th>Total</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody *ngFor="let factura of facturas; let i = index">
@@ -31,6 +32,7 @@
 						<th>${{sumaSubtotales().toFixed(2)}}</th>
 						<th></th>
 						<th>${{sumaTotales().toFixed(2)}}</th>
+						<th></th>
 					</tr>
 				</tfoot>
 			</table>
