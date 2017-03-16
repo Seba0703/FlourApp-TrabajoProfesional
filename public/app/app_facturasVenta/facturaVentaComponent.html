@@ -30,8 +30,7 @@
 
 
 <!-- Modal FACTURA-->
-<div class="modal fade" id="facturaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" 
-> <!-- hidden es true si mostrarModal es false-->
+<div class="modal fade" id="facturaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!-- hidden es true si mostrarModal es false-->
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -74,7 +73,7 @@
 						<div class="form-group row" style="margin-top: 4px;">
 							<div class="col-md-12">
 							    <div class="input-group">
-							      <input type="text" class="form-control" placeholder="Cliente">
+							      <input type="text" class="form-control" placeholder="Cliente" [(ngModel)]="facturaVenta.cliente.nombreEmpresa">
 							      <span class="input-group-btn">
 							        <button class="btn btn-secondary" type="button" aria-pressed="true" title="Agregar Cliente" data-toggle="modal" data-target="#clientesModal">
 							        	<i class="fa fa-user-plus" aria-hidden="true"></i>
@@ -121,7 +120,8 @@
 
 
 <!-- Modal CLIENTES-->
-<div class="modal fade" id="clientesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+<div class="modal fade" id="clientesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" 
+>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
 
@@ -141,15 +141,6 @@
 	                   		</div>
 	                   		
 	                   </span>
-				</div>
-            </div>
-
-            <div class="modal-footer">
-				<div class="row" style="margin: 0 auto">
-					<div class="col-md-12">
-		                <button type="button" class="btn btn-primary" data-dismiss="modal">Agregar</button>
-					</div>
-
 				</div>
             </div>
         </div>
