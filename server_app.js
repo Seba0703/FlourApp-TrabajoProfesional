@@ -1,16 +1,16 @@
-var express = require("express"),  
+var express = require("express"),
     app = express(),
 	path = require('path'),
     bodyParser  = require("body-parser"),
     methodOverride = require("method-override");
     mongoose = require("mongoose");
-	
 
-app.use(express.static('public'));	
-	
+
+app.use(express.static('public'));
+
 // Middlewares
-app.use(bodyParser.urlencoded({extended: false}));  
-app.use(bodyParser.json());  
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 app.use(methodOverride());
 
 //CORS middleware
@@ -33,7 +33,7 @@ var indexHTML;
 fileSystem.readFile("./public/index.html", function(err, html){
 	indexHTML = html;
 });
- 
+
 
 // Index route
 var router = express.Router();
@@ -54,7 +54,7 @@ app.use(router);
 
 // API routes
 var usuarioRoutersHandler = require("./routersHandlers/usuarioRoutersHandler").getUsuarioRoutersHandler(express);
-app.use('/api', usuarioRoutersHandler); 
+app.use('/api', usuarioRoutersHandler);
 
 var clienteRoutersHandler = require("./routersHandlers/clienteRoutersHandler").getClienteRoutersHandler(express);
 app.use('/api', clienteRoutersHandler);
@@ -83,14 +83,23 @@ app.use('/api', movProductFinalRoutersHandler);
 var movProductUsadoRoutersHandler = require("./routersHandlers/movProductoUsadoRoutersHandler").getMovProductoUsadoRoutersHandler(express);
 app.use('/api', movProductUsadoRoutersHandler);
 
+var facturacionDatosPropiosRoutersHandler = require("./routersHandlers/facturacionDatosPropiosRoutersHandler").getFacturacionDatosPropiosRoutersHandler(express);
+app.use('/api', facturacionDatosPropiosRoutersHandler);
+
+var facturaItemRoutersHandler = require("./routersHandlers/facturaItemRoutersHandler").getFacturaItemRoutersHandler(express);
+app.use('/api', facturaItemRoutersHandler);
+
+var facturaVentaRoutersHandler = require("./routersHandlers/facturaVentaRoutersHandler").getFacturaVentaRoutersHandler(express);
+app.use('/api', facturaVentaRoutersHandler);
+
 // Connection to DB
 mongoose.connect('mongodb://localhost/flourapp', function(err, res) {  //se conecta a la base de datos
   if(err) {
     console.log('ERROR: al conectarse con Database!' + err);
   } else {
-	console.log("Connected to Database ¡OK!");  
+	console.log("Connected to Database ¡OK!");
   }
-  
+
   // Start server
   app.listen(3000, function() {
     console.log("Node server running on http://localhost:3000");
