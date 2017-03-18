@@ -11,7 +11,7 @@
 			<tbody *ngFor="let nombre of nombresListaDePrecios">
 			    <td>{{nombre}}</td>
 			    <td>
-					<i class="fa fa-eye" aria-hidden="true" title="Ver productos" (click)="ver(nombre)" data-toggle="modal" data-target="#productosModal"></i>
+					<i class="fa fa-eye" aria-hidden="true" title="Ver productos" onmouseover="" style="cursor: pointer;" (click)="ver(nombre)" data-toggle="modal" data-target="#productosModal"></i>
 				</td>
 			    <td>
 			        <button type="button" class="btn btn-success" (click)="modificar(nombre)" title="Modificar"
