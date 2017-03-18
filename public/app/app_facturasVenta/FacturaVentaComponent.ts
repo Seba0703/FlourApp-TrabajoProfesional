@@ -131,18 +131,41 @@ export class FacturaVentaComponent implements OnInit{
 
   onCantidadChange(productoID: string, cantidad: number){
   	for (var i = 0; i < this.productosSeleccionados.length; ++i) {
-		if(this.productosSeleccionados[i]._id == productoID) {
-			this.productosSeleccionados[i].cantidad = cantidad
-		}
+  		if(this.productosSeleccionados[i]._id == productoID) {
+  			this.productosSeleccionados[i].cantidad = cantidad
+  		}
   	}
   }
 
   onPrecioChange(productoID: string, precio: number){
   	for (var i = 0; i < this.productosSeleccionados.length; ++i) {
-		if(this.productosSeleccionados[i]._id == productoID) {
-			this.productosSeleccionados[i].precioVenta = precio
-		}
+  		if(this.productosSeleccionados[i]._id == productoID) {
+  			this.productosSeleccionados[i].precioVenta = precio
+  		}
   	}
+  }
+
+  onIVAChange(productoID: string, iva: number){
+    for (var i = 0; i < this.productosSeleccionados.length; ++i) {
+      if(this.productosSeleccionados[i]._id == productoID) {
+        this.productosSeleccionados[i].iva = iva
+      }
+    }
+  }
+
+  getIVA(producto: any): number {
+    switch (producto.tasaImpositivaID) {
+      case "ti1":
+        return 0;
+      case "ti2":
+        return 10.5;  
+      case "ti3":
+        return 21;
+      case "ti4":
+        return 27;  
+      default:
+        return 0;
+    }
   }
 
   borrar(numeroFactura: number){

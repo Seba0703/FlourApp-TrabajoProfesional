@@ -29,7 +29,7 @@
 
 <!-- Modal FACTURA-->
 <div class="modal fade" id="facturaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Factura de Venta</h5>
@@ -46,10 +46,10 @@
 				    <a class="nav-link" data-toggle="tab" href="#productos" role="tab">Productos</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" data-toggle="tab" href="#item3" role="tab">Item3</a>
+				    <a class="nav-link" data-toggle="tab" href="#item3" role="tab">Vencimientos</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" data-toggle="tab" href="#item4" role="tab">Item4</a>
+				    <a class="nav-link" data-toggle="tab" href="#item4" role="tab">Retenciones</a>
 				  </li>
 				</ul>
 
@@ -97,15 +97,17 @@
 							<div class="col-md-12">
 								<table class="table">
 								    <colgroup>
-								       <col span="1" style="width: 60%;">
-								       <col span="1" style="width: 20%;">
-								       <col span="1" style="width: 20%;">
+								       <col span="1" style="width: 70%;">
+								       <col span="1" style="width: 10%;">
+								       <col span="1" style="width: 10%;">
+								       <col span="1" style="width: 10%;">
 								    </colgroup>
 									<thead class="thead-inverse">
 									    <tr>
 									    <th>Producto</th>
 									    <th>Cantidad</th>
 									    <th>Precio</th>
+									    <th>% IVA</th>
 									    </tr>
 									</thead>
 									<tbody *ngFor="let producto of productosDisponibles; let i = index">
@@ -113,13 +115,20 @@
 											<input type="checkbox" #cv (change)="onSeleccionProductoChange(producto, cv.checked)">
                                				{{producto.nombre}}
 									    </td>
+
 									    <td>
-									        <input *ngIf="cv.checked == true" type="number" style="width: 90px;" placeholder="Cantidad" #cantidad 
-                               				(keyup)="onCantidadChange(producto._id, cantidad.value)" (change)="onCantidadChange(producto._id, cantidad.value)">
+									        <input *ngIf="cv.checked == true" type="number" min="0" style="width: 90px;" placeholder="Cantidad" #cantidad (keyup)="onCantidadChange(producto._id, cantidad.value)" (change)="onCantidadChange(producto._id, cantidad.value)">
 									    </td>
+
 									    <td>
-		                        			<input *ngIf="cv.checked == true" type="number" style="width: 90px;" placeholder="Precio"
+		                        			<input *ngIf="cv.checked == true" type="number" min="0" style="width: 90px;" placeholder="Precio"
                                				#precio (keyup)="onPrecioChange(producto._id, precio.value)" (change)="onPrecioChange(producto._id, precio.value)" [(ngModel)]="productosDisponibles[i].precioVenta"> 
+									    </td>
+
+									    <td>
+		                        			<input *ngIf="cv.checked == true" type="number" step="0.01" min="0" style="width: 90px;" 
+		                        			placeholder="% IVA" #iva (keyup)="onIVAChange(producto._id, iva.value)" 
+		                        			(change)="onIVAChange(producto._id, iva.value)" [value]="this.getIVA(producto)"> 
 									    </td>
 									</tbody>
 								</table>
@@ -128,9 +137,9 @@
 						</div>
 				  	</div>
 
-				  	<div class="tab-pane" id="item3" role="tabpanel">....</div>
+				  	<div class="tab-pane" id="item3" role="tabpanel">venciminetos</div>
 
-				  	<div class="tab-pane" id="item4" role="tabpanel">....</div>
+				  	<div class="tab-pane" id="item4" role="tabpanel">retenciones</div>
 				</div>
 
 
