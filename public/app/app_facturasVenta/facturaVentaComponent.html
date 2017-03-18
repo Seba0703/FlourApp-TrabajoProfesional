@@ -27,10 +27,8 @@
 
 </div>
 
-
-
 <!-- Modal FACTURA-->
-<div class="modal fade" id="facturaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!-- hidden es true si mostrarModal es false-->
+<div class="modal fade" id="facturaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -86,13 +84,49 @@
 						<div class="form-group row" style="margin-top: 4px;">
 							<div class="col-md-12">
 							    <div class="input-group">
-							      <input type="text" class="form-control" placeholder="Condición de Pago (ej: 30-60-90)">
+							      <input type="text" class="form-control" placeholder="Condición de Pago (ej: 30-60-90)"
+							      [(ngModel)]="facturaVenta.cliente.condicionPago">
 							    </div>
 							</div>
 						</div>
 				  	</div>
 
-				  	<div class="tab-pane" id="productos" role="tabpanel">Nombre-Cant-Precio</div>
+				  	<div class="tab-pane" id="productos" role="tabpanel">
+		                <label for="text" style="margin-top: 8px;"><strong>Seleccione los productos:</strong></label>
+						<div class="row">
+							<div class="col-md-12">
+								<table class="table">
+								    <colgroup>
+								       <col span="1" style="width: 60%;">
+								       <col span="1" style="width: 20%;">
+								       <col span="1" style="width: 20%;">
+								    </colgroup>
+									<thead class="thead-inverse">
+									    <tr>
+									    <th>Producto</th>
+									    <th>Cantidad</th>
+									    <th>Precio</th>
+									    </tr>
+									</thead>
+									<tbody *ngFor="let producto of productosDisponibles; let i = index">
+									    <td>
+											<input type="checkbox" #cv (change)="onSeleccionProductoChange(producto, cv.checked)">
+                               				{{producto.nombre}}
+									    </td>
+									    <td>
+									        <input *ngIf="cv.checked == true" type="number" style="width: 90px;" placeholder="Cantidad" #cantidad 
+                               				(keyup)="onCantidadChange(producto._id, cantidad.value)" (change)="onCantidadChange(producto._id, cantidad.value)">
+									    </td>
+									    <td>
+		                        			<input *ngIf="cv.checked == true" type="number" style="width: 90px;" placeholder="Precio"
+                               				#precio (keyup)="onPrecioChange(producto._id, precio.value)" (change)="onPrecioChange(producto._id, precio.value)" [(ngModel)]="productosDisponibles[i].precioVenta"> 
+									    </td>
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+				  	</div>
 
 				  	<div class="tab-pane" id="item3" role="tabpanel">....</div>
 
@@ -120,8 +154,7 @@
 
 
 <!-- Modal CLIENTES-->
-<div class="modal fade" id="clientesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" 
->
+<div class="modal fade" id="clientesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
 
@@ -132,15 +165,15 @@
             <div class="modal-body">
 				<div class="container">
 	                <label for="text" style="margin-top: 8px;"><strong>Seleccione un cliente:</strong></label>
-	                   <span *ngFor="let cliente of clientesDisponibles">
-	                   		<div>
-                   		        <label>
-							        <input type="radio" name="radiogroup" (change)="onClienteSelecionadoChange(cliente)">
-							        {{cliente.nombreEmpresa}} / {{cliente.cuit}}
-						        </label>
-	                   		</div>
-	                   		
-	                   </span>
+                    <span *ngFor="let cliente of clientesDisponibles">
+                   		<div>
+               		        <label>
+						        <input type="radio" name="radiogroup" (change)="onSeleccionClienteChange(cliente)">
+						        {{cliente.nombreEmpresa}} / {{cliente.cuit}}
+					        </label>
+                   		</div>
+                   		
+                    </span>
 				</div>
             </div>
         </div>
