@@ -29,19 +29,6 @@ exports.add = function(req, res) {
     console.log('POST');
     console.log(req.body);
 
-    var facturaVenta = new facturaVenta({ //creo un nuevo facturaVenta en base a lo recibido en el request
-        nombreEmpresa:    	req.body.nombreEmpresa,
-        cuit:     		  	req.body.cuit,
-        categoriaFiscal:    req.body.categoriaFiscal,
-        listaPrecioNombre:   	req.body.listaPrecioNombre,
-        direccion:  		req.body.direccion,
-        condicionPago:    req.body.condicionPago
-    });
-
-    facturaVenta.save(function(err, facturaVenta) { //almaceno el facturaVenta en la base de datos
-        if(err) return res.status(500).send( err.message);
-		res.status(200).jsonp(facturaVenta);
-    });
 };
 
 

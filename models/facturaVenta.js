@@ -1,6 +1,6 @@
 var mongoose = require("mongoose"); //instancio objeto "mongoose"
 
-var facturaVenta = new mongoose.Schema({
+var facturaVentaSchema = new mongoose.Schema({
   puntoDeVenta:         { type: Number },
   tipoFactura:          { type: String },
   numeroFactura:        { type: Number },

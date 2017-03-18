@@ -2,6 +2,10 @@ var mongoose = require('mongoose');
 //Import models
 var FacturaItem  = require("../models/facturaItem").facturaItemModel;
 
+exports.findAll = function(req, res) { 
+    console.log('GET/facturaItems/')
+};
+
 exports.findById = function(req, res) {
 	var findByIdCallback =
 	function(err, facturaItem){
@@ -29,4 +33,13 @@ exports.add = function(req, res) {
         if(err) return res.status(500).send( err.message);
 		res.status(200).jsonp(facturaItem);
     });
+};
+
+exports.update = function(req, res) {
+    console.log('UPDATE');
+};
+
+
+exports.delete = function(req, res) {
+    console.log('DELETE');  
 };

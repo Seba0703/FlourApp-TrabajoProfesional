@@ -5,8 +5,8 @@ exports.getFacturaVentaRoutersHandler = function(express){
 	var facturaVentaRoutersHandler = express.Router();
 
 	facturaVentaRoutersHandler.route('/facturaVentas')
-	  .get(facturaVentaController.findAll);
-	  // .post(facturaVentaController.add);
+	  .get(facturaVentaController.findAll)
+	  .post(facturaVentaController.add);
 
 	facturaVentaRoutersHandler.route('/facturaVentas/:id')
 	  .get(facturaVentaController.findById)

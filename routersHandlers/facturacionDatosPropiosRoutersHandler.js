@@ -8,10 +8,10 @@ exports.getFacturacionDatosPropiosRoutersHandler = function(express){
 	  .get(facturacionDatosPropiosController.findAll)
 	  .post(facturacionDatosPropiosController.add);
 
-	facturacionDatosPropiosRoutersHandler.route('/facturacionDatosPropioss/:id')
+/*	facturacionDatosPropiosRoutersHandler.route('/facturacionDatosPropioss/:id')
 	  .get(facturacionDatosPropiosController.findById)
 	  .put(facturacionDatosPropiosController.update)
 	  .delete(facturacionDatosPropiosController.delete);
-
+*/
 	return facturacionDatosPropiosRoutersHandler;
 }
