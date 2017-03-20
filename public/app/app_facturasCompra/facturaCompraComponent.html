@@ -1,0 +1,188 @@
+<div class="row">
+	<div class="col-md-11">
+		<table class="table">
+			<thead class="thead-inverse">
+			    <tr>
+			    <th>Nº</th>
+			    <th>Acciones</th>
+			    </tr>
+			</thead>
+			<tbody *ngFor="let numero of numeros">
+			    <td>{{numero}}</td>
+			    <td>
+			        <button type="button" class="btn btn-danger" (click)="borrar(numero)" title="Borrar" >
+			          <i class="fa fa-trash" aria-hidden="true"></i>
+			        </button>
+			    </td>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="col-md-1" style="padding-left: 0px;">
+		<button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar Factura de Venta" data-toggle="modal" 
+		data-target="#facturaModal">
+			+
+		</button>
+	</div>
+
+</div>
+
+<!-- Modal FACTURA-->
+<div class="modal fade" id="facturaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Factura de Compra</h5>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+				  <li class="nav-item">
+				    <a class="nav-link active" data-toggle="tab" href="#datos" role="tab">Datos</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" data-toggle="tab" href="#productos" role="tab">Productos</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" data-toggle="tab" href="#item3" role="tab">Vencimientos</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" data-toggle="tab" href="#item4" role="tab">Retenciones</a>
+				  </li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+
+				  	<div class="tab-pane active" id="datos" role="tabpanel">
+
+				  		<div class="form-group row" style="margin-top: 8px;">
+	                        <div class="col-2">
+	                            <label for="example-text-input" class="col-form-label">Fecha</label>
+	                        </div>
+	                        <div class="col-10">
+	                    		<input type="text" class="form-control" placeholder="Fecha" aria-describedby="basic-addon1" 
+	                    		>
+	                        </div>
+                    	</div>
+
+						<div id="accordion" role="tablist" aria-multiselectable="true">
+						  <div class="card">
+						    <div class="card-header" role="tab" id="headingOne">
+						      <h5 class="mb-0">
+						        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" 
+						        aria-controls="collapseOne" (click)="cambiarEstado()">
+						          {{estadoLabelProveedores}} proveedores <i class="fa fa-user-plus" aria-hidden="true"></i>
+						        </a>
+						      </h5>
+						    </div>
+
+						    <div id="collapseOne" class="collapse hide" role="tabpanel" aria-labelledby="headingOne">
+						      <div class="card-block" style="max-height: 400px; overflow-y: scroll;">
+				                    <span *ngFor="let proveedor of proveedoresDisponibles">
+				                   		<div>
+				               		        <label>
+										        <input type="radio" name="radiogroup"
+										        (change)="onSeleccionProveedorChange(proveedor)">
+										        {{proveedor.nombreEmpresa}} / {{proveedor.cuit}}
+									        </label>
+				                   		</div>
+				                    </span>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+
+						<div class="form-group row" style="margin-top: 4px;">
+							<div class="col-md-12">
+							    <div class="input-group">
+							      <input type="text" class="form-control" placeholder="Condición de Pago (ej: 30-60-90)"
+							      [(ngModel)]="facturaCompra.proveedor.condicionPago">
+							    </div>
+							</div>
+						</div>
+				  	</div>
+
+				  	<div class="tab-pane" id="productos" role="tabpanel">
+		                <label for="text" style="margin-top: 8px;"><strong>Seleccione los productos:</strong></label>
+						<div class="row">
+							<div class="col-md-12" style="max-height: 400px; overflow-y: scroll;">
+								<table class="table">
+								    <colgroup>
+								       <col span="1" style="width: 70%;">
+								       <col span="1" style="width: 10%;">
+								       <col span="1" style="width: 10%;">
+								       <col span="1" style="width: 10%;">
+								    </colgroup>
+									<thead class="thead-inverse">
+									    <tr>
+									    <th>Producto</th>
+									    <th>Cantidad</th>
+									    <th>Precio</th>
+									    <th>% IVA</th>
+									    </tr>
+									</thead>
+									<tbody *ngFor="let producto of productosDisponibles; let i = index">
+									    <td>
+											<input type="checkbox" #cv (change)="onSeleccionProductoChange(producto, cv.checked)">
+                               				{{producto.nombre}}
+									    </td>
+
+									    <td>
+									        <input *ngIf="cv.checked == true" type="number" min="1" style="width: 90px;" placeholder="Cantidad" #cantidad (keyup)="onCantidadChange(producto._id, cantidad.value)" (change)="onCantidadChange(producto._id, cantidad.value)">
+									    </td>
+
+									    <td>
+		                        			<input *ngIf="cv.checked == true" type="number" step="0.01" min="0" style="width: 90px;" 
+		                        			placeholder="Precio"
+                               				#precio (keyup)="onPrecioChange(producto._id, precio.value)" (change)="onPrecioChange(producto._id, precio.value)" [(ngModel)]="productosDisponibles[i].precioVenta"> 
+									    </td>
+
+									    <td>
+		                        			<input *ngIf="cv.checked == true" type="number" step="0.01" min="0" style="width: 90px;" 
+		                        			placeholder="% IVA" #iva (keyup)="onIVAChange(producto._id, iva.value)" 
+		                        			(change)="onIVAChange(producto._id, iva.value)" [value]="this.getIVA(producto)"> 
+									    </td>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12" style="margin-top: 8px;">
+								<HR COLOR="grey" WIDTH="60%">
+
+								<label for="text" style="margin-top: 8px; font: normal 64px courier !important;">
+									<strong>TOTAL = ${{getTotal()}}</strong>
+
+								</label>
+							</div>
+						</div>
+				  	</div>
+
+				  	<div class="tab-pane" id="item3" role="tabpanel">venciminetos</div>
+
+				  	<div class="tab-pane" id="item4" role="tabpanel">retenciones</div>
+				</div>
+
+
+            </div>
+
+            <div class="modal-footer">
+              <div class="container">
+                <div class="row" style="margin: 0 auto">
+                  <div class="col-md-12">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary"
+                            (click)="guardarFactura()">
+                                Guardar factura
+                            </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
