@@ -11,16 +11,18 @@ import { MateriaPrimaServices } from '../app_materiasPrima/materiaPrimaServices'
 import { SemiProcesadoServices } from '../app_semiProcesados/semiProcesadoServices';
 import { ProductoTerminadoServices } from '../app_productosTerminados/productoTerminadoServices';
 
+
 @Component({
   selector: 'factura-venta-component',
   templateUrl: "app/app_facturasVenta/facturaVentaComponent.html"
 })
-
 export class FacturaVentaComponent implements OnInit{
   private nombreUsuario: string;
   private permisos: string;
 
   private facturaVenta: FacturaVenta;
+
+  private estadoLabelClientes: string;
 
   private clientesDisponibles: Cliente[];
 
@@ -42,6 +44,7 @@ export class FacturaVentaComponent implements OnInit{
   ngOnInit() {
     console.log("ON INIT");
 
+    this.estadoLabelClientes = "Ver";
     this.cargarClientesDisponibles();
     this.cargarProductosDisponibles();
   }
@@ -84,6 +87,14 @@ export class FacturaVentaComponent implements OnInit{
               err => console.error("EL ERROR FUE: ", err)
             );
 
+  }
+
+  cambiarEstado(){
+    if(this.estadoLabelClientes == "Ver") { 
+      this.estadoLabelClientes = "Ocultar"
+    } else {
+      this.estadoLabelClientes = "Ver"
+    }
   }
 
   onSeleccionClienteChange(cliente: Cliente){

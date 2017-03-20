@@ -68,19 +68,33 @@
 	                        </div>
                     	</div>
 
-						<div class="form-group row" style="margin-top: 4px;">
-							<div class="col-md-12">
-							    <div class="input-group">
-							      <input type="text" class="form-control" placeholder="Cliente" disabled
-							      [(ngModel)]="facturaVenta.cliente.nombreEmpresa">
-							      <span class="input-group-btn">
-							        <button class="btn btn-secondary" type="button" aria-pressed="true" title="Agregar Cliente" data-toggle="modal" data-target="#clientesModal">
-							        	<i class="fa fa-user-plus" aria-hidden="true"></i>
-							        </button>
-							      </span>
-							    </div>
-							</div>
+						<div id="accordion" role="tablist" aria-multiselectable="true">
+						  <div class="card">
+						    <div class="card-header" role="tab" id="headingOne">
+						      <h5 class="mb-0">
+						        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" 
+						        aria-controls="collapseOne" (click)="cambiarEstado()">
+						          {{estadoLabelClientes}} clientes <i class="fa fa-user-plus" aria-hidden="true"></i>
+						        </a>
+						      </h5>
+						    </div>
+
+						    <div id="collapseOne" class="collapse hide" role="tabpanel" aria-labelledby="headingOne">
+						      <div class="card-block" style="max-height: 400px; overflow-y: scroll;">
+				                    <span *ngFor="let cliente of clientesDisponibles">
+				                   		<div>
+				               		        <label>
+										        <input type="radio" name="radiogroup"
+										        (change)="onSeleccionClienteChange(cliente)">
+										        {{cliente.nombreEmpresa}} / {{cliente.cuit}}
+									        </label>
+				                   		</div>
+				                    </span>
+						      </div>
+						    </div>
+						  </div>
 						</div>
+
 
 						<div class="form-group row" style="margin-top: 4px;">
 							<div class="col-md-12">
@@ -95,7 +109,7 @@
 				  	<div class="tab-pane" id="productos" role="tabpanel">
 		                <label for="text" style="margin-top: 8px;"><strong>Seleccione los productos:</strong></label>
 						<div class="row">
-							<div class="col-md-12" style="height: 600px; overflow-y: scroll;">
+							<div class="col-md-12" style="max-height: 400px; overflow-y: scroll;">
 								<table class="table">
 								    <colgroup>
 								       <col span="1" style="width: 70%;">
@@ -169,35 +183,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal CLIENTES-->
-<div class="modal fade" id="clientesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-
-	        <div class="modal-header">
-	            <h5 class="modal-title" id="exampleModalLabel">Clientes</h5>
-	        </div>
-
-            <div class="modal-body">
-				<div class="container">
-	                <label for="text" style="margin-top: 8px;"><strong>Seleccione un cliente:</strong></label>
-                    <span *ngFor="let cliente of clientesDisponibles">
-                   		<div>
-               		        <label>
-						        <input type="radio" name="radiogroup" id="myWish" href="javascript:;"
-						        (change)="onSeleccionClienteChange(cliente)">
-						        {{cliente.nombreEmpresa}} / {{cliente.cuit}}
-					        </label>
-                   		</div>
-                   		
-                    </span>
-				</div>
             </div>
         </div>
     </div>
