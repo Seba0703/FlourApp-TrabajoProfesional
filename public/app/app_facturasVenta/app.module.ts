@@ -18,9 +18,9 @@ import { ProductoTerminadoServices } from '../app_productosTerminados/productoTe
 
 @NgModule({
   imports: [
+    FormsModule,
     BrowserModule,
-    HttpModule,
-    FormsModule
+    HttpModule
   ],
   declarations: [
     AppComponent,
