@@ -71,7 +71,8 @@
 						<div class="form-group row" style="margin-top: 4px;">
 							<div class="col-md-12">
 							    <div class="input-group">
-							      <input type="text" class="form-control" placeholder="Cliente" [(ngModel)]="facturaVenta.cliente.nombreEmpresa">
+							      <input type="text" class="form-control" placeholder="Cliente" disabled
+							      [(ngModel)]="facturaVenta.cliente.nombreEmpresa">
 							      <span class="input-group-btn">
 							        <button class="btn btn-secondary" type="button" aria-pressed="true" title="Agregar Cliente" data-toggle="modal" data-target="#clientesModal">
 							        	<i class="fa fa-user-plus" aria-hidden="true"></i>
@@ -94,7 +95,7 @@
 				  	<div class="tab-pane" id="productos" role="tabpanel">
 		                <label for="text" style="margin-top: 8px;"><strong>Seleccione los productos:</strong></label>
 						<div class="row">
-							<div class="col-md-12">
+							<div class="col-md-12" style="height: 600px; overflow-y: scroll;">
 								<table class="table">
 								    <colgroup>
 								       <col span="1" style="width: 70%;">
@@ -117,11 +118,12 @@
 									    </td>
 
 									    <td>
-									        <input *ngIf="cv.checked == true" type="number" min="0" style="width: 90px;" placeholder="Cantidad" #cantidad (keyup)="onCantidadChange(producto._id, cantidad.value)" (change)="onCantidadChange(producto._id, cantidad.value)">
+									        <input *ngIf="cv.checked == true" type="number" min="1" style="width: 90px;" placeholder="Cantidad" #cantidad (keyup)="onCantidadChange(producto._id, cantidad.value)" (change)="onCantidadChange(producto._id, cantidad.value)">
 									    </td>
 
 									    <td>
-		                        			<input *ngIf="cv.checked == true" type="number" min="0" style="width: 90px;" placeholder="Precio"
+		                        			<input *ngIf="cv.checked == true" type="number" step="0.01" min="0" style="width: 90px;" 
+		                        			placeholder="Precio"
                                				#precio (keyup)="onPrecioChange(producto._id, precio.value)" (change)="onPrecioChange(producto._id, precio.value)" [(ngModel)]="productosDisponibles[i].precioVenta"> 
 									    </td>
 
@@ -133,7 +135,17 @@
 									</tbody>
 								</table>
 							</div>
+						</div>
 
+						<div class="row">
+							<div class="col-md-12" style="margin-top: 8px;">
+								<HR COLOR="grey" WIDTH="60%">
+
+								<label for="text" style="margin-top: 8px; font: normal 64px courier !important;">
+									<strong>TOTAL = ${{getTotal()}}</strong>
+
+								</label>
+							</div>
 						</div>
 				  	</div>
 
@@ -144,6 +156,7 @@
 
 
             </div>
+
             <div class="modal-footer">
               <div class="container">
                 <div class="row" style="margin: 0 auto">
@@ -177,7 +190,8 @@
                     <span *ngFor="let cliente of clientesDisponibles">
                    		<div>
                		        <label>
-						        <input type="radio" name="radiogroup" (change)="onSeleccionClienteChange(cliente)">
+						        <input type="radio" name="radiogroup" id="myWish" href="javascript:;"
+						        (change)="onSeleccionClienteChange(cliente)">
 						        {{cliente.nombreEmpresa}} / {{cliente.cuit}}
 					        </label>
                    		</div>

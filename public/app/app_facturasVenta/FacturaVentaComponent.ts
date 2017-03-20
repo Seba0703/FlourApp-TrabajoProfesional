@@ -96,25 +96,40 @@ export class FacturaVentaComponent implements OnInit{
 	    			   .subscribe(listaDePrecios => {
 	    			   		console.log(listaDePrecios)
 	    			   		for(let elemento of listaDePrecios){
-							  	for (var i = 0; i < this.productosDisponibles.length; ++i) {
-									if (this.productosDisponibles[i]._id == elemento.mp_ID
-										|| this.productosDisponibles[i]._id == elemento.sp_ID 
-										|| this.productosDisponibles[i]._id == elemento.pt_ID) {
+  							  	for (var i = 0; i < this.productosDisponibles.length; ++i) {
+    									if (this.productosDisponibles[i]._id == elemento.mp_ID
+    										|| this.productosDisponibles[i]._id == elemento.sp_ID 
+    										|| this.productosDisponibles[i]._id == elemento.pt_ID) {
 
-											this.productosDisponibles[i].precioVenta = elemento.precio
-									}
-							  	}
+    											this.productosDisponibles[i].precioVenta = elemento.precio;
+
+                          
+    									}
+  							  	}
 	    			   		}
+
+                  this.actualizarProductosSeleccionados();
+                   
 	    			   		console.log("PRODUCTOS DISPONIBLES ACTUALIZADOS POR LPD= ");
-                            console.log(this.productosDisponibles);
+                  console.log(this.productosDisponibles);
 	    			   })
     }
 
   }
 
+  actualizarProductosSeleccionados(){
+    for(var i = 0; i < this.productosSeleccionados.length; ++i){
+      for (var j = 0; j < this.productosDisponibles.length; ++j) {
+        if (this.productosSeleccionados[i]._id == this.productosDisponibles[j]._id) {
+          this.productosSeleccionados[i].precioVenta = this.productosDisponibles[j].precioVenta;
+        }
+      }
+    }
+  }
+
   onSeleccionProductoChange(producto: any, valorCheck: boolean){
   	if(valorCheck == true) { 
-  		this.productosSeleccionados.push(new Producto(producto._id, producto.nombre, producto.precioVenta, ));
+  		this.productosSeleccionados.push(new Producto(producto._id, producto.nombre, 0, producto.precioVenta, this.getIVA(producto)));
   	} else {
   		let index = 0;
   		for(let productoSeleccionado of this.productosSeleccionados){
@@ -166,6 +181,17 @@ export class FacturaVentaComponent implements OnInit{
       default:
         return 0;
     }
+  }
+
+  getTotal(): number {
+    let total: number = 0
+    for (let productoSeleccionado of this.productosSeleccionados){
+      total += (productoSeleccionado.cantidad * productoSeleccionado.precioVenta)
+    }
+
+    console.log(total)
+
+    return total;
   }
 
   borrar(numeroFactura: number){
