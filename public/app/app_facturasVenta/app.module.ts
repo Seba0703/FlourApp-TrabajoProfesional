@@ -9,6 +9,8 @@ import { NavMenuComponent } from '../nav-menu/navMenuComponent';
 import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { FacturaVentaComponent }  from './FacturaVentaComponent';
 
+import { FacturaVentaServices } from './FacturaVentaServices';
+
 import { ClienteServices } from '../app_clientes/clienteServices';
 import { ListaDePrecioServices } from '../app_listaDePrecios/ListaDePrecioServices';
 
@@ -31,6 +33,7 @@ import { ProductoTerminadoServices } from '../app_productosTerminados/productoTe
     FacturaVentaComponent
   ],
   providers: [
+    FacturaVentaServices,
     ClienteServices,
     ListaDePrecioServices,
     MateriaPrimaServices,

@@ -1,4 +1,5 @@
 var mongoose = require("mongoose"); //instancio objeto "mongoose"
+var Schema = mongoose.Schema;
 
 var facturaVentaSchema = new mongoose.Schema({
   puntoDeVenta:         { type: Number },
@@ -6,7 +7,7 @@ var facturaVentaSchema = new mongoose.Schema({
   numeroFactura:        { type: Number },
   fechaEmision:   	    { type: Date   },
   comprobanteReferencia:{ type: Number },
-  cuitCliente: 	  		  { type: Number },
+  clienteID:    	  		  { type: Schema.Types.ObjectId, ref: 'Cliente'},
   retencionIG: 	  		  { type: Number },
   retencionIVA: 	  		{ type: Number },
   retencionIB: 	  		  { type: Number },

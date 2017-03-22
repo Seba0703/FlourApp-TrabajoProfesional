@@ -8,7 +8,22 @@ export class FacturaVenta {
         public cliente?: Cliente,
         public productos?: Producto[]
         ){
-    	this.fecha = new Date();
-    	this.cliente = new Cliente();
+	    	if(fecha) {
+	    		this.fecha = fecha
+	    	} else {
+	    		this.fecha = new Date();
+	    	}
+
+	    	if(cliente) {
+	    		this.cliente = cliente
+	    	} else {
+	    		this.cliente = new Cliente();
+	    	}
+
+	    	if(productos) { 
+	    		this.productos = productos
+	    	} else {
+	    		this.productos = []
+	    	}
     }
 }

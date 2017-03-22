@@ -7,10 +7,14 @@
 			    <th>Acciones</th>
 			    </tr>
 			</thead>
-			<tbody *ngFor="let numero of numeros">
-			    <td>{{numero}}</td>
+			<tbody *ngFor="let fv of facturasVentaDisponibles">
+			    <td>{{fv._id}}</td>
 			    <td>
-			        <button type="button" class="btn btn-danger" (click)="borrar(numero)" title="Borrar" >
+		            <button type="button" class="btn btn-success" (click)="seleccionarFacturaParaModificar(fv)" title="Modificar"
+		            data-toggle="modal" data-target="#facturaModal" >
+		              <i class="fa fa-pencil" aria-hidden="true"></i>
+		            </button>
+			        <button type="button" class="btn btn-danger" (click)="borrar(fv)" title="Borrar" >
 			          <i class="fa fa-trash" aria-hidden="true"></i>
 			        </button>
 			    </td>
@@ -92,7 +96,15 @@
 						    <div id="collapseOne" class="collapse hide" role="tabpanel" aria-labelledby="headingOne">
 						      <div class="card-block" style="max-height: 400px; overflow-y: scroll;">
 				                    <span *ngFor="let cliente of clientesDisponibles">
-				                   		<div>
+				                   		<div *ngIf="fueSeleccionado(cliente)">
+				               		        <label>
+										        <input type="radio" name="radiogroup" checked 
+										        (change)="onSeleccionClienteChange(cliente)">
+										        {{cliente.nombreEmpresa}} / {{cliente.cuit}}
+									        </label>
+				                   		</div>
+
+				                   		<div *ngIf="!fueSeleccionado(cliente)">
 				               		        <label>
 										        <input type="radio" name="radiogroup"
 										        (change)="onSeleccionClienteChange(cliente)">

@@ -4,6 +4,8 @@ import { Cliente } from '../app_clientes/cliente';
 import { FacturaVenta } from './FacturaVenta';
 import { Producto } from './Producto';
 
+import { FacturaVentaServices } from './FacturaVentaServices';
+
 import { ClienteServices } from '../app_clientes/clienteServices';
 import { ListaDePrecioServices } from '../app_listaDePrecios/ListaDePrecioServices';
 
@@ -22,6 +24,7 @@ export class FacturaVentaComponent implements OnInit{
 
   public clickedDatepicker: boolean = false;
 
+  private facturasVentaDisponibles: FacturaVenta[];
   private facturaVenta: FacturaVenta;
 
   private estadoLabelClientes: string;
@@ -32,6 +35,7 @@ export class FacturaVentaComponent implements OnInit{
   private productosSeleccionados: Array<Producto>;
 
   constructor(
+    private fvService: FacturaVentaServices,
   	private cService: ClienteServices,
   	private ldpService: ListaDePrecioServices,
     private mpService: MateriaPrimaServices,
@@ -41,6 +45,7 @@ export class FacturaVentaComponent implements OnInit{
     this.facturaVenta = new FacturaVenta();
     this.productosDisponibles = new Array<any>();
     this.productosSeleccionados = new Array<Producto>();
+    this.facturasVentaDisponibles = [];
   }
 
   ngOnInit() {
@@ -49,12 +54,17 @@ export class FacturaVentaComponent implements OnInit{
     this.estadoLabelClientes = "Ver";
     this.cargarClientesDisponibles();
     this.cargarProductosDisponibles();
+    //this.cargarFacturasVentaDisponibles();
   }
 
   cargarClientesDisponibles(){
   	this.cService.getBasicDataClientes()
   				 .subscribe( 
-  				 	clientes => {this.clientesDisponibles = clientes; console.log(this.clientesDisponibles)},
+  				 	clientes => {
+               this.clientesDisponibles = clientes; 
+               console.log(this.clientesDisponibles);
+               this.cargarFacturasVentaDisponibles();
+             },
   				 	err => console.error("EL ERROR FUE: ", err));
   }
 
@@ -91,6 +101,30 @@ export class FacturaVentaComponent implements OnInit{
 
   }
 
+  cargarFacturasVentaDisponibles(){
+    console.log("CARGANDO FACTURAS DISPONIBLES= ");
+    this.fvService.getFacturas()
+           .subscribe( 
+             fvDisponibles => {
+               for (let fv of fvDisponibles){
+                for (var i = 0; i < this.clientesDisponibles.length; ++i) {
+                  if(fv.clienteID == this.clientesDisponibles[i]._id) {
+                    this.facturasVentaDisponibles.push(new FacturaVenta(fv._id, null, this.clientesDisponibles[i], null))
+                  }
+                }
+               }
+               console.log(this.facturasVentaDisponibles)
+             },
+             err => console.error("EL ERROR FUE: ", err));
+  }
+
+  seleccionarFacturaParaModificar(factura: FacturaVenta){
+    this.facturaVenta = factura;
+    console.log("PROCESANDO FACTURA=")
+    console.log(this.facturaVenta)
+
+  }
+
   public toggleDP():boolean {
     this.clickedDatepicker = !this.clickedDatepicker;
     return !this.clickedDatepicker;
@@ -102,6 +136,10 @@ export class FacturaVentaComponent implements OnInit{
     } else {
       this.estadoLabelClientes = "Ver"
     }
+  }
+
+  fueSeleccionado(cliente: Cliente){
+    return this.facturaVenta.cliente == cliente
   }
 
   onSeleccionClienteChange(cliente: Cliente){
@@ -207,8 +245,6 @@ export class FacturaVentaComponent implements OnInit{
       total += (productoSeleccionado.cantidad * productoSeleccionado.precioVenta)
     }
 
-    //console.log(total)
-
     return total;
   }
 
@@ -217,6 +253,18 @@ export class FacturaVentaComponent implements OnInit{
 
   guardarFactura(){
     console.log(this.facturaVenta)
+
+    let bodyFacturaVenta = {
+      tipoFactura: "C",
+      clienteID:  this.facturaVenta.cliente._id
+    }
+
+    console.log(bodyFacturaVenta)
+
+    this.fvService.agregarFactura(bodyFacturaVenta)
+           .subscribe( 
+             fvAgregada => {console.log(fvAgregada)},
+             err => console.error("EL ERROR FUE: ", err));
   }
 
   agregarCliente(){
