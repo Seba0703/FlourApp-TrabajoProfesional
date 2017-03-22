@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { DatepickerModule } from 'ng2-bootstrap';
 
 import { AppComponent }  from './app.component';
 import { NavMenuComponent } from '../nav-menu/navMenuComponent';
@@ -20,7 +21,8 @@ import { ProductoTerminadoServices } from '../app_productosTerminados/productoTe
   imports: [
     FormsModule,
     BrowserModule,
-    HttpModule
+    HttpModule,
+    DatepickerModule.forRoot()
   ],
   declarations: [
     AppComponent,

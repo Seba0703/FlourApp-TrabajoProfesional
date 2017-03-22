@@ -58,13 +58,23 @@
 
 				  	<div class="tab-pane active" id="datos" role="tabpanel">
 
-				  		<div class="form-group row" style="margin-top: 8px;">
-	                        <div class="col-2">
-	                            <label for="example-text-input" class="col-form-label">Fecha</label>
+				  		<div class="form-group row" style="margin-top: 12px;">
+	                        <div class="col-md-2">
+	                            <label for="example-text-input" class="col-form-label">
+	                            	<strong>Fecha</strong>
+
+									<i class="fa fa-calendar" aria-hidden="true" 
+									title="Mostrar calendario"
+									(click)="toggleDP()" 
+									onmouseover="" style="cursor: pointer;">
+								</i>
+                            	</label>
 	                        </div>
-	                        <div class="col-10">
-	                    		<input type="text" class="form-control" placeholder="Fecha" aria-describedby="basic-addon1" 
-	                    		>
+	                        <div class="col-md-5">
+								<datepicker [hidden]="!clickedDatepicker"
+								      [(ngModel)]="facturaCompra.fecha"
+								      [showWeeks]="false">
+								 </datepicker>
 	                        </div>
                     	</div>
 

@@ -59,19 +59,22 @@
 				  	<div class="tab-pane active" id="datos" role="tabpanel">
 
 				  		<div class="form-group row" style="margin-top: 12px;">
-	                        <div class="col-md-1">
+	                        <div class="col-md-2">
 	                            <label for="example-text-input" class="col-form-label">
 	                            	<strong>Fecha</strong>
+
+									<i class="fa fa-calendar" aria-hidden="true" 
+									title="Mostrar calendario"
+									(click)="toggleDP()" 
+									onmouseover="" style="cursor: pointer;">
+								</i>
                             	</label>
 	                        </div>
 	                        <div class="col-md-5">
-						      <div class="input-group">
-						       <div class="input-group-addon">
-						        <i class="fa fa-calendar">
-						        </i>
-						       </div>
-						       <input data-provide="datepicker" data-date-format="dd/mm/yyyy">
-						      </div>
+								<datepicker [hidden]="!clickedDatepicker"
+								      [(ngModel)]="facturaVenta.fecha"
+								      [showWeeks]="false">
+								 </datepicker>
 	                        </div>
                     	</div>
 
@@ -104,10 +107,8 @@
 
 						<div class="form-group row" style="margin-top: 12px;">
 							<div class="col-md-6">
-							    <div class="input-group">
-							      <input type="text" class="form-control" placeholder="Condición de Pago (ej: 30-60-90)"
-							      [(ngModel)]="facturaVenta.cliente.condicionPago">
-							    </div>
+								<input type="text" class="form-control" placeholder="Condición de Pago (ej: 30-60-90)"
+								[(ngModel)]="facturaVenta.cliente.condicionPago">
 							</div>
 						</div>
 				  	</div>
@@ -193,3 +194,6 @@
         </div>
     </div>
 </div>
+
+
+

@@ -20,6 +20,8 @@ export class FacturaCompraComponent implements OnInit{
   private nombreUsuario: string;
   private permisos: string;
 
+  public clickedDatepicker: boolean = false;
+
   private facturaCompra: FacturaCompra;
 
   private estadoLabelProveedores: string;
@@ -87,6 +89,11 @@ export class FacturaCompraComponent implements OnInit{
               err => console.error("EL ERROR FUE: ", err)
             );
 
+  }
+
+  public toggleDP():boolean {
+    this.clickedDatepicker = !this.clickedDatepicker;
+    return !this.clickedDatepicker;
   }
 
   cambiarEstado(){
@@ -200,7 +207,7 @@ export class FacturaCompraComponent implements OnInit{
       total += (productoSeleccionado.cantidad * productoSeleccionado.precioVenta)
     }
 
-    console.log(total)
+    //console.log(total)
 
     return total;
   }
@@ -209,7 +216,7 @@ export class FacturaCompraComponent implements OnInit{
   }
 
   guardarFactura(){
-
+    console.log(this.facturaCompra)
   }
 
   agregarCliente(){
