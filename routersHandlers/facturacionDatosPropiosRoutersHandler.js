@@ -4,14 +4,9 @@ var facturacionDatosPropiosController = require("../controllers/facturacionDatos
 exports.getFacturacionDatosPropiosRoutersHandler = function(express){
 	var facturacionDatosPropiosRoutersHandler = express.Router();
 
-	facturacionDatosPropiosRoutersHandler.route('/facturacionDatosPropioss')
+	facturacionDatosPropiosRoutersHandler.route('/facturacionDatosPropios')
 	  .get(facturacionDatosPropiosController.findAll)
 	  .post(facturacionDatosPropiosController.add);
 
-/*	facturacionDatosPropiosRoutersHandler.route('/facturacionDatosPropioss/:id')
-	  .get(facturacionDatosPropiosController.findById)
-	  .put(facturacionDatosPropiosController.update)
-	  .delete(facturacionDatosPropiosController.delete);
-*/
 	return facturacionDatosPropiosRoutersHandler;
 }
