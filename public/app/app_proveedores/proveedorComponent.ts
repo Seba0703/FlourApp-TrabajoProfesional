@@ -16,6 +16,7 @@ export class ProveedorComponent {
 
   private _id : string;
   private nombreEmpresa: string;
+  private cuitViejo: string;
   private cuit: string;
   private categoriaFiscal: string;
   private direccion: string;
@@ -83,41 +84,44 @@ export class ProveedorComponent {
   modificar(proveedor: any){
     this._id =                proveedor._id;
     this.nombreEmpresa =      proveedor.nombreEmpresa;
+    this.cuitViejo =          proveedor.cuit;
     this.cuit =               proveedor.cuit;
     this.categoriaFiscal =    proveedor.categoriaFiscal;
     this.direccion =          proveedor.direccion;
-    this.condicionPago =    proveedor.condicionPago;
+    this.condicionPago =      proveedor.condicionPago;
   }
 
   guardarModificaciones(){
-    if(this.cuit && this.elCUITseRepite()) { 
-      alert("\t¡ERROR! Ya existe un proveedor con ese CUIT")
-    } else  if(this.nombreEmpresa){
-              this.mostrarModalModificar = false;
-              let proveedor = {
-                  _id:                this._id,
-                  nombreEmpresa:      this.nombreEmpresa,
-                  cuit:               this.cuit,
-                  categoriaFiscal:    this.categoriaFiscal,
-                  direccion:          this.direccion,
-                  condicionPago:    this.condicionPago
-              }
-              
-              console.log(proveedor);
+    if(this.cuit == null || this.cuit == this.cuitViejo) {
+      if(this.nombreEmpresa){
+        this.mostrarModalModificar = false;
+        let proveedor = {
+            _id:                this._id,
+            nombreEmpresa:      this.nombreEmpresa,
+            cuit:               this.cuit,
+            categoriaFiscal:    this.categoriaFiscal,
+            direccion:          this.direccion,
+            condicionPago:      this.condicionPago
+        }
+        
+        console.log(proveedor);
 
-              this.pService.modificar(proveedor)
-                            .subscribe(data => {
-                                console.log(data);
-                                
-                                alert("\t\t\t\t¡Proveedor modificado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
-                                window.location.reload();                        
-                            }, error => {
-                                console.log(JSON.stringify(error.json()));
-                                alert("\t\t\t\t¡ERROR al modificar Proveedor!\n\nrevise los campos");
-                            });;
-            } else {
-              alert("\t\t\t\t¡ERROR!\n\nDebe proporcionar al menos un nombre");
-            }
+        this.pService.modificar(proveedor)
+                      .subscribe(data => {
+                          console.log(data);
+                          
+                          alert("\t\t\t\t¡Proveedor modificado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
+                          window.location.reload();                        
+                      }, error => {
+                          console.log(JSON.stringify(error.json()));
+                          alert("\t\t\t\t¡ERROR al modificar Proveedor!\n\nRevise los campos");
+                      });;
+      } else {
+        alert("\t\t\t\t¡ERROR!\n\nDebe proporcionar al menos un nombre");
+      }
+    } else if(this.elCUITseRepite()) {
+              alert("\t¡ERROR! Ya existe un proveedor con ese CUIT")
+    } 
   }
 
   elCUITseRepite(): boolean {

@@ -16,6 +16,7 @@ export class ClienteComponent {
 
   private _id : string;
   private nombreEmpresa: string;
+  private cuitViejo: string;
   private cuit: string;
   private categoriaFiscal: string;
   private listaPrecioNombreSeleccionada: string;
@@ -101,6 +102,7 @@ export class ClienteComponent {
   modificar(cliente: any){
     this._id =                            cliente._id;
     this.nombreEmpresa =                  cliente.nombreEmpresa;
+    this.cuitViejo =                      cliente.cuit;
     this.cuit =                           cliente.cuit;
     this.categoriaFiscal =                cliente.categoriaFiscal;
     this.listaPrecioNombreSeleccionada =  cliente.listaPrecioNombre;
@@ -109,35 +111,37 @@ export class ClienteComponent {
   }
 
   guardarModificaciones(){
-    if(this.cuit && this.elCUITseRepite()) { 
-      alert("\t¡ERROR! Ya existe un cliente con ese CUIT")
-    } else  if(this.nombreEmpresa){
-              this.mostrarModalModificar = false;
-              let cliente = {
-                  _id:                this._id,
-                  nombreEmpresa:      this.nombreEmpresa,
-                  cuit:               this.cuit,
-                  categoriaFiscal:    this.categoriaFiscal,
-                  listaPrecioNombre:  this.listaPrecioNombreSeleccionada,
-                  direccion:          this.direccion,
-                  condicionPago:      this.condicionPago
-              }
-              
-              console.log(cliente);
+    if(this.cuit == null || this.cuit == this.cuitViejo) {
+      if(this.nombreEmpresa){
+        this.mostrarModalModificar = false;
+        let cliente = {
+            _id:                this._id,
+            nombreEmpresa:      this.nombreEmpresa,
+            cuit:               this.cuit,
+            categoriaFiscal:    this.categoriaFiscal,
+            listaPrecioNombre:  this.listaPrecioNombreSeleccionada,
+            direccion:          this.direccion,
+            condicionPago:      this.condicionPago
+        }
+        
+        console.log(cliente);
 
-              this.cService.modificar(cliente)
-                            .subscribe(data => {
-                                console.log(data);
-                                
-                                alert("\t\t\t\t¡Cliente modificado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
-                                window.location.reload();                        
-                            }, error => {
-                                console.log(JSON.stringify(error.json()));
-                                alert("\t\t\t\t¡ERROR al modificar Cliente!\n\nRevise los campos");
-                            });;
-            } else {
-              alert("\t\t\t\t¡ERROR!\n\nDebe proporcionar al menos un nombre");
-            }
+        this.cService.modificar(cliente)
+                      .subscribe(data => {
+                          console.log(data);
+                          
+                          alert("\t\t\t\t¡Cliente modificado!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
+                          window.location.reload();                        
+                      }, error => {
+                          console.log(JSON.stringify(error.json()));
+                          alert("\t\t\t\t¡ERROR al modificar Cliente!\n\nRevise los campos");
+                      });;
+      } else {
+        alert("\t\t\t\t¡ERROR!\n\nDebe proporcionar al menos un nombre");
+      }
+    } else if(this.elCUITseRepite()) {
+              alert("\t¡ERROR! Ya existe un cliente con ese CUIT")
+    } 
   }
 
 
