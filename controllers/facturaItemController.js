@@ -7,7 +7,7 @@ exports.findByFacturaId = function(req, res) {
 	function(err, facturaItem){
 		if(err) return res.send(500, err.message);
 
-		console.log('GET/facturaItems/factura/' + req.params.facturaID);
+		console.log('GET/facturaItems/factura/' + req.params.id);
 		res.status(200).jsonp(facturaItem);
     };
 
@@ -19,9 +19,11 @@ exports.add = function(req, res) {
     console.log(req.body);
 
     var facturaItem = new FacturaItem({ //creo un nuevo facturaItem en base a lo recibido en el request
-        tipo:    	      req.body.tipo,
-        nombre:     		req.body.nombre,
+        tipo:    	    req.body.tipo,
+        nombre:     	req.body.nombre,
         cantidad:       req.body.cantidad,
+        precio:         req.body.precio,
+        iva:            req.body.iva,
         facturaID:      req.body.facturaID
     });
 

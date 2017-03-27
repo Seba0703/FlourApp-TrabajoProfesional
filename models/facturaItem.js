@@ -5,6 +5,8 @@ var facturaItemSchema = new mongoose.Schema({
   tipo:     	  	{ type: String },
   nombre:           { type: String },
   cantidad:         { type: Number },
+  precio:         	{ type: Number },
+  iva:         		{ type: Number },
   facturaID:  	{ type: Schema.Types.ObjectId, ref: 'FacturaVenta'}
 });
 

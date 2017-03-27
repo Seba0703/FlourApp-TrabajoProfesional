@@ -29,4 +29,6 @@ export const URL_INFORMECOMPRAS = 		'http://' + ip + ':' + puerto + '/api/inform
 export const URL_INFORMEVENTAS = 		'http://' + ip + ':' + puerto + '/api/informeVentas';
 
 export const URL_FACTURAS_VENTA = 		'http://' + ip + ':' + puerto + '/api/facturasVenta';
+export const URL_FACTURA_ITEMS = 		'http://' + ip + ':' + puerto + '/api/facturaItems';
+
 

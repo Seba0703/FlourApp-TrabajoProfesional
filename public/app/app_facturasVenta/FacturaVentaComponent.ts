@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
 
 import { Cliente } from '../app_clientes/cliente';
 import { FacturaVenta } from './FacturaVenta';
@@ -54,7 +55,6 @@ export class FacturaVentaComponent implements OnInit{
     this.estadoLabelClientes = "Ver";
     this.cargarClientesDisponibles();
     this.cargarProductosDisponibles();
-    //this.cargarFacturasVentaDisponibles();
   }
 
   cargarClientesDisponibles(){
@@ -109,17 +109,27 @@ export class FacturaVentaComponent implements OnInit{
                for (let fv of fvDisponibles){
                 for (var i = 0; i < this.clientesDisponibles.length; ++i) {
                   if(fv.clienteID == this.clientesDisponibles[i]._id) {
-                    this.facturasVentaDisponibles.push(new FacturaVenta(fv._id, null, this.clientesDisponibles[i], null))
+                  	let cliente = this.clientesDisponibles[i]
+                  	
+                  	this.fvService
+                  	.getProductosDeLaFacturaID(fv._id)
+                  	.subscribe(productos => {
+                  		console.log("PRODUCTOS GUARDADOS")
+                  		console.log(productos)
+                  		this.facturasVentaDisponibles.push(new FacturaVenta(fv._id, fv.fechaEmision, cliente, productos))
+                  		console.log(this.facturasVentaDisponibles)
+                  	})
                   }
                 }
                }
-               console.log(this.facturasVentaDisponibles)
+               
              },
              err => console.error("EL ERROR FUE: ", err));
   }
 
   seleccionarFacturaParaModificar(factura: FacturaVenta){
     this.facturaVenta = factura;
+    this.facturaVenta.fecha = new Date(factura.fecha)//la asingnacion anterior no funciona para fecha
     console.log("PROCESANDO FACTURA=")
     console.log(this.facturaVenta)
 
@@ -185,7 +195,7 @@ export class FacturaVentaComponent implements OnInit{
 
   onSeleccionProductoChange(producto: any, valorCheck: boolean){
   	if(valorCheck == true) { 
-  		this.productosSeleccionados.push(new Producto(producto._id, producto.nombre, 0, producto.precioVenta, this.getIVA(producto)));
+  		this.productosSeleccionados.push(new Producto(producto._id, "unTipo", producto.nombre, 0, producto.precioVenta, this.getIVA(producto)));
   	} else {
   		let index = 0;
   		for(let productoSeleccionado of this.productosSeleccionados){
@@ -256,15 +266,39 @@ export class FacturaVentaComponent implements OnInit{
 
     let bodyFacturaVenta = {
       tipoFactura: "C",
+      fechaEmision: this.facturaVenta.fecha,
       clienteID:  this.facturaVenta.cliente._id
     }
 
     console.log(bodyFacturaVenta)
 
-    this.fvService.agregarFactura(bodyFacturaVenta)
-           .subscribe( 
-             fvAgregada => {console.log(fvAgregada)},
-             err => console.error("EL ERROR FUE: ", err));
+    this.fvService
+    	.agregarFactura(bodyFacturaVenta)
+    	.subscribe( 
+	    	fvAgregada => {
+	    		console.log(fvAgregada)
+
+				let bodyProducto = {}
+				for(let producto of this.productosSeleccionados){
+					bodyProducto = {
+						tipo:     	 "tipo",
+			  			nombre:      producto.nombre,
+			  			cantidad:    producto.cantidad,
+			  			precio:      producto.precioVenta,
+			  			iva:		 producto.iva,
+			  			facturaID:	 fvAgregada._id
+					}
+
+					console.log("VINCULANDO PRODUCTO")
+					console.log(bodyProducto)
+
+					this.fvService.vincularProducto(bodyProducto).subscribe()
+
+				}
+	    	},
+	    	err => console.error("EL ERROR FUE: ", err));
+
+
   }
 
   agregarCliente(){
