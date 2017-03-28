@@ -33,7 +33,6 @@ export class FacturaVentaComponent implements OnInit{
   private clientesDisponibles: Cliente[];
 
   private productosDisponibles: Array<any>;
-  private productosSeleccionados: Array<Producto>;
 
   constructor(
     private fvService: FacturaVentaServices,
@@ -45,7 +44,6 @@ export class FacturaVentaComponent implements OnInit{
     
     this.facturaVenta = new FacturaVenta();
     this.productosDisponibles = new Array<any>();
-    this.productosSeleccionados = new Array<Producto>();
     this.facturasVentaDisponibles = [];
   }
 
@@ -66,6 +64,32 @@ export class FacturaVentaComponent implements OnInit{
                this.cargarFacturasVentaDisponibles();
              },
   				 	err => console.error("EL ERROR FUE: ", err));
+  }
+
+  cargarFacturasVentaDisponibles(){
+    console.log("CARGANDO FACTURAS DISPONIBLES= ");
+    this.fvService.getFacturas()
+           .subscribe( 
+             fvDisponibles => {
+               for (let fv of fvDisponibles){
+                for (var i = 0; i < this.clientesDisponibles.length; ++i) {
+                  if(fv.clienteID == this.clientesDisponibles[i]._id) {
+                    let cliente = this.clientesDisponibles[i]
+                    
+                    this.fvService
+                    .getProductosDeLaFacturaID(fv._id)
+                    .subscribe(productos => {
+                      console.log("PRODUCTOS GUARDADOS")
+                      console.log(productos)
+                      this.facturasVentaDisponibles.push(new FacturaVenta(fv._id, fv.fechaEmision, cliente, productos))
+                      console.log(this.facturasVentaDisponibles)
+                    })
+                  }
+                }
+               }
+               
+             },
+             err => console.error("EL ERROR FUE: ", err));
   }
 
   cargarProductosDisponibles(){
@@ -101,31 +125,10 @@ export class FacturaVentaComponent implements OnInit{
 
   }
 
-  cargarFacturasVentaDisponibles(){
-    console.log("CARGANDO FACTURAS DISPONIBLES= ");
-    this.fvService.getFacturas()
-           .subscribe( 
-             fvDisponibles => {
-               for (let fv of fvDisponibles){
-                for (var i = 0; i < this.clientesDisponibles.length; ++i) {
-                  if(fv.clienteID == this.clientesDisponibles[i]._id) {
-                  	let cliente = this.clientesDisponibles[i]
-                  	
-                  	this.fvService
-                  	.getProductosDeLaFacturaID(fv._id)
-                  	.subscribe(productos => {
-                  		console.log("PRODUCTOS GUARDADOS")
-                  		console.log(productos)
-                  		this.facturasVentaDisponibles.push(new FacturaVenta(fv._id, fv.fechaEmision, cliente, productos))
-                  		console.log(this.facturasVentaDisponibles)
-                  	})
-                  }
-                }
-               }
-               
-             },
-             err => console.error("EL ERROR FUE: ", err));
+  crearFactura(){
+    this.facturaVenta = new FacturaVenta()
   }
+
 
   seleccionarFacturaParaModificar(factura: FacturaVenta){
     this.facturaVenta = factura;
@@ -183,11 +186,20 @@ export class FacturaVentaComponent implements OnInit{
 
   }
 
+  elProductoFueSeleccionado(producto: Producto){
+    for (let prodSeleccionado of this.facturaVenta.productos){
+      if(producto.nombre == prodSeleccionado.nombre) {
+        return true
+      }
+    }
+    return false
+  }
+
   actualizarProductosSeleccionados(){
-    for(var i = 0; i < this.productosSeleccionados.length; ++i){
+    for(var i = 0; i < this.facturaVenta.productos.length; ++i){
       for (var j = 0; j < this.productosDisponibles.length; ++j) {
-        if (this.productosSeleccionados[i]._id == this.productosDisponibles[j]._id) {
-          this.productosSeleccionados[i].precioVenta = this.productosDisponibles[j].precioVenta;
+        if (this.facturaVenta.productos[i].nombre == this.productosDisponibles[j].nombre) {
+          this.facturaVenta.productos[i].precioVenta = this.productosDisponibles[j].precioVenta;
         }
       }
     }
@@ -195,44 +207,55 @@ export class FacturaVentaComponent implements OnInit{
 
   onSeleccionProductoChange(producto: any, valorCheck: boolean){
   	if(valorCheck == true) { 
-  		this.productosSeleccionados.push(new Producto(producto._id, "unTipo", producto.nombre, 0, producto.precioVenta, this.getIVA(producto)));
+  		this.facturaVenta.productos.push(new Producto(null, "unTipo", producto.nombre, 1, producto.precioVenta, this.getIVA(producto)));
   	} else {
   		let index = 0;
-  		for(let productoSeleccionado of this.productosSeleccionados){
-  			if(productoSeleccionado._id == producto._id) {
-  				this.productosSeleccionados.splice(index, 1);
+  		for(let productoSeleccionado of this.facturaVenta.productos){
+  			if(producto.nombre == productoSeleccionado.nombre) {
+  				this.facturaVenta.productos.splice(index, 1);
   			} else {
   				index++;
   			}
   		}
   	}
   	
-  	console.log(this.productosSeleccionados)
+  	console.log(this.facturaVenta.productos)
   }
 
-  onCantidadChange(productoID: string, cantidad: number){
-  	for (var i = 0; i < this.productosSeleccionados.length; ++i) {
-  		if(this.productosSeleccionados[i]._id == productoID) {
-  			this.productosSeleccionados[i].cantidad = cantidad
-  		}
-  	}
-  }
-
-  onPrecioChange(productoID: string, precio: number){
-  	for (var i = 0; i < this.productosSeleccionados.length; ++i) {
-  		if(this.productosSeleccionados[i]._id == productoID) {
-  			this.productosSeleccionados[i].precioVenta = precio
-  		}
-  	}
-  }
-
-  onIVAChange(productoID: string, iva: number){
-    for (var i = 0; i < this.productosSeleccionados.length; ++i) {
-      if(this.productosSeleccionados[i]._id == productoID) {
-        this.productosSeleccionados[i].iva = iva
+  getIndex(producto: Producto): number{
+    let index = 0;
+    for(let productoSeleccionado of this.facturaVenta.productos){
+      if(producto.nombre == productoSeleccionado.nombre) {
+        return index
       }
+
+      index++
     }
   }
+
+/*  onCantidadChange(producto: any, cantidad: number){
+  	for (var i = 0; i < this.facturaVenta.productos.length; ++i) {
+  		if(this.facturaVenta.productos[i].nombre == producto.nombre) {
+  			this.facturaVenta.productos[i].cantidad = cantidad
+  		}
+  	}
+  }*/
+
+/*  onPrecioChange(producto: any, precio: number){
+  	for (var i = 0; i < this.facturaVenta.productos.length; ++i) {
+  		if(this.facturaVenta.productos[i].nombre == producto.nombre) {
+  			this.facturaVenta.productos[i].precioVenta = precio
+  		}
+  	}
+  }*/
+
+/*  onIVAChange(producto: any, iva: number){
+    for (var i = 0; i < this.facturaVenta.productos.length; ++i) {
+      if(this.facturaVenta.productos[i].nombre == producto.nombre) {
+        this.facturaVenta.productos[i].iva = iva
+      }
+    }
+  }*/
 
   getIVA(producto: any): number {
     switch (producto.tasaImpositivaID) {
@@ -249,13 +272,8 @@ export class FacturaVentaComponent implements OnInit{
     }
   }
 
-  getTotal(): number {
-    let total: number = 0
-    for (let productoSeleccionado of this.productosSeleccionados){
-      total += (productoSeleccionado.cantidad * productoSeleccionado.precioVenta)
-    }
-
-    return total;
+  getImporte(): number {
+    return this.facturaVenta.getImporte()
   }
 
   borrar(numeroFactura: number){
@@ -279,7 +297,7 @@ export class FacturaVentaComponent implements OnInit{
 	    		console.log(fvAgregada)
 
 				let bodyProducto = {}
-				for(let producto of this.productosSeleccionados){
+				for(let producto of this.facturaVenta.productos){
 					bodyProducto = {
 						tipo:     	 "tipo",
 			  			nombre:      producto.nombre,

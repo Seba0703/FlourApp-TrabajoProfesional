@@ -26,4 +26,13 @@ export class FacturaVenta {
 	    		this.productos = []
 	    	}
     }
+
+    getImporte(): number {
+	    let total: number = 0
+	    for (let productoSeleccionado of this.productos){
+	      total += (productoSeleccionado.cantidad * (productoSeleccionado.precioVenta + productoSeleccionado.precioVenta * productoSeleccionado.iva/100))
+	    }
+
+	    return Math.round(total * 100) / 100;
+    }
 }

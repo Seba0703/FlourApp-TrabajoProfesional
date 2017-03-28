@@ -3,12 +3,14 @@
 		<table class="table">
 			<thead class="thead-inverse">
 			    <tr>
-			    <th>Nº</th>
+			    <th>Cliente</th>
+			    <th>Importe</th>
 			    <th>Acciones</th>
 			    </tr>
 			</thead>
 			<tbody *ngFor="let fv of facturasVentaDisponibles">
-			    <td>{{fv._id}}</td>
+			    <td>{{fv.cliente.nombreEmpresa}}</td>
+			    <td>${{fv.getImporte()}}</td>
 			    <td>
 		            <button type="button" class="btn btn-success" (click)="seleccionarFacturaParaModificar(fv)" title="Modificar"
 		            data-toggle="modal" data-target="#facturaModal" >
@@ -23,8 +25,8 @@
 	</div>
 
 	<div class="col-md-1" style="padding-left: 0px;">
-		<button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar Factura de Venta" data-toggle="modal" 
-		data-target="#facturaModal">
+		<button type="button" class="btn btn-primary btn-circle btn-lg" title="Crear Factura de Venta" data-toggle="modal" 
+		data-target="#facturaModal" (click)="crearFactura()">
 			+
 		</button>
 	</div>
@@ -146,24 +148,44 @@
 									</thead>
 									<tbody *ngFor="let producto of productosDisponibles; let i = index">
 									    <td>
-											<input type="checkbox" #cv (change)="onSeleccionProductoChange(producto, cv.checked)">
-                               				{{producto.nombre}}
+									    	<div *ngIf="elProductoFueSeleccionado(producto)">
+												<input type="checkbox" checked #cv (change)="onSeleccionProductoChange(producto, cv.checked)">
+	                               				{{producto.nombre}}
+									    	</div>
+									    	<!-- ELSE -->
+									    	<div *ngIf="!elProductoFueSeleccionado(producto)">
+												<input type="checkbox" #cv (change)="onSeleccionProductoChange(producto, cv.checked)">
+	                               				{{producto.nombre}}
+									    	</div>
 									    </td>
 
 									    <td>
-									        <input *ngIf="cv.checked == true" type="number" min="1" style="width: 90px;" placeholder="Cantidad" #cantidad (keyup)="onCantidadChange(producto._id, cantidad.value)" (change)="onCantidadChange(producto._id, cantidad.value)">
+									        <input *ngIf="elProductoFueSeleccionado(producto)" 
+									        	type="number" 
+									        	min="1" 
+									        	style="width: 90px;" 
+									        	placeholder="Cantidad" 
+									        	[(ngModel)]="facturaVenta.productos[getIndex(producto)].cantidad">
 									    </td>
 
 									    <td>
-		                        			<input *ngIf="cv.checked == true" type="number" step="0.01" min="0" style="width: 90px;" 
-		                        			placeholder="Precio"
-                               				#precio (keyup)="onPrecioChange(producto._id, precio.value)" (change)="onPrecioChange(producto._id, precio.value)" [(ngModel)]="productosDisponibles[i].precioVenta"> 
+									        <input *ngIf="elProductoFueSeleccionado(producto)" 
+									        	type="number"
+									        	step="0.01" 
+									        	min="0" 
+									        	style="width: 90px;" 
+									        	placeholder="Precio" 
+									        	[(ngModel)]="facturaVenta.productos[getIndex(producto)].precioVenta">
 									    </td>
 
 									    <td>
-		                        			<input *ngIf="cv.checked == true" type="number" step="0.01" min="0" style="width: 90px;" 
-		                        			placeholder="% IVA" #iva (keyup)="onIVAChange(producto._id, iva.value)" 
-		                        			(change)="onIVAChange(producto._id, iva.value)" [value]="this.getIVA(producto)"> 
+									        <input *ngIf="elProductoFueSeleccionado(producto)" 
+									        	type="number"
+									        	step="0.01" 
+									        	min="0" 
+									        	style="width: 90px;" 
+									        	placeholder="% IVA" 
+									        	[(ngModel)]="facturaVenta.productos[getIndex(producto)].iva">
 									    </td>
 									</tbody>
 								</table>
@@ -175,7 +197,7 @@
 								<HR COLOR="grey" WIDTH="60%">
 
 								<label for="text" style="margin-top: 8px; font: normal 64px courier !important;">
-									<strong>TOTAL = ${{getTotal()}}</strong>
+									<strong>TOTAL = ${{getImporte()}}</strong>
 
 								</label>
 							</div>
