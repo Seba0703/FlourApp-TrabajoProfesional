@@ -89,8 +89,8 @@ app.use('/api', facturacionDatosPropiosRoutersHandler);
 var facturaItemRoutersHandler = require("./routersHandlers/facturaItemRoutersHandler").getFacturaItemRoutersHandler(express);
 app.use('/api', facturaItemRoutersHandler);
 
-var facturaVentaRoutersHandler = require("./routersHandlers/facturaVentaRoutersHandler").getFacturaVentaRoutersHandler(express);
-app.use('/api', facturaVentaRoutersHandler);
+var facturaRoutersHandler = require("./routersHandlers/facturaRoutersHandler").getFacturaRoutersHandler(express);
+app.use('/api', facturaRoutersHandler);
 
 // Connection to DB
 mongoose.connect('mongodb://localhost/flourapp', function(err, res) {  //se conecta a la base de datos

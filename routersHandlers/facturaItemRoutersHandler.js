@@ -7,6 +7,10 @@ exports.getFacturaItemRoutersHandler = function(express){
 	facturaItemRoutersHandler.route('/facturaItems')
 	  .post(facturaItemController.add);
 
+	facturaItemRoutersHandler.route('/facturaItems/:id')
+	  	.put(facturaItemController.update)
+		.delete(facturaItemController.delete);
+
 	facturaItemRoutersHandler.route('/facturaItems/factura/:id')
 	  .get(facturaItemController.findByFacturaId);
 

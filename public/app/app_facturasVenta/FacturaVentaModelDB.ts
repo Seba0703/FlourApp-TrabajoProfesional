@@ -1,15 +1,15 @@
-/*import { Cliente } from '../app_clientes/cliente';
-import { Producto } from './Producto';*/
-
 export class FacturaVentaModelDB {
     constructor(
       public _id?: string,
+      public tipo?: 				string, /*tipo: Compra o Venta*/
 	  public puntoDeVenta?:         number,
-	  public tipoFactura?:          string,
+	  public tipoFactura?:          string, /*tipoFactura: A, B o C*/
 	  public numeroFactura?:        number,
 	  public fechaEmision?:   	    Date,
 	  public comprobanteReferencia?:number,
-	  public clienteID?:    	  		  string,
+	  public empresaID?:    	  	string,
+      public condicionPago?: 	 	string,
+  	  public listaPrecioNombre?: 	string,
 	  public retencionIG?: 	  		 number,
 	  public retencionIVA?: 	  		number,
 	  public retencionIB?: 	  		  number,

@@ -6,6 +6,8 @@ export class FacturaVenta {
         public _id?: string,
         public fecha?: Date,
         public cliente?: Cliente,
+        public condicionDePago?: string,
+        public nombreListaDePrecios?: string,
         public productos?: Producto[]
         ){
 	    	if(fecha) {

@@ -5,12 +5,14 @@
 			    <tr>
 			    <th>Cliente</th>
 			    <th>Importe</th>
+			    <th>Nº Comprobante</th>
 			    <th>Acciones</th>
 			    </tr>
 			</thead>
 			<tbody *ngFor="let fv of facturasVentaDisponibles">
 			    <td>{{fv.cliente.nombreEmpresa}}</td>
 			    <td>${{fv.getImporte()}}</td>
+			    <th>xxxxx</th>
 			    <td>
 		            <button type="button" class="btn btn-success" (click)="seleccionarFacturaParaModificar(fv)" title="Modificar"
 		            data-toggle="modal" data-target="#facturaModal" >
@@ -122,8 +124,28 @@
 						<div class="form-group row" style="margin-top: 12px;">
 							<div class="col-md-6">
 								<input type="text" class="form-control" placeholder="Condición de Pago (ej: 30-60-90)"
-								[(ngModel)]="facturaVenta.cliente.condicionPago">
+								[(ngModel)]="facturaVenta.condicionDePago">
 							</div>
+						</div>
+
+						<div class="form-group row" style="margin-top: 12px;">
+							<div class="col-3">
+	                            <label for="example-text-input" class="col-form-label">
+	                            	<strong>Lista de Precios</strong>
+	                            </label>
+	                        </div>
+
+	                        <div class="col-9">
+	                            <select class="form-control" 
+	                            	(change)="onListaDePreciosChange()"
+	                            	[(ngModel)]="facturaVenta.nombreListaDePrecios">
+	                                <option *ngFor="let nombreListaDePrecios of nombresListasDePreciosDisponibles" 
+	                                    [value]="nombreListaDePrecios"
+	                                >
+	                                  {{nombreListaDePrecios}}
+	                                </option>
+	                            </select>
+	                        </div>
 						</div>
 				  	</div>
 
@@ -213,17 +235,29 @@
             </div>
 
             <div class="modal-footer">
-              <div class="container">
-                <div class="row" style="margin: 0 auto">
-                  <div class="col-md-12">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary"
-                            (click)="guardarFactura()">
-                                Guardar factura
-                            </button>
-                  </div>
-                </div>
-              </div>
+				<div class="container">
+					<div class="row">
+					  <div class="col"></div>
+					  <div class="col">
+					  	<button 
+					  		type="button" 
+					  		class="btn btn-secondary" 
+					  		data-dismiss="modal">
+					  			Cancelar
+					  	</button>
+					  </div>
+					  <div class="col">
+					  	<button 
+							type="button" 
+							class="btn btn-primary"
+							data-dismiss="modal"
+					        (click)="guardarFactura()">
+					            Guardar factura
+					     </button>
+					  </div>
+					  <div class="col"></div>
+					</div>
+				</div>
             </div>
         </div>
     </div>
