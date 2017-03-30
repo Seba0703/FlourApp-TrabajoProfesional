@@ -59,6 +59,7 @@ export class FacturaVentaComponent implements OnInit{
   }
 
   cargarClientesDisponibles(){
+    this.clientesDisponibles = []
   	this.cService.getBasicDataClientes()
   				 .subscribe( 
   				 	clientes => {
@@ -71,6 +72,7 @@ export class FacturaVentaComponent implements OnInit{
   }
 
   cargarFacturasVentaDisponibles(){
+    this.facturasVentaDisponibles = []
     console.log("CARGANDO FACTURAS DISPONIBLES= ");
     this.fvService.getFacturas()
            .subscribe( 
@@ -123,6 +125,7 @@ export class FacturaVentaComponent implements OnInit{
   }
 
   cargarProductosDisponibles(){
+    this.productosDisponibles = new Array<any>();
     this.mpService.getBasicDataMateriasPrima()
             .subscribe(
               materiasPrimas => {
@@ -157,6 +160,8 @@ export class FacturaVentaComponent implements OnInit{
 
   crearFactura(){
     this.facturaVenta = new FacturaVenta()
+    
+    this.cargarProductosDisponibles()
   }
 
 
@@ -216,7 +221,7 @@ export class FacturaVentaComponent implements OnInit{
                         
                         let index: number = 0;
                         for(let productoSeleccionado of this.facturaVenta.productos){
-                          if(this.productosDisponibles[i].nombre == productoSeleccionado.nombre) {
+                          if(this.productosDisponibles[i]._id == productoSeleccionado.mp_sp_pt_ID) {
                             break;
                           } else {
                             index++;
@@ -237,9 +242,9 @@ export class FacturaVentaComponent implements OnInit{
 
   }
 
-  elProductoFueSeleccionado(producto: Producto){
+  elProductoFueSeleccionado(producto: any){
     for (let prodSeleccionado of this.facturaVenta.productos){
-      if(producto.nombre == prodSeleccionado.nombre) {
+      if(producto._id == prodSeleccionado.mp_sp_pt_ID) {
         return true
       }
     }
@@ -247,12 +252,41 @@ export class FacturaVentaComponent implements OnInit{
   }
 
   onSeleccionProductoChange(producto: any, valorCheck: boolean){
-  	if(valorCheck == true) { 
-  		this.facturaVenta.productos.push(new Producto(null, "unTipo", producto.nombre, 1, producto.precioVenta, this.getIVA(producto)));
+  	if(valorCheck == true) {
+      if(this.facturaVenta.nombreListaDePrecios != null) {
+        this.ldpService
+        .getListaDePrecios()
+        .subscribe(
+          listasDePrecios => {
+            console.log(listasDePrecios.length)
+            for(let listaDePrecios of listasDePrecios){
+              if(this.facturaVenta.nombreListaDePrecios == listaDePrecios.nombre){
+                if(listaDePrecios.mp_ID != null && listaDePrecios.mp_ID._id == producto._id) {
+                  producto.precioVenta = listaDePrecios.precio
+                  console.log("ENCONTRADO")
+                  break
+                } else if(listaDePrecios.sp_ID != null && listaDePrecios.sp_ID._id == producto._id) {
+                  producto.precioVenta = listaDePrecios.precio
+                  console.log("ENCONTRADO")
+                  console.log(listaDePrecios.sp_ID.precioVenta)
+                  break
+                } else if(listaDePrecios.pt_ID != null && listaDePrecios.pt_ID._id == producto._id) {
+                  producto.precioVenta = listaDePrecios.precio
+                  console.log("ENCONTRADO")
+                  break
+                }
+              }
+            }
+            console.log(producto.precioVenta)
+            this.facturaVenta.productos.push(new Producto(null, "unTipo", producto._id, producto.nombre, 1, producto.precioVenta, this.getIVA(producto)));
+          },
+          err => console.error("EL ERROR FUE: ", err)
+        )
+      }
   	} else {
   		let index = 0;
   		for(let productoSeleccionado of this.facturaVenta.productos){
-  			if(producto.nombre == productoSeleccionado.nombre) {
+  			if(producto._id == productoSeleccionado.mp_sp_pt_ID) {
   				this.facturaVenta.productos.splice(index, 1);
   			} else {
   				index++;
@@ -263,13 +297,12 @@ export class FacturaVentaComponent implements OnInit{
   	console.log(this.facturaVenta.productos)
   }
 
-  getIndex(producto: Producto): number{
+  getIndex(producto: any): number{
     let index = 0;
     for(let productoSeleccionado of this.facturaVenta.productos){
-      if(producto.nombre == productoSeleccionado.nombre) {
+      if(producto._id == productoSeleccionado.mp_sp_pt_ID) {
         return index
       }
-
       index++
     }
   }
@@ -293,11 +326,15 @@ export class FacturaVentaComponent implements OnInit{
     return this.facturaVenta.getImporte()
   }
 
+  cancelarCambios(){
+    this.cargarFacturasVentaDisponibles()
+  }
+
   guardarFactura(){
     console.log(this.facturaVenta)
 
     let bodyFacturaVenta = {
-      tipo:               "venta",
+      tipo:               "fact_venta",
       tipoFactura:        "A",
       fechaEmision:       this.facturaVenta.fecha,
       empresaID:          this.facturaVenta.cliente._id,
@@ -315,21 +352,22 @@ export class FacturaVentaComponent implements OnInit{
           fvAgregada => {
             console.log(fvAgregada)
 
-            let bodyProducto = {}
+            let bodyDocumentoMercantilItem = {}
             for(let producto of this.facturaVenta.productos){
-              bodyProducto = {
-                tipo:        "tipo",
-                nombre:      producto.nombre,
-                cantidad:    producto.cantidad,
-                precio:      producto.precioVenta,
-                iva:         producto.iva,
-                facturaID:   fvAgregada._id
+              bodyDocumentoMercantilItem = {
+                tipo:                   "tipo",
+                productoID:             producto.mp_sp_pt_ID,
+                nombre:                 producto.nombre,
+                cantidad:               producto.cantidad,
+                precio:                 producto.precioVenta,
+                iva:                    producto.iva,
+                documentoMercantilID:   fvAgregada._id
               }
 
-              console.log("VINCULANDO PRODUCTO=")
-              console.log(bodyProducto)
+              console.log("VINCULANDO bodyDocumentoMercantilItem=")
+              console.log(bodyDocumentoMercantilItem)
 
-              this.fvService.vincularProducto(bodyProducto).subscribe()
+              this.fvService.vincularProducto(bodyDocumentoMercantilItem).subscribe()
 
             }
 
@@ -347,22 +385,23 @@ export class FacturaVentaComponent implements OnInit{
       this.fvService
       .modificarFactura(bodyFacturaVenta)
       .subscribe(res => {
-        let bodyProducto = {}
+        let bodyDocumentoMercantilItem = {}
         for(let producto of this.facturaVenta.productos){
-          bodyProducto = {
-            _id:         producto._id,
-            tipo:        "tipo",
-            nombre:      producto.nombre,
-            cantidad:    producto.cantidad,
-            precio:      producto.precioVenta,
-            iva:         producto.iva,
-            facturaID:   this.facturaVenta._id
+          bodyDocumentoMercantilItem = {
+            _id:                     producto._id,
+            tipo:                    "tipo",
+            productoID:              producto.mp_sp_pt_ID,
+            nombre:                  producto.nombre,
+            cantidad:                producto.cantidad,
+            precio:                  producto.precioVenta,
+            iva:                     producto.iva,
+            documentoMercantilID:   this.facturaVenta._id
           }
 
-          console.log("MODIFICANDO PRODUCTO=")
-          console.log(bodyProducto)
+          console.log("MODIFICANDO bodyDocumentoMercantilItem=")
+          console.log(bodyDocumentoMercantilItem)
 
-          this.fvService.modificarProducto(bodyProducto).subscribe()
+          this.fvService.modificarProducto(bodyDocumentoMercantilItem).subscribe()
         }
 
         alert("\t\t\t\t¡Factura modificada!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");

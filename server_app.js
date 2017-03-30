@@ -86,11 +86,11 @@ app.use('/api', movProductUsadoRoutersHandler);
 var facturacionDatosPropiosRoutersHandler = require("./routersHandlers/facturacionDatosPropiosRoutersHandler").getFacturacionDatosPropiosRoutersHandler(express);
 app.use('/api', facturacionDatosPropiosRoutersHandler);
 
-var facturaItemRoutersHandler = require("./routersHandlers/facturaItemRoutersHandler").getFacturaItemRoutersHandler(express);
-app.use('/api', facturaItemRoutersHandler);
+var documentoMercantilItemRoutersHandler = require("./routersHandlers/documentoMercantilItemRoutersHandler").getDocumentoMercantilItemRoutersHandler(express);
+app.use('/api', documentoMercantilItemRoutersHandler);
 
-var facturaRoutersHandler = require("./routersHandlers/facturaRoutersHandler").getFacturaRoutersHandler(express);
-app.use('/api', facturaRoutersHandler);
+var documentoMercantilRoutersHandler = require("./routersHandlers/documentoMercantilRoutersHandler").getDocumentoMercantilRoutersHandler(express);
+app.use('/api', documentoMercantilRoutersHandler);
 
 // Connection to DB
 mongoose.connect('mongodb://localhost/flourapp', function(err, res) {  //se conecta a la base de datos

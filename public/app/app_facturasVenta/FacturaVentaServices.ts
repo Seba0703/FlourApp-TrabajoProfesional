@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import { FacturaVentaModelDB } from './FacturaVentaModelDB'
 import { FacturaVenta } from './FacturaVenta'
 import { Producto } from './Producto'
-import {URL_FACTURAS, URL_FACTURA_ITEMS} from '../rutas';
+import {URL_DOCUMENTOS_MERCANTILES, URL_DOCUMENTOS_MERCANTILES_ITEMS} from '../rutas';
 
 @Injectable()
 export class FacturaVentaServices {
@@ -17,14 +17,14 @@ export class FacturaVentaServices {
 
   getFacturas(): Observable<FacturaVentaModelDB[]>  {
     console.log("HACIENDO REQUEST");
-    return this.http.get(URL_FACTURAS + "/porTipo/venta").map((response) => response.json())
+    return this.http.get(URL_DOCUMENTOS_MERCANTILES + "/porTipo/fact_venta").map((response) => response.json())
   }
 
   agregarFactura(body: Object): Observable<FacturaVentaModelDB> {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     console.log("POST REQUEST");
-    return this.http.post(URL_FACTURAS, body, {headers: headers}).map((response) => response.json());
+    return this.http.post(URL_DOCUMENTOS_MERCANTILES, body, {headers: headers}).map((response) => response.json());
   }
 
   borrarFactura(factura: FacturaVenta): Observable<Response> {
@@ -33,22 +33,22 @@ export class FacturaVentaServices {
     console.log("DELETE REQUEST");
 
     for(let prod of factura.productos){
-      this.http.delete(URL_FACTURA_ITEMS + "/" + prod._id, {headers: headers}).subscribe()
+      this.http.delete(URL_DOCUMENTOS_MERCANTILES_ITEMS + "/" + prod._id, {headers: headers}).subscribe()
     }
 
-    return this.http.delete(URL_FACTURAS + "/" + factura._id, {headers: headers});
+    return this.http.delete(URL_DOCUMENTOS_MERCANTILES + "/" + factura._id, {headers: headers});
   }
 
   modificarFactura(body: any): Observable<Response> {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     console.log("PUT REQUEST");
-    return this.http.put(URL_FACTURAS + "/" + body._id, body, {headers: headers});
+    return this.http.put(URL_DOCUMENTOS_MERCANTILES + "/" + body._id, body, {headers: headers});
   }
 
   getProductosDeLaFacturaID(facturaID: string): Observable<Producto[]>{
     return this.http
-    .get(URL_FACTURA_ITEMS + "/factura/" + facturaID)
+    .get(URL_DOCUMENTOS_MERCANTILES_ITEMS + "/documentoMercantil/" + facturaID)
     .map((response) => {
       //console.log(response)
       //console.log(response.json())
@@ -59,7 +59,8 @@ export class FacturaVentaServices {
         .push(
           new Producto(
             response.json()[i]._id, 
-            response.json()[i].tipo, 
+            response.json()[i].tipo,
+            response.json()[i].productoID, 
             response.json()[i].nombre, 
             response.json()[i].cantidad, 
             response.json()[i].precio, 
@@ -77,14 +78,14 @@ export class FacturaVentaServices {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     console.log("POST REQUEST");
-    return this.http.post(URL_FACTURA_ITEMS, body, {headers: headers}).map((response) => response.json())
+    return this.http.post(URL_DOCUMENTOS_MERCANTILES_ITEMS, body, {headers: headers}).map((response) => response.json())
   }
 
   modificarProducto(body: any): Observable<Response> {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     console.log("PUT REQUEST");
-    return this.http.put(URL_FACTURA_ITEMS + "/" + body._id, body, {headers: headers});
+    return this.http.put(URL_DOCUMENTOS_MERCANTILES_ITEMS + "/" + body._id, body, {headers: headers});
   }
 
 }
