@@ -9,6 +9,8 @@ import { NavMenuComponent } from '../nav-menu/navMenuComponent';
 import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { FacturaCompraComponent }  from './FacturaCompraComponent';
 
+import { FacturaCompraServices } from './FacturaCompraServices';
+
 import { ProveedorServices } from '../app_proveedores/proveedorServices';
 import { ListaDePrecioServices } from '../app_listaDePrecios/ListaDePrecioServices';
 
@@ -19,9 +21,9 @@ import { ProductoTerminadoServices } from '../app_productosTerminados/productoTe
 
 @NgModule({
   imports: [
+    FormsModule,
     BrowserModule,
     HttpModule,
-    FormsModule,
     DatepickerModule.forRoot()
   ],
   declarations: [
@@ -31,6 +33,7 @@ import { ProductoTerminadoServices } from '../app_productosTerminados/productoTe
     FacturaCompraComponent
   ],
   providers: [
+    FacturaCompraServices,
     ProveedorServices,
     ListaDePrecioServices,
     MateriaPrimaServices,

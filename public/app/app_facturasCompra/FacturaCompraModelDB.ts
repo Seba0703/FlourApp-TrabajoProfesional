@@ -1,4 +1,4 @@
-export class FacturaVentaModelDB {
+export class FacturaCompraModelDB {
     constructor(
       public _id?: string,
       public tipo?: 				string, /*tipo: fact_compra , fact_venta, remito, ord_compra*/
