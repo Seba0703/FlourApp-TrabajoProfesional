@@ -1,11 +1,25 @@
 import { Component } from '@angular/core';
 import { FacturaItem } from './facturaItem'
+import { InformeVentasServices } from './informeVentasServices';
 
 @Component({
   selector: 'informe-ventas-app',
   templateUrl: 'app/app_informeVentas/app.component.html'
 })
 export class AppComponent {
+  constructor(private iService: InformeVentasServices) {}
+
+  ngOnInit() {
+    console.log("Hola app.component");
+    this.iService.getFacturas().subscribe(
+      (informeData) => {
+        //this.clientes = clientesData;
+        console.log("OK");
+      },
+      err => console.error("EL ERROR FUE: ", err)
+    );
+  }
+
   sumaSubtotales = function() {
     var acum = 0;
     for( var i=0; i < this.facturas.length; i++) {
