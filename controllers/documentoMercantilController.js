@@ -11,6 +11,16 @@ exports.findAll = function(req, res) {
 		});
 };
 
+exports.findFiltered = function(req, res) {
+    DocumentoMercantil.find(function(err, documentosmercantiles){
+		if(err) res.send(500, err.message);
+
+		console.log('GET/documentosMercantiles');
+    console.log(req.query);
+		res.status(200).jsonp(documentosmercantiles);
+		});
+};
+
 
 exports.findById = function(req, res) {
 	var findByIdCallback =

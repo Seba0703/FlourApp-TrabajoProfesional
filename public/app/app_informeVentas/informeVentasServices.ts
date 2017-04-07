@@ -18,6 +18,6 @@ export class InformeVentasServices{
   getFacturas() {
     //console.log("HACIENDO REQUEST");
     console.log("Hola informeVentasServices");
-    return this.http.get(URL_DOCUMENTOS_MERCANTILES).map((response) => response.json());
+    return this.http.get(URL_DOCUMENTOS_MERCANTILES+"/facturas?tipoFactura=A&opcional2=dos&desde=01/01/2017").map((response) => response.json());
   }
 }

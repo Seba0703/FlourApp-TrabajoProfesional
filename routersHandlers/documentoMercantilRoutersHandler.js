@@ -8,6 +8,9 @@ exports.getDocumentoMercantilRoutersHandler = function(express){
 	  .get(documentoMercantilController.findAll)
 	  .post(documentoMercantilController.add);
 
+	documentoMercantilRoutersHandler.route('/documentosMercantiles/facturas')
+		  .get(documentoMercantilController.findFiltered);
+
 	documentoMercantilRoutersHandler.route('/documentosMercantiles/:id')
 	  .get(documentoMercantilController.findById)
 	  .put(documentoMercantilController.update)
