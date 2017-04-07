@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import {URL_INFORMECOMPRAS} from '../rutas';
+import {URL_DOCUMENTOS_MERCANTILES} from '../rutas';
 
 @Injectable()
 export class InformeComprasServices{

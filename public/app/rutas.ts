@@ -25,10 +25,10 @@ export const URL_LISTA_PRECIOS_LISTNAME = 		'http://' + ip + ':' + puerto + '/ap
 export const URL_LISTA_PORCENTAJES = 		'http://' + ip + ':' + puerto + '/api/listaPorcentajes';
 export const URL_LISTA_PORCENTAJES_LIST_PROD_FAB = 		'http://' + ip + ':' + puerto + '/api/listaPorcentajes/productoList';
 export const URL_LISTA_PORCENTAJES_CON_DATOS = 'http://' + ip + ':' + puerto + '/api/listaPorcentajes/conDatos';
-export const URL_INFORMECOMPRAS = 		'http://' + ip + ':' + puerto + '/api/informeCompras';
-export const URL_INFORMEVENTAS = 		'http://' + ip + ':' + puerto + '/api/informeVentas';
+
+// Creo que fueron reemplazados por Documentos Mercantiles
+//export const URL_INFORMECOMPRAS = 		'http://' + ip + ':' + puerto + '/api/informeCompras';
+//export const URL_INFORMEVENTAS = 		'http://' + ip + ':' + puerto + '/api/informeVentas';
 
 export const URL_DOCUMENTOS_MERCANTILES = 			'http://' + ip + ':' + puerto + '/api/documentosMercantiles';
 export const URL_DOCUMENTOS_MERCANTILES_ITEMS = 		'http://' + ip + ':' + puerto + '/api/documentosMercantilesItems';
-
-
