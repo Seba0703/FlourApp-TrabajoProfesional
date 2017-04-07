@@ -9,7 +9,7 @@ import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { FacturaHeaderComponent } from './facturaHeaderComponent';
 import { FacturaBodyComponent } from './facturaBodyComponent';
 import { BarraBusquedaFacturaComponent } from '../app_informes/barraBusquedaFacturaComponent';
-
+import { InformeVentasComponent } from './informeVentasComponent';
 import { InformeVentasServices } from './informeVentasServices';
 
 @NgModule({
@@ -24,7 +24,8 @@ import { InformeVentasServices } from './informeVentasServices';
     SignOutComponent,
     FacturaHeaderComponent,
     FacturaBodyComponent,
-    BarraBusquedaFacturaComponent
+    BarraBusquedaFacturaComponent,
+    InformeVentasComponent
   ],
   providers: [
     InformeVentasServices
