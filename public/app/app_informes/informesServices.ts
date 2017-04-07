@@ -8,8 +8,6 @@ import {URL_DOCUMENTOS_MERCANTILES} from '../rutas';
 
 @Injectable()
 export class InformesServices{
-  // public informeVentas: Array<any>;
-
   constructor(private http:Http) {
     console.log("INICIALIZANDO Informes SERVIRCE");
   }
@@ -23,7 +21,7 @@ export class InformesServices{
     }
     params = params.slice(0, -1)
     if(params!="")
-      params = "?" + params
+      params = "?" + params;
     return this.http.get(URL_DOCUMENTOS_MERCANTILES+"/facturas"+params).map((response) => response.json());
   }
 }

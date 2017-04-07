@@ -12,7 +12,35 @@ exports.findAll = function(req, res) {
 };
 
 exports.findFiltered = function(req, res) {
-    DocumentoMercantil.find(function(err, documentosmercantiles){
+  /* Para falsear algunos datos
+  var documentomercantil = new DocumentoMercantil({ //creo un nuevo documentomercantil en base a lo recibido en el request
+      tipo:                   "Venta",
+      puntoDeVenta:           1,
+      tipoFactura:            "C",
+      numeroFactura:          45624,
+      fechaEmision:           "2017-04-07",
+      comprobanteReferencia:  0,
+      empresaID:              "Otra empresa",
+      condicionPago:          "30-60-90",
+      listaPrecioNombre:      "Especial",
+      retencionIG:            0,
+      retencionIVA:           0,
+      retencionIB:            0,
+      impuestosInternos:      0,
+      impuestosMunicipales:   0,
+      CAI:                    99886662,
+      fechaVtoCAI:            "2017-05-15"
+  });
+
+  documentomercantil.save(function(err, documentomercantil) { //almaceno el documentomercantil en la base de datos
+
+  });
+*/
+
+    var busqueda = {
+      tipo: req.query.tipo
+    }
+    DocumentoMercantil.find(busqueda, function(err, documentosmercantiles){
 		if(err) res.send(500, err.message);
 
 		console.log('GET/documentosMercantiles');

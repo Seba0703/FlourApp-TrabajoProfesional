@@ -13,11 +13,11 @@ export class BarraBusquedaFacturaComponent {
   constructor(private iService: InformesServices) {}
 
   ngOnInit() {
-    this.searchFields.tipoFactura = this.tipo;
+    this.searchFields.tipo = this.tipo;
   }
 
   searchFields = {
-    tipoFactura: "",
+    tipo: "",
     numeroFactura: "",
     cuit: "",
     nombreEmpresa: "",
