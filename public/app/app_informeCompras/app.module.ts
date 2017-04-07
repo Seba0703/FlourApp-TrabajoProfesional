@@ -9,8 +9,7 @@ import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { FacturaHeaderComponent } from './facturaHeaderComponent';
 import { FacturaBodyComponent } from './facturaBodyComponent';
 import { BarraBusquedaFacturaComponent } from '../app_informes/barraBusquedaFacturaComponent';
-
-import { InformeComprasServices } from './informeComprasServices';
+import { InformesServices } from '../app_informes/informesServices';
 
 @NgModule({
   imports: [
@@ -27,7 +26,7 @@ import { InformeComprasServices } from './informeComprasServices';
     BarraBusquedaFacturaComponent
   ],
   providers: [
-    InformeComprasServices
+    InformesServices
   ],
   bootstrap: [ AppComponent ]
 })
