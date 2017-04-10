@@ -14,24 +14,52 @@ exports.findBydocumentoMercantilId = function(req, res) {
     DocumenTomercantilItem.find({documentoMercantilID: req.params.id}, findByIdCallback); //luego de realizar la busqueda ejecuta el callback
 };
 
+exports.addItem = function(item, ok_callback, err_callback) {
+
+    var documenTomercantilItem = new DocumenTomercantilItem({
+        tipo:    	              item.tipo,
+        productoID:             item.productoID,
+        nombre:     	          item.nombre,
+        cantidad:               item.cantidad,
+        precio:                 item.precio,
+        iva:                    item.iva,
+        documentoMercantilID:   item.documentoMercantilID
+    });
+
+    documenTomercantilItem.save(function(err, documenTomercantilItem) { //almaceno el documenTomercantilItem en la base de datos
+        if(err)
+					return err_callback();
+				else
+					return ok_callback();
+    });
+};
+
 exports.add = function(req, res) {
     console.log('POST');
     console.log(req.body);
 
+		addItem(req.body,function(){
+			return res.status(500).send( err.message)
+		},function(){
+			res.status(200).jsonp(documenTomercantilItem)
+		});
+
+/*
     var documenTomercantilItem = new DocumenTomercantilItem({ //creo un nuevo documenTomercantilItem en base a lo recibido en el request
         tipo:    	              req.body.tipo,
-        productoID:                 req.body.productoID,
-        nombre:     	           req.body.nombre,
-        cantidad:                   req.body.cantidad,
-        precio:                     req.body.precio,
-        iva:                        req.body.iva,
-        documentoMercantilID:      req.body.documentoMercantilID
+        productoID:             req.body.productoID,
+        nombre:     	          req.body.nombre,
+        cantidad:               req.body.cantidad,
+        precio:                 req.body.precio,
+        iva:                    req.body.iva,
+        documentoMercantilID:   req.body.documentoMercantilID
     });
 
     documenTomercantilItem.save(function(err, documenTomercantilItem) { //almaceno el documenTomercantilItem en la base de datos
         if(err) return res.status(500).send( err.message);
 		res.status(200).jsonp(documenTomercantilItem);
     });
+		*/
 };
 
 exports.update = function(req, res) {

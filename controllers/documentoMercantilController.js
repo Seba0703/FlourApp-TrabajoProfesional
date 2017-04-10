@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 //Import models
 var DocumentoMercantil  = require("../models/documentoMercantil").documentoMercantilModel;
+var documentoMercantilItemController = require("./documentoMercantilItemController");
 
 exports.findAll = function(req, res) {
     DocumentoMercantil.find(function(err, documentosmercantiles){
@@ -11,31 +12,78 @@ exports.findAll = function(req, res) {
 		});
 };
 
-exports.findFiltered = function(req, res) {
-  /* Para falsear algunos datos
-  var documentomercantil = new DocumentoMercantil({ //creo un nuevo documentomercantil en base a lo recibido en el request
-      tipo:                   "Venta",
+mockFactura = function(req,res,cai, nroFact) {
+  var documentomercantil = new DocumentoMercantil({
+      tipo:                   "Compra",
       puntoDeVenta:           1,
-      tipoFactura:            "C",
-      numeroFactura:          45624,
+      tipoFactura:            "A",
+      numeroFactura:          nroFact,
       fechaEmision:           "2017-04-07",
       comprobanteReferencia:  0,
-      empresaID:              "Otra empresa",
-      condicionPago:          "30-60-90",
-      listaPrecioNombre:      "Especial",
+      empresaID:              "Un proveedor",
+      condicionPago:          "0-30-60",
+      listaPrecioNombre:      "",
       retencionIG:            0,
       retencionIVA:           0,
       retencionIB:            0,
       impuestosInternos:      0,
       impuestosMunicipales:   0,
-      CAI:                    99886662,
+      CAI:                    cai,
       fechaVtoCAI:            "2017-05-15"
   });
+/*
+numero -> numeroFactura
+cliente -> empresaID -> nombreEmpresa
+categ_fiscal -> empresaID -> categoriaFiscal
+cond_pago -> empresaID -> condicionPago
+subtotal -> sum(productos.precio_unitario)
 
+(X) iva -> productos -> iva
+
+*/
+
+/*
+  {
+    numero: 1,
+    cliente: 'Nicolás Blandi',
+    categ_fiscal: 'Responsable Inscripto',
+    cond_pago: '0-30-60',
+    subtotal: 1000,
+    iva: 21,
+    productos: [
+    {
+    cantidad: 10,
+    descripcion: 'Pochoclo 1',
+    precio_unitario: 50
+    },
+    {
+    cantidad: 5,
+    descripcion: 'Pochoclo 2',
+    precio_unitario: 70
+    }
+    ]
+  }
+*/
   documentomercantil.save(function(err, documentomercantil) { //almaceno el documentomercantil en la base de datos
 
   });
-*/
+
+  var myReq = req;
+  myReq.body = {
+    tipo:    	              "_tipo_cualquiera",
+    productoID:             "_id_cualquiera",
+    nombre:     	          "nombre",
+    cantidad:               "1",
+    precio:                 "10",
+    iva:                    "21",
+    documentoMercantilID:   documentomercantil._id
+  }
+  var myRes = res;
+  documentoMercantilItemController.add(myReq, myRes);
+}
+
+exports.findFiltered = function(req, res) {
+  mockFactura(req,res,123,7);
 
     var busqueda = {
       tipo: req.query.tipo

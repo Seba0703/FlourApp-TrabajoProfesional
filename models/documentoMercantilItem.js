@@ -8,7 +8,7 @@ var documentoMercantilItemSchema = new mongoose.Schema({
   cantidad:         		{ type: Number },
   precio:         			{ type: Number },
   iva:         				{ type: Number },
-  documentoMercantilID:  	{ type: String }
+  documentoMercantilID:  	{ type: mongoose.Schema.ObjectId, ref: 'DocumentoMercantil' }
 });
 
 exports.documentoMercantilItemModel = mongoose.model('DocumentoMercantilItem', documentoMercantilItemSchema); //crea el modelo y lo exporta para que lo puedan usar otros modulos
