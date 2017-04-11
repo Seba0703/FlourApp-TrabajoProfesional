@@ -8,5 +8,7 @@ import { FacturaHeader } from './facturaHeader'
 
 export class FacturaHeaderComponent {
   @Input() factura: FacturaHeader;
+  @Input() iva: number;
+  @Input() otros: number;
   @Input() subtotal: number;
 }

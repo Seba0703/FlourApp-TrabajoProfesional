@@ -1,12 +1,12 @@
-<td style="text-align: right">{{factura.numero}}</td>
-<td>{{factura.cliente}}</td>
+<td style="text-align: right">{{factura.numeroFactura}}</td>
+<td colspan="2">{{factura.cliente}}</td>
 <td>{{factura.categ_fiscal}}</td>
 <td>{{factura.cond_pago}}</td>
 <td>$
 	{{subtotal.toFixed(2)}}</td>
-<td>{{factura.iva.toFixed(2)}}
-	%</td>
+<td>${{iva.toFixed(2)}}</td>
+<td>{{otros}}</td>
 <td>
 	<b>$
-		{{(subtotal+(subtotal*factura.iva/100)).toFixed(2)}}</b>
+		{{factura.total.toFixed(2)}}</b>
 </td>

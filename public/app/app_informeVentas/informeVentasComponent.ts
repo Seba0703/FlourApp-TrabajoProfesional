@@ -33,22 +33,23 @@ export class InformeVentasComponent {
 
   facturas = [
       {
-        numero: 1,
+        numeroFactura: 1,
         cliente: 'Nicolás Blandi',
         categ_fiscal: 'Responsable Inscripto',
         cond_pago: '0-30-60',
         subtotal: 1000,
-        iva: 21,
         productos: [
         {
         cantidad: 10,
         descripcion: 'Pochoclo 1',
-        precio_unitario: 50
+        precio_unitario: 50,
+        iva: 21
         },
         {
         cantidad: 5,
         descripcion: 'Pochoclo 2',
-        precio_unitario: 70
+        precio_unitario: 70,
+        iva: 21
         }
         ]
       },
@@ -58,22 +59,24 @@ export class InformeVentasComponent {
         categ_fiscal: 'Responsable Inscripto',
         cond_pago: '0-30-60',
         subtotal: 2500,
-        iva: 21,
         productos: [
         {
         cantidad: 50,
         descripcion: 'Pochoclo 1',
-        precio_unitario: 50
+        precio_unitario: 50,
+        iva: 21
         },
         {
         cantidad: 10,
         descripcion: 'Pochoclo 2',
-        precio_unitario: 70
+        precio_unitario: 70,
+        iva: 21
         },
         {
         cantidad: 20,
         descripcion: 'Pochoclo 3',
-        precio_unitario: 50
+        precio_unitario: 50,
+        iva: 21
         }
         ]
       },
@@ -82,33 +85,37 @@ export class InformeVentasComponent {
         cliente: 'Tino Costa',
         categ_fiscal: 'Consumidor Final',
         cond_pago: '0-30-60',
-        iva: 17.5,
         subtotal: 1700,
         productos: [
         {
         cantidad: 50,
         descripcion: 'Pochoclo 1',
-        precio_unitario: 50
+        precio_unitario: 50,
+        iva: 21
         },
         {
         cantidad: 63,
         descripcion: 'Pochoclo 2',
-        precio_unitario: 70
+        precio_unitario: 70,
+        iva: 21
         },
         {
         cantidad: 43,
         descripcion: 'Pochoclo 3',
-        precio_unitario: 50
+        precio_unitario: 50,
+        iva: 21
         },
         {
         cantidad: 1000,
         descripcion: 'Frutigram',
-        precio_unitario: 0.5
+        precio_unitario: 0.5,
+        iva: 21
         },
         {
         cantidad: 12,
         descripcion: 'Bananita Dolca',
-        precio_unitario: 5.75
+        precio_unitario: 5.75,
+        iva: 21
         }
         ]
       },

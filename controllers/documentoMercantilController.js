@@ -68,8 +68,7 @@ subtotal -> sum(productos.precio_unitario)
 
   });
 
-  var myReq = req;
-  myReq.body = {
+  var item = {
     tipo:    	              "_tipo_cualquiera",
     productoID:             "_id_cualquiera",
     nombre:     	          "nombre",
@@ -78,8 +77,7 @@ subtotal -> sum(productos.precio_unitario)
     iva:                    "21",
     documentoMercantilID:   documentomercantil._id
   }
-  var myRes = res;
-  documentoMercantilItemController.add(myReq, myRes);
+  documentoMercantilItemController.addItem(item, function(){}, function(){});
 }
 
 exports.findFiltered = function(req, res) {

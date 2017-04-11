@@ -38,7 +38,7 @@ exports.add = function(req, res) {
     console.log('POST');
     console.log(req.body);
 
-		addItem(req.body,function(){
+		this.addItem(req.body,function(){
 			return res.status(500).send( err.message)
 		},function(){
 			res.status(200).jsonp(documenTomercantilItem)

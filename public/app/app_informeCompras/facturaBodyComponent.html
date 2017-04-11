@@ -1,4 +1,4 @@
-<td colspan="7" style="padding: 0; margin: 0;">
+<td colspan="10" style="padding: 0; margin: 0;">
 	<div id={{id}} class="collapse">
 		<table class="table" style="padding: 0; margin: 0; background-color: #FAFAFA; border: 2px solid;">
 			<thead class="thead-default">
@@ -6,7 +6,9 @@
 					<th colspan="1" style="width: 14.2%; padding-top: 0; padding-bottom: 0; text-align: right;">Cantidad</th>
 					<th colspan="1" style="width: 57.4%; padding-top: 0; padding-bottom: 0;">Descripción</th>
 					<th colspan="1" style="width: 14.2%; padding-top: 0; padding-bottom: 0; text-align: right;">P. Unitario</th>
-					<th colspan="1" style="width: 14.2%; padding-top: 0; padding-bottom: 0; text-align: right;">P. Total</th>
+					<th colspan="1" style="width: 14.2%; padding-top: 0; padding-bottom: 0; text-align: right;">Subtotal</th>
+					<th colspan="1" style="width: 14.2%; padding-top: 0; padding-bottom: 0; text-align: right;">IVA</th>
+					<th colspan="1" style="width: 14.2%; padding-top: 0; padding-bottom: 0; text-align: right;">Total</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -14,7 +16,9 @@
 					<td colspan="1" style="text-align: right;">{{item.cantidad}}</td>
 					<td colspan="1">{{item.descripcion}}</td>
 					<td colspan="1" style="text-align: right;">${{item.precio_unitario.toFixed(2)}}</td>
-					<td colspan="1" style="text-align: right;">${{(item.cantidad*item.precio_unitario).toFixed(2)}}</td>
+					<td colspan="1" style="text-align: right;">${{(item.precio_unitario*item.cantidad).toFixed(2)}}</td>
+					<td colspan="1" style="text-align: right;">{{item.iva.toFixed(2)}}%</td>
+					<td colspan="1" style="text-align: right;">${{(item.cantidad*item.precio_unitario+(item.cantidad*item.precio_unitario*item.iva/100)).toFixed(2)}}</td>
 				</tr>
 			</tbody>
 		</table>

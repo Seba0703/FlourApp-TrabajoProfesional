@@ -2,16 +2,17 @@
 	<thead class="thead-inverse">
 		<tr>
 			<th style="text-align: right">Nro Fact.</th>
-			<th>Vendedor</th>
+			<th colspan="2">Vendedor</th>
 			<th>Categ. Fiscal</th>
 			<th>Cond. Pago</th>
 			<th>Subtotal</th>
-			<th>% IVA</th>
+			<th>IVA</th>
+			<th>Otros</th>
 			<th>Total</th>
 		</tr>
 	</thead>
 	<tbody *ngFor="let factura of facturas; let i = index">
-		<tr factura-header data-toggle="collapse" [attr.data-target]="'#'+i" class="clickable" style="cursor: pointer;" [factura]="factura" [subtotal]="calcularSubtotal(factura.productos)"></tr>
+		<tr factura-header data-toggle="collapse" [attr.data-target]="'#'+i" class="clickable" style="cursor: pointer;" [factura]="factura" [subtotal]="calcularSubtotal(factura.productos)" [iva]="iva(factura.productos)" [otros]="otros(factura.productos)"></tr>
 		<tr factura-body [id]="i" [factura]="factura.productos"></tr>
 	</tbody>
 	<tfoot>
@@ -20,8 +21,10 @@
 			<th></th>
 			<th></th>
 			<th></th>
-			<th>${{sumaSubtotales().toFixed(2)}}</th>
 			<th></th>
+			<th>${{sumaSubtotales().toFixed(2)}}</th>
+			<th>${{sumaIVA().toFixed(2)}}</th>
+			<th>${{sumaOtros().toFixed(2)}}</th>
 			<th>${{sumaTotales().toFixed(2)}}</th>
 		</tr>
 	</tfoot>
