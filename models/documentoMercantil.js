@@ -7,6 +7,7 @@ var documentoMercantilSchema = new mongoose.Schema({
   tipoFactura:          { type: String }, /*tipoFactura: A, B o C*/
   numeroFactura:        { type: Number },
   fechaEmision:   	    { type: Date   },
+  fechaVencimiento:   	{ type: Date   },
   comprobanteReferencia:{ type: Number },
   empresaID:    	  	{ type: String },
   condicionPago: 	 	{ type: String },

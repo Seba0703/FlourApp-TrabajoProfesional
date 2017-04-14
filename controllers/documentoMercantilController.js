@@ -131,6 +131,7 @@ exports.add = function(req, res) {
         tipoFactura:            req.body.tipoFactura,
         numeroFactura:          req.body.numeroFactura,
         fechaEmision:           req.body.fechaEmision,
+        fechaVencimiento:       req.body.fechaVencimiento,
         comprobanteReferencia:  req.body.comprobanteReferencia,
         empresaID:              req.body.empresaID,
         condicionPago:          req.body.condicionPago,
@@ -164,6 +165,7 @@ exports.update = function(req, res) {
         documentomercantil.tipoFactura =            req.body.tipoFactura;
         documentomercantil.numeroFactura =          req.body.numeroFactura;
         documentomercantil.fechaEmision =           req.body.fechaEmision;
+        documentomercantil.fechaVencimiento =       req.body.fechaVencimiento;
         documentomercantil.comprobanteReferencia =  req.body.comprobanteReferencia;
         documentomercantil.empresaID =              req.body.empresaID;
         documentomercantil.condicionPago =          req.body.condicionPago;

@@ -1,10 +1,11 @@
 import { Proveedor } from '../app_proveedores/proveedor';
 import { Producto } from './Producto';
 
-export class FacturaCompra {
+export class OrdenCompra {
     constructor(
         public _id?: string,
         public fecha?: Date,
+        public fechaVencimiento?: Date,
         public proveedor?: Proveedor,
         public condicionDePago?: string,
         public productos?: Producto[]
@@ -13,6 +14,12 @@ export class FacturaCompra {
 	    		this.fecha = fecha
 	    	} else {
 	    		this.fecha = new Date();
+	    	}
+
+	    	if(fechaVencimiento) {
+	    		this.fechaVencimiento = fechaVencimiento
+	    	} else {
+	    		this.fechaVencimiento = new Date();
 	    	}
 
 	    	if(proveedor) {

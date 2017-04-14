@@ -14,8 +14,7 @@ exports.findBydocumentoMercantilId = function(req, res) {
     DocumenTomercantilItem.find({documentoMercantilID: req.params.id}, findByIdCallback); //luego de realizar la busqueda ejecuta el callback
 };
 
-exports.addItem = function(item, ok_callback, err_callback) {
-
+var addItem = function(item, ok_callback, err_callback) {
     var documenTomercantilItem = new DocumenTomercantilItem({
         tipo:    	              item.tipo,
         productoID:             item.productoID,
@@ -28,21 +27,22 @@ exports.addItem = function(item, ok_callback, err_callback) {
 
     documenTomercantilItem.save(function(err, documenTomercantilItem) { //almaceno el documenTomercantilItem en la base de datos
         if(err)
-					return err_callback();
+					return err_callback(err);
 				else
-					return ok_callback();
+					return ok_callback(documenTomercantilItem);
     });
 };
+exports.addItem;
 
 exports.add = function(req, res) {
     console.log('POST');
     console.log(req.body);
 
-		this.addItem(req.body,function(){
-			return res.status(500).send( err.message)
-		},function(){
-			res.status(200).jsonp(documenTomercantilItem)
-		});
+	addItem(req.body,function(documenTomercantilItem){
+		res.status(200).jsonp(documenTomercantilItem)
+	},function(err){
+        return res.status(500).send( err.message)
+    });
 
 /*
     var documenTomercantilItem = new DocumenTomercantilItem({ //creo un nuevo documenTomercantilItem en base a lo recibido en el request

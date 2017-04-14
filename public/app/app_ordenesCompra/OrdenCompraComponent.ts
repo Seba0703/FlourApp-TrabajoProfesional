@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 
-import { FacturaCompra } from './FacturaCompra';
+import { OrdenCompra } from './OrdenCompra';
 import { Proveedor } from '../app_proveedores/proveedor';
 import { ElementoListaDePrecios } from '../app_listaDePrecios/elementoListaDePrecios'
 
 import { Producto } from './Producto';
 
-import { FacturaCompraServices } from './FacturaCompraServices';
+import { OrdenCompraServices } from './OrdenCompraServices';
 
 import { ProveedorServices } from '../app_proveedores/proveedorServices';
 import { ListaDePrecioServices } from '../app_listaDePrecios/ListaDePrecioServices';
@@ -18,17 +18,18 @@ import { ProductoTerminadoServices } from '../app_productosTerminados/productoTe
 
 
 @Component({
-  selector: 'factura-compra-component',
-  templateUrl: "app/app_facturasCompra/facturaCompraComponent.html"
+  selector: 'orden-compra-component',
+  templateUrl: "app/app_ordenesCompra/OrdenCompraComponent.html"
 })
-export class FacturaCompraComponent implements OnInit{
+export class OrdenCompraComponent implements OnInit{
   private nombreUsuario: string;
   private permisos: string;
 
   public clickedDatepicker: boolean = false;
+  public clickedDatepickerVTO: boolean = false;
 
-  private facturasCompraDisponibles: FacturaCompra[];
-  private facturaCompra: FacturaCompra;
+  private ordenesCompraDisponibles: OrdenCompra[];
+  private ordenCompra: OrdenCompra;
 
   private estadoLabelProveedores: string;
 
@@ -37,16 +38,16 @@ export class FacturaCompraComponent implements OnInit{
   private productosDisponibles: Array<any>;
 
   constructor(
-    private fcService: FacturaCompraServices,
+    private ocService: OrdenCompraServices,
   	private pService: ProveedorServices,
   	private ldpService: ListaDePrecioServices,
     private mpService: MateriaPrimaServices,
     private spService: SemiProcesadoServices,
     private ptService: ProductoTerminadoServices){
     
-    this.facturaCompra = new FacturaCompra();
+    this.ordenCompra = new OrdenCompra();
     this.productosDisponibles = new Array<any>();
-    this.facturasCompraDisponibles = [];
+    this.ordenesCompraDisponibles = [];
   }
 
   ngOnInit() {
@@ -66,39 +67,40 @@ export class FacturaCompraComponent implements OnInit{
                this.proveedoresDisponibles = proveedores;
                console.log("proveedoresDisponibles CARGADOS=");
                console.log(this.proveedoresDisponibles);
-               this.cargarFacturasCompraDisponibles();
+               this.cargarOrdenesCompraDisponibles();
              },
   				 	err => console.error("EL ERROR FUE: ", err));
   }
 
-  cargarFacturasCompraDisponibles(){
-    this.facturasCompraDisponibles = []
-    console.log("CARGANDO FACTURAS DISPONIBLES= ");
-    this.fcService.getFacturas()
+  cargarOrdenesCompraDisponibles(){
+    this.ordenesCompraDisponibles = []
+    console.log("CARGANDO Ordenes compra DISPONIBLES= ");
+    this.ocService.getOrdenesCompra()
            .subscribe( 
-             fcDisponibles => {
-               for (let fc of fcDisponibles){
+             ocDisponibles => {
+               for (let oc of ocDisponibles){
                 for (var i = 0; i < this.proveedoresDisponibles.length; ++i) {
-                  if(fc.empresaID == this.proveedoresDisponibles[i]._id) {
+                  if(oc.empresaID == this.proveedoresDisponibles[i]._id) {
                     let proveedor = this.proveedoresDisponibles[i]
                     
-                    this.fcService
-                    .getProductosDelDocumentoMercantilID(fc._id)
+                    this.ocService
+                    .getProductosDelDocumentoMercantilID(oc._id)
                     .subscribe(productos => {
                       console.log("PRODUCTOS GUARDADOS")
                       console.log(productos)
 
-                      this.facturasCompraDisponibles
+                      this.ordenesCompraDisponibles
                       .push(
-                        new FacturaCompra(
-                          fc._id, 
-                          fc.fechaEmision, 
+                        new OrdenCompra(
+                          oc._id, 
+                          oc.fechaEmision,
+                          oc.fechaVencimiento,
                           proveedor, 
-                          fc.condicionPago, 
+                          oc.condicionPago, 
                           productos)
                       )
 
-                      console.log(this.facturasCompraDisponibles)
+                      console.log(this.ordenesCompraDisponibles)
                     })
                   }
                 }
@@ -157,24 +159,30 @@ export class FacturaCompraComponent implements OnInit{
 
   }
 
-  crearFactura(){
-    this.facturaCompra = new FacturaCompra()
+  crearOrdenCompra(){
+    this.ordenCompra = new OrdenCompra()
     
     this.cargarProductosDisponibles()
   }
 
 
-  seleccionarFacturaParaModificar(factura: FacturaCompra){
-    this.facturaCompra = factura;
-    this.facturaCompra.fecha = new Date(factura.fecha)//la asingnacion anterior no funciona para fecha
-    console.log("PROCESANDO FACTURA=")
-    console.log(this.facturaCompra)
+  seleccionarOrdenCompraParaModificar(ordenCompra: OrdenCompra){
+    this.ordenCompra = ordenCompra;
+    this.ordenCompra.fecha = new Date(ordenCompra.fecha)//la asingnacion anterior no funciona para fecha
+    this.ordenCompra.fechaVencimiento = new Date(ordenCompra.fechaVencimiento)//la asingnacion anterior no funciona para fecha
+    console.log("PROCESANDO ORD Compra=")
+    console.log(this.ordenCompra)
 
   }
 
   public toggleDP():boolean {
     this.clickedDatepicker = !this.clickedDatepicker;
     return !this.clickedDatepicker;
+  }
+
+  public toggleDP_VTO():boolean {
+    this.clickedDatepickerVTO = !this.clickedDatepickerVTO;
+    return !this.clickedDatepickerVTO;
   }
 
   cambiarEstado(){
@@ -186,15 +194,15 @@ export class FacturaCompraComponent implements OnInit{
   }
 
   fueSeleccionado(proveedor: Proveedor){
-    return this.facturaCompra.proveedor == proveedor
+    return this.ordenCompra.proveedor == proveedor
   }
 
   onSeleccionProveedorChange(proveedor: Proveedor){
   	console.log(proveedor);
 
-    this.facturaCompra.proveedor = proveedor;
-    this.facturaCompra.condicionDePago = proveedor.condicionPago;
-/*    this.facturaCompra.nombreListaDePrecios = proveedor.listaPrecioNombre;
+    this.ordenCompra.proveedor = proveedor;
+    this.ordenCompra.condicionDePago = proveedor.condicionPago;
+/*    this.ordenCompra.nombreListaDePrecios = proveedor.listaPrecioNombre;
 
     if(proveedor.listaPrecioNombre != null) {
       this.actualizarPreciosEnBaseAlistaDePreciosConNombre(proveedor.listaPrecioNombre)
@@ -203,7 +211,7 @@ export class FacturaCompraComponent implements OnInit{
 
   onListaDePreciosChange(){
 /*    console.log("LDP CHANGE!!!");
-    this.actualizarPreciosEnBaseAlistaDePreciosConNombre(this.facturaCompra.nombreListaDePrecios)*/
+    this.actualizarPreciosEnBaseAlistaDePreciosConNombre(this.ordenCompra.nombreListaDePrecios)*/
   }
 
   actualizarPreciosEnBaseAlistaDePreciosConNombre(nombreListaDePrecios: string){
@@ -219,7 +227,7 @@ export class FacturaCompraComponent implements OnInit{
                         this.productosDisponibles[i].precioVenta = elemento.precio;
                         
                         let index: number = 0;
-                        for(let productoSeleccionado of this.facturaCompra.productos){
+                        for(let productoSeleccionado of this.ordenCompra.productos){
                           if(this.productosDisponibles[i]._id == productoSeleccionado.mp_sp_pt_ID) {
                             break;
                           } else {
@@ -227,8 +235,8 @@ export class FacturaCompraComponent implements OnInit{
                           }
                         }
                         console.log("INDEX= " + index);
-                        if(this.facturaCompra.productos[index] != undefined) {
-                          this.facturaCompra.productos[index].precioVenta = elemento.precio;
+                        if(this.ordenCompra.productos[index] != undefined) {
+                          this.ordenCompra.productos[index].precioVenta = elemento.precio;
                         }
                         
                     }
@@ -242,7 +250,7 @@ export class FacturaCompraComponent implements OnInit{
   }
 
   elProductoFueSeleccionado(producto: any){
-    for (let prodSeleccionado of this.facturaCompra.productos){
+    for (let prodSeleccionado of this.ordenCompra.productos){
       if(producto._id == prodSeleccionado.mp_sp_pt_ID) {
         return true
       }
@@ -252,14 +260,14 @@ export class FacturaCompraComponent implements OnInit{
 
   onSeleccionProductoChange(producto: any, valorCheck: boolean){
   	if(valorCheck == true) {
-/*      if(this.facturaCompra.nombreListaDePrecios != null) {
+/*      if(this.ordenCompra.nombreListaDePrecios != null) {
         this.ldpService
         .getListaDePrecios()
         .subscribe(
           listasDePrecios => {
             console.log(listasDePrecios.length)
             for(let listaDePrecios of listasDePrecios){
-              if(this.facturaCompra.nombreListaDePrecios == listaDePrecios.nombre){
+              if(this.ordenCompra.nombreListaDePrecios == listaDePrecios.nombre){
                 if(listaDePrecios.mp_ID != null && listaDePrecios.mp_ID._id == producto._id) {
                   producto.precioVenta = listaDePrecios.precio
                   console.log("ENCONTRADO")
@@ -277,29 +285,29 @@ export class FacturaCompraComponent implements OnInit{
               }
             }
             console.log(producto.precioVenta)
-            this.facturaCompra.productos.push(new Producto(null, producto.tipo, producto._id, producto.nombre, 1, producto.precioVenta, this.getIVA(producto)));
+            this.ordenCompra.productos.push(new Producto(null, producto.tipo, producto._id, producto.nombre, 1, producto.precioVenta, this.getIVA(producto)));
           },
           err => console.error("EL ERROR FUE: ", err)
         )
       }*/
-      this.facturaCompra.productos.push(new Producto(null, producto.tipo, producto._id, producto.nombre, 1, producto.precioVenta, this.getIVA(producto)));
+      this.ordenCompra.productos.push(new Producto(null, producto.tipo, producto._id, producto.nombre, 1, producto.precioVenta, this.getIVA(producto)));
   	} else {
   		let index = 0;
-  		for(let productoSeleccionado of this.facturaCompra.productos){
+  		for(let productoSeleccionado of this.ordenCompra.productos){
   			if(producto._id == productoSeleccionado.mp_sp_pt_ID) {
-  				this.facturaCompra.productos.splice(index, 1);
+  				this.ordenCompra.productos.splice(index, 1);
   			} else {
   				index++;
   			}
   		}
   	}
   	
-  	console.log(this.facturaCompra.productos)
+  	console.log(this.ordenCompra.productos)
   }
 
   getIndex(producto: any): number{
     let index = 0;
-    for(let productoSeleccionado of this.facturaCompra.productos){
+    for(let productoSeleccionado of this.ordenCompra.productos){
       if(producto._id == productoSeleccionado.mp_sp_pt_ID) {
         return index
       }
@@ -323,36 +331,36 @@ export class FacturaCompraComponent implements OnInit{
   }
 
   getImporte(): number {
-    return this.facturaCompra.getImporte()
+    return this.ordenCompra.getImporte()
   }
 
   cancelarCambios(){
-    this.cargarFacturasCompraDisponibles()
+    this.cargarOrdenesCompraDisponibles()
   }
 
-  guardarFactura(){
-    console.log(this.facturaCompra)
+  guardarOrdenCompra(){
+    console.log(this.ordenCompra)
 
-    let bodyFacturaCompra = {
-      tipo:               "fact_compra",
-      tipoFactura:        "A",
-      fechaEmision:       this.facturaCompra.fecha,
-      empresaID:          this.facturaCompra.proveedor._id,
-      condicionPago:      this.facturaCompra.condicionDePago
+    let bodyOrdenCompra = {
+      tipo:               "ord_compra",
+      fechaEmision:       this.ordenCompra.fecha,
+      fechaVencimiento:   this.ordenCompra.fechaVencimiento,
+      empresaID:          this.ordenCompra.proveedor._id,
+      condicionPago:      this.ordenCompra.condicionDePago,
     }
 
-    if(this.facturaCompra._id == undefined) { // Es un alta nueva
+    if(this.ordenCompra._id == undefined) { // Es un alta nueva
 
-      console.log(bodyFacturaCompra)
+      console.log(bodyOrdenCompra)
 
-      this.fcService
-        .agregarFactura(bodyFacturaCompra)
+      this.ocService
+        .agregarOrdenCompra(bodyOrdenCompra)
         .subscribe( 
-          fcAgregada => {
-            console.log(fcAgregada)
+          ocAgregada => {
+            console.log(ocAgregada)
 
             let bodyDocumentoMercantilItem = {}
-            for(let producto of this.facturaCompra.productos){
+            for(let producto of this.ordenCompra.productos){
               bodyDocumentoMercantilItem = {
                 tipo:                   producto.tipo,
                 productoID:             producto.mp_sp_pt_ID,
@@ -360,13 +368,13 @@ export class FacturaCompraComponent implements OnInit{
                 cantidad:               producto.cantidad,
                 precio:                 producto.precioVenta,
                 iva:                    producto.iva,
-                documentoMercantilID:   fcAgregada._id
+                documentoMercantilID:   ocAgregada._id
               }
 
               console.log("VINCULANDO bodyDocumentoMercantilItem=")
               console.log(bodyDocumentoMercantilItem)
 
-              this.fcService.vincularProducto(bodyDocumentoMercantilItem).subscribe()
+              this.ocService.vincularProducto(bodyDocumentoMercantilItem).subscribe()
 
             }
 
@@ -375,17 +383,17 @@ export class FacturaCompraComponent implements OnInit{
           },
           err => console.error("EL ERROR FUE: ", err));
 
-    } else { // Esta modificando una factura existente
+    } else { // Esta modificando una ordenCompra existente
 
-      bodyFacturaCompra["_id"] = this.facturaCompra._id
+      bodyOrdenCompra["_id"] = this.ordenCompra._id
 
-      console.log(bodyFacturaCompra)
+      console.log(bodyOrdenCompra)
 
-      this.fcService
-      .modificarFactura(bodyFacturaCompra)
+      this.ocService
+      .modificarOrdenCompra(bodyOrdenCompra)
       .subscribe(res => {
         let bodyDocumentoMercantilItem = {}
-        for(let producto of this.facturaCompra.productos){
+        for(let producto of this.ordenCompra.productos){
           bodyDocumentoMercantilItem = {
             _id:                     producto._id,
             tipo:                    producto.tipo,
@@ -394,13 +402,13 @@ export class FacturaCompraComponent implements OnInit{
             cantidad:                producto.cantidad,
             precio:                  producto.precioVenta,
             iva:                     producto.iva,
-            documentoMercantilID:   this.facturaCompra._id
+            documentoMercantilID:   this.ordenCompra._id
           }
 
           console.log("MODIFICANDO bodyDocumentoMercantilItem=")
           console.log(bodyDocumentoMercantilItem)
 
-          this.fcService.modificarProducto(bodyDocumentoMercantilItem).subscribe()
+          this.ocService.modificarProducto(bodyDocumentoMercantilItem).subscribe()
         }
 
         alert("\t\t\t\t¡Factura modificada!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
@@ -411,12 +419,12 @@ export class FacturaCompraComponent implements OnInit{
     }
   }
 
-  borrar(factura: FacturaCompra){
+  borrar(ordenCompra: OrdenCompra){
     let r = confirm("¿Realmente desea realizar el borrado?");
     if (r == true) {
         console.log("You pressed OK!");
-        this.fcService
-        .borrarFactura(factura)
+        this.ocService
+        .borrarOrdenCompra(ordenCompra)
         .subscribe(() => { 
           alert("\t\t\t\t¡Se borro existosamente!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
           window.location.reload();
