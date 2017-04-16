@@ -12,16 +12,26 @@ exports.findAll = function(req, res) {
 		});
 };
 
-mockFactura = function(req,res,cai, nroFact) {
+addFacturaCompleta = function(documentomercantil, items) {
+  documentomercantil.save(function(err, documentomercantil) { //almaceno el documentomercantil en la base de datos
+  });
+
+  items.map(function(item, index){
+    item.documentoMercantilID = documentomercantil._id;
+    documentoMercantilItemController.addItem(item, function(){}, function(){});
+  })
+}
+
+mockFactura = function(req,res,cai, nroFact, tipo, tipoFact, proveedor, condPago, items) {
   var documentomercantil = new DocumentoMercantil({
-      tipo:                   "Compra",
+      tipo:                   tipo,
       puntoDeVenta:           1,
-      tipoFactura:            "A",
+      tipoFactura:            tipoFact,
       numeroFactura:          nroFact,
       fechaEmision:           "2017-04-07",
       comprobanteReferencia:  0,
-      empresaID:              "Un proveedor",
-      condicionPago:          "0-30-60",
+      empresaID:              proveedor,
+      condicionPago:          condPago,
       listaPrecioNombre:      "",
       retencionIG:            0,
       retencionIVA:           0,
@@ -31,58 +41,11 @@ mockFactura = function(req,res,cai, nroFact) {
       CAI:                    cai,
       fechaVtoCAI:            "2017-05-15"
   });
-/*
-numero -> numeroFactura
-cliente -> empresaID -> nombreEmpresa
-categ_fiscal -> empresaID -> categoriaFiscal
-cond_pago -> empresaID -> condicionPago
-subtotal -> sum(productos.precio_unitario)
 
-(X) iva -> productos -> iva
-
-*/
-
-/*
-  {
-    numero: 1,
-    cliente: 'Nicolás Blandi',
-    categ_fiscal: 'Responsable Inscripto',
-    cond_pago: '0-30-60',
-    subtotal: 1000,
-    iva: 21,
-    productos: [
-    {
-    cantidad: 10,
-    descripcion: 'Pochoclo 1',
-    precio_unitario: 50
-    },
-    {
-    cantidad: 5,
-    descripcion: 'Pochoclo 2',
-    precio_unitario: 70
-    }
-    ]
-  }
-*/
-  documentomercantil.save(function(err, documentomercantil) { //almaceno el documentomercantil en la base de datos
-
-  });
-
-  var item = {
-    tipo:    	              "_tipo_cualquiera",
-    productoID:             "_id_cualquiera",
-    nombre:     	          "nombre",
-    cantidad:               "1",
-    precio:                 "10",
-    iva:                    "21",
-    documentoMercantilID:   documentomercantil._id
-  }
-  documentoMercantilItemController.addItem(item, function(){}, function(){});
+  return documentomercantil;
 }
 
 exports.findFiltered = function(req, res) {
-  mockFactura(req,res,123,7);
-
     var busqueda = {
       tipo: req.query.tipo
     }
@@ -91,8 +54,61 @@ exports.findFiltered = function(req, res) {
 
 		console.log('GET/documentosMercantiles');
     console.log(req.query);
-		res.status(200).jsonp(documentosmercantiles);
-		});
+    var results = [];
+    function doAjax(item) {
+      return new Promise(function(resolve, reject) {
+          documentoMercantilItemController.findFiltered({documentoMercantilID: item._id}, function(err, documenTomercantilItem){
+            if (err) return reject(err);
+            var prods = [];
+            for (var i = 0; i < documenTomercantilItem.length; ++i) {
+              prods.push(
+                {
+                  tipo:    	              documenTomercantilItem[i].tipo,
+                  productoID:             documenTomercantilItem[i].productoID,
+                  nombre:     	          documenTomercantilItem[i].nombre,
+                  cantidad:               documenTomercantilItem[i].cantidad,
+                  precio:                 documenTomercantilItem[i].precio,
+                  iva:                    documenTomercantilItem[i].iva,
+                  documentoMercantilID:   documenTomercantilItem[i].documentoMercantilID
+                }
+              );
+            }
+            results.push(
+              {
+                  tipo:                   item.tipo,
+                  puntoDeVenta:           item.puntoDeVenta,
+                  tipoFactura:            item.tipoFactura,
+                  numeroFactura:          item.numeroFactura,
+                  fechaEmision:           item.fechaEmision,
+                  fechaVencimiento:       item.fechaVencimiento,
+                  comprobanteReferencia:  item.comprobanteReferencia,
+                  empresaID:              item.empresaID,
+                  condicionPago:          item.condicionPago,
+                  listaPrecioNombre:      item.listaPrecioNombre,
+                  retencionIG:            item.retencionIG,
+                  retencionIVA:           item.retencionIVA,
+                  retencionIB:            item.retencionIB,
+                  impuestosInternos:      item.impuestosInternos,
+                  impuestosMunicipales:   item.impuestosMunicipales,
+                  CAI:                    item.CAI,
+                  fechaVtoCAI:            item.fechaVtoCAI,
+                  productos: prods
+              }
+            );
+            resolve(documenTomercantilItem);
+          });
+      });
+    }
+    var promises = [];
+    for (var i = 0; i < documentosmercantiles.length; ++i) {
+        promises.push(doAjax(documentosmercantiles[i]));
+    }
+    Promise.all(promises).then(function() {
+      res.status(200).jsonp(results);
+    }, function(err) {
+        res.send(500, err.message);
+    });
+  });
 };
 
 

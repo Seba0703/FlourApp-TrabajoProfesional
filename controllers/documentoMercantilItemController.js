@@ -14,6 +14,11 @@ exports.findBydocumentoMercantilId = function(req, res) {
     DocumenTomercantilItem.find({documentoMercantilID: req.params.id}, findByIdCallback); //luego de realizar la busqueda ejecuta el callback
 };
 
+var findFiltered = function(filter, callback) {
+	DocumenTomercantilItem.find(filter, callback);
+}
+exports.findFiltered = findFiltered;
+
 var addItem = function(item, ok_callback, err_callback) {
     var documenTomercantilItem = new DocumenTomercantilItem({
         tipo:    	              item.tipo,
@@ -32,7 +37,7 @@ var addItem = function(item, ok_callback, err_callback) {
 					return ok_callback(documenTomercantilItem);
     });
 };
-exports.addItem;
+exports.addItem = addItem;
 
 exports.add = function(req, res) {
     console.log('POST');
@@ -43,23 +48,6 @@ exports.add = function(req, res) {
 	},function(err){
         return res.status(500).send( err.message)
     });
-
-/*
-    var documenTomercantilItem = new DocumenTomercantilItem({ //creo un nuevo documenTomercantilItem en base a lo recibido en el request
-        tipo:    	              req.body.tipo,
-        productoID:             req.body.productoID,
-        nombre:     	          req.body.nombre,
-        cantidad:               req.body.cantidad,
-        precio:                 req.body.precio,
-        iva:                    req.body.iva,
-        documentoMercantilID:   req.body.documentoMercantilID
-    });
-
-    documenTomercantilItem.save(function(err, documenTomercantilItem) { //almaceno el documenTomercantilItem en la base de datos
-        if(err) return res.status(500).send( err.message);
-		res.status(200).jsonp(documenTomercantilItem);
-    });
-		*/
 };
 
 exports.update = function(req, res) {
