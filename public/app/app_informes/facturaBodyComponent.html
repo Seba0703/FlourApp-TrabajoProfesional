@@ -14,11 +14,11 @@
 			<tbody>
 				<tr *ngFor="let item of factura">
 					<td colspan="1" style="text-align: right;">{{item.cantidad}}</td>
-					<td colspan="1">{{item.descripcion}}</td>
-					<td colspan="1" style="text-align: right;">${{item.precio_unitario.toFixed(2)}}</td>
-					<td colspan="1" style="text-align: right;">${{(item.precio_unitario*item.cantidad).toFixed(2)}}</td>
+					<td colspan="1">{{item.nombre}}</td>
+					<td colspan="1" style="text-align: right;">${{item.precio.toFixed(2)}}</td>
+					<td colspan="1" style="text-align: right;">${{(item.precio*item.cantidad).toFixed(2)}}</td>
 					<td colspan="1" style="text-align: right;">{{item.iva.toFixed(2)}}%</td>
-					<td colspan="1" style="text-align: right;">${{(item.cantidad*item.precio_unitario+(item.cantidad*item.precio_unitario*item.iva/100)).toFixed(2)}}</td>
+					<td colspan="1" style="text-align: right;">${{(item.cantidad*item.precio+(item.cantidad*item.precio*item.iva/100)).toFixed(2)}}</td>
 				</tr>
 			</tbody>
 		</table>

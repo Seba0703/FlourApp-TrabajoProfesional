@@ -6,11 +6,11 @@ import { HttpModule } from '@angular/http';
 import { AppComponent }  from './app.component';
 import { NavMenuComponent } from '../nav-menu/navMenuComponent';
 import { SignOutComponent }  from '../sign-out/signOutComponent';
-import { FacturaHeaderComponent } from './facturaHeaderComponent';
-import { FacturaBodyComponent } from './facturaBodyComponent';
+import { FacturaHeaderComponent } from '../app_informes/facturaHeaderComponent';
+import { FacturaBodyComponent } from '../app_informes/facturaBodyComponent';
 import { BarraBusquedaFacturaComponent } from '../app_informes/barraBusquedaFacturaComponent';
 import { InformesServices } from '../app_informes/informesServices';
-import { InformeComprasComponent } from './informeComprasComponent';
+import { FacturasComponent } from '../app_informes/facturasComponent';
 
 @NgModule({
   imports: [
@@ -25,7 +25,7 @@ import { InformeComprasComponent } from './informeComprasComponent';
     FacturaHeaderComponent,
     FacturaBodyComponent,
     BarraBusquedaFacturaComponent,
-    InformeComprasComponent
+    FacturasComponent
   ],
   providers: [
     InformesServices

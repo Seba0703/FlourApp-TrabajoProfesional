@@ -1,0 +1,11 @@
+<td style="text-align: right">{{factura.numeroFactura}}</td>
+<td colspan="2">{{nombreEmpresa(factura.contraparte)}}</td>
+<td>{{categoriaFiscal(factura.contraparte)}}</td>
+<td>{{condicionPago(factura.contraparte)}}</td>
+<td>$
+	{{subtotal()}}</td>
+<td>${{totalIVA()}}</td>
+<td>${{totalOtros()}}</td>
+<td>
+	<b>${{total()}}</b>
+</td>

@@ -3,7 +3,7 @@ import { FacturaItem } from './facturaItem'
 
 @Component({
   selector: '[factura-body]',
-  templateUrl: "app/app_informeCompras/facturaBodyComponent.html"
+  templateUrl: "app/app_informes/facturaBodyComponent.html"
 })
 
 export class FacturaBodyComponent {
