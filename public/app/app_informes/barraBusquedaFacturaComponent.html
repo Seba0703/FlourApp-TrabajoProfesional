@@ -19,19 +19,21 @@
 	}
 
 </style>
-<div class="col-md-12">
-	<label for="#nfact">Nro. Fact.:</label>
-	<input id="nfact" type="number" [(ngModel)]="searchFields.numeroFactura"/>
-	<label for="#cuit">CUIT:</label>
+<div class="row">
+	<div class="col-md-12">
+		<label for="#nfact">Nro. Fact.:</label>
+		<input id="nfact" type="number" [(ngModel)]="searchFields.numeroFactura"/>
+		<!-- <label for="#cuit">CUIT:</label>
 	<input id="cuit" type="number" [(ngModel)]="searchFields.cuit"/>
 	<label for="#cliente">Razón Social:</label>
-	<input id="cliente" type="text" [(ngModel)]="searchFields.nombreEmpresa"/>
-	<label for="#desde">Desde:</label>
-	<input id="desde" type="date" [(ngModel)]="searchFields.desde"/>
-	<label for="#hasta">Hasta:</label>
-	<input id="hasta" type="date" [(ngModel)]="searchFields.hasta"/>
-	<button id="btnBuscarFacturas" class="btn btn-primary" type="button" title="Buscar" (click)="doSearch($event)">
-		<i class="fa fa-search" aria-hidden="true">
-			Buscar</i>
-	</button>
+	<input id="cliente" type="text" [(ngModel)]="searchFields.nombreEmpresa"/> -->
+		<label for="#desde">Desde:</label>
+		<input id="desde" type="date" [(ngModel)]="searchFields.desde"/>
+		<label for="#hasta">Hasta:</label>
+		<input id="hasta" type="date" [(ngModel)]="searchFields.hasta"/>
+		<button id="btnBuscarFacturas" class="btn btn-primary pull-right" type="button" title="Buscar" (click)="doSearch($event)">
+			<i class="fa fa-search" aria-hidden="true">
+				Buscar</i>
+		</button>
+	</div>
 </div>

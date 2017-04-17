@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 //Import models
 var DocumentoMercantil  = require("../models/documentoMercantil").documentoMercantilModel;
 var documentoMercantilItemController = require("./documentoMercantilItemController");
+var Cliente  = require("../models/cliente").clienteModel;
+var Proveedor  = require("../models/proveedor").proveedorModel;
 
 exports.findAll = function(req, res) {
     DocumentoMercantil.find(function(err, documentosmercantiles){
@@ -55,12 +57,18 @@ exports.findFiltered = function(req, res) {
 		console.log('GET/documentosMercantiles');
     console.log(req.query);
     var results = [];
-    function doAjax(item) {
+    var finalResults = [];
+
+    function buscarItems(documento) {
       return new Promise(function(resolve, reject) {
-          documentoMercantilItemController.findFiltered({documentoMercantilID: item._id}, function(err, documenTomercantilItem){
+          documentoMercantilItemController.findFiltered({documentoMercantilID: documento._id}, function(err, documenTomercantilItem){
             if (err) return reject(err);
             var prods = [];
+            var subtotal = 0;
+            var totalIVA = 0;
             for (var i = 0; i < documenTomercantilItem.length; ++i) {
+              subtotal += documenTomercantilItem[i].precio;
+              totalIVA += (documenTomercantilItem[i].precio*documenTomercantilItem[i].iva);
               prods.push(
                 {
                   tipo:    	              documenTomercantilItem[i].tipo,
@@ -73,35 +81,62 @@ exports.findFiltered = function(req, res) {
                 }
               );
             }
+            var otros = 0;
+            otros += (subtotal*documento.retencionIG);
+            otros += (subtotal*documento.retencionIVA);
+            otros += (subtotal*documento.retencionIB);
+            otros += (subtotal*documento.impuestosInternos);
+            otros += (subtotal*documento.impuestosMunicipales);
             results.push(
               {
-                  tipo:                   item.tipo,
-                  puntoDeVenta:           item.puntoDeVenta,
-                  tipoFactura:            item.tipoFactura,
-                  numeroFactura:          item.numeroFactura,
-                  fechaEmision:           item.fechaEmision,
-                  fechaVencimiento:       item.fechaVencimiento,
-                  comprobanteReferencia:  item.comprobanteReferencia,
-                  empresaID:              item.empresaID,
-                  condicionPago:          item.condicionPago,
-                  listaPrecioNombre:      item.listaPrecioNombre,
-                  retencionIG:            item.retencionIG,
-                  retencionIVA:           item.retencionIVA,
-                  retencionIB:            item.retencionIB,
-                  impuestosInternos:      item.impuestosInternos,
-                  impuestosMunicipales:   item.impuestosMunicipales,
-                  CAI:                    item.CAI,
-                  fechaVtoCAI:            item.fechaVtoCAI,
-                  productos: prods
+                  tipo:                   documento.tipo,
+                  puntoDeVenta:           documento.puntoDeVenta,
+                  tipoFactura:            documento.tipoFactura,
+                  numeroFactura:          documento.numeroFactura,
+                  fechaEmision:           documento.fechaEmision,
+                  fechaVencimiento:       documento.fechaVencimiento,
+                  comprobanteReferencia:  documento.comprobanteReferencia,
+                  empresaID:              documento.empresaID,
+                  condicionPago:          documento.condicionPago,
+                  listaPrecioNombre:      documento.listaPrecioNombre,
+                  retencionIG:            documento.retencionIG,
+                  retencionIVA:           documento.retencionIVA,
+                  retencionIB:            documento.retencionIB,
+                  impuestosInternos:      documento.impuestosInternos,
+                  impuestosMunicipales:   documento.impuestosMunicipales,
+                  CAI:                    documento.CAI,
+                  fechaVtoCAI:            documento.fechaVtoCAI,
+                  productos: prods,
+                  subtotal: subtotal,
+                  iva:  totalIVA,
+                  otros: otros,
+                  total: subtotal+totalIVA+otros
               }
             );
             resolve(documenTomercantilItem);
           });
       });
     }
+
+    function buscarEmpresa(documento) {
+      return new Promise(function(resolve, reject) {
+        if(documento.tipo == "Compra" || documento.tipo == "compra") {
+          Proveedor.findById(documento.empresaID, function(err, empresa){
+
+          });
+        }
+        if(documento.tipo == "Venta" || documento.tipo == "venta") {
+          Cliente.findById(documento.empresaID, function(err, empresa){
+
+          });
+        }
+      });
+    }
+
     var promises = [];
     for (var i = 0; i < documentosmercantiles.length; ++i) {
-        promises.push(doAjax(documentosmercantiles[i]));
+        promises.push(buscarItems(documentosmercantiles[i]));
+        // promises.push(buscarEmpresa(documentosmercantiles[i]));
     }
     Promise.all(promises).then(function() {
       res.status(200).jsonp(results);
