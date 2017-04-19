@@ -14,46 +14,55 @@ exports.findAll = function(req, res) {
 		});
 };
 
-addFacturaCompleta = function(documentomercantil, items) {
-  documentomercantil.save(function(err, documentomercantil) { //almaceno el documentomercantil en la base de datos
-  });
+// addFacturaCompleta = function(documentomercantil, items) {
+//   documentomercantil.save(function(err, documentomercantil) { //almaceno el documentomercantil en la base de datos
+//   });
+//
+//   items.map(function(item, index){
+//     item.documentoMercantilID = documentomercantil._id;
+//     documentoMercantilItemController.addItem(item, function(){}, function(){});
+//   })
+// }
 
-  items.map(function(item, index){
-    item.documentoMercantilID = documentomercantil._id;
-    documentoMercantilItemController.addItem(item, function(){}, function(){});
-  })
-}
+// mockFactura = function(req,res,cai, nroFact, tipo, tipoFact, proveedor, condPago, items) {
+//   var documentomercantil = new DocumentoMercantil({
+//       tipo:                   tipo,
+//       puntoDeVenta:           1,
+//       tipoFactura:            tipoFact,
+//       numeroFactura:          nroFact,
+//       fechaEmision:           "2017-04-07",
+//       comprobanteReferencia:  0,
+//       empresaID:              proveedor,
+//       condicionPago:          condPago,
+//       listaPrecioNombre:      "",
+//       retencionIG:            0,
+//       retencionIVA:           0,
+//       retencionIB:            0,
+//       impuestosInternos:      0,
+//       impuestosMunicipales:   0,
+//       CAI:                    cai,
+//       fechaVtoCAI:            "2017-05-15"
+//   });
+//
+//   return documentomercantil;
+// }
 
-mockFactura = function(req,res,cai, nroFact, tipo, tipoFact, proveedor, condPago, items) {
-  var documentomercantil = new DocumentoMercantil({
-      tipo:                   tipo,
-      puntoDeVenta:           1,
-      tipoFactura:            tipoFact,
-      numeroFactura:          nroFact,
-      fechaEmision:           "2017-04-07",
-      comprobanteReferencia:  0,
-      empresaID:              proveedor,
-      condicionPago:          condPago,
-      listaPrecioNombre:      "",
-      retencionIG:            0,
-      retencionIVA:           0,
-      retencionIB:            0,
-      impuestosInternos:      0,
-      impuestosMunicipales:   0,
-      CAI:                    cai,
-      fechaVtoCAI:            "2017-05-15"
-  });
-
-  return documentomercantil;
+function normalizeTipo (tipo) {
+  if (tipo=='Compra'||tipo=='compra'||tipo=='fact_compra')
+    return 'fact_compra';
+  if (tipo=='Venta'||tipo=='venta'||tipo=='fact_venta')
+    return 'fact_venta';
+  return '';
 }
 
 exports.findFiltered = function(req, res) {
+    var normalizedTipo = normalizeTipo(req.query.tipo);
     var busqueda = {
-      tipo: req.query.tipo
+      tipo: normalizedTipo
     }
+
     DocumentoMercantil.find(busqueda, function(err, documentosmercantiles){
 		if(err) res.send(500, err.message);
-
 		console.log('GET/documentosMercantiles');
     console.log(req.query);
     var results = [];
@@ -63,80 +72,87 @@ exports.findFiltered = function(req, res) {
       return new Promise(function(resolve, reject) {
           documentoMercantilItemController.findFiltered({documentoMercantilID: documento._id}, function(err, documenTomercantilItem){
             if (err) return reject(err);
-            var prods = [];
-            var subtotal = 0;
-            var totalIVA = 0;
-            for (var i = 0; i < documenTomercantilItem.length; ++i) {
-              subtotal += documenTomercantilItem[i].precio;
-              totalIVA += (documenTomercantilItem[i].precio*documenTomercantilItem[i].iva);
-              prods.push(
-                {
-                  tipo:    	              documenTomercantilItem[i].tipo,
-                  productoID:             documenTomercantilItem[i].productoID,
-                  nombre:     	          documenTomercantilItem[i].nombre,
-                  cantidad:               documenTomercantilItem[i].cantidad,
-                  precio:                 documenTomercantilItem[i].precio,
-                  iva:                    documenTomercantilItem[i].iva,
-                  documentoMercantilID:   documenTomercantilItem[i].documentoMercantilID
-                }
-              );
+
+            var Tabla;
+            if(documento.tipo == "Compra" || documento.tipo == "compra" || documento.tipo == "fact_compra") {
+              Tabla = Proveedor;
             }
-            var otros = 0;
-            otros += (subtotal*documento.retencionIG);
-            otros += (subtotal*documento.retencionIVA);
-            otros += (subtotal*documento.retencionIB);
-            otros += (subtotal*documento.impuestosInternos);
-            otros += (subtotal*documento.impuestosMunicipales);
-            results.push(
-              {
-                  tipo:                   documento.tipo,
-                  puntoDeVenta:           documento.puntoDeVenta,
-                  tipoFactura:            documento.tipoFactura,
-                  numeroFactura:          documento.numeroFactura,
-                  fechaEmision:           documento.fechaEmision,
-                  fechaVencimiento:       documento.fechaVencimiento,
-                  comprobanteReferencia:  documento.comprobanteReferencia,
-                  empresaID:              documento.empresaID,
-                  condicionPago:          documento.condicionPago,
-                  listaPrecioNombre:      documento.listaPrecioNombre,
-                  retencionIG:            documento.retencionIG,
-                  retencionIVA:           documento.retencionIVA,
-                  retencionIB:            documento.retencionIB,
-                  impuestosInternos:      documento.impuestosInternos,
-                  impuestosMunicipales:   documento.impuestosMunicipales,
-                  CAI:                    documento.CAI,
-                  fechaVtoCAI:            documento.fechaVtoCAI,
-                  productos: prods,
-                  subtotal: subtotal,
-                  iva:  totalIVA,
-                  otros: otros,
-                  total: subtotal+totalIVA+otros
-              }
-            );
-            resolve(documenTomercantilItem);
-          });
-      });
-    }
+            if(documento.tipo == "Venta" || documento.tipo == "venta" || documento.tipo == "fact_venta") {
+              Tabla = Cliente;
+            }
 
-    function buscarEmpresa(documento) {
-      return new Promise(function(resolve, reject) {
-        if(documento.tipo == "Compra" || documento.tipo == "compra") {
-          Proveedor.findById(documento.empresaID, function(err, empresa){
+            if(Tabla!=undefined) {
+              Tabla.findById(documento.empresaID, function(err, empresa){
+                if (err) return reject(err);
+                var prods = [];
+                var subtotal = 0;
+                var totalIVA = 0;
+                for (var i = 0; i < documenTomercantilItem.length; ++i) {
+                  subtotal += documenTomercantilItem[i].precio;
+                  totalIVA += (documenTomercantilItem[i].precio*documenTomercantilItem[i].iva/100);
+                  prods.push(
+                    {
+                      tipo:    	              documenTomercantilItem[i].tipo,
+                      productoID:             documenTomercantilItem[i].productoID,
+                      nombre:     	          documenTomercantilItem[i].nombre,
+                      cantidad:               documenTomercantilItem[i].cantidad,
+                      precio:                 documenTomercantilItem[i].precio,
+                      iva:                    documenTomercantilItem[i].iva,
+                      documentoMercantilID:   documenTomercantilItem[i].documentoMercantilID
+                    }
+                  );
+                }
+                var otros = 0;
+                function acumularImpuesto(subtotal, porcentaje) {
+                  if(porcentaje!=undefined)
+                    return (subtotal*porcentaje/100);
+                  else
+                    return 0;
+                }
 
-          });
-        }
-        if(documento.tipo == "Venta" || documento.tipo == "venta") {
-          Cliente.findById(documento.empresaID, function(err, empresa){
+                otros += acumularImpuesto(subtotal,documento.retencionIG);
+                otros += acumularImpuesto(subtotal,documento.retencionIVA);
+                otros += acumularImpuesto(subtotal,documento.retencionIB);
+                otros += acumularImpuesto(subtotal,documento.impuestosInternos);
+                otros += acumularImpuesto(subtotal,documento.impuestosMunicipales);
 
+                results.push(
+                  {
+                      tipo:                   documento.tipo,
+                      puntoDeVenta:           documento.puntoDeVenta,
+                      tipoFactura:            documento.tipoFactura,
+                      numeroFactura:          documento.numeroFactura,
+                      fechaEmision:           documento.fechaEmision,
+                      fechaVencimiento:       documento.fechaVencimiento,
+                      comprobanteReferencia:  documento.comprobanteReferencia,
+                      empresaID:              documento.empresaID,
+                      condicionPago:          documento.condicionPago,
+                      listaPrecioNombre:      documento.listaPrecioNombre,
+                      retencionIG:            documento.retencionIG,
+                      retencionIVA:           documento.retencionIVA,
+                      retencionIB:            documento.retencionIB,
+                      impuestosInternos:      documento.impuestosInternos,
+                      impuestosMunicipales:   documento.impuestosMunicipales,
+                      CAI:                    documento.CAI,
+                      fechaVtoCAI:            documento.fechaVtoCAI,
+                      productos: prods,
+                      subtotal: subtotal,
+                      iva:  totalIVA,
+                      otros: otros,
+                      total: subtotal+totalIVA+otros,
+                      contraparte: empresa
+                  }
+                );
+                resolve(documenTomercantilItem);
+              });
+            }
           });
-        }
       });
     }
 
     var promises = [];
     for (var i = 0; i < documentosmercantiles.length; ++i) {
         promises.push(buscarItems(documentosmercantiles[i]));
-        // promises.push(buscarEmpresa(documentosmercantiles[i]));
     }
     Promise.all(promises).then(function() {
       res.status(200).jsonp(results);
