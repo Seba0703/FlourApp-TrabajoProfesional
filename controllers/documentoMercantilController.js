@@ -58,7 +58,9 @@ function normalizeTipo (tipo) {
 exports.findFiltered = function(req, res) {
     var normalizedTipo = normalizeTipo(req.query.tipo);
     var busqueda = {
-      tipo: normalizedTipo
+      tipo: normalizedTipo,
+      numeroFactura: req.query.numeroFactura,
+      fechaEmision: { $gte: req.query.desde, $lte: req.query.hasta }
     }
 
     DocumentoMercantil.find(busqueda, function(err, documentosmercantiles){
@@ -88,8 +90,8 @@ exports.findFiltered = function(req, res) {
                 var subtotal = 0;
                 var totalIVA = 0;
                 for (var i = 0; i < documenTomercantilItem.length; ++i) {
-                  subtotal += documenTomercantilItem[i].precio;
-                  totalIVA += (documenTomercantilItem[i].precio*documenTomercantilItem[i].iva/100);
+                  subtotal += documenTomercantilItem[i].precio*documenTomercantilItem[i].cantidad;
+                  totalIVA += (documenTomercantilItem[i].cantidad*documenTomercantilItem[i].precio*documenTomercantilItem[i].iva/100);
                   prods.push(
                     {
                       tipo:    	              documenTomercantilItem[i].tipo,

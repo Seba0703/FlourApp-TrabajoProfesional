@@ -7,8 +7,6 @@ import { Component, Input } from '@angular/core';
 
 export class FacturaHeaderComponent {
   @Input() factura: any;
-  @Input() iva: number;
-  @Input() otros: number;
 
   nombreEmpresa(contraparte:any) :string {
     if(contraparte == undefined || contraparte.nombreEmpresa == undefined)

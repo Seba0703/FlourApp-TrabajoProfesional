@@ -24,7 +24,7 @@
 				</tr>
 			</thead>
 			<tbody *ngFor="let factura of facturas; let i = index">
-				<tr factura-header data-toggle="collapse" [attr.data-target]="'#'+i" class="clickable" style="cursor: pointer;" [factura]="factura" [iva]="iva(factura.productos)" [otros]="otros(factura.productos)"></tr>
+				<tr factura-header data-toggle="collapse" [attr.data-target]="'#'+i" class="clickable" style="cursor: pointer;" [factura]="factura"></tr>
 				<tr factura-body [id]="i" [factura]="factura.productos"></tr>
 			</tbody>
 			<tfoot>

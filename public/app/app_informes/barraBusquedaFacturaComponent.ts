@@ -31,8 +31,6 @@ export class BarraBusquedaFacturaComponent {
         console.log("OK");
         console.log("informes");
         console.log(informeData);
-        console.log("productos informe 0");
-        console.log(informeData[0].productos);
         this.searchPerformed.emit(informeData);
       },
       err => console.error("EL ERROR FUE: ", err)

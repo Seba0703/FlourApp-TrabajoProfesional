@@ -10,7 +10,7 @@ export class FacturasComponent {
   sumaSubtotales():number {
     var acum = 0;
     for( var i=0; i < this.facturas.length; i++) {
-      acum += this.calcularSubtotal(this.facturas[i].productos);
+      acum += this.facturas[i].subtotal;
     }
     return acum;
   }
@@ -28,24 +28,22 @@ export class FacturasComponent {
     return acum;
   }
 
-  // suma de los montos por iva 21% para todos los items
-  iva(items:Array<any>):number {
-    return 500;
-  }
-
-  // suma de los montos por otros impuestos para todos los items
-  otros(items:Array<any>):number {
-    return 2;
-  }
-
   // suma de los montos por IVA para todas las facturas
   sumaIVA():number {
-    return 0;
+    var acum = 0;
+    for( var i=0; i < this.facturas.length; i++) {
+      acum += this.facturas[i].iva;
+    }
+    return acum;
   }
 
   // suma de los montos por otros impuestos para todas las facturas
   sumaOtros():number {
-    return 0;
+    var acum = 0;
+    for( var i=0; i < this.facturas.length; i++) {
+      acum += this.facturas[i].otros;
+    }
+    return acum;
   }
 
   isCompra():boolean {
