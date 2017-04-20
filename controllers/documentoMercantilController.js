@@ -14,39 +14,6 @@ exports.findAll = function(req, res) {
 		});
 };
 
-// addFacturaCompleta = function(documentomercantil, items) {
-//   documentomercantil.save(function(err, documentomercantil) { //almaceno el documentomercantil en la base de datos
-//   });
-//
-//   items.map(function(item, index){
-//     item.documentoMercantilID = documentomercantil._id;
-//     documentoMercantilItemController.addItem(item, function(){}, function(){});
-//   })
-// }
-
-// mockFactura = function(req,res,cai, nroFact, tipo, tipoFact, proveedor, condPago, items) {
-//   var documentomercantil = new DocumentoMercantil({
-//       tipo:                   tipo,
-//       puntoDeVenta:           1,
-//       tipoFactura:            tipoFact,
-//       numeroFactura:          nroFact,
-//       fechaEmision:           "2017-04-07",
-//       comprobanteReferencia:  0,
-//       empresaID:              proveedor,
-//       condicionPago:          condPago,
-//       listaPrecioNombre:      "",
-//       retencionIG:            0,
-//       retencionIVA:           0,
-//       retencionIB:            0,
-//       impuestosInternos:      0,
-//       impuestosMunicipales:   0,
-//       CAI:                    cai,
-//       fechaVtoCAI:            "2017-05-15"
-//   });
-//
-//   return documentomercantil;
-// }
-
 function normalizeTipo (tipo) {
   if (tipo=='Compra'||tipo=='compra'||tipo=='fact_compra')
     return 'fact_compra';
