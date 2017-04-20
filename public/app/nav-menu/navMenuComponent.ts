@@ -28,6 +28,8 @@ export class NavMenuComponent {
   activeInformes: string = "";
   activeIC: string = "";
   activeIV: string = "";
+  activeIE: string = "";
+  activeIP: string = "";
 
   activeLP: string = "";
   activeU: string = "";
@@ -89,6 +91,14 @@ export class NavMenuComponent {
           break;
         case "informeVentas":
           this.activeIV = "active";
+          this.activeInformes = "active";
+          break;
+        case "informeEstado":
+          this.activeIE = "active";
+          this.activeInformes = "active";
+          break;
+        case "informePrecios":
+          this.activeIP = "active";
           this.activeInformes = "active";
           break;
         case "listaDePrecios":
