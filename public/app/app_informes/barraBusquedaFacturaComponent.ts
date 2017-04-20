@@ -28,9 +28,6 @@ export class BarraBusquedaFacturaComponent {
   doSearch(event:any) {
     this.iService.getFacturas(this.searchFields).subscribe(
       (informeData) => {
-        console.log("OK");
-        console.log("informes");
-        console.log(informeData);
         this.searchPerformed.emit(informeData);
       },
       err => console.error("EL ERROR FUE: ", err)

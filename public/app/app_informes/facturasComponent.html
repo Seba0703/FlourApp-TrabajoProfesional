@@ -1,11 +1,11 @@
 <div class="row">
 	<div class="col-md-12">
-		<nav-menu [origen]="'informeCompras'"></nav-menu>
+		<nav-menu [origen]="origen()"></nav-menu>
 	</div>
 </div>
 <div class="row">
 	<div class="col-md-12">
-		<search-bar-factura [tipo]="'Compra'" (searchPerformed)="search($event)"></search-bar-factura>
+		<search-bar-factura [tipo]="tipo" (searchPerformed)="search($event)"></search-bar-factura>
 	</div>
 </div>
 <div class="row">

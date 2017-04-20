@@ -6,6 +6,13 @@ import { Component, Input } from '@angular/core';
 })
 export class FacturasComponent {
   @Input() tipo:string;
+
+  origen():string {
+    if(this.tipo=="Compra" || this.tipo=="compra" || this.tipo=="fact_compra")
+      return 'informeCompras';
+      if(this.tipo=="Venta" || this.tipo=="venta" || this.tipo=="fact_venta")
+      return 'informeVentas';
+  }
   // suma de los montos de los subtotales para todas las facturas
   sumaSubtotales():number {
     var acum = 0;
@@ -55,8 +62,6 @@ export class FacturasComponent {
   }
 
   search(event:any) {
-    console.log("Encontrado");
-    console.log(event);
     this.facturas = event;
   }
 

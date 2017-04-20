@@ -13,7 +13,6 @@ export class InformesServices{
   }
 
   getFacturas(searchFields:any) {
-    console.log("HACIENDO REQUEST");
     var params = "";
     for (var key in searchFields) {
       if(searchFields[key] != undefined && searchFields[key] != "")
