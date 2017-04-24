@@ -32,3 +32,5 @@ export const URL_LISTA_PORCENTAJES_CON_DATOS = 'http://' + ip + ':' + puerto + '
 
 export const URL_DOCUMENTOS_MERCANTILES = 			'http://' + ip + ':' + puerto + '/api/documentosMercantiles';
 export const URL_DOCUMENTOS_MERCANTILES_ITEMS = 		'http://' + ip + ':' + puerto + '/api/documentosMercantilesItems';
+
+export const URL_INFORME_ESTADO = 			'http://' + ip + ':' + puerto + '/api/informeEstadoStock';

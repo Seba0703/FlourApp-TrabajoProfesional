@@ -92,6 +92,9 @@ app.use('/api', documentoMercantilItemRoutersHandler);
 var documentoMercantilRoutersHandler = require("./routersHandlers/documentoMercantilRoutersHandler").getDocumentoMercantilRoutersHandler(express);
 app.use('/api', documentoMercantilRoutersHandler);
 
+var stockRoutersHandler = require("./routersHandlers/stockRoutersHandler").getStockRoutersHandler(express);
+app.use('/api', stockRoutersHandler);
+
 // Connection to DB
 mongoose.connect('mongodb://localhost/flourapp', function(err, res) {  //se conecta a la base de datos
   if(err) {
