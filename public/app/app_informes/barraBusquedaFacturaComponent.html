@@ -17,23 +17,24 @@
 		margin-left: 20px;
 		cursor: pointer;
 	}
-
 </style>
 <div class="row">
 	<div class="col-md-12">
 		<label for="#nfact">Nro. Fact.:</label>
 		<input id="nfact" type="number" [(ngModel)]="searchFields.numeroFactura"/>
-		<!-- <label for="#cuit">CUIT:</label>
-	<input id="cuit" type="number" [(ngModel)]="searchFields.cuit"/>
-	<label for="#cliente">Razón Social:</label>
-	<input id="cliente" type="text" [(ngModel)]="searchFields.nombreEmpresa"/> -->
 		<label for="#desde">Desde:</label>
-		<input id="desde" type="date" [(ngModel)]="searchFields.desde"/>
+		<input id="desde" type="text" (focus)="toogleShowDesde(true)" [(ngModel)]="searchFields.desde"/>
 		<label for="#hasta">Hasta:</label>
-		<input id="hasta" type="date" [(ngModel)]="searchFields.hasta"/>
+		<input id="hasta" type="text" (focus)="toogleShowHasta(true)" [(ngModel)]="searchFields.hasta"/>
+		<datepicker-flourapp (dateSelected)="fecha($event)" *ngIf="showDesde" tipo="desde"></datepicker-flourapp>
+		<datepicker-flourapp (dateSelected)="fecha($event)" *ngIf="showHasta" tipo="hasta"></datepicker-flourapp>
 		<button id="btnBuscarFacturas" class="btn btn-primary pull-right" type="button" title="Buscar" (click)="doSearch($event)">
 			<i class="fa fa-search" aria-hidden="true">
 				Buscar</i>
 		</button>
 	</div>
+	<div class="row">
+		<div class="col-md-12"></div>
+	</div>
 </div>
+<script></script>

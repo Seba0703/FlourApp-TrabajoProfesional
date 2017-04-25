@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 //Import models
 var DocumenTomercantilItem  = require("../models/documenTomercantilItem").documentoMercantilItemModel;
 
+exports.DocumenTomercantilItem = DocumenTomercantilItem;
+
 exports.findBydocumentoMercantilId = function(req, res) {
 	var findByIdCallback =
 	function(err, documenTomercantilItem){

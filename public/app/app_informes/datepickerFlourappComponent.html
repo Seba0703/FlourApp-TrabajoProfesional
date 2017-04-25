@@ -1,0 +1,20 @@
+<style>
+    .full button span {
+        background-color: limegreen;
+        border-radius: 32px;
+        color: black;
+    }
+    .partially button span {
+        background-color: orange;
+        border-radius: 32px;
+        color: black;
+    }
+</style>
+<div style="min-height:290px; position:absolute; left: 20%; z-index:10;">
+    <div style="min-height:290px; position:absolute;">
+        <datepicker [(ngModel)]="dt" [showWeeks]="false" [minDate]="minDate" [dateDisabled]="dateDisabled"></datepicker>
+        <button class="btn btn-primary pull-right" type="button" title="Aceptar" (click)="fecha($event)">
+            Aceptar
+        </button>
+    </div>
+</div>

@@ -11,12 +11,15 @@ import { FacturaBodyComponent } from '../app_informes/facturaBodyComponent';
 import { BarraBusquedaFacturaComponent } from '../app_informes/barraBusquedaFacturaComponent';
 import { InformesServices } from '../app_informes/informesServices';
 import { FacturasComponent } from '../app_informes/facturasComponent';
+import { DatepickerFlourappComponent } from '../app_informes/datepickerFlourappComponent';
+import { DatepickerModule } from 'ng2-bootstrap';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    DatepickerModule.forRoot()
   ],
   declarations: [
     AppComponent,
@@ -25,10 +28,12 @@ import { FacturasComponent } from '../app_informes/facturasComponent';
     FacturaHeaderComponent,
     FacturaBodyComponent,
     BarraBusquedaFacturaComponent,
-    FacturasComponent
+    FacturasComponent,
+    DatepickerFlourappComponent
   ],
   providers: [
-    InformesServices
+    InformesServices,
+    DatepickerModule
   ],
   bootstrap: [ AppComponent ]
 })

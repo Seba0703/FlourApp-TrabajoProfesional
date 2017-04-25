@@ -5,6 +5,7 @@ var ProductoSemiProcesado  = require("../models/productoSemiProcesado").producto
 var ProductoTerminado  = require("../models/productoTerminado").productoTerminadoModel;
 
 var DocumentoMercantil  = require("../models/documentoMercantil").documentoMercantilModel;
+var DocumentoMercantilItem = require("./documentoMercantilItemController").DocumenTomercantilItem;
 //var DocumentoMercantilItem = require("../models/documentoMercantilItem").documentoMercantilItemModel;
 
 var buscarMateriaPrima = function(productos) {
@@ -85,13 +86,61 @@ exports.estadoStock = function(req, res) {
 exports.ultimosEstadosProducto = function(req, res) {
   console.log('GET/ultimosEstadosProducto');
   console.log(req.params.id);
+  console.log(req.query.desde);
+  console.log(req.query.hasta);
 
   var findByIdCallback =
   function(err, documentoMercantilItems){
     if(err) return res.send(500, err.message);
 
+    var results = [];
+    for(var i = 0; i < documentoMercantilItems.length; ++i) {
+      if(documentoMercantilItems[i].documentoMercantilID != undefined)
+        results.push(documentoMercantilItems[i]);
+    }
+
     console.log('GET/ultimosEstadosProducto/' + req.params.id);
-    res.status(200).jsonp(documentoMercantilItems);
-    };
-  DocumentoMercantilItem.find({"productoID": req.params.id}).populate('documentoMercantilID').exec(findByIdCallback);
+    res.status(200).jsonp(results);
+  };
+
+  DocumentoMercantilItem.find({"productoID": req.params.id}).populate({
+    path: 'documentoMercantilID',
+    match: {
+      fechaEmision: {
+        $gte: req.query.desde,
+        $lte: req.query.hasta
+      }
+    }
+  }).exec(findByIdCallback);
+}
+
+exports.ultimosPreciosProducto = function(req, res) {
+  console.log('GET/ultimosEstadosProducto');
+  console.log(req.params.id);
+  console.log(req.query.desde);
+  console.log(req.query.hasta);
+
+  var findByIdCallback =
+  function(err, documentoMercantilItems){
+    if(err) return res.send(500, err.message);
+
+    var results = [];
+    for(var i = 0; i < documentoMercantilItems.length; ++i) {
+      if(documentoMercantilItems[i].documentoMercantilID != undefined)
+        results.push(documentoMercantilItems[i]);
+    }
+
+    console.log('GET/ultimosEstadosProducto/' + req.params.id);
+    res.status(200).jsonp(results);
+  };
+
+  DocumentoMercantilItem.find({"productoID": req.params.id}).populate({
+    path: 'documentoMercantilID',
+    match: {
+      fechaEmision: {
+        $gte: req.query.desde,
+        $lte: req.query.hasta
+      }
+    }
+  }).exec(findByIdCallback);
 }

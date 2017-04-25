@@ -25,6 +25,34 @@ export class BarraBusquedaFacturaComponent {
     hasta: ""
   }
 
+  showDesde:boolean = false;
+  showHasta:boolean = false;
+
+  toogleShowDesde(val:boolean) {
+    this.showDesde=val;
+  }
+
+  toogleShowHasta(val:boolean) {
+    this.showHasta=val;
+  }
+
+  DateToFormattedString(d:Date) {
+        var yyyy = d.getFullYear().toString();
+        var mm = (d.getMonth()+1).toString(); // getMonth() is zero-based
+        var dd  = d.getDate().toString();
+
+        return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]);
+   };
+
+  fecha(event:any) {
+    this.toogleShowDesde(false);
+    this.toogleShowHasta(false);
+    if(event.tipo=="desde")
+      this.searchFields.desde=event.value.toISOString().slice(0,10);
+    else if(event.tipo=="hasta")
+      this.searchFields.hasta=event.value.toISOString().slice(0,10);
+  }
+
   doSearch(event:any) {
     this.iService.getFacturas(this.searchFields).subscribe(
       (informeData) => {
