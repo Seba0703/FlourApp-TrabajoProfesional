@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import {URL_DOCUMENTOS_MERCANTILES} from '../rutas';
+import {URL_INFORME_ESTADO} from '../rutas';
 
 @Injectable()
 export class InformesServices{
@@ -22,5 +23,9 @@ export class InformesServices{
     if(params!="")
       params = "?" + params;
     return this.http.get(URL_DOCUMENTOS_MERCANTILES+"/facturas"+params).map((response) => response.json());
+  }
+
+  getEstadoStock() {
+    return this.http.get(URL_INFORME_ESTADO).map((response) => response.json());
   }
 }

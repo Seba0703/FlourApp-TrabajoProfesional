@@ -6,6 +6,9 @@ import { HttpModule } from '@angular/http';
 import { AppComponent }  from './app.component';
 import { NavMenuComponent } from '../nav-menu/navMenuComponent';
 import { SignOutComponent }  from '../sign-out/signOutComponent';
+import { InformesServices } from '../app_informes/informesServices';
+import { EstadoStockComponent } from './estadoStockComponent';
+import { StockItemComponent } from './stockItemComponent';
 
 @NgModule({
   imports: [
@@ -17,8 +20,11 @@ import { SignOutComponent }  from '../sign-out/signOutComponent';
     AppComponent,
     NavMenuComponent,
     SignOutComponent,
+    EstadoStockComponent,
+    StockItemComponent
   ],
   providers: [
+    InformesServices
   ],
   bootstrap: [ AppComponent ]
 })

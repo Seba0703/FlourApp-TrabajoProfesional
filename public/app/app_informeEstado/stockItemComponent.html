@@ -1,0 +1,18 @@
+<div>
+	<div class="card" style="padding: 5px;">
+		<h5 style="margin-bottom:0px">{{nombre}}</h5>
+		<p style="margin-bottom:0px">Stock
+			<b class="text-success">óptimo</b>
+		</p>
+		<p style="margin-bottom:0px">Min:
+			{{min}}
+			Máx:
+			{{max}}
+			<b>Actual:
+				{{actual}}</b>
+		</p>
+		<div class="progress">
+			<div class="progress-bar bg-success" role="progressbar" [style.width]="(actual*100)/max+'%'" aria-valuenow="actual" aria-valuemin="0" aria-valuemax="max"></div>
+		</div>
+	</div>
+</div>
