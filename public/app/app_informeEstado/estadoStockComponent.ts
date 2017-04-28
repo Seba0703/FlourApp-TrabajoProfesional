@@ -22,6 +22,7 @@ export class EstadoStockComponent {
     this.iService.getEstadoStock().subscribe(
       (informeData) => {
         this.informeEstadoStock = informeData;
+        console.log(informeData);
       },
       err => console.error("EL ERROR FUE: ", err)
     );

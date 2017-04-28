@@ -1,14 +1,20 @@
 <div class="row">
 	<div class="col-md-4">
 		<h2>Materias Prima</h2>
-		<stock-item [nombre]="'Manzanas'" [min]=50 [max]=150 [actual]=220></stock-item>
+		<div *ngFor="let informe of informeEstadoStock;">
+			<stock-item *ngIf="informe.tipo==1" [nombre]="informe.nombre" [min]="informe.stockMin" [max]="informe.stockMax" [actual]="informe.cantidad"></stock-item>
+		</div>
 	</div>
 	<div class="col-md-4">
 		<h2>Semi Procesados</h2>
-		<stock-item [nombre]="'Prueba'" [min]=10 [max]=30 [actual]=20></stock-item>
+		<div *ngFor="let informe of informeEstadoStock;">
+			<stock-item *ngIf="informe.tipo==2" [nombre]="informe.nombre" [min]="informe.stockMin" [max]="informe.stockMax" [actual]="informe.cantidad"></stock-item>
+		</div>
 	</div>
 	<div class="col-md-4">
 		<h2>Productos Terminados</h2>
-		<stock-item [nombre]="'Prueba'" [min]=10 [max]=30 [actual]=20></stock-item>
+		<div *ngFor="let informe of informeEstadoStock;">
+			<stock-item *ngIf="informe.tipo==3" [nombre]="informe.nombre" [min]="informe.stockMin" [max]="informe.stockMax" [actual]="informe.cantidad"></stock-item>
+		</div>
 	</div>
 </div>
