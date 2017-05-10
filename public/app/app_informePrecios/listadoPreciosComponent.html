@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{getSeleccionado()}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <h6 class="dropdown-header" *ngIf="materiasPrima.length > 0">Materias Prima</h6>
+                <div *ngFor="let producto of materiasPrima;">
+                    <button class="dropdown-item" type="button" (click)="seleccionarProducto(producto)">{{producto.nombre}}</button>
+                </div>
+                <h6 class="dropdown-header" *ngIf="semiProcesados.length > 0">Semi Procesados</h6>
+                <div *ngFor="let producto of semiProcesados;">
+                    <button class="dropdown-item" type="button" (click)="seleccionarProducto(producto)">{{producto.nombre}}</button>
+                </div>
+                <h6 class="dropdown-header" *ngIf="productosTerminados.length > 0">Productos Terminados</h6>
+                <div *ngFor="let producto of productosTerminados;">
+                    <button class="dropdown-item" type="button" (click)="seleccionarProducto(producto)">{{producto.nombre}}</button>
+                </div>
+            </div>
+            <label for="#desde">Desde:</label>
+            <input id="desde" type="text" (focus)="toogleShowDesde(true)" [(ngModel)]="searchFields.desde"/>
+            <label for="#hasta">Hasta:</label>
+            <input id="hasta" type="text" (focus)="toogleShowHasta(true)" [(ngModel)]="searchFields.hasta"/>
+            <datepicker-flourapp (dateSelected)="fecha($event)" *ngIf="showDesde" tipo="desde"></datepicker-flourapp>
+            <datepicker-flourapp (dateSelected)="fecha($event)" *ngIf="showHasta" tipo="hasta"></datepicker-flourapp>
+            <button id="btnBuscarFacturas" class="btn btn-primary pull-right" type="button" title="Buscar" (click)="reqInformePrecios()">
+                <i class="fa fa-search" aria-hidden="true">
+                    Buscar</i>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-top:10px;" [hidden]="noHayDatos()">
+    <h2 class="text-center" style="width:100%;">{{getSeleccionado()}}</h2>
+</div>
+<div class="row" [hidden]="noHayDatos()">
+    <div class="col-md-6">
+        <h3>Precios de Compra</h3>
+        <div *ngFor="let producto of informePrecios.compra;">
+            <div class="card" style="padding: 5px;" style="background-color:#EFEFEF">
+                <h6>Cantidad:
+                    {{producto.cantidad}}
+                    - Precio:
+                    <b>${{producto.precio}}</b>
+                </h6>
+                <h6>Fecha Factura:
+                    {{dateToString(producto.documentoMercantilID.fechaEmision)}}</h6>
+                <h6 class="small" style="width:100%; text-align:right;">Condición de Pago:
+                    {{producto.documentoMercantilID.condicionPago}}</h6>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h3>Precios de Venta</h3>
+        <div *ngFor="let producto of informePrecios.venta;">
+            <div class="card" style="padding: 5px;" style="background-color:#EFEFEF">
+                <h6>Cantidad:
+                    {{producto.cantidad}}
+                    - Precio:
+                    <b>${{producto.precio}}</b>
+                </h6>
+                <h6>Fecha Factura:
+                    {{dateToString(producto.documentoMercantilID.fechaEmision)}}</h6>
+                <h6 class="small" style="width:100%; text-align:right;">Condición de Pago:
+                    {{producto.documentoMercantilID.condicionPago}}</h6>
+            </div>
+        </div>
+    </div>
+</div>

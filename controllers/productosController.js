@@ -6,7 +6,6 @@ var ProductoTerminado  = require("../models/productoTerminado").productoTerminad
 
 var DocumentoMercantil  = require("../models/documentoMercantil").documentoMercantilModel;
 var DocumentoMercantilItem = require("./documentoMercantilItemController").DocumenTomercantilItem;
-//var DocumentoMercantilItem = require("../models/documentoMercantilItem").documentoMercantilItemModel;
 
 var buscarMateriaPrima = function(productos) {
   return new Promise(function(resolve, reject) {
@@ -120,14 +119,21 @@ exports.ultimosPreciosProducto = function(req, res) {
   console.log(req.query.desde);
   console.log(req.query.hasta);
 
-  var findByIdCallback =
-  function(err, documentoMercantilItems){
+  var findByIdCallback = function(err, documentoMercantilItems){
     if(err) return res.send(500, err.message);
 
-    var results = [];
+    var results = {
+      compra: [],
+      venta: []
+    };
+
     for(var i = 0; i < documentoMercantilItems.length; ++i) {
-      if(documentoMercantilItems[i].documentoMercantilID != undefined)
-        results.push(documentoMercantilItems[i]);
+      if(documentoMercantilItems[i].documentoMercantilID != undefined) {
+        if(documentoMercantilItems[i].documentoMercantilID.tipo == 'fact_compra')
+          results.compra.push(documentoMercantilItems[i]);
+        if(documentoMercantilItems[i].documentoMercantilID.tipo == 'fact_venta')
+          results.venta.push(documentoMercantilItems[i]);
+        }
     }
 
     console.log('GET/ultimosEstadosProducto/' + req.params.id);

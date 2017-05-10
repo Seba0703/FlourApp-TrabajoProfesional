@@ -34,3 +34,4 @@ export const URL_DOCUMENTOS_MERCANTILES = 			'http://' + ip + ':' + puerto + '/a
 export const URL_DOCUMENTOS_MERCANTILES_ITEMS = 		'http://' + ip + ':' + puerto + '/api/documentosMercantilesItems';
 
 export const URL_INFORME_ESTADO = 			'http://' + ip + ':' + puerto + '/api/informeEstadoStock';
+export const URL_INFORME_PRECIOS = 			'http://' + ip + ':' + puerto + '/api/informePrecios';
