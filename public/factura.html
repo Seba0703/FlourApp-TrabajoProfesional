@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Plantilla de FACTURA</title>
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <!-- Por ser en cascada sobreescribe al que se habia definido antes (que seria el de bootstrap) -->
+        <script src="node_modules/core-js/client/shim.min.js"></script>
+        <script src="node_modules/zone.js/dist/zone.js"></script>
+        <script src="node_modules/systemjs/dist/system.src.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div style="border-style:solid;position:absolute;
+                     left:487px;z-index:1002;width:80px;height:80px;
+                     background-color:#FFFFFF;">
+                <h1 style="line-height:65px;text-align:center;">C</h1>
+            </div>
+            <table style="width:1024px">
+                <tr>
+                    <td style="border-style:solid;width:50%;">
+                        <h1 style="text-align:center;"><img alt="" src="img/logo.png"/></h1>
+                        <h6>Razón Social: Harinas Lolato SRL</h6>
+                        <h6>Domicilio Comercial: Rivero 433</h6>
+                        <h6>Condición Frente a IVA: IVA Responsable Inscripto</h6>
+                    </td>
+                    <td style="border-style:solid;width:50%;text-align:right;">
+                        <h5>FACTURA</h5>
+                        <h6>
+                            <small>Factura #001</small>
+                        </h6>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- jQuery first, then Tether, then Bootstrap JS. -->
+        <script src="./js/jquery-3_1_1.js"></script>
+        <script src="./js/tether.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+    </body>
+</html>

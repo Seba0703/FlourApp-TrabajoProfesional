@@ -107,7 +107,42 @@ mongoose.connect('mongodb://localhost/flourapp', function(err, res) {  //se cone
   }
 
   // Start server
-  app.listen(3000, function() {
+  var server = app.listen(3000, function() {
     console.log("Node server running on http://localhost:3000");
   });
+
+  // Attaching JsReport server to App
+  var reportingApp = express();
+  app.use('/reporting', reportingApp);
+
+  var jsreport = require('jsreport')({
+    express: { app :reportingApp, server: server },
+    appPath: "/reporting"
+  });
+
+  jsreport.init().catch(function (e) {
+    console.error(e);
+  });
+
+  router.get('/myreport', function(req, res) {
+
+
+
+    jsreport.render({
+           template: {
+               content: '<h1>Hello {{:foo}}</h1>',
+               engine: 'jsrender',
+               recipe: 'phantom-pdf'
+            },
+            data: {
+                foo: "world"
+            }
+        }).then(function(resp) {
+         //prints pdf with headline Hello world
+         console.log(resp.content.toString())
+         res.send(resp);
+       });
+
+  });
+
 });
