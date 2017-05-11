@@ -1,0 +1,374 @@
+2017-05-11T14:11:34.174Z - error: Error during processing request: http://localhost:3000/reporting/api/report/Factura details: Could not parse report template, aren't you missing content type? undefined
+2017-05-11T14:11:45.917Z - error: Error during processing request: http://localhost:3000/reporting/api/report/Factura details: Could not parse report template, aren't you missing content type? undefined
+2017-05-11T14:13:03.828Z - error: Error during processing request: http://localhost:3000/reporting/api/report/Factura details: Could not parse report template, aren't you missing content type? undefined
+2017-05-11T14:23:13.698Z - error: uncaughtException: connect ECONNREFUSED 127.0.0.1:80 date=Thu May 11 2017 11:23:13 GMT-0300 (Hora estándar de Argentina), pid=7108, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=134119424, heapTotal=110481408, heapUsed=72468624, external=19365473, loadavg=[0, 0, 0], uptime=6850.3204792, trace=[column=11, file=util.js, function=Object.exports._errnoException, line=1033, method=exports._errnoException, native=false, column=20, file=util.js, function=exports._exceptionWithHostPort, line=1056, method=_exceptionWithHostPort, native=false, column=14, file=net.js, function=TCPConnectWrap.afterConnect [as oncomplete], line=1105, method=afterConnect [as oncomplete], native=false], stack=[Error: connect ECONNREFUSED 127.0.0.1:80,     at Object.exports._errnoException (util.js:1033:11),     at exports._exceptionWithHostPort (util.js:1056:20),     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1105:14)]
+2017-05-11T14:23:13.703Z - error: uncaughtException: socket hang up date=Thu May 11 2017 11:23:13 GMT-0300 (Hora estándar de Argentina), pid=7108, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=134504448, heapTotal=110481408, heapUsed=72622768, external=19365473, loadavg=[0, 0, 0], uptime=6850.3264795, trace=[column=15, file=_http_client.js, function=createHangUpError, line=302, method=null, native=false, column=23, file=_http_client.js, function=Socket.socketCloseListener, line=334, method=socketCloseListener, native=false, column=20, file=events.js, function=emitOne, line=101, method=null, native=false, column=7, file=events.js, function=Socket.emit, line=191, method=emit, native=false, column=12, file=net.js, function=TCP._handle.close [as _onclose], line=513, method=_handle.close [as _onclose], native=false], stack=[Error: socket hang up,     at createHangUpError (_http_client.js:302:15),     at Socket.socketCloseListener (_http_client.js:334:23),     at emitOne (events.js:101:20),     at Socket.emit (events.js:191:7),     at TCP._handle.close [as _onclose] (net.js:513:12)]
+2017-05-11T14:23:54.002Z - error: uncaughtException: connect ECONNREFUSED 127.0.0.1:80 date=Thu May 11 2017 11:23:53 GMT-0300 (Hora estándar de Argentina), pid=4656, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=134135808, heapTotal=111005696, heapUsed=73118280, external=19425771, loadavg=[0, 0, 0], uptime=6890.6227844, trace=[column=11, file=util.js, function=Object.exports._errnoException, line=1033, method=exports._errnoException, native=false, column=20, file=util.js, function=exports._exceptionWithHostPort, line=1056, method=_exceptionWithHostPort, native=false, column=14, file=net.js, function=TCPConnectWrap.afterConnect [as oncomplete], line=1105, method=afterConnect [as oncomplete], native=false], stack=[Error: connect ECONNREFUSED 127.0.0.1:80,     at Object.exports._errnoException (util.js:1033:11),     at exports._exceptionWithHostPort (util.js:1056:20),     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1105:14)]
+2017-05-11T14:23:54.020Z - error: uncaughtException: socket hang up date=Thu May 11 2017 11:23:54 GMT-0300 (Hora estándar de Argentina), pid=4656, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=134557696, heapTotal=111005696, heapUsed=73272424, external=19425771, loadavg=[0, 0, 0], uptime=6890.6437856, trace=[column=15, file=_http_client.js, function=createHangUpError, line=302, method=null, native=false, column=23, file=_http_client.js, function=Socket.socketCloseListener, line=334, method=socketCloseListener, native=false, column=20, file=events.js, function=emitOne, line=101, method=null, native=false, column=7, file=events.js, function=Socket.emit, line=191, method=emit, native=false, column=12, file=net.js, function=TCP._handle.close [as _onclose], line=513, method=_handle.close [as _onclose], native=false], stack=[Error: socket hang up,     at createHangUpError (_http_client.js:302:15),     at Socket.socketCloseListener (_http_client.js:334:23),     at emitOne (events.js:101:20),     at Socket.emit (events.js:191:7),     at TCP._handle.close [as _onclose] (net.js:513:12)]
+2017-05-11T14:29:19.797Z - error: uncaughtException: connect ECONNREFUSED 127.0.0.1:80 date=Thu May 11 2017 11:29:19 GMT-0300 (Hora estándar de Argentina), pid=6352, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=134258688, heapTotal=110481408, heapUsed=72431464, external=19365635, loadavg=[0, 0, 0], uptime=7216.4204189, trace=[column=11, file=util.js, function=Object.exports._errnoException, line=1033, method=exports._errnoException, native=false, column=20, file=util.js, function=exports._exceptionWithHostPort, line=1056, method=_exceptionWithHostPort, native=false, column=14, file=net.js, function=TCPConnectWrap.afterConnect [as oncomplete], line=1105, method=afterConnect [as oncomplete], native=false], stack=[Error: connect ECONNREFUSED 127.0.0.1:80,     at Object.exports._errnoException (util.js:1033:11),     at exports._exceptionWithHostPort (util.js:1056:20),     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1105:14)]
+2017-05-11T14:29:19.801Z - error: uncaughtException: socket hang up date=Thu May 11 2017 11:29:19 GMT-0300 (Hora estándar de Argentina), pid=6352, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=134676480, heapTotal=110481408, heapUsed=72585568, external=19365635, loadavg=[0, 0, 0], uptime=7216.4244192, trace=[column=15, file=_http_client.js, function=createHangUpError, line=302, method=null, native=false, column=23, file=_http_client.js, function=Socket.socketCloseListener, line=334, method=socketCloseListener, native=false, column=20, file=events.js, function=emitOne, line=101, method=null, native=false, column=7, file=events.js, function=Socket.emit, line=191, method=emit, native=false, column=12, file=net.js, function=TCP._handle.close [as _onclose], line=513, method=_handle.close [as _onclose], native=false], stack=[Error: socket hang up,     at createHangUpError (_http_client.js:302:15),     at Socket.socketCloseListener (_http_client.js:334:23),     at emitOne (events.js:101:20),     at Socket.emit (events.js:191:7),     at TCP._handle.close [as _onclose] (net.js:513:12)]
+2017-05-11T14:32:24.734Z - error: uncaughtException: connect ECONNREFUSED 127.0.0.1:80 date=Thu May 11 2017 11:32:24 GMT-0300 (Hora estándar de Argentina), pid=5884, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=138678272, heapTotal=111529984, heapUsed=83065256, external=20963384, loadavg=[0, 0, 0], uptime=7401.3559966, trace=[column=11, file=util.js, function=Object.exports._errnoException, line=1033, method=exports._errnoException, native=false, column=20, file=util.js, function=exports._exceptionWithHostPort, line=1056, method=_exceptionWithHostPort, native=false, column=14, file=net.js, function=TCPConnectWrap.afterConnect [as oncomplete], line=1105, method=afterConnect [as oncomplete], native=false], stack=[Error: connect ECONNREFUSED 127.0.0.1:80,     at Object.exports._errnoException (util.js:1033:11),     at exports._exceptionWithHostPort (util.js:1056:20),     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1105:14)]
+2017-05-11T14:32:24.738Z - error: uncaughtException: socket hang up date=Thu May 11 2017 11:32:24 GMT-0300 (Hora estándar de Argentina), pid=5884, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=139063296, heapTotal=111529984, heapUsed=83211680, external=20963384, loadavg=[0, 0, 0], uptime=7401.361997, trace=[column=15, file=_http_client.js, function=createHangUpError, line=302, method=null, native=false, column=23, file=_http_client.js, function=Socket.socketCloseListener, line=334, method=socketCloseListener, native=false, column=20, file=events.js, function=emitOne, line=101, method=null, native=false, column=7, file=events.js, function=Socket.emit, line=191, method=emit, native=false, column=12, file=net.js, function=TCP._handle.close [as _onclose], line=513, method=_handle.close [as _onclose], native=false], stack=[Error: socket hang up,     at createHangUpError (_http_client.js:302:15),     at Socket.socketCloseListener (_http_client.js:334:23),     at emitOne (events.js:101:20),     at Socket.emit (events.js:191:7),     at TCP._handle.close [as _onclose] (net.js:513:12)]
+2017-05-11T14:34:14.688Z - error: uncaughtException: connect ECONNREFUSED 127.0.0.1:80 date=Thu May 11 2017 11:34:14 GMT-0300 (Hora estándar de Argentina), pid=7036, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=134291456, heapTotal=110481408, heapUsed=73814696, external=19426229, loadavg=[0, 0, 0], uptime=7511.3062854, trace=[column=11, file=util.js, function=Object.exports._errnoException, line=1033, method=exports._errnoException, native=false, column=20, file=util.js, function=exports._exceptionWithHostPort, line=1056, method=_exceptionWithHostPort, native=false, column=14, file=net.js, function=TCPConnectWrap.afterConnect [as oncomplete], line=1105, method=afterConnect [as oncomplete], native=false], stack=[Error: connect ECONNREFUSED 127.0.0.1:80,     at Object.exports._errnoException (util.js:1033:11),     at exports._exceptionWithHostPort (util.js:1056:20),     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1105:14)]
+2017-05-11T14:34:14.695Z - error: uncaughtException: socket hang up date=Thu May 11 2017 11:34:14 GMT-0300 (Hora estándar de Argentina), pid=7036, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=134692864, heapTotal=111005696, heapUsed=73968800, external=19426229, loadavg=[0, 0, 0], uptime=7511.316286, trace=[column=15, file=_http_client.js, function=createHangUpError, line=302, method=null, native=false, column=23, file=_http_client.js, function=Socket.socketCloseListener, line=334, method=socketCloseListener, native=false, column=20, file=events.js, function=emitOne, line=101, method=null, native=false, column=7, file=events.js, function=Socket.emit, line=191, method=emit, native=false, column=12, file=net.js, function=TCP._handle.close [as _onclose], line=513, method=_handle.close [as _onclose], native=false], stack=[Error: socket hang up,     at createHangUpError (_http_client.js:302:15),     at Socket.socketCloseListener (_http_client.js:334:23),     at emitOne (events.js:101:20),     at Socket.emit (events.js:191:7),     at TCP._handle.close [as _onclose] (net.js:513:12)]
+2017-05-11T14:36:17.308Z - error: uncaughtException: connect ECONNREFUSED 127.0.0.1:80 date=Thu May 11 2017 11:36:17 GMT-0300 (Hora estándar de Argentina), pid=1400, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=134623232, heapTotal=111005696, heapUsed=72857152, external=19396248, loadavg=[0, 0, 0], uptime=7633.9292991, trace=[column=11, file=util.js, function=Object.exports._errnoException, line=1033, method=exports._errnoException, native=false, column=20, file=util.js, function=exports._exceptionWithHostPort, line=1056, method=_exceptionWithHostPort, native=false, column=14, file=net.js, function=TCPConnectWrap.afterConnect [as oncomplete], line=1105, method=afterConnect [as oncomplete], native=false], stack=[Error: connect ECONNREFUSED 127.0.0.1:80,     at Object.exports._errnoException (util.js:1033:11),     at exports._exceptionWithHostPort (util.js:1056:20),     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1105:14)]
+2017-05-11T14:36:17.315Z - error: uncaughtException: socket hang up date=Thu May 11 2017 11:36:17 GMT-0300 (Hora estándar de Argentina), pid=1400, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=135008256, heapTotal=111005696, heapUsed=73011248, external=19396248, loadavg=[0, 0, 0], uptime=7633.9382996, trace=[column=15, file=_http_client.js, function=createHangUpError, line=302, method=null, native=false, column=23, file=_http_client.js, function=Socket.socketCloseListener, line=334, method=socketCloseListener, native=false, column=20, file=events.js, function=emitOne, line=101, method=null, native=false, column=7, file=events.js, function=Socket.emit, line=191, method=emit, native=false, column=12, file=net.js, function=TCP._handle.close [as _onclose], line=513, method=_handle.close [as _onclose], native=false], stack=[Error: socket hang up,     at createHangUpError (_http_client.js:302:15),     at Socket.socketCloseListener (_http_client.js:334:23),     at emitOne (events.js:101:20),     at Socket.emit (events.js:191:7),     at TCP._handle.close [as _onclose] (net.js:513:12)]
+2017-05-11T14:36:59.796Z - error: uncaughtException: connect ECONNREFUSED 127.0.0.1:80 date=Thu May 11 2017 11:36:59 GMT-0300 (Hora estándar de Argentina), pid=6640, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=134578176, heapTotal=110481408, heapUsed=72470768, external=19365436, loadavg=[0, 0, 0], uptime=7676.4187293, trace=[column=11, file=util.js, function=Object.exports._errnoException, line=1033, method=exports._errnoException, native=false, column=20, file=util.js, function=exports._exceptionWithHostPort, line=1056, method=_exceptionWithHostPort, native=false, column=14, file=net.js, function=TCPConnectWrap.afterConnect [as oncomplete], line=1105, method=afterConnect [as oncomplete], native=false], stack=[Error: connect ECONNREFUSED 127.0.0.1:80,     at Object.exports._errnoException (util.js:1033:11),     at exports._exceptionWithHostPort (util.js:1056:20),     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1105:14)]
+2017-05-11T14:36:59.800Z - error: uncaughtException: socket hang up date=Thu May 11 2017 11:36:59 GMT-0300 (Hora estándar de Argentina), pid=6640, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=134946816, heapTotal=110481408, heapUsed=72624624, external=19365436, loadavg=[0, 0, 0], uptime=7676.4237296, trace=[column=15, file=_http_client.js, function=createHangUpError, line=302, method=null, native=false, column=23, file=_http_client.js, function=Socket.socketCloseListener, line=334, method=socketCloseListener, native=false, column=20, file=events.js, function=emitOne, line=101, method=null, native=false, column=7, file=events.js, function=Socket.emit, line=191, method=emit, native=false, column=12, file=net.js, function=TCP._handle.close [as _onclose], line=513, method=_handle.close [as _onclose], native=false], stack=[Error: socket hang up,     at createHangUpError (_http_client.js:302:15),     at Socket.socketCloseListener (_http_client.js:334:23),     at emitOne (events.js:101:20),     at Socket.emit (events.js:191:7),     at TCP._handle.close [as _onclose] (net.js:513:12)]
+2017-05-11T14:40:40.593Z - error: uncaughtException: connect ECONNREFUSED 127.0.0.1:80 date=Thu May 11 2017 11:40:40 GMT-0300 (Hora estándar de Argentina), pid=6820, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=135409664, heapTotal=110481408, heapUsed=73632336, external=19400127, loadavg=[0, 0, 0], uptime=7897.2153582, trace=[column=11, file=util.js, function=Object.exports._errnoException, line=1033, method=exports._errnoException, native=false, column=20, file=util.js, function=exports._exceptionWithHostPort, line=1056, method=_exceptionWithHostPort, native=false, column=14, file=net.js, function=TCPConnectWrap.afterConnect [as oncomplete], line=1105, method=afterConnect [as oncomplete], native=false], stack=[Error: connect ECONNREFUSED 127.0.0.1:80,     at Object.exports._errnoException (util.js:1033:11),     at exports._exceptionWithHostPort (util.js:1056:20),     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1105:14)]
+2017-05-11T14:40:40.597Z - error: uncaughtException: socket hang up date=Thu May 11 2017 11:40:40 GMT-0300 (Hora estándar de Argentina), pid=6820, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=135786496, heapTotal=110481408, heapUsed=73777512, external=19400127, loadavg=[0, 0, 0], uptime=7897.2203585, trace=[column=15, file=_http_client.js, function=createHangUpError, line=302, method=null, native=false, column=23, file=_http_client.js, function=Socket.socketCloseListener, line=334, method=socketCloseListener, native=false, column=20, file=events.js, function=emitOne, line=101, method=null, native=false, column=7, file=events.js, function=Socket.emit, line=191, method=emit, native=false, column=12, file=net.js, function=TCP._handle.close [as _onclose], line=513, method=_handle.close [as _onclose], native=false], stack=[Error: socket hang up,     at createHangUpError (_http_client.js:302:15),     at Socket.socketCloseListener (_http_client.js:334:23),     at emitOne (events.js:101:20),     at Socket.emit (events.js:191:7),     at TCP._handle.close [as _onclose] (net.js:513:12)]
+2017-05-11T14:44:58.235Z - error: uncaughtException: connect ECONNREFUSED 127.0.0.1:80 date=Thu May 11 2017 11:44:58 GMT-0300 (Hora estándar de Argentina), pid=6988, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=134086656, heapTotal=109957120, heapUsed=73366984, external=19397136, loadavg=[0, 0, 0], uptime=8154.8560944, trace=[column=11, file=util.js, function=Object.exports._errnoException, line=1033, method=exports._errnoException, native=false, column=20, file=util.js, function=exports._exceptionWithHostPort, line=1056, method=_exceptionWithHostPort, native=false, column=14, file=net.js, function=TCPConnectWrap.afterConnect [as oncomplete], line=1105, method=afterConnect [as oncomplete], native=false], stack=[Error: connect ECONNREFUSED 127.0.0.1:80,     at Object.exports._errnoException (util.js:1033:11),     at exports._exceptionWithHostPort (util.js:1056:20),     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1105:14)]
+2017-05-11T14:44:58.238Z - error: uncaughtException: socket hang up date=Thu May 11 2017 11:44:58 GMT-0300 (Hora estándar de Argentina), pid=6988, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=134463488, heapTotal=109957120, heapUsed=73525432, external=19397136, loadavg=[0, 0, 0], uptime=8154.8630948, trace=[column=15, file=_http_client.js, function=createHangUpError, line=302, method=null, native=false, column=23, file=_http_client.js, function=Socket.socketCloseListener, line=334, method=socketCloseListener, native=false, column=20, file=events.js, function=emitOne, line=101, method=null, native=false, column=7, file=events.js, function=Socket.emit, line=191, method=emit, native=false, column=12, file=net.js, function=TCP._handle.close [as _onclose], line=513, method=_handle.close [as _onclose], native=false], stack=[Error: socket hang up,     at createHangUpError (_http_client.js:302:15),     at Socket.socketCloseListener (_http_client.js:334:23),     at emitOne (events.js:101:20),     at Socket.emit (events.js:191:7),     at TCP._handle.close [as _onclose] (net.js:513:12)]
+2017-05-11T14:46:16.374Z - error: uncaughtException: connect ECONNREFUSED 127.0.0.1:80 date=Thu May 11 2017 11:46:16 GMT-0300 (Hora estándar de Argentina), pid=6344, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=134680576, heapTotal=111005696, heapUsed=73325400, external=19426060, loadavg=[0, 0, 0], uptime=8232.9935636, trace=[column=11, file=util.js, function=Object.exports._errnoException, line=1033, method=exports._errnoException, native=false, column=20, file=util.js, function=exports._exceptionWithHostPort, line=1056, method=_exceptionWithHostPort, native=false, column=14, file=net.js, function=TCPConnectWrap.afterConnect [as oncomplete], line=1105, method=afterConnect [as oncomplete], native=false], stack=[Error: connect ECONNREFUSED 127.0.0.1:80,     at Object.exports._errnoException (util.js:1033:11),     at exports._exceptionWithHostPort (util.js:1056:20),     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1105:14)]
+2017-05-11T14:46:16.382Z - error: uncaughtException: socket hang up date=Thu May 11 2017 11:46:16 GMT-0300 (Hora estándar de Argentina), pid=6344, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=135069696, heapTotal=111005696, heapUsed=73479504, external=19426060, loadavg=[0, 0, 0], uptime=8233.0045642, trace=[column=15, file=_http_client.js, function=createHangUpError, line=302, method=null, native=false, column=23, file=_http_client.js, function=Socket.socketCloseListener, line=334, method=socketCloseListener, native=false, column=20, file=events.js, function=emitOne, line=101, method=null, native=false, column=7, file=events.js, function=Socket.emit, line=191, method=emit, native=false, column=12, file=net.js, function=TCP._handle.close [as _onclose], line=513, method=_handle.close [as _onclose], native=false], stack=[Error: socket hang up,     at createHangUpError (_http_client.js:302:15),     at Socket.socketCloseListener (_http_client.js:334:23),     at emitOne (events.js:101:20),     at Socket.emit (events.js:191:7),     at TCP._handle.close [as _onclose] (net.js:513:12)]
+2017-05-11T14:51:27.769Z - error: uncaughtException: connect ECONNREFUSED 127.0.0.1:80 date=Thu May 11 2017 11:51:27 GMT-0300 (Hora estándar de Argentina), pid=7160, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=136658944, heapTotal=111529984, heapUsed=74141016, external=19429971, loadavg=[0, 0, 0], uptime=8544.3923746, trace=[column=11, file=util.js, function=Object.exports._errnoException, line=1033, method=exports._errnoException, native=false, column=20, file=util.js, function=exports._exceptionWithHostPort, line=1056, method=_exceptionWithHostPort, native=false, column=14, file=net.js, function=TCPConnectWrap.afterConnect [as oncomplete], line=1105, method=afterConnect [as oncomplete], native=false], stack=[Error: connect ECONNREFUSED 127.0.0.1:80,     at Object.exports._errnoException (util.js:1033:11),     at exports._exceptionWithHostPort (util.js:1056:20),     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1105:14)]
+2017-05-11T14:51:27.773Z - error: uncaughtException: socket hang up date=Thu May 11 2017 11:51:27 GMT-0300 (Hora estándar de Argentina), pid=7160, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=137076736, heapTotal=111529984, heapUsed=74286296, external=19429971, loadavg=[0, 0, 0], uptime=8544.3963748, trace=[column=15, file=_http_client.js, function=createHangUpError, line=302, method=null, native=false, column=23, file=_http_client.js, function=Socket.socketCloseListener, line=334, method=socketCloseListener, native=false, column=20, file=events.js, function=emitOne, line=101, method=null, native=false, column=7, file=events.js, function=Socket.emit, line=191, method=emit, native=false, column=12, file=net.js, function=TCP._handle.close [as _onclose], line=513, method=_handle.close [as _onclose], native=false], stack=[Error: socket hang up,     at createHangUpError (_http_client.js:302:15),     at Socket.socketCloseListener (_http_client.js:334:23),     at emitOne (events.js:101:20),     at Socket.emit (events.js:191:7),     at TCP._handle.close [as _onclose] (net.js:513:12)]
+2017-05-11T14:52:41.777Z - error: uncaughtException: connect ECONNREFUSED 127.0.0.1:80 date=Thu May 11 2017 11:52:41 GMT-0300 (Hora estándar de Argentina), pid=4672, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=132186112, heapTotal=108908544, heapUsed=78647344, external=19840747, loadavg=[0, 0, 0], uptime=8618.3976074, trace=[column=11, file=util.js, function=Object.exports._errnoException, line=1033, method=exports._errnoException, native=false, column=20, file=util.js, function=exports._exceptionWithHostPort, line=1056, method=_exceptionWithHostPort, native=false, column=14, file=net.js, function=TCPConnectWrap.afterConnect [as oncomplete], line=1105, method=afterConnect [as oncomplete], native=false], stack=[Error: connect ECONNREFUSED 127.0.0.1:80,     at Object.exports._errnoException (util.js:1033:11),     at exports._exceptionWithHostPort (util.js:1056:20),     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1105:14)]
+2017-05-11T14:52:41.784Z - error: uncaughtException: socket hang up date=Thu May 11 2017 11:52:41 GMT-0300 (Hora estándar de Argentina), pid=4672, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=132562944, heapTotal=108908544, heapUsed=78801032, external=19840747, loadavg=[0, 0, 0], uptime=8618.4056079, trace=[column=15, file=_http_client.js, function=createHangUpError, line=302, method=null, native=false, column=23, file=_http_client.js, function=Socket.socketCloseListener, line=334, method=socketCloseListener, native=false, column=20, file=events.js, function=emitOne, line=101, method=null, native=false, column=7, file=events.js, function=Socket.emit, line=191, method=emit, native=false, column=12, file=net.js, function=TCP._handle.close [as _onclose], line=513, method=_handle.close [as _onclose], native=false], stack=[Error: socket hang up,     at createHangUpError (_http_client.js:302:15),     at Socket.socketCloseListener (_http_client.js:334:23),     at emitOne (events.js:101:20),     at Socket.emit (events.js:191:7),     at TCP._handle.close [as _onclose] (net.js:513:12)]
+2017-05-11T14:54:10.471Z - error: uncaughtException: connect ECONNREFUSED 127.0.0.1:80 date=Thu May 11 2017 11:54:10 GMT-0300 (Hora estándar de Argentina), pid=1704, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=136089600, heapTotal=111005696, heapUsed=74838512, external=19430249, loadavg=[0, 0, 0], uptime=8707.0936806, trace=[column=11, file=util.js, function=Object.exports._errnoException, line=1033, method=exports._errnoException, native=false, column=20, file=util.js, function=exports._exceptionWithHostPort, line=1056, method=_exceptionWithHostPort, native=false, column=14, file=net.js, function=TCPConnectWrap.afterConnect [as oncomplete], line=1105, method=afterConnect [as oncomplete], native=false], stack=[Error: connect ECONNREFUSED 127.0.0.1:80,     at Object.exports._errnoException (util.js:1033:11),     at exports._exceptionWithHostPort (util.js:1056:20),     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1105:14)]
+2017-05-11T14:54:10.474Z - error: uncaughtException: socket hang up date=Thu May 11 2017 11:54:10 GMT-0300 (Hora estándar de Argentina), pid=1704, uid=null, gid=null, cwd=C:\tp_profesional\FlourApp-TrabajoProfesional, execPath=C:\Program Files\nodejs\node.exe, version=v7.7.2, argv=[C:\Program Files\nodejs\node.exe, C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js], rss=136495104, heapTotal=111005696, heapUsed=74983568, external=19430249, loadavg=[0, 0, 0], uptime=8707.0986808, trace=[column=15, file=_http_client.js, function=createHangUpError, line=302, method=null, native=false, column=23, file=_http_client.js, function=Socket.socketCloseListener, line=334, method=socketCloseListener, native=false, column=20, file=events.js, function=emitOne, line=101, method=null, native=false, column=7, file=events.js, function=Socket.emit, line=191, method=emit, native=false, column=12, file=net.js, function=TCP._handle.close [as _onclose], line=513, method=_handle.close [as _onclose], native=false], stack=[Error: socket hang up,     at createHangUpError (_http_client.js:302:15),     at Socket.socketCloseListener (_http_client.js:334:23),     at emitOne (events.js:101:20),     at Socket.emit (events.js:191:7),     at TCP._handle.close [as _onclose] (net.js:513:12)]
+2017-05-11T15:03:02.703Z - error: Error during processing request: http://localhost:3000/reporting/rpt details: post_data is not defined ReferenceError: post_data is not defined
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js:163:47
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at expressInit (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\middleware\init.js:40:5)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at query (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\middleware\query.js:44:5)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:174:3)
+    at Function.handle (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\application.js:174:10)
+    at mounted_app (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\application.js:230:10)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:635:15
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:260:14)
+    at Function.handle (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:174:3)
+    at router (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at SendStream.error (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\serve-static\index.js:121:7)
+    at emitOne (events.js:96:13)
+    at SendStream.emit (events.js:191:7)
+    at SendStream.error (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:282:17)
+    at SendStream.onStatError (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:433:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:743:16)
+    at onstat (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:732:14)
+    at FSReqWrap.oncomplete (fs.js:114:15)
+2017-05-11T15:04:44.853Z - error: Error during processing request: http://localhost:3000/reporting/rpt details: "string" must be a string, Buffer, or ArrayBuffer TypeError: "string" must be a string, Buffer, or ArrayBuffer
+    at Function.byteLength (buffer.js:363:11)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js:174:36
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at expressInit (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\middleware\init.js:40:5)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at query (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\middleware\query.js:44:5)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:174:3)
+    at Function.handle (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\application.js:174:10)
+    at mounted_app (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\application.js:230:10)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:635:15
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:260:14)
+    at Function.handle (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:174:3)
+    at router (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at SendStream.error (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\serve-static\index.js:121:7)
+    at emitOne (events.js:96:13)
+    at SendStream.emit (events.js:191:7)
+    at SendStream.error (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:282:17)
+    at SendStream.onStatError (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:433:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:743:16)
+    at onstat (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:732:14)
+    at FSReqWrap.oncomplete (fs.js:114:15)
+2017-05-11T15:09:47.154Z - error: Error during processing request: http://localhost:3000/reporting/rpt details: First argument must be a string or Buffer TypeError: First argument must be a string or Buffer
+    at ClientRequest.write (_http_outgoing.js:502:11)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js:182:8
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at expressInit (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\middleware\init.js:40:5)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at query (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\middleware\query.js:44:5)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:174:3)
+    at Function.handle (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\application.js:174:10)
+    at mounted_app (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\application.js:230:10)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:635:15
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:260:14)
+    at Function.handle (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:174:3)
+    at router (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at SendStream.error (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\serve-static\index.js:121:7)
+    at emitOne (events.js:96:13)
+    at SendStream.emit (events.js:191:7)
+    at SendStream.error (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:282:17)
+    at SendStream.onStatError (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:433:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:743:16)
+    at onstat (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:732:14)
+    at FSReqWrap.oncomplete (fs.js:114:15)
+2017-05-11T15:09:50.295Z - error: Error during processing request: http://localhost:3000/reporting/rpt details: First argument must be a string or Buffer TypeError: First argument must be a string or Buffer
+    at ClientRequest.write (_http_outgoing.js:502:11)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js:182:8
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at expressInit (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\middleware\init.js:40:5)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at query (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\middleware\query.js:44:5)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:174:3)
+    at Function.handle (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\application.js:174:10)
+    at mounted_app (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\application.js:230:10)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:635:15
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:260:14)
+    at Function.handle (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:174:3)
+    at router (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at SendStream.error (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\serve-static\index.js:121:7)
+    at emitOne (events.js:96:13)
+    at SendStream.emit (events.js:191:7)
+    at SendStream.error (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:282:17)
+    at SendStream.onStatError (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:433:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:743:16)
+    at onstat (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:732:14)
+    at FSReqWrap.oncomplete (fs.js:114:15)
+2017-05-11T15:09:55.382Z - error: Error during processing request: http://localhost:3000/reporting/rpt details: First argument must be a string or Buffer TypeError: First argument must be a string or Buffer
+    at ClientRequest.write (_http_outgoing.js:502:11)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js:182:8
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at expressInit (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\middleware\init.js:40:5)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at query (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\middleware\query.js:44:5)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:174:3)
+    at Function.handle (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\application.js:174:10)
+    at mounted_app (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\application.js:230:10)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:635:15
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:260:14)
+    at Function.handle (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:174:3)
+    at router (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at SendStream.error (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\serve-static\index.js:121:7)
+    at emitOne (events.js:96:13)
+    at SendStream.emit (events.js:191:7)
+    at SendStream.error (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:282:17)
+    at SendStream.onStatError (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:433:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:743:16)
+    at onstat (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:732:14)
+    at FSReqWrap.oncomplete (fs.js:114:15)
+2017-05-11T15:11:46.664Z - error: Error during processing request: http://localhost:3000/reporting/rpt details: http.request(...).on(...).write(...).end is not a function TypeError: http.request(...).on(...).write(...).end is not a function
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\server_app.js:182:25
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at expressInit (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\middleware\init.js:40:5)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at query (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\middleware\query.js:44:5)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:174:3)
+    at Function.handle (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\application.js:174:10)
+    at mounted_app (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\application.js:230:10)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:635:15
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:260:14)
+    at Function.handle (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:174:3)
+    at router (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:317:13)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\express\lib\router\index.js:275:10)
+    at SendStream.error (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\serve-static\index.js:121:7)
+    at emitOne (events.js:96:13)
+    at SendStream.emit (events.js:191:7)
+    at SendStream.error (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:282:17)
+    at SendStream.onStatError (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:433:12)
+    at next (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:743:16)
+    at onstat (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\send\index.js:732:14)
+    at FSReqWrap.oncomplete (fs.js:114:15)
+2017-05-11T15:17:16.100Z - error: Error during processing request: http://localhost:3000/reporting/api/report/Factura details: Could not parse report template, aren't you missing content type? undefined
+2017-05-11T15:26:14.450Z - error: Error when processing render request Error during rendering report: Engine must be specified Error: Engine must be specified
+    at invokeRender (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\jsreport-core\lib\render\render.js:66:11)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\jsreport-core\lib\render\render.js:146:12
+    at tryCatcher (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:510:31)
+    at Promise._settlePromise (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:567:18)
+    at Promise._settlePromise0 (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:612:10)
+    at Promise._settlePromises (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:691:18)
+    at Promise._fulfill (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:636:18)
+    at Promise._resolveCallback (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:431:57)
+    at Promise._settlePromiseFromHandler (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:522:17)
+    at Promise._settlePromise (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:567:18)
+    at Promise._settlePromise0 (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:612:10)
+    at Promise._settlePromises (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:691:18)
+    at Promise._fulfill (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:636:18)
+    at Promise._resolveCallback (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:431:57)
+    at Promise._settlePromiseFromHandler (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:522:17)
+    at Promise._settlePromise (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:567:18)
+    at Promise._settlePromise0 (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:612:10)
+    at Promise._settlePromises (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:691:18)
+    at Promise._fulfill (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:636:18)
+    at PromiseArray._resolve (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise_array.js:125:19)
+    at PromiseArray._promiseFulfilled (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise_array.js:143:14)
+    at Promise._settlePromise (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:572:26)
+    at Promise._settlePromise0 (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:612:10)
+    at Promise._settlePromises (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:691:18)
+    at Async._drainQueue (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\async.js:133:16)
+    at Async._drainQueues (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\async.js:143:10)
+    at Immediate.Async.drainQueues (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\async.js:17:14)
+    at runCallback (timers.js:666:20)
+    at tryOnImmediate (timers.js:639:5)
+    at processImmediate [as _immediateCallback] (timers.js:611:5) requestId=1
+2017-05-11T15:26:14.475Z - error: Error during processing request: http://localhost:3001/api/report details: Error during rendering report: Engine must be specified Error: Engine must be specified
+    at invokeRender (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\jsreport-core\lib\render\render.js:66:11)
+    at C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\jsreport-core\lib\render\render.js:146:12
+    at tryCatcher (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:510:31)
+    at Promise._settlePromise (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:567:18)
+    at Promise._settlePromise0 (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:612:10)
+    at Promise._settlePromises (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:691:18)
+    at Promise._fulfill (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:636:18)
+    at Promise._resolveCallback (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:431:57)
+    at Promise._settlePromiseFromHandler (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:522:17)
+    at Promise._settlePromise (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:567:18)
+    at Promise._settlePromise0 (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:612:10)
+    at Promise._settlePromises (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:691:18)
+    at Promise._fulfill (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:636:18)
+    at Promise._resolveCallback (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:431:57)
+    at Promise._settlePromiseFromHandler (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:522:17)
+    at Promise._settlePromise (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:567:18)
+    at Promise._settlePromise0 (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:612:10)
+    at Promise._settlePromises (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:691:18)
+    at Promise._fulfill (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:636:18)
+    at PromiseArray._resolve (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise_array.js:125:19)
+    at PromiseArray._promiseFulfilled (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise_array.js:143:14)
+    at Promise._settlePromise (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:572:26)
+    at Promise._settlePromise0 (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:612:10)
+    at Promise._settlePromises (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\promise.js:691:18)
+    at Async._drainQueue (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\async.js:133:16)
+    at Async._drainQueues (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\async.js:143:10)
+    at Immediate.Async.drainQueues (C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\listener-collection\node_modules\bluebird\js\release\async.js:17:14)
+    at runCallback (timers.js:666:20)
+    at tryOnImmediate (timers.js:639:5)
+    at processImmediate [as _immediateCallback] (timers.js:611:5)

@@ -4,6 +4,7 @@ var express = require("express"),
     bodyParser  = require("body-parser"),
     methodOverride = require("method-override");
     mongoose = require("mongoose");
+    var http = require('http');
 
 
 app.use(express.static('public'));
@@ -110,39 +111,39 @@ mongoose.connect('mongodb://localhost/flourapp', function(err, res) {  //se cone
   var server = app.listen(3000, function() {
     console.log("Node server running on http://localhost:3000");
   });
+});
 
-  // Attaching JsReport server to App
-  var reportingApp = express();
-  app.use('/reporting', reportingApp);
+require('jsreport')({ httpPort: 3001, httpsPort: 0 }).init();
 
-  var jsreport = require('jsreport')({
-    express: { app :reportingApp, server: server },
-    appPath: "/reporting"
+router.get('/reportexample' ,function(req,res,next){
+  var post_data= JSON.stringify({
+    template:{
+      content: '<h1>Hello {{:foo}}</h1>',
+      engine: 'jsrender',
+      recipe : 'phantom-pdf'
+     },
+    options:{
+        'preview':'true'
+    },
+    data: {
+        foo: "world"
+    }
   });
+  var post_options = {
+      host: 'localhost',
+      port: '3001',
+      path: '/api/report',
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  };
 
-  jsreport.init().catch(function (e) {
-    console.error(e);
-  });
-
-  router.get('/myreport', function(req, res) {
-
-
-
-    jsreport.render({
-           template: {
-               content: '<h1>Hello {{:foo}}</h1>',
-               engine: 'jsrender',
-               recipe: 'phantom-pdf'
-            },
-            data: {
-                foo: "world"
-            }
-        }).then(function(resp) {
-         //prints pdf with headline Hello world
-         console.log(resp.content.toString())
-         res.send(resp);
-       });
-
-  });
-
+  var post_req = http.request(post_options, function(response) {
+      response.pipe(res);
+    }).on('error', function(e) {
+      res.sendStatus(500);
+    });
+    post_req.write(post_data);
+    post_req.end();
 });
