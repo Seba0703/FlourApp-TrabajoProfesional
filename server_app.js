@@ -5,6 +5,7 @@ var express = require("express"),
     methodOverride = require("method-override");
     mongoose = require("mongoose");
     var http = require('http');
+    var fs = require('fs');
 
 
 app.use(express.static('public'));
@@ -115,10 +116,11 @@ mongoose.connect('mongodb://localhost/flourapp', function(err, res) {  //se cone
 
 require('jsreport')({ httpPort: 3001, httpsPort: 0 }).init();
 
-router.get('/reportexample' ,function(req,res,next){
+router.get('/reportexample.pdf' ,function(req,res,next){
+  // var html = require('./public/factura.html');
   var post_data= JSON.stringify({
     template:{
-      content: '<h1>Hello {{:foo}}</h1>',
+      content: fs.readFileSync(path.join("./public/factura.html"), 'utf8'),
       engine: 'jsrender',
       recipe : 'phantom-pdf'
      },
@@ -126,7 +128,7 @@ router.get('/reportexample' ,function(req,res,next){
         'preview':'true'
     },
     data: {
-        foo: "world"
+        img_path: "http://localhost:3000/img/logo.png"
     }
   });
   var post_options = {

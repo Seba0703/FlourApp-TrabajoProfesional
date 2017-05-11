@@ -1,41 +1,274 @@
-<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
         <title>Plantilla de FACTURA</title>
-        <link rel="stylesheet" href="./css/bootstrap.min.css">
-        <!-- Por ser en cascada sobreescribe al que se habia definido antes (que seria el de bootstrap) -->
-        <script src="node_modules/core-js/client/shim.min.js"></script>
-        <script src="node_modules/zone.js/dist/zone.js"></script>
-        <script src="node_modules/systemjs/dist/system.src.js"></script>
+        <style>
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-weight: normal;
+            }
+        </style>
     </head>
     <body>
         <div class="container">
-            <div style="border-style:solid;position:absolute;
-                     left:487px;z-index:1002;width:80px;height:80px;
-                     background-color:#FFFFFF;">
-                <h1 style="line-height:65px;text-align:center;">C</h1>
+            <div style="border-style:solid;border-width:2px;position:absolute;
+                     left:478px;z-index:1002;width:80px;height:80px;
+                     background-color:#FFFFFF">
+                <h1 style="line-height:8px;text-align:center;font-size:320%;margin-bottom:10px;margin-top:25px;">A</h1>
+                <h3 style="text-align:center;margin-top:30px;">
+                    <small>COD. 01</small>
+                </h3>
             </div>
-            <table style="width:1024px">
+            <table style="width:1024px;border-style:solid;border-color:#000000;border-width:2px;padding-left:20px;padding-right:20px;">
                 <tr>
-                    <td style="border-style:solid;width:50%;">
-                        <h1 style="text-align:center;"><img alt="" src="img/logo.png"/></h1>
-                        <h6>Razón Social: Harinas Lolato SRL</h6>
-                        <h6>Domicilio Comercial: Rivero 433</h6>
-                        <h6>Condición Frente a IVA: IVA Responsable Inscripto</h6>
+                    <td style="width:50%;border-right-style:solid;border-right-width:2px;">
+                        <h1 style="text-align:center;"><img alt="" src="{{:img_path}}"/></h1>
+                        <br/>
+                        <h4>
+                            <b>Razón Social:
+                            </b>LOLATO EDUARDO RICARDO</h4>
+                        <h4>
+                            <b>Domicilio Comercial:
+                            </b>Rivero 433 - Avellaneda, Buenos Aires</h4>
+                        <h4>
+                            <b>Condición Frente al IVA:
+                            </b>IVA Responsable Inscripto</h4>
                     </td>
-                    <td style="border-style:solid;width:50%;text-align:right;">
-                        <h5>FACTURA</h5>
-                        <h6>
-                            <small>Factura #001</small>
-                        </h6>
+                    <td style="border-left-style:solid;border-left-width:2px;width:50%;text-align:left;padding-left:70px;padding-right:20px;">
+                        <h1 style="width:100%; text-align:left;">
+                            <b>FACTURA</b>
+                        </h1>
+                        <br/>
+                        <h4>
+                            <span>
+                                <b>Punto de Venta:
+                                </b>0002</span>
+                            <span style="margin-left:30px;">
+                                <b>Comp. Nro:
+                                </b>000000059</span>
+                        </h4>
+                        <h4>
+                            <b>Fecha de Emisión:
+                            </b>15/12/2016</h4>
+                        <h4>
+                            <b>CUIT:
+                            </b>20168506822</h4>
+                        <h4>
+                            <b>Ingresos Brutos:
+                            </b>C.M. 20-16850682-2</h4>
+                        <h4>
+                            <b>Fecha de Inicio de Actividades:
+                            </b>04/10/2010</h4>
+                    </td>
+                </tr>
+            </table>
+            <table style="margin-top:5px;width:1024px;border-style:solid;border-color:#000000;border-width:2px;padding-left:20px;padding-right:20px;">
+                <tr style="width:100%">
+                    <td style="width:50%;">
+                        <b>CUIT:
+                        </b>30707806504
+                    </td>
+                    <td style="width:50%;">
+                        <b>Apellido y Nombre/Razón Social:
+                        </b>Kelton S.A.
+                    </td>
+                </tr>
+                <tr style="width:100%">
+                    <td style="width:50%;">
+                        <b>Condición frente al IVA:
+                        </b>IVA Responsable Inscripto
+                    </td>
+                    <td style="width:50%;">
+                        <b>Domicilio Comercial:
+                        </b>Avda. Luro 5260 - Mar del Plata Norte, Buenos Aires
+                    </td>
+                </tr>
+                <tr style="width:100%">
+                    <td style="width:50%;">
+                        <b>Condición de Venta:
+                        </b>Cuenta Corriente
+                    </td>
+                    <td style="width:50%;">
+                        <b>Nro. Remito:
+                        </b>0001-00001319
+                    </td>
+                </tr>
+            </table>
+            <div style="margin-top:5px;width:1020px;height:728;border-style:solid;border-color:#000000;border-width:2px;">
+                <table style="width:100%;padding-left:20px;padding-right:20px;padding-top:5px;font-size:90%;">
+                    <thead style="">
+                        <tr style="background-color: #DDDDDD;width:100%;">
+                            <th style="width:5%;">Código</th>
+                            <th style="width:30%;">Producto / Servicio</th>
+                            <th style="width:7%;">Cantidad</th>
+                            <th style="width:8%;">U. medida</th>
+                            <th style="width:10%;">Precio Unit.</th>
+                            <th style="width:10%;">% Bonif.</th>
+                            <th style="width:10%;">Subtotal</th>
+                            <th style="width:10%;">Alicuota IVA</th>
+                            <th style="width:10%;">Subtotal c/IVA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="width:100%;">
+                            <td style="width:5%;"></td>
+                            <td style="width:30%;">Nostra Faina x 10 KG</td>
+                            <td style="width:7%;">100</td>
+                            <td style="width:8%;">unidades</td>
+                            <td style="width:10%;">117,36</td>
+                            <td style="width:10%;">0,00</td>
+                            <td style="width:10%;">11736,00</td>
+                            <td style="width:10%;">21%</td>
+                            <td style="width:10%;">14200,56</td>
+                        </tr>
+                        <tr style="width:100%;">
+                            <td style="width:5%;"></td>
+                            <td style="width:30%;">Nostra Faina x 10 KG</td>
+                            <td style="width:7%;">12</td>
+                            <td style="width:8%;">unidades</td>
+                            <td style="width:10%;">117,36</td>
+                            <td style="width:10%;">100,00</td>
+                            <td style="width:10%;">0,00</td>
+                            <td style="width:10%;">21%</td>
+                            <td style="width:10%;">0,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <table style="margin-top:5px;width:1024px;border-style:solid;border-color:#000000;border-width:2px;padding-left:20px;padding-right:20px;">
+                <tr style="width:100%">
+                    <td style="width:50%;">
+                        <b style="font-size:120%;">Otros Tributos</b>
+                        <table style="width:100%;padding-top:5px;font-size:90%;">
+                            <thead style="">
+                                <tr style="background-color: #DDDDDD;width:100%;">
+                                    <th style="width:40%;">Descripción</th>
+                                    <th style="width:20%;">Detalle</th>
+                                    <th style="width:20%;">Alic. %</th>
+                                    <th style="width:20%;">Importe</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="width:100%;">
+                                    <td style="width:40%;">Ret. Impuesto a las Ganancias</td>
+                                    <td style="width:20%;"></td>
+                                    <td style="width:20%;"></td>
+                                    <td style="width:20%;">0,00</td>
+                                </tr>
+                                <tr style="width:100%;">
+                                    <td style="width:40%;">Ret. de IVA</td>
+                                    <td style="width:20%;"></td>
+                                    <td style="width:20%;"></td>
+                                    <td style="width:20%;">0,00</td>
+                                </tr>
+                                <tr style="width:100%;">
+                                    <td style="width:40%;">Impuestos Internos</td>
+                                    <td style="width:20%;"></td>
+                                    <td style="width:20%;"></td>
+                                    <td style="width:20%;">0,00</td>
+                                </tr>
+                                <tr style="width:100%;">
+                                    <td style="width:40%;">Impuestos Municipales</td>
+                                    <td style="width:20%;"></td>
+                                    <td style="width:20%;"></td>
+                                    <td style="width:20%;">0,00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td style="width:50%;">
+                        <table style="width:100%;padding-top:5px;font-size:90%;">
+                            <tbody>
+                                <tr style="width:100%;">
+                                    <td style="width:60%;text-align:right;padding-right:10px;">
+                                        <b>Importe Neto Gravado:</b>
+                                    </td>
+                                    <td style="width:40%;">$ 11736,00</td>
+                                </tr>
+                                <tr style="width:100%;">
+                                    <td style="width:60%;text-align:right;padding-right:10px;">
+                                        <b>IVA 27%:</b>
+                                    </td>
+                                    <td style="width:40%;">$ 0,00</td>
+                                </tr>
+                                <tr style="width:100%;">
+                                    <td style="width:60%;text-align:right;padding-right:10px;">
+                                        <b>IVA 21%:</b>
+                                    </td>
+                                    <td style="width:40%;">$ 2464,56</td>
+                                </tr>
+                                <tr style="width:100%;">
+                                    <td style="width:60%;text-align:right;padding-right:10px;">
+                                        <b>IVA 10.5%:</b>
+                                    </td>
+                                    <td style="width:40%;">$ 0,00</td>
+                                </tr>
+                                <tr style="width:100%;">
+                                    <td style="width:60%;text-align:right;padding-right:10px;">
+                                        <b>IVA 5%:</b>
+                                    </td>
+                                    <td style="width:40%;">$ 0,00</td>
+                                </tr>
+                                <tr style="width:100%;">
+                                    <td style="width:60%;text-align:right;padding-right:10px;">
+                                        <b>IVA 2.5%:</b>
+                                    </td>
+                                    <td style="width:40%;">$ 0,00</td>
+                                </tr>
+                                <tr style="width:100%;">
+                                    <td style="width:60%;text-align:right;padding-right:10px;">
+                                        <b>IVA 0%:</b>
+                                    </td>
+                                    <td style="width:40%;">$ 0,00</td>
+                                </tr>
+                                <tr style="width:100%;">
+                                    <td style="width:60%;text-align:right;padding-right:10px;">
+                                        <b>Importe Otros Tributos:</b>
+                                    </td>
+                                    <td style="width:40%;">$ 0,00</td>
+                                </tr>
+                                <tr style="width:100%;">
+                                    <td style="width:60%;text-align:right;padding-right:10px;">
+                                        <b>Importe Total:</b>
+                                    </td>
+                                    <td style="width:40%;">$ 14200,56</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <table style="margin-top:5px;width:1024px; height: 120px;border-style:solid;border-color:#000000;border-width:2px;padding-left:20px;padding-right:20px;">
+                <tr style="width:100%">
+                    <td style="width:50%;">
+                        AFIP - Comprobante Autorizado
+                        <br/>
+                        |||||||||||||||||||
+                    </td>
+                    <td style="width:50%;">
+                        <table style="width:100%;padding-top:5px;font-size:90%;">
+                            <tbody>
+                                <tr style="width:100%;">
+                                    <td style="width:60%;text-align:right;padding-right:10px;">
+                                        <b>CAE Nº:</b>
+                                    </td>
+                                    <td style="width:40%;">66502782674465</td>
+                                </tr>
+                                <tr style="width:100%;">
+                                    <td style="width:60%;text-align:right;padding-right:10px;">
+                                        <b>Fecha de Vto. de CAE:</b>
+                                    </td>
+                                    <td style="width:40%;">25/12/2016</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </td>
                 </tr>
             </table>
         </div>
-        <!-- jQuery first, then Tether, then Bootstrap JS. -->
-        <script src="./js/jquery-3_1_1.js"></script>
-        <script src="./js/tether.js"></script>
-        <script src="./js/bootstrap.min.js"></script>
     </body>
 </html>
