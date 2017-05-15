@@ -260,19 +260,15 @@ exports.exportPDF = function(req, res) {
 	console.log('GET/documentosMercantiles/pdf');
 	console.log(req.params.id);
 
-  console.log("1");
   DocumentoMercantil.findById(req.params.id, function(err, documentomercantil) {
     if(err) return res.status(500).send(err.message);
-    console.log("2");
     documentoMercantilItemController.findFiltered({documentoMercantilID: req.params.id}, function(err, documenTomercantilItems){
       if(err) return res.status(500).send(err.message);
-      console.log("3");
       facturacionDatosPropiosModel.find({}, function(err, datosPropios){
         if(err) return res.status(500).send(err.message);
 
         var Tabla;
         var tipo;
-        console.log("4");
         if(documentomercantil.tipo == "Compra" || documentomercantil.tipo == "compra" || documentomercantil.tipo == "fact_compra") {
           Tabla = Proveedor;
           tipo = "c";
@@ -282,14 +278,11 @@ exports.exportPDF = function(req, res) {
           tipo = "v";
         }
 
-        console.log("5");
         if(Tabla!=undefined) {
           Tabla.findById(documentomercantil.empresaID, function(err, empresa){
-            console.log("5.1");
             var newDate = "";
             var emisor = {};
             var logo = "";
-            console.log("5.2");
             if(tipo == "c") {
                emisor = {
                  razonSocial: empresa.nombreEmpresa,
@@ -301,15 +294,10 @@ exports.exportPDF = function(req, res) {
                }
                receptor = datosPropios[0];
             }
-            console.log("5.3");
             if(tipo == "v") {
-              console.log("5.3.1");
               newDate = toReadableDate(datosPropios[0].inicioActividades);
-              console.log("5.3.2");
               logo = "http://localhost:3000/img/logo.png";
-              console.log("5.3.3");
               emisor = datosPropios[0];
-              console.log("5.3.4");
               receptor = {
                 razonSocial: empresa.nombreEmpresa,
                 cuit: empresa.cuit,
@@ -318,9 +306,7 @@ exports.exportPDF = function(req, res) {
                 ingresosBrutos: "",
                 inicioActividades: ""
               };
-              console.log("5.3.5");
             }
-            console.log("6");
             var newDate2 = toReadableDate(documentomercantil.fechaEmision);
             var newDate3 = toReadableDate(documentomercantil.fechaVencimiento);
             var newDate4 = toReadableDate(documentomercantil.fechaVtoCAI);
@@ -369,7 +355,6 @@ exports.exportPDF = function(req, res) {
                 montoOtrosTributos = 0,
                 montoTotal = total;
 
-            console.log("7");
             var post_data= JSON.stringify({
               template:{
                 content: fs.readFileSync(path.join("templates/factura.html"), 'utf8'),
@@ -416,8 +401,6 @@ exports.exportPDF = function(req, res) {
                     'Content-Type': 'application/json'
                 }
             };
-
-            console.log("8");
             var post_req = http.request(post_options, function(response) {
                 response.pipe(res);
               }).on('error', function(e) {
