@@ -247,19 +247,32 @@ toReadableDate = function(date) {
   return newDate;
 }
 
+getMontoIVA = function(iva, items) {
+  var sum = 0;
+  for(var j = 0; j < items.length; j++) {
+    if(items[j].iva == iva)
+      sum += (parseFloat(items[j].precio)*parseFloat(items[j].cantidad)*parseFloat(items[j].iva))/100;
+  }
+  return sum;
+}
+
 exports.exportPDF = function(req, res) {
 	console.log('GET/documentosMercantiles/pdf');
 	console.log(req.params.id);
 
+  console.log("1");
   DocumentoMercantil.findById(req.params.id, function(err, documentomercantil) {
     if(err) return res.status(500).send(err.message);
+    console.log("2");
     documentoMercantilItemController.findFiltered({documentoMercantilID: req.params.id}, function(err, documenTomercantilItems){
       if(err) return res.status(500).send(err.message);
+      console.log("3");
       facturacionDatosPropiosModel.find({}, function(err, datosPropios){
         if(err) return res.status(500).send(err.message);
 
         var Tabla;
         var tipo;
+        console.log("4");
         if(documentomercantil.tipo == "Compra" || documentomercantil.tipo == "compra" || documentomercantil.tipo == "fact_compra") {
           Tabla = Proveedor;
           tipo = "c";
@@ -269,13 +282,15 @@ exports.exportPDF = function(req, res) {
           tipo = "v";
         }
 
+        console.log("5");
         if(Tabla!=undefined) {
           Tabla.findById(documentomercantil.empresaID, function(err, empresa){
+            console.log("5.1");
             var newDate = "";
             var emisor = {};
             var logo = "";
+            console.log("5.2");
             if(tipo == "c") {
-              console.log("1");
                emisor = {
                  razonSocial: empresa.nombreEmpresa,
                  cuit: empresa.cuit,
@@ -284,13 +299,17 @@ exports.exportPDF = function(req, res) {
                  ingresosBrutos: "",
                  inicioActividades: ""
                }
-               console.log("2");
                receptor = datosPropios[0];
             }
+            console.log("5.3");
             if(tipo == "v") {
+              console.log("5.3.1");
               newDate = toReadableDate(datosPropios[0].inicioActividades);
+              console.log("5.3.2");
               logo = "http://localhost:3000/img/logo.png";
+              console.log("5.3.3");
               emisor = datosPropios[0];
+              console.log("5.3.4");
               receptor = {
                 razonSocial: empresa.nombreEmpresa,
                 cuit: empresa.cuit,
@@ -299,10 +318,58 @@ exports.exportPDF = function(req, res) {
                 ingresosBrutos: "",
                 inicioActividades: ""
               };
+              console.log("5.3.5");
             }
+            console.log("6");
             var newDate2 = toReadableDate(documentomercantil.fechaEmision);
             var newDate3 = toReadableDate(documentomercantil.fechaVencimiento);
+            var newDate4 = toReadableDate(documentomercantil.fechaVtoCAI);
+            var codigoComprobante =
+                (documentomercantil.tipoFactura == 'A')?"COD. 01"
+               :(documentomercantil.tipoFactura == 'B')?"COD. 06"
+               :(documentomercantil.tipoFactura == 'C')?"COD. 11"
+               :(documentomercantil.tipoFactura == 'M')?"COD. 51":"";
+            var newItems = [];
+            var total = 0;
+            var neto = 0;
+            for(var i = 0; i < documenTomercantilItems.length; i++) {
+              var doc = documenTomercantilItems[i];
+              var bonif = (doc.bonificacion==undefined
+              || doc.bonificacion=="")?0:(doc.bonificacion);
+              var subtotal = doc.precio*doc.cantidad - (doc.precio*doc.cantidad*bonif/100);
+              var subtotalIVA = subtotal + subtotal*doc.iva/100;
+              total += subtotalIVA;
+              neto += subtotal;
+              newItems.push({
+                tipo: doc.tipo,
+                productoID: doc.productoID,
+                nombre: doc.nombre,
+                cantidad: doc.cantidad,
+                precio: doc.precio,
+                bonificacion: bonif,
+                iva: doc.iva,
+                documentoMercantilID: doc.documentoMercantilID,
+                subtotal: subtotal,
+                subtotalIVA: subtotalIVA
+              });
+            }
 
+            var montoRetencionIG = 0,
+                montoRetencionIVA = 0,
+                montoRetencionIB = 0,
+                montoImpuestosInternos = 0,
+                montoImpuestosExternos = 0,
+                importeNeto = neto,
+                montoIVA27 = getMontoIVA(27,documenTomercantilItems),
+                montoIVA21 = getMontoIVA(21,documenTomercantilItems),
+                montoIVA10_5 = getMontoIVA(10.5,documenTomercantilItems),
+                montoIVA5 = getMontoIVA(5,documenTomercantilItems),
+                montoIVA2_5 = getMontoIVA(2.5,documenTomercantilItems),
+                montoIVA0 = getMontoIVA(0,documenTomercantilItems),
+                montoOtrosTributos = 0,
+                montoTotal = total;
+
+            console.log("7");
             var post_data= JSON.stringify({
               template:{
                 content: fs.readFileSync(path.join("templates/factura.html"), 'utf8'),
@@ -320,7 +387,24 @@ exports.exportPDF = function(req, res) {
                   fechaInicioActividades: newDate,
                   fechaEmision: newDate2,
                   fechaVencimiento: newDate3,
-                  items: documenTomercantilItems
+                  codigoComprobante: codigoComprobante,
+                  items: newItems,
+                  fechaVtoCAI: newDate4,
+                  montoRetencionIG: montoRetencionIG,
+                  montoRetencionIVA: montoRetencionIVA,
+                  montoRetencionIB: montoRetencionIB,
+                  montoImpuestosInternos: montoImpuestosInternos,
+                  montoImpuestosExternos: montoImpuestosExternos,
+                  importeNeto: importeNeto,
+                  montoIVA27: montoIVA27,
+                  montoIVA21: montoIVA21,
+                  montoIVA10_5: montoIVA10_5,
+                  montoIVA5: montoIVA5,
+                  montoIVA2_5: montoIVA2_5,
+                  montoIVA0: montoIVA0,
+                  montoOtrosTributos: montoOtrosTributos,
+                  montoTotal: montoTotal,
+                  montoOtrosTributos: montoRetencionIG+montoRetencionIVA+montoImpuestosInternos+montoImpuestosExternos
               }
             });
             var post_options = {
@@ -333,6 +417,7 @@ exports.exportPDF = function(req, res) {
                 }
             };
 
+            console.log("8");
             var post_req = http.request(post_options, function(response) {
                 response.pipe(res);
               }).on('error', function(e) {

@@ -11,7 +11,6 @@
             h6 {
                 font-weight: normal;
             }
-
         </style>
     </head>
     <body>
@@ -19,9 +18,9 @@
             <div style="border-style:solid;border-width:2px;position:absolute;
                      left:478px;z-index:1002;width:80px;height:80px;
                      background-color:#FFFFFF">
-                <h1 style="line-height:8px;text-align:center;font-size:320%;margin-bottom:10px;margin-top:25px;">A</h1>
+                <h1 style="line-height:8px;text-align:center;font-size:320%;margin-bottom:10px;margin-top:25px;">{{:datos_factura.tipoFactura}}</h1>
                 <h3 style="text-align:center;margin-top:30px;">
-                    <small>COD. 01</small>
+                    <small>{{:codigoComprobante}}</small>
                 </h3>
             </div>
             <table style="width:1024px;border-style:solid;border-color:#000000;border-width:2px;padding-left:20px;padding-right:20px;">
@@ -99,7 +98,7 @@
                     </td>
                 </tr>
             </table>
-            <div style="margin-top:5px;width:1020px;height:728;border-style:solid;border-color:#000000;border-width:2px;">
+            <div style="margin-top:5px;width:1020px;height:700;border-style:solid;border-color:#000000;border-width:2px;">
                 <table style="width:100%;padding-left:20px;padding-right:20px;padding-top:5px;font-size:90%;">
                     <thead style="">
                         <tr style="background-color: #DDDDDD;width:100%;">
@@ -115,161 +114,177 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{for items}}
                         <tr style="width:100%;">
-                            <td style="width:5%;"></td>
-                            <td style="width:30%;">Nostra Faina x 10 KG</td>
-                            <td style="width:7%;">100</td>
-                            <td style="width:8%;">unidades</td>
-                            <td style="width:10%;">117,36</td>
-                            <td style="width:10%;">0,00</td>
-                            <td style="width:10%;">11736,00</td>
-                            <td style="width:10%;">21%</td>
-                            <td style="width:10%;">14200,56</td>
+                            <td style="width:5%;">{{:codigo}}</td>
+                            <td style="width:30%;">{{:nombre}}</td>
+                            <td style="width:7%; text-align:right;">{{:cantidad}}</td>
+                            <td style="width:8%; text-align:right;">unidades</td>
+                            <td style="width:10%; text-align:right;">{{:precio}}</td>
+                            <td style="width:10%; text-align:right;">{{:bonificacion}}%</td>
+                            <td style="width:10%; text-align:right;">{{:subtotal}}</td>
+                            <td style="width:10%; text-align:right;">{{:iva}}%</td>
+                            <td style="width:10%; text-align:right;">{{:subtotalIVA}}</td>
                         </tr>
-                        <tr style="width:100%;">
-                            <td style="width:5%;"></td>
-                            <td style="width:30%;">Nostra Faina x 10 KG</td>
-                            <td style="width:7%;">12</td>
-                            <td style="width:8%;">unidades</td>
-                            <td style="width:10%;">117,36</td>
-                            <td style="width:10%;">100,00</td>
-                            <td style="width:10%;">0,00</td>
-                            <td style="width:10%;">21%</td>
-                            <td style="width:10%;">0,00</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <table style="margin-top:5px;width:1024px;border-style:solid;border-color:#000000;border-width:2px;padding-left:20px;padding-right:20px;">
-                <tr style="width:100%">
-                    <td style="width:50%;">
-                        <b style="font-size:120%;">Otros Tributos</b>
-                        <table style="width:100%;padding-top:5px;font-size:90%;">
-                            <thead style="">
-                                <tr style="background-color: #DDDDDD;width:100%;">
-                                    <th style="width:40%;">Descripción</th>
-                                    <th style="width:20%;">Detalle</th>
-                                    <th style="width:20%;">Alic. %</th>
-                                    <th style="width:20%;">Importe</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="width:100%;">
-                                    <td style="width:40%;">Ret. Impuesto a las Ganancias</td>
-                                    <td style="width:20%;"></td>
-                                    <td style="width:20%;"></td>
-                                    <td style="width:20%;">0,00</td>
-                                </tr>
-                                <tr style="width:100%;">
-                                    <td style="width:40%;">Ret. de IVA</td>
-                                    <td style="width:20%;"></td>
-                                    <td style="width:20%;"></td>
-                                    <td style="width:20%;">0,00</td>
-                                </tr>
-                                <tr style="width:100%;">
-                                    <td style="width:40%;">Impuestos Internos</td>
-                                    <td style="width:20%;"></td>
-                                    <td style="width:20%;"></td>
-                                    <td style="width:20%;">0,00</td>
-                                </tr>
-                                <tr style="width:100%;">
-                                    <td style="width:40%;">Impuestos Municipales</td>
-                                    <td style="width:20%;"></td>
-                                    <td style="width:20%;"></td>
-                                    <td style="width:20%;">0,00</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                    <td style="width:50%;">
-                        <table style="width:100%;padding-top:5px;font-size:90%;">
-                            <tbody>
-                                <tr style="width:100%;">
-                                    <td style="width:60%;text-align:right;padding-right:10px;">
-                                        <b>Importe Neto Gravado:</b>
-                                    </td>
-                                    <td style="width:40%;">$ 11736,00</td>
-                                </tr>
-                                <tr style="width:100%;">
-                                    <td style="width:60%;text-align:right;padding-right:10px;">
-                                        <b>IVA 27%:</b>
-                                    </td>
-                                    <td style="width:40%;">$ 0,00</td>
-                                </tr>
-                                <tr style="width:100%;">
-                                    <td style="width:60%;text-align:right;padding-right:10px;">
-                                        <b>IVA 21%:</b>
-                                    </td>
-                                    <td style="width:40%;">$ 2464,56</td>
-                                </tr>
-                                <tr style="width:100%;">
-                                    <td style="width:60%;text-align:right;padding-right:10px;">
-                                        <b>IVA 10.5%:</b>
-                                    </td>
-                                    <td style="width:40%;">$ 0,00</td>
-                                </tr>
-                                <tr style="width:100%;">
-                                    <td style="width:60%;text-align:right;padding-right:10px;">
-                                        <b>IVA 5%:</b>
-                                    </td>
-                                    <td style="width:40%;">$ 0,00</td>
-                                </tr>
-                                <tr style="width:100%;">
-                                    <td style="width:60%;text-align:right;padding-right:10px;">
-                                        <b>IVA 2.5%:</b>
-                                    </td>
-                                    <td style="width:40%;">$ 0,00</td>
-                                </tr>
-                                <tr style="width:100%;">
-                                    <td style="width:60%;text-align:right;padding-right:10px;">
-                                        <b>IVA 0%:</b>
-                                    </td>
-                                    <td style="width:40%;">$ 0,00</td>
-                                </tr>
-                                <tr style="width:100%;">
-                                    <td style="width:60%;text-align:right;padding-right:10px;">
-                                        <b>Importe Otros Tributos:</b>
-                                    </td>
-                                    <td style="width:40%;">$ 0,00</td>
-                                </tr>
-                                <tr style="width:100%;">
-                                    <td style="width:60%;text-align:right;padding-right:10px;">
-                                        <b>Importe Total:</b>
-                                    </td>
-                                    <td style="width:40%;">$ 14200,56</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-            <table style="margin-top:5px;width:1024px; height: 120px;border-style:solid;border-color:#000000;border-width:2px;padding-left:20px;padding-right:20px;">
-                <tr style="width:100%">
-                    <td style="width:50%;">
-                        AFIP - Comprobante Autorizado
-                        <br/>
-                        |||||||||||||||||||
-                    </td>
-                    <td style="width:50%;">
-                        <table style="width:100%;padding-top:5px;font-size:90%;">
-                            <tbody>
-                                <tr style="width:100%;">
-                                    <td style="width:60%;text-align:right;padding-right:10px;">
-                                        <b>CAE Nº:</b>
-                                    </td>
-                                    <td style="width:40%;">66502782674465</td>
-                                </tr>
-                                <tr style="width:100%;">
-                                    <td style="width:60%;text-align:right;padding-right:10px;">
-                                        <b>Fecha de Vto. de CAE:</b>
-                                    </td>
-                                    <td style="width:40%;">25/12/2016</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
+                    {{/for}}
+                </tbody>
             </table>
         </div>
-    </body>
+        <table style="margin-top:5px;width:1024px;border-style:solid;border-color:#000000;border-width:2px;padding-left:20px;padding-right:20px;">
+            <tr style="width:100%">
+                <td style="width:50%;">
+                    <b style="font-size:120%;">Otros Tributos</b>
+                    <table style="width:100%;padding-top:5px;font-size:90%;">
+                        <thead style="">
+                            <tr style="background-color: #DDDDDD;width:100%;">
+                                <th style="width:40%;">Descripción</th>
+                                <th style="width:20%;">Detalle</th>
+                                <th style="width:20%;">Alic. %</th>
+                                <th style="width:20%;">Importe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="width:100%;">
+                                <td style="width:40%;">Ret. Impuesto a las Ganancias</td>
+                                <td style="width:20%;"></td>
+                                <td style="width:20%;">{{:datos_factura.retencionIG}}</td>
+                                <td style="width:20%;text-align:right;">{{:montoRetencionIG}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:40%;">Ret. de IVA</td>
+                                <td style="width:20%;"></td>
+                                <td style="width:20%;">{{:datos_factura.retencionIVA}}</td>
+                                <td style="width:20%;text-align:right;">{{:montoRetencionIVA}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:40%;">Ret. de Ingresos Brutos</td>
+                                <td style="width:20%;"></td>
+                                <td style="width:20%;">{{:datos_factura.retencionIB}}</td>
+                                <td style="width:20%;text-align:right;">{{:montoRetencionIB}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:40%;">Impuestos Internos</td>
+                                <td style="width:20%;"></td>
+                                <td style="width:20%;">{{:datos_factura.impuestosInternos}}</td>
+                                <td style="width:20%;text-align:right;">{{:montoImpuestosInternos}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:40%;">Impuestos Municipales</td>
+                                <td style="width:20%;"></td>
+                                <td style="width:20%;">{{:datos_factura.impuestosMunicipales}}</td>
+                                <td style="width:20%;text-align:right;">{{:montoImpuestosExternos}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:40%;"></td>
+                                <td colspan="2" style="width:40%;text-align:right;">
+                                    <b>Importe Otros Tributos:</b>
+                                </td>
+                                <td style="width:20%;text-align:right;">
+                                    <b>$
+                                        {{:montoOtrosTributos}}</b>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td style="width:50%;">
+                    <table style="width:100%;padding-top:5px;font-size:90%;">
+                        <tbody>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>Importe Neto Gravado:</b>
+                                </td>
+                                <td style="width:40%;text-align:right;">$
+                                    {{:importeNeto}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>IVA 27%:</b>
+                                </td>
+                                <td style="width:40%;text-align:right;">$
+                                    {{:montoIVA27}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>IVA 21%:</b>
+                                </td>
+                                <td style="width:40%;text-align:right;">$
+                                    {{:montoIVA21}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>IVA 10.5%:</b>
+                                </td>
+                                <td style="width:40%;text-align:right;">$
+                                    {{:montoIVA10_5}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>IVA 5%:</b>
+                                </td>
+                                <td style="width:40%;text-align:right;">$
+                                    {{:montoIVA5}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>IVA 2.5%:</b>
+                                </td>
+                                <td style="width:40%;text-align:right;">$
+                                    {{:montoIVA2_5}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>IVA 0%:</b>
+                                </td>
+                                <td style="width:40%;text-align:right;">$
+                                    {{:montoIVA0}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>Importe Otros Tributos:</b>
+                                </td>
+                                <td style="width:40%;text-align:right;">$
+                                    {{:montoOtrosTributos}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>Importe Total:</b>
+                                </td>
+                                <td style="width:40%;text-align:right;">$
+                                    {{:montoTotal}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <table style="margin-top:5px;width:1024px; height: 120px;border-style:solid;border-color:#000000;border-width:2px;padding-left:20px;padding-right:20px;">
+            <tr style="width:100%">
+                <td style="width:50%;">
+                    AFIP - Comprobante Autorizado
+                    <br/>
+                    |||||||||||||||||||
+                </td>
+                <td style="width:50%;">
+                    <table style="width:100%;padding-top:5px;font-size:90%;">
+                        <tbody>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>CAI Nº:</b>
+                                </td>
+                                <td style="width:40%;">{{:datos_factura.CAI}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>Fecha de Vto. de CAI:</b>
+                                </td>
+                                <td style="width:40%;">{{:fechaVtoCAI}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
 </html>

@@ -2,11 +2,13 @@ var mongoose = require("mongoose"); //instancio objeto "mongoose"
 var Schema = mongoose.Schema;
 
 var documentoMercantilItemSchema = new mongoose.Schema({
+  codigo:     	  			{ type: String },
   tipo:     	  			{ type: String },
   productoID: 				{ type: String },
   nombre:           		{ type: String },
   cantidad:         		{ type: Number },
   precio:         			{ type: Number },
+  bonificacion:         			{ type: Number },
   iva:         				{ type: Number },
   documentoMercantilID:  	{ type: mongoose.Schema.ObjectId, ref: 'DocumentoMercantil' }
 });
