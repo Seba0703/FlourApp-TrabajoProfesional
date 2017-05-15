@@ -11,6 +11,7 @@
             h6 {
                 font-weight: normal;
             }
+
         </style>
     </head>
     <body>
@@ -30,13 +31,13 @@
                         <br/>
                         <h4>
                             <b>Razón Social:
-                            </b>LOLATO EDUARDO RICARDO</h4>
+                            </b>{{:emisor.razonSocial}}</h4>
                         <h4>
                             <b>Domicilio Comercial:
-                            </b>Rivero 433 - Avellaneda, Buenos Aires</h4>
+                            </b>{{:emisor.domicilioComercial}}</h4>
                         <h4>
                             <b>Condición Frente al IVA:
-                            </b>IVA Responsable Inscripto</h4>
+                            </b>{{:emisor.categoriaFiscal}}</h4>
                     </td>
                     <td style="border-left-style:solid;border-left-width:2px;width:50%;text-align:left;padding-left:70px;padding-right:20px;">
                         <h1 style="width:100%; text-align:left;">
@@ -46,23 +47,23 @@
                         <h4>
                             <span>
                                 <b>Punto de Venta:
-                                </b>0002</span>
+                                </b>{{:datos_factura.puntoDeVenta}}</span>
                             <span style="margin-left:30px;">
                                 <b>Comp. Nro:
-                                </b>000000059</span>
+                                </b>{{:datos_factura.numeroFactura}}</span>
                         </h4>
                         <h4>
                             <b>Fecha de Emisión:
-                            </b>15/12/2016</h4>
+                            </b>{{:fechaEmision}}</h4>
                         <h4>
                             <b>CUIT:
-                            </b>20168506822</h4>
+                            </b>{{:emisor.cuit}}</h4>
                         <h4>
                             <b>Ingresos Brutos:
-                            </b>C.M. 20-16850682-2</h4>
+                            </b>{{:emisor.ingresosBrutos}}</h4>
                         <h4>
                             <b>Fecha de Inicio de Actividades:
-                            </b>04/10/2010</h4>
+                            </b>{{:fechaInicioActividades}}</h4>
                     </td>
                 </tr>
             </table>
@@ -70,31 +71,31 @@
                 <tr style="width:100%">
                     <td style="width:50%;">
                         <b>CUIT:
-                        </b>30707806504
+                        </b>{{:receptor.cuit}}
                     </td>
                     <td style="width:50%;">
                         <b>Apellido y Nombre/Razón Social:
-                        </b>Kelton S.A.
+                        </b>{{:receptor.razonSocial}}
                     </td>
                 </tr>
                 <tr style="width:100%">
                     <td style="width:50%;">
                         <b>Condición frente al IVA:
-                        </b>IVA Responsable Inscripto
+                        </b>{{:receptor.categoriaFiscal}}
                     </td>
                     <td style="width:50%;">
                         <b>Domicilio Comercial:
-                        </b>Avda. Luro 5260 - Mar del Plata Norte, Buenos Aires
+                        </b>{{:receptor.domicilioComercial}}
                     </td>
                 </tr>
                 <tr style="width:100%">
                     <td style="width:50%;">
                         <b>Condición de Venta:
-                        </b>Cuenta Corriente
+                        </b>{{:datos_factura.condicionPago}}
                     </td>
                     <td style="width:50%;">
                         <b>Nro. Remito:
-                        </b>0001-00001319
+                        </b>{{:datos_factura.comprobanteReferencia}}
                     </td>
                 </tr>
             </table>

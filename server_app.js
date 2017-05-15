@@ -4,8 +4,6 @@ var express = require("express"),
     bodyParser  = require("body-parser"),
     methodOverride = require("method-override");
     mongoose = require("mongoose");
-    var http = require('http');
-    var fs = require('fs');
 
 
 app.use(express.static('public'));
@@ -128,7 +126,8 @@ router.get('/reportexample.pdf' ,function(req,res,next){
         'preview':'true'
     },
     data: {
-        img_path: "http://localhost:3000/img/logo.png"
+        img_path: "http://localhost:3000/img/logo.png",
+        razon_social: "LOLATO EDUARDO RICARDO"
     }
   });
   var post_options = {

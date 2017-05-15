@@ -19,5 +19,8 @@ exports.getDocumentoMercantilRoutersHandler = function(express){
 	documentoMercantilRoutersHandler.route('/documentosMercantiles/porTipo/:tipo')
 	  .get(documentoMercantilController.findByTipo);
 
+	documentoMercantilRoutersHandler.route('/documentosMercantiles/pdf/:id')
+	  .get(documentoMercantilController.exportPDF);
+
 	return documentoMercantilRoutersHandler;
 }

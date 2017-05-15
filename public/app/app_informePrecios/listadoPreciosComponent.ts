@@ -55,7 +55,6 @@ export class ListadoPreciosComponent {
   }
 
   dateToString(date:Date):string {
-    console.log(new Date(date).toLocaleDateString());
     if(date != undefined)
       return new Date(date).toLocaleDateString();
     else return "";

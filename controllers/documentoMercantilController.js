@@ -2,8 +2,12 @@ var mongoose = require('mongoose');
 //Import models
 var DocumentoMercantil  = require("../models/documentoMercantil").documentoMercantilModel;
 var documentoMercantilItemController = require("./documentoMercantilItemController");
+var facturacionDatosPropiosModel  = require("../models/facturacionDatosPropios").facturacionDatosPropiosModel;
 var Cliente  = require("../models/cliente").clienteModel;
 var Proveedor  = require("../models/proveedor").proveedorModel;
+var fs = require('fs');
+var path = require('path');
+var http = require('http');
 
 exports.findAll = function(req, res) {
     DocumentoMercantil.find(function(err, documentosmercantiles){
@@ -232,4 +236,113 @@ exports.delete = function(req, res) {
 			res.status(200).send(documentomercantil);
         })
     });
+};
+
+toReadableDate = function(date) {
+  if(date==undefined)
+    return "";
+  var dateSplit = (date).toLocaleDateString().split("T");
+  var partSplit = dateSplit[0].split("-");
+  var newDate = partSplit[2] + '/' + partSplit[1] + '/' + partSplit[0];
+  return newDate;
+}
+
+exports.exportPDF = function(req, res) {
+	console.log('GET/documentosMercantiles/pdf');
+	console.log(req.params.id);
+
+  DocumentoMercantil.findById(req.params.id, function(err, documentomercantil) {
+    if(err) return res.status(500).send(err.message);
+    documentoMercantilItemController.findFiltered({documentoMercantilID: req.params.id}, function(err, documenTomercantilItems){
+      if(err) return res.status(500).send(err.message);
+      facturacionDatosPropiosModel.find({}, function(err, datosPropios){
+        if(err) return res.status(500).send(err.message);
+
+        var Tabla;
+        var tipo;
+        if(documentomercantil.tipo == "Compra" || documentomercantil.tipo == "compra" || documentomercantil.tipo == "fact_compra") {
+          Tabla = Proveedor;
+          tipo = "c";
+        }
+        if(documentomercantil.tipo == "Venta" || documentomercantil.tipo == "venta" || documentomercantil.tipo == "fact_venta") {
+          Tabla = Cliente;
+          tipo = "v";
+        }
+
+        if(Tabla!=undefined) {
+          Tabla.findById(documentomercantil.empresaID, function(err, empresa){
+            var newDate = "";
+            var emisor = {};
+            var logo = "";
+            if(tipo == "c") {
+              console.log("1");
+               emisor = {
+                 razonSocial: empresa.nombreEmpresa,
+                 cuit: empresa.cuit,
+                 domicilioComercial: empresa.direccion,
+                 categoriaFiscal: empresa.categoriaFiscal,
+                 ingresosBrutos: "",
+                 inicioActividades: ""
+               }
+               console.log("2");
+               receptor = datosPropios[0];
+            }
+            if(tipo == "v") {
+              newDate = toReadableDate(datosPropios[0].inicioActividades);
+              logo = "http://localhost:3000/img/logo.png";
+              emisor = datosPropios[0];
+              receptor = {
+                razonSocial: empresa.nombreEmpresa,
+                cuit: empresa.cuit,
+                domicilioComercial: empresa.direccion,
+                categoriaFiscal: empresa.categoriaFiscal,
+                ingresosBrutos: "",
+                inicioActividades: ""
+              };
+            }
+            var newDate2 = toReadableDate(documentomercantil.fechaEmision);
+            var newDate3 = toReadableDate(documentomercantil.fechaVencimiento);
+
+            var post_data= JSON.stringify({
+              template:{
+                content: fs.readFileSync(path.join("templates/factura.html"), 'utf8'),
+                engine: 'jsrender',
+                recipe : 'phantom-pdf'
+               },
+              options:{
+                  'preview':'true'
+              },
+              data: {
+                  img_path: logo,
+                  emisor: emisor,
+                  receptor: receptor,
+                  datos_factura: documentomercantil,
+                  fechaInicioActividades: newDate,
+                  fechaEmision: newDate2,
+                  fechaVencimiento: newDate3,
+                  items: documenTomercantilItems
+              }
+            });
+            var post_options = {
+                host: 'localhost',
+                port: '3001',
+                path: '/api/report',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+
+            var post_req = http.request(post_options, function(response) {
+                response.pipe(res);
+              }).on('error', function(e) {
+                res.sendStatus(500);
+              });
+              post_req.write(post_data);
+              post_req.end();
+          });
+        }
+  		});
+    });
+  });
 };
