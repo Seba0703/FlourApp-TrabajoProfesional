@@ -2,7 +2,7 @@ var mongoose = require("mongoose"); //instancio objeto "mongoose"
 var Schema = mongoose.Schema;
 
 var documentoMercantilSchema = new mongoose.Schema({
-  tipo: 				        { type: String }, /*tipo: Compra, Venta, Remito u Orden de Compra*/
+  tipo: 				        { type: String }, /*tipo: fact_compra, fact_venta, remito u ord_compra*/
   puntoDeVenta:         { type: Number },
   tipoFactura:          { type: String }, /*tipoFactura: A, B o C*/
   numeroFactura:        { type: Number },

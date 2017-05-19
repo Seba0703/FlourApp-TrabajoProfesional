@@ -269,6 +269,7 @@ exports.exportPDF = function(req, res) {
 
         var Tabla;
         var tipo;
+        var path_template = "templates/factura.html";
         if(documentomercantil.tipo == "Compra" || documentomercantil.tipo == "compra" || documentomercantil.tipo == "fact_compra") {
           Tabla = Proveedor;
           tipo = "c";
@@ -277,11 +278,27 @@ exports.exportPDF = function(req, res) {
           Tabla = Cliente;
           tipo = "v";
         }
-
+        if(documentomercantil.tipo == "remito" || documentomercantil.tipo == "Remito") {
+          Tabla = Cliente;
+          tipo = "r";
+          path_template = "templates/remito.html";
+        }
+        if(documentomercantil.tipo == "ord_compra" || documentomercantil.tipo == "Ord_Compra") {
+          Tabla = Proveedor;
+          tipo = "o";
+          path_template = "templates/ordenCompra.html";
+        }
         if(Tabla!=undefined) {
           Tabla.findById(documentomercantil.empresaID, function(err, empresa){
             var newDate = "";
-            var emisor = {};
+            var emisor = {
+              razonSocial: "",
+              cuit: "",
+              domicilioComercial: "",
+              categoriaFiscal: "",
+              ingresosBrutos: "",
+              inicioActividades: "",
+            };
             var logo = "";
             if(tipo == "c") {
                emisor = {
@@ -339,7 +356,6 @@ exports.exportPDF = function(req, res) {
                 subtotalIVA: subtotalIVA
               });
             }
-
             var montoRetencionIG = 0,
                 montoRetencionIVA = 0,
                 montoRetencionIB = 0,
@@ -355,9 +371,11 @@ exports.exportPDF = function(req, res) {
                 montoOtrosTributos = 0,
                 montoTotal = total;
 
+                console.log('-');
+
             var post_data= JSON.stringify({
               template:{
-                content: fs.readFileSync(path.join("templates/factura.html"), 'utf8'),
+                content: fs.readFileSync(path.join(path_template), 'utf8'),
                 engine: 'jsrender',
                 recipe : 'phantom-pdf'
                },
@@ -392,6 +410,7 @@ exports.exportPDF = function(req, res) {
                   montoOtrosTributos: montoRetencionIG+montoRetencionIVA+montoImpuestosInternos+montoImpuestosExternos
               }
             });
+            console.log('-');
             var post_options = {
                 host: 'localhost',
                 port: '3001',
@@ -401,6 +420,7 @@ exports.exportPDF = function(req, res) {
                     'Content-Type': 'application/json'
                 }
             };
+            console.log('-');
             var post_req = http.request(post_options, function(response) {
                 response.pipe(res);
               }).on('error', function(e) {

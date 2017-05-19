@@ -1,0 +1,290 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Plantilla de FACTURA</title>
+        <style>
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-weight: normal;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div style="border-style:solid;border-width:2px;position:absolute;
+                     left:478px;z-index:1002;width:80px;height:80px;
+                     background-color:#FFFFFF">
+                <h1 style="line-height:8px;text-align:center;font-size:320%;margin-bottom:10px;margin-top:25px;">{{:datos_factura.tipoFactura}}</h1>
+                <h3 style="text-align:center;margin-top:30px;">
+                    <small>{{:codigoComprobante}}</small>
+                </h3>
+            </div>
+            <table style="width:1024px;border-style:solid;border-color:#000000;border-width:2px;padding-left:20px;padding-right:20px;">
+                <tr>
+                    <td style="width:50%;border-right-style:solid;border-right-width:2px;">
+                        <h1 style="text-align:center;"><img alt="" src="{{:img_path}}"/></h1>
+                        <br/>
+                        <h4>
+                            <b>Razón Social:
+                            </b>{{:emisor.razonSocial}}</h4>
+                        <h4>
+                            <b>Domicilio Comercial:
+                            </b>{{:emisor.domicilioComercial}}</h4>
+                        <h4>
+                            <b>Condición Frente al IVA:
+                            </b>{{:emisor.categoriaFiscal}}</h4>
+                    </td>
+                    <td style="border-left-style:solid;border-left-width:2px;width:50%;text-align:left;padding-left:70px;padding-right:20px;">
+                        <h1 style="width:100%; text-align:left;">
+                            <b>REMITO</b>
+                        </h1>
+                        <br/>
+                        <h4>
+                            <span>
+                                <b>Punto de Venta:
+                                </b>{{:datos_factura.puntoDeVenta}}</span>
+                            <span style="margin-left:30px;">
+                                <b>Comp. Nro:
+                                </b>{{:datos_factura.numeroFactura}}</span>
+                        </h4>
+                        <h4>
+                            <b>Fecha de Emisión:
+                            </b>{{:fechaEmision}}</h4>
+                        <h4>
+                            <b>CUIT:
+                            </b>{{:emisor.cuit}}</h4>
+                        <h4>
+                            <b>Ingresos Brutos:
+                            </b>{{:emisor.ingresosBrutos}}</h4>
+                        <h4>
+                            <b>Fecha de Inicio de Actividades:
+                            </b>{{:fechaInicioActividades}}</h4>
+                    </td>
+                </tr>
+            </table>
+            <table style="margin-top:5px;width:1024px;border-style:solid;border-color:#000000;border-width:2px;padding-left:20px;padding-right:20px;">
+                <tr style="width:100%">
+                    <td style="width:50%;">
+                        <b>CUIT:
+                        </b>{{:receptor.cuit}}
+                    </td>
+                    <td style="width:50%;">
+                        <b>Apellido y Nombre/Razón Social:
+                        </b>{{:receptor.razonSocial}}
+                    </td>
+                </tr>
+                <tr style="width:100%">
+                    <td style="width:50%;">
+                        <b>Condición frente al IVA:
+                        </b>{{:receptor.categoriaFiscal}}
+                    </td>
+                    <td style="width:50%;">
+                        <b>Domicilio Comercial:
+                        </b>{{:receptor.domicilioComercial}}
+                    </td>
+                </tr>
+                <tr style="width:100%">
+                    <td style="width:50%;">
+                        <b>Condición de Venta:
+                        </b>{{:datos_factura.condicionPago}}
+                    </td>
+                    <td style="width:50%;">
+                        <b>Nro. Remito:
+                        </b>{{:datos_factura.comprobanteReferencia}}
+                    </td>
+                </tr>
+            </table>
+            <div style="margin-top:5px;width:1020px;height:700;border-style:solid;border-color:#000000;border-width:2px;">
+                <table style="width:100%;padding-left:20px;padding-right:20px;padding-top:5px;font-size:90%;">
+                    <thead style="">
+                        <tr style="background-color: #DDDDDD;width:100%;">
+                            <th style="width:5%;">Código</th>
+                            <th style="width:30%;">Producto / Servicio</th>
+                            <th style="width:7%;">Cantidad</th>
+                            <th style="width:8%;">U. medida</th>
+                            <th style="width:10%;">Precio Unit.</th>
+                            <th style="width:10%;">% Bonif.</th>
+                            <th style="width:10%;">Subtotal</th>
+                            <th style="width:10%;">Alicuota IVA</th>
+                            <th style="width:10%;">Subtotal c/IVA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{for items}}
+                        <tr style="width:100%;">
+                            <td style="width:5%;">{{:codigo}}</td>
+                            <td style="width:30%;">{{:nombre}}</td>
+                            <td style="width:7%; text-align:right;">{{:cantidad}}</td>
+                            <td style="width:8%; text-align:right;">unidades</td>
+                            <td style="width:10%; text-align:right;">{{:precio}}</td>
+                            <td style="width:10%; text-align:right;">{{:bonificacion}}%</td>
+                            <td style="width:10%; text-align:right;">{{:subtotal}}</td>
+                            <td style="width:10%; text-align:right;">{{:iva}}%</td>
+                            <td style="width:10%; text-align:right;">{{:subtotalIVA}}</td>
+                        </tr>
+                    {{/for}}
+                </tbody>
+            </table>
+        </div>
+        <table style="margin-top:5px;width:1024px;border-style:solid;border-color:#000000;border-width:2px;padding-left:20px;padding-right:20px;">
+            <tr style="width:100%">
+                <td style="width:50%;">
+                    <b style="font-size:120%;">Otros Tributos</b>
+                    <table style="width:100%;padding-top:5px;font-size:90%;">
+                        <thead style="">
+                            <tr style="background-color: #DDDDDD;width:100%;">
+                                <th style="width:40%;">Descripción</th>
+                                <th style="width:20%;">Detalle</th>
+                                <th style="width:20%;">Alic. %</th>
+                                <th style="width:20%;">Importe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="width:100%;">
+                                <td style="width:40%;">Ret. Impuesto a las Ganancias</td>
+                                <td style="width:20%;"></td>
+                                <td style="width:20%;">{{:datos_factura.retencionIG}}</td>
+                                <td style="width:20%;text-align:right;">{{:montoRetencionIG}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:40%;">Ret. de IVA</td>
+                                <td style="width:20%;"></td>
+                                <td style="width:20%;">{{:datos_factura.retencionIVA}}</td>
+                                <td style="width:20%;text-align:right;">{{:montoRetencionIVA}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:40%;">Ret. de Ingresos Brutos</td>
+                                <td style="width:20%;"></td>
+                                <td style="width:20%;">{{:datos_factura.retencionIB}}</td>
+                                <td style="width:20%;text-align:right;">{{:montoRetencionIB}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:40%;">Impuestos Internos</td>
+                                <td style="width:20%;"></td>
+                                <td style="width:20%;">{{:datos_factura.impuestosInternos}}</td>
+                                <td style="width:20%;text-align:right;">{{:montoImpuestosInternos}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:40%;">Impuestos Municipales</td>
+                                <td style="width:20%;"></td>
+                                <td style="width:20%;">{{:datos_factura.impuestosMunicipales}}</td>
+                                <td style="width:20%;text-align:right;">{{:montoImpuestosExternos}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:40%;"></td>
+                                <td colspan="2" style="width:40%;text-align:right;">
+                                    <b>Importe Otros Tributos:</b>
+                                </td>
+                                <td style="width:20%;text-align:right;">
+                                    <b>$
+                                        {{:montoOtrosTributos}}</b>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td style="width:50%;">
+                    <table style="width:100%;padding-top:5px;font-size:90%;">
+                        <tbody>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>Importe Neto Gravado:</b>
+                                </td>
+                                <td style="width:40%;text-align:right;">$
+                                    {{:importeNeto}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>IVA 27%:</b>
+                                </td>
+                                <td style="width:40%;text-align:right;">$
+                                    {{:montoIVA27}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>IVA 21%:</b>
+                                </td>
+                                <td style="width:40%;text-align:right;">$
+                                    {{:montoIVA21}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>IVA 10.5%:</b>
+                                </td>
+                                <td style="width:40%;text-align:right;">$
+                                    {{:montoIVA10_5}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>IVA 5%:</b>
+                                </td>
+                                <td style="width:40%;text-align:right;">$
+                                    {{:montoIVA5}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>IVA 2.5%:</b>
+                                </td>
+                                <td style="width:40%;text-align:right;">$
+                                    {{:montoIVA2_5}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>IVA 0%:</b>
+                                </td>
+                                <td style="width:40%;text-align:right;">$
+                                    {{:montoIVA0}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>Importe Otros Tributos:</b>
+                                </td>
+                                <td style="width:40%;text-align:right;">$
+                                    {{:montoOtrosTributos}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>Importe Total:</b>
+                                </td>
+                                <td style="width:40%;text-align:right;">$
+                                    {{:montoTotal}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <table style="margin-top:5px;width:1024px; height: 120px;border-style:solid;border-color:#000000;border-width:2px;padding-left:20px;padding-right:20px;">
+            <tr style="width:100%">
+                <td style="width:50%;">
+                    AFIP - Comprobante Autorizado
+                    <br/>
+                    |||||||||||||||||||
+                </td>
+                <td style="width:50%;">
+                    <table style="width:100%;padding-top:5px;font-size:90%;">
+                        <tbody>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>CAI Nº:</b>
+                                </td>
+                                <td style="width:40%;">{{:datos_factura.CAI}}</td>
+                            </tr>
+                            <tr style="width:100%;">
+                                <td style="width:60%;text-align:right;padding-right:10px;">
+                                    <b>Fecha de Vto. de CAI:</b>
+                                </td>
+                                <td style="width:40%;">{{:fechaVtoCAI}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

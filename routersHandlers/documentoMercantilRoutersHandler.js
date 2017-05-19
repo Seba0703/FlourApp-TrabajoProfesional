@@ -22,5 +22,8 @@ exports.getDocumentoMercantilRoutersHandler = function(express){
 	documentoMercantilRoutersHandler.route('/documentosMercantiles/pdf/:id')
 	  .get(documentoMercantilController.exportPDF);
 
+	// documentoMercantilRoutersHandler.route('/documentosMercantiles/remito/:id')
+	//   .get(documentoMercantilController.exportPDFRemito);
+
 	return documentoMercantilRoutersHandler;
 }
