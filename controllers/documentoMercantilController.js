@@ -300,7 +300,7 @@ exports.exportPDF = function(req, res) {
               inicioActividades: "",
             };
             var logo = "";
-            if(tipo == "c") {
+            if(tipo == "c" || tipo == "o") {
                emisor = {
                  razonSocial: empresa.nombreEmpresa,
                  cuit: empresa.cuit,
@@ -310,8 +310,10 @@ exports.exportPDF = function(req, res) {
                  inicioActividades: ""
                }
                receptor = datosPropios[0];
+               if (tipo == "o")
+                logo = "http://localhost:3000/img/logo.png";
             }
-            if(tipo == "v") {
+            if(tipo == "v" || tipo == "r") {
               newDate = toReadableDate(datosPropios[0].inicioActividades);
               logo = "http://localhost:3000/img/logo.png";
               emisor = datosPropios[0];
@@ -331,7 +333,9 @@ exports.exportPDF = function(req, res) {
                 (documentomercantil.tipoFactura == 'A')?"COD. 01"
                :(documentomercantil.tipoFactura == 'B')?"COD. 06"
                :(documentomercantil.tipoFactura == 'C')?"COD. 11"
-               :(documentomercantil.tipoFactura == 'M')?"COD. 51":"";
+               :(documentomercantil.tipoFactura == 'M')?"COD. 51"
+               :(documentomercantil.tipoFactura == 'R')?"COD. 91"
+               :"";
             var newItems = [];
             var total = 0;
             var neto = 0;

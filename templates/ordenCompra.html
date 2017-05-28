@@ -11,62 +11,35 @@
             h6 {
                 font-weight: normal;
             }
+
         </style>
     </head>
     <body>
         <div class="container">
-            <div style="border-style:solid;border-width:2px;position:absolute;
-                     left:478px;z-index:1002;width:80px;height:80px;
-                     background-color:#FFFFFF">
-                <h1 style="line-height:8px;text-align:center;font-size:320%;margin-bottom:10px;margin-top:25px;">{{:datos_factura.tipoFactura}}</h1>
-                <h3 style="text-align:center;margin-top:30px;">
-                    <small>{{:codigoComprobante}}</small>
-                </h3>
-            </div>
-            <table style="width:1024px;border-style:solid;border-color:#000000;border-width:2px;padding-left:20px;padding-right:20px;">
+            <table style="width:1024px;padding-left:20px;padding-right:20px;">
                 <tr>
-                    <td style="width:50%;border-right-style:solid;border-right-width:2px;">
-                        <h1 style="text-align:center;"><img alt="" src="{{:img_path}}"/></h1>
-                        <br/>
-                        <h4>
-                            <b>Razón Social:
-                            </b>{{:emisor.razonSocial}}</h4>
-                        <h4>
-                            <b>Domicilio Comercial:
-                            </b>{{:emisor.domicilioComercial}}</h4>
-                        <h4>
-                            <b>Condición Frente al IVA:
-                            </b>{{:emisor.categoriaFiscal}}</h4>
+                    <td>
+                        <h1><img alt="" src="{{:img_path}}"/></h1>
                     </td>
-                    <td style="border-left-style:solid;border-left-width:2px;width:50%;text-align:left;padding-left:70px;padding-right:20px;">
+                    <td>
                         <h1 style="width:100%; text-align:left;">
                             <b>ORDEN DE COMPRA</b>
                         </h1>
-                        <br/>
                         <h4>
                             <span>
-                                <b>Punto de Venta:
-                                </b>{{:datos_factura.puntoDeVenta}}</span>
-                            <span style="margin-left:30px;">
                                 <b>Comp. Nro:
                                 </b>{{:datos_factura.numeroFactura}}</span>
+                            <span style="margin-left:30px;">
+                                <b>Fecha de Emisión:
+                                </b>{{:fechaEmision}}</span>
                         </h4>
-                        <h4>
-                            <b>Fecha de Emisión:
-                            </b>{{:fechaEmision}}</h4>
-                        <h4>
-                            <b>CUIT:
-                            </b>{{:emisor.cuit}}</h4>
-                        <h4>
-                            <b>Ingresos Brutos:
-                            </b>{{:emisor.ingresosBrutos}}</h4>
-                        <h4>
-                            <b>Fecha de Inicio de Actividades:
-                            </b>{{:fechaInicioActividades}}</h4>
                     </td>
                 </tr>
             </table>
             <table style="margin-top:5px;width:1024px;border-style:solid;border-color:#000000;border-width:2px;padding-left:20px;padding-right:20px;">
+                <tr style="width:100%; background-color:#DDDDDD">
+                    <th colspan="2">Comprador</th>
+                </tr>
                 <tr style="width:100%">
                     <td style="width:50%;">
                         <b>CUIT:
@@ -95,6 +68,41 @@
                     <td style="width:50%;">
                         <b>Nro. Remito:
                         </b>{{:datos_factura.comprobanteReferencia}}
+                    </td>
+                </tr>
+            </table>
+            <table style="margin-top:5px;width:1024px;border-style:solid;border-color:#000000;border-width:2px;padding-left:20px;padding-right:20px;">
+                <tr style="width:100%; background-color:#DDDDDD">
+                    <th colspan="2">Proveedor</th>
+                </tr>
+                <tr style="width:100%">
+                    <td style="width:50%;">
+                        <b>Razón Social:
+                        </b>{{:emisor.razonSocial}}
+                    </td>
+                    <td style="width:50%;">
+                        <b>Domicilio Comercial:
+                        </b>{{:emisor.domicilioComercial}}
+                    </td>
+                </tr>
+                <tr style="width:100%">
+                    <td style="width:50%;">
+                        <b>Condición Frente al IVA:
+                        </b>{{:emisor.categoriaFiscal}}
+                    </td>
+                    <td style="width:50%;">
+                        <b>CUIT:
+                        </b>{{:emisor.cuit}}
+                    </td>
+                </tr>
+                <tr style="width:100%">
+                    <td style="width:50%;">
+                        <b>Ingresos Brutos:
+                        </b>{{:emisor.ingresosBrutos}}
+                    </td>
+                    <td style="width:50%;">
+                        <b>Fecha de Inicio de Actividades:
+                        </b>{{:fechaInicioActividades}}
                     </td>
                 </tr>
             </table>
@@ -252,33 +260,6 @@
                                 </td>
                                 <td style="width:40%;text-align:right;">$
                                     {{:montoTotal}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        <table style="margin-top:5px;width:1024px; height: 120px;border-style:solid;border-color:#000000;border-width:2px;padding-left:20px;padding-right:20px;">
-            <tr style="width:100%">
-                <td style="width:50%;">
-                    AFIP - Comprobante Autorizado
-                    <br/>
-                    |||||||||||||||||||
-                </td>
-                <td style="width:50%;">
-                    <table style="width:100%;padding-top:5px;font-size:90%;">
-                        <tbody>
-                            <tr style="width:100%;">
-                                <td style="width:60%;text-align:right;padding-right:10px;">
-                                    <b>CAI Nº:</b>
-                                </td>
-                                <td style="width:40%;">{{:datos_factura.CAI}}</td>
-                            </tr>
-                            <tr style="width:100%;">
-                                <td style="width:60%;text-align:right;padding-right:10px;">
-                                    <b>Fecha de Vto. de CAI:</b>
-                                </td>
-                                <td style="width:40%;">{{:fechaVtoCAI}}</td>
                             </tr>
                         </tbody>
                     </table>
