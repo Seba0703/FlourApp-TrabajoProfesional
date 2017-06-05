@@ -5,54 +5,42 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="./css/bootstrap.min.css">
-
         <!-- Font Awesome CDN -->
         <script src="https://use.fontawesome.com/c422ac8860.js"></script>
-
         <!-- Main CSS -->
         <link rel="stylesheet" href="./stylesheets/style.css" type="text/css">
         <!-- Por ser en cascada sobreescribe al que se habia definido antes (que seria el de bootstrap) -->
     </head>
     <body>
         <header>
-
             <div class="container text-center">
                 <!-- defino en el header un objecto container  -->
                 <h1>Sistema
                     <strong>FlourApp</strong>
                 </h1>
             </div>
-
         </header>
-
         <div id="main">
             <div class="container">
-
                 <div class="row">
                     <!-- inserto dentro del container una fila  -->
-
                     <div class="col-md-12">
                         <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
                             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
-
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item active">
                                     <a class="nav-link" href="home.html">Home</a>
                                 </li>
-
                                 <li class="nav-item">
                                     <a class="nav-link" href="clientes.html">Clientes</a>
                                 </li>
-
                                 <li class="nav-item">
                                     <a class="nav-link" href="proveedores.html">Proveedores</a>
                                 </li>
-
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                         Productos
@@ -63,7 +51,6 @@
                                         <a class="dropdown-item" href="productosTerminados.html">Terminados</a>
                                     </div>
                                 </li>
-
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                         Producción
@@ -73,7 +60,6 @@
                                         <a class="dropdown-item" href="deshacer.html">Deshacer</a>
                                     </div>
                                 </li>
-
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                         Facturación
@@ -85,7 +71,6 @@
                                         <a class="dropdown-item" href="#">Remitos</a>
                                     </div>
                                 </li>
-
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                         Informes
@@ -93,28 +78,22 @@
                                     <div class="dropdown-menu" aria-labelledby="Preview">
                                         <a class="dropdown-item" href="informeCompras.html">Compras</a>
                                         <a class="dropdown-item" href="informeVentas.html">Ventas</a>
-                                        <a class="dropdown-item {{activeIE}}" href="informeEstado.html">Estado de Stock</a>
-                                        <a class="dropdown-item {{activeIP}}" href="informePrecios.html">Precios</a>
+                                        <a class="dropdown-item" href="informeEstado.html">Estado de Stock</a>
+                                        <a class="dropdown-item" href="informePrecios.html">Precios</a>
                                     </div>
                                 </li>
-
                                 <li class="nav-item">
                                     <a class="nav-link" href="listaDePrecios.html">Lista de Precios</a>
                                 </li>
-
                                 <li class="nav-item">
                                     <a class="nav-link" href="usuarios.html">Usuarios</a>
                                 </li>
-
                             </ul>
-
                             <sign-out></sign-out>
                         </nav>
                     </div>
-
                     <div class="col-md-12">
                         <div id="accordion" role="tablist" aria-multiselectable="true">
-
                             <div class="card">
                                 <div class="card-header" role="tab" id="headingClientes">
                                     <h5 class="mb-0">
@@ -123,14 +102,12 @@
                                         </a>
                                     </h5>
                                 </div>
-
                                 <div id="collapseClientes" class="collapse" role="tabpanel" aria-labelledby="headingClientes">
                                     <div class="card-block">
                                         Explicación del módulo.
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card">
                                 <div class="card-header" role="tab" id="headingProv">
                                     <h5 class="mb-0">
@@ -145,7 +122,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card">
                                 <div class="card-header" role="tab" id="headingProductos">
                                     <h5 class="mb-0">
@@ -160,7 +136,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card">
                                 <div class="card-header" role="tab" id="headingProduccion">
                                     <h5 class="mb-0">
@@ -175,7 +150,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card">
                                 <div class="card-header" role="tab" id="headingLDP">
                                     <h5 class="mb-0">
@@ -190,7 +164,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card">
                                 <div class="card-header" role="tab" id="headingUsuarios">
                                     <h5 class="mb-0">
@@ -205,18 +178,12 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
         <footer></footer>
-
         <!-- jQuery first, then Tether, then Bootstrap JS. -->
         <script src="./js/jquery-3_1_1.js"></script>
         <script src="./js/tether.js"></script>
