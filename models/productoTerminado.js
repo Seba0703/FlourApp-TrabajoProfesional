@@ -7,6 +7,7 @@ var productoTerminadoSchema = new mongoose.Schema({
   unidad:				{ type: String },
   stockMin: 	  		{ type: Number },
   stockMax: 	  		{ type: Number },
+  stockOptimo:   	{ type: Number },
   embolsadoCantDefault: { type: Number },
   porcentajeMerma: 		{ type: Number },
   tipo:     	  		{ type: String },

@@ -1,8 +1,12 @@
 <div>
-	<div class="card" style="padding: 5px;">
-		<h5 style="margin-bottom:0px">{{nombre}}</h5>
+	<div class="card" style="padding: 10px 5px 10px 5px;margin-bottom: 15px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.09)">
+		<h6 style="margin-bottom:2px; font-size: 110%; font-weight: bold">{{nombre}}</h6>
 		<p style="margin-bottom:0px">Stock
 			<b [ngClass]="estadoColor()">{{estadoTexto()}}</b>
+			<span class="pull-right" style="margin-bottom:0px; color:#2196F3">
+				Recomendado:
+				{{optimo}}
+			</span>
 		</p>
 		<p style="margin-bottom:0px">Min:
 			{{min}}
@@ -12,7 +16,7 @@
 				{{actual}}</b>
 		</p>
 		<div class="progress">
-			<div class="progress-bar" [ngClass]="estadoColorBarra()" role="progressbar" [style.width]="(actual*100)/max+'%'" aria-valuenow="actual" aria-valuemin="0" aria-valuemax="max"></div>
+			<div class="progress-bar" style="height: 8px" [ngClass]="estadoColorBarra()" role="progressbar" [style.width]="(actual*100)/max+'%'" aria-valuenow="actual" aria-valuemin="0" aria-valuemax="max"></div>
 		</div>
 	</div>
 </div>

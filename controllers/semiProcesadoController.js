@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 //Import models
 var ProductoSemiProcesado  = require("../models/productoSemiProcesado").productoSemiProcesadoModel;
 
-exports.findAll = function(req, res) {  
-    ProductoSemiProcesado.find(function(err, semiProcesados){ 
+exports.findAll = function(req, res) {
+    ProductoSemiProcesado.find(function(err, semiProcesados){
 		if(err) res.send(500, err.message);
 
 		console.log('GET/semiProcesados');
@@ -12,15 +12,15 @@ exports.findAll = function(req, res) {
 };
 
 
-exports.findById = function(req, res) {  
-	var findByIdCallback = 
+exports.findById = function(req, res) {
+	var findByIdCallback =
 	function(err, semiProcesado){
 		if(err) return res.send(500, err.message);
 
 		console.log('GET/semiProcesado/' + req.params.id);
 		res.status(200).jsonp(semiProcesado);
     };
-	
+
     ProductoSemiProcesado.findById(req.params.id, findByIdCallback); //luego de realizar la busqueda ejecuta el callback
 };
 
@@ -36,6 +36,7 @@ exports.add = function(req, res) {
         unidad:     	       req.body.unidad,
         stockMin:              req.body.stockMin,
         stockMax:   	       req.body.stockMax,
+        stockOptimo:   	        (req.body.stockMax+req.body.stockMin)/2,
         embolsadoCantDefault:  req.body.embolsadoCantDefault,
         porcentajeMerma:       req.body.porcentajeMerma,
         tipo:                  req.body.tipo,
@@ -61,16 +62,16 @@ exports.canUpdateStock = function(req, res) {
 					console.log('SUMA');
 					if (semiProcesado.cantidad)
 						semiProcesado.cantidad = +semiProcesado.cantidad + +req.query.cant;
-					else 
+					else
 						semiProcesado.cantidad = +req.query.cant;
 				} else {
 					console.log('resta');
 					semiProcesado.cantidad = +semiProcesado.cantidad - +req.query.cant;
 				}
-				
+
 				console.log(semiProcesado.cantidad);
-				
-				if(semiProcesado.cantidad >= 0) { 
+
+				if(semiProcesado.cantidad >= 0) {
 					res.status(200).jsonp(semiProcesado);
 				} else {
 					res.status(505).send('No hay stock suficiente para realizar la accion. ' + req.query.id);
@@ -88,9 +89,9 @@ exports.canUpdateStock = function(req, res) {
 exports.update = function(req, res) {
 	console.log('UPDATE');
     console.log(req.body);
-	
+
     ProductoSemiProcesado.findById(req.params.id, function(err, semiProcesado) { //"semiProcesado" es el objeto que me devuelve la busqueda
-        
+
 		//actualizo todos los campos de ese "semiProcesado"
         semiProcesado.tasaImpositivaID =     req.body.tasaImpositivaID;
         semiProcesado.nombre =               req.body.nombre;
@@ -98,6 +99,7 @@ exports.update = function(req, res) {
         semiProcesado.unidad =     		  	 req.body.unidad;
         semiProcesado.stockMin =             req.body.stockMin;
         semiProcesado.stockMax =   	         req.body.stockMax;
+        semiProcesado.stockOptimo =   	        (req.body.stockMax+req.body.stockMin)/2;
         semiProcesado.embolsadoCantDefault = req.body.embolsadoCantDefault;
         semiProcesado.porcentajeMerma =      req.body.porcentajeMerma;
         semiProcesado.tipo =                 req.body.tipo;
@@ -125,8 +127,8 @@ exports.updateStock = function(req, res) {
 				} else {
 					semiProcesado.cantidad = +semiProcesado.cantidad - +req.body.cant;
 				}
-				
-				if(semiProcesado.cantidad >= 0) { 
+
+				if(semiProcesado.cantidad >= 0) {
 					semiProcesado.save(function(err) { //almaceno en la base "semiProcesado" para que quede actualizada con los nuevos cambios
 						if(err) return res.status(500).send(err.message);
 						res.status(200).jsonp(semiProcesado);
@@ -145,9 +147,9 @@ exports.updateStock = function(req, res) {
 
 
 exports.delete = function(req, res) {
-	console.log('DELETE');	
+	console.log('DELETE');
 	console.log(req.params.id);
-	
+
     ProductoSemiProcesado.findById(req.params.id, function(err, semiProcesado) {
         semiProcesado.remove(function(err) {
             if(err) return res.status(500).send(err.message);
@@ -155,5 +157,3 @@ exports.delete = function(req, res) {
         })
     });
 };
-
-

@@ -22012,3 +22012,712 @@ return ret;
 2017-06-08T19:18:40.818Z - info: Applying cached license information
 2017-06-08T19:18:40.819Z - info: Using free license
 2017-06-08T19:18:40.821Z - info: reporter initialized
+2017-06-09T15:03:02.703Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-06-09T15:03:02.704Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-06-09T15:03:02.708Z - info: Searching for available extensions in C:\tp_profesional\FlourApp-TrabajoProfesional\
+2017-06-09T15:03:02.755Z - info: Extensions location cache contains up to date information, skipping crawling in C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-06-09T15:03:06.864Z - info: Found 29 extensions
+2017-06-09T15:03:06.898Z - debug: Writing extension locations cache to C:\Users\Dionisio\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-06-09T15:03:06.902Z - debug: Discovered 29 extensions
+2017-06-09T15:03:06.904Z - info: Using extension import-export
+2017-06-09T15:03:07.421Z - info: Using extension tags
+2017-06-09T15:03:07.437Z - info: Using extension templates
+2017-06-09T15:03:07.536Z - info: Using extension jsrender
+2017-06-09T15:03:07.538Z - info: Using extension cli
+2017-06-09T15:03:07.539Z - info: Using extension authentication
+2017-06-09T15:03:07.785Z - debug: Extension authentication was disabled
+2017-06-09T15:03:07.786Z - info: Using extension debug
+2017-06-09T15:03:07.789Z - info: Using extension express
+2017-06-09T15:03:07.878Z - info: Using extension fop-pdf
+2017-06-09T15:03:07.995Z - info: Using extension handlebars
+2017-06-09T15:03:07.998Z - info: Using extension phantom-pdf
+2017-06-09T15:03:08.199Z - info: Using extension fs-store
+2017-06-09T15:03:08.463Z - debug: Extension fs-store was disabled
+2017-06-09T15:03:08.465Z - info: Using extension images
+2017-06-09T15:03:08.592Z - info: Using extension data
+2017-06-09T15:03:08.727Z - info: Using extension child-templates
+2017-06-09T15:03:08.826Z - info: Using extension licensing
+2017-06-09T15:03:09.036Z - info: Using extension authorization
+2017-06-09T15:03:09.107Z - debug: Extension authorization was disabled
+2017-06-09T15:03:09.107Z - info: Using extension text
+2017-06-09T15:03:09.109Z - info: Using extension reports
+2017-06-09T15:03:09.185Z - info: Using extension resources
+2017-06-09T15:03:09.256Z - info: Using extension browser-client
+2017-06-09T15:03:09.259Z - info: Using extension studio
+2017-06-09T15:03:09.516Z - info: Using extension html-to-xlsx
+2017-06-09T15:03:09.716Z - info: Using extension scripts
+2017-06-09T15:03:09.805Z - info: Using extension assets
+2017-06-09T15:03:09.897Z - info: Using extension scheduling
+2017-06-09T15:03:10.004Z - info: Using extension xlsx
+2017-06-09T15:03:10.303Z - info: Using extension sample-template
+2017-06-09T15:03:10.357Z - debug: Creating samples is disabled
+2017-06-09T15:03:10.358Z - info: Using extension public-templates
+2017-06-09T15:03:10.420Z - debug: Extension public-templates was disabled
+2017-06-09T15:03:10.463Z - info: Creating memory store
+2017-06-09T15:03:10.523Z - info: Creating default express app.
+2017-06-09T15:03:10.569Z - info: jsreport server successfully started on http port: 3001
+2017-06-09T15:03:10.572Z - info: Veryfing license key free
+2017-06-09T15:03:11.928Z - info: Using free license
+2017-06-09T15:03:11.931Z - info: reporter initialized
+2017-06-09T15:30:11.568Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-06-09T15:30:11.570Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-06-09T15:30:11.574Z - info: Searching for available extensions in C:\tp_profesional\FlourApp-TrabajoProfesional\
+2017-06-09T15:30:11.602Z - info: Extensions location cache contains up to date information, skipping crawling in C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-06-09T15:30:13.432Z - info: Found 29 extensions
+2017-06-09T15:30:13.450Z - debug: Writing extension locations cache to C:\Users\Dionisio\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-06-09T15:30:13.452Z - debug: Discovered 29 extensions
+2017-06-09T15:30:13.454Z - info: Using extension import-export
+2017-06-09T15:30:13.768Z - info: Using extension tags
+2017-06-09T15:30:13.780Z - info: Using extension templates
+2017-06-09T15:30:13.839Z - info: Using extension jsrender
+2017-06-09T15:30:13.841Z - info: Using extension cli
+2017-06-09T15:30:13.842Z - info: Using extension authentication
+2017-06-09T15:30:13.992Z - debug: Extension authentication was disabled
+2017-06-09T15:30:13.993Z - info: Using extension debug
+2017-06-09T15:30:13.995Z - info: Using extension express
+2017-06-09T15:30:14.052Z - info: Using extension fop-pdf
+2017-06-09T15:30:14.107Z - info: Using extension handlebars
+2017-06-09T15:30:14.110Z - info: Using extension phantom-pdf
+2017-06-09T15:30:14.209Z - info: Using extension fs-store
+2017-06-09T15:30:14.327Z - debug: Extension fs-store was disabled
+2017-06-09T15:30:14.328Z - info: Using extension images
+2017-06-09T15:30:14.392Z - info: Using extension data
+2017-06-09T15:30:14.444Z - info: Using extension child-templates
+2017-06-09T15:30:14.499Z - info: Using extension licensing
+2017-06-09T15:30:14.616Z - info: Using extension authorization
+2017-06-09T15:30:14.669Z - debug: Extension authorization was disabled
+2017-06-09T15:30:14.670Z - info: Using extension text
+2017-06-09T15:30:14.672Z - info: Using extension reports
+2017-06-09T15:30:14.723Z - info: Using extension resources
+2017-06-09T15:30:14.784Z - info: Using extension browser-client
+2017-06-09T15:30:14.787Z - info: Using extension studio
+2017-06-09T15:30:14.916Z - info: Using extension html-to-xlsx
+2017-06-09T15:30:15.064Z - info: Using extension scripts
+2017-06-09T15:30:15.117Z - info: Using extension assets
+2017-06-09T15:30:15.179Z - info: Using extension scheduling
+2017-06-09T15:30:15.269Z - info: Using extension xlsx
+2017-06-09T15:30:15.519Z - info: Using extension sample-template
+2017-06-09T15:30:15.580Z - debug: Creating samples is disabled
+2017-06-09T15:30:15.581Z - info: Using extension public-templates
+2017-06-09T15:30:15.648Z - debug: Extension public-templates was disabled
+2017-06-09T15:30:15.703Z - info: Creating memory store
+2017-06-09T15:30:15.775Z - info: Creating default express app.
+2017-06-09T15:30:15.814Z - info: jsreport server successfully started on http port: 3001
+2017-06-09T15:30:15.817Z - info: Veryfing license key free
+2017-06-09T15:30:17.160Z - info: Using free license
+2017-06-09T15:30:17.163Z - info: reporter initialized
+2017-06-09T15:52:45.782Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-06-09T15:52:45.785Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-06-09T15:52:45.791Z - info: Searching for available extensions in C:\tp_profesional\FlourApp-TrabajoProfesional\
+2017-06-09T15:52:45.812Z - info: Extensions location cache contains up to date information, skipping crawling in C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-06-09T15:52:48.232Z - info: Found 29 extensions
+2017-06-09T15:52:48.257Z - debug: Writing extension locations cache to C:\Users\Dionisio\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-06-09T15:52:48.259Z - debug: Discovered 29 extensions
+2017-06-09T15:52:48.261Z - info: Using extension import-export
+2017-06-09T15:52:48.572Z - info: Using extension tags
+2017-06-09T15:52:48.583Z - info: Using extension templates
+2017-06-09T15:52:48.642Z - info: Using extension jsrender
+2017-06-09T15:52:48.643Z - info: Using extension cli
+2017-06-09T15:52:48.644Z - info: Using extension authentication
+2017-06-09T15:52:48.805Z - debug: Extension authentication was disabled
+2017-06-09T15:52:48.806Z - info: Using extension debug
+2017-06-09T15:52:48.808Z - info: Using extension express
+2017-06-09T15:52:48.864Z - info: Using extension fop-pdf
+2017-06-09T15:52:48.926Z - info: Using extension handlebars
+2017-06-09T15:52:48.929Z - info: Using extension phantom-pdf
+2017-06-09T15:52:49.036Z - info: Using extension fs-store
+2017-06-09T15:52:49.165Z - debug: Extension fs-store was disabled
+2017-06-09T15:52:49.166Z - info: Using extension images
+2017-06-09T15:52:49.241Z - info: Using extension data
+2017-06-09T15:52:49.311Z - info: Using extension child-templates
+2017-06-09T15:52:49.396Z - info: Using extension licensing
+2017-06-09T15:52:49.520Z - info: Using extension authorization
+2017-06-09T15:52:49.570Z - debug: Extension authorization was disabled
+2017-06-09T15:52:49.571Z - info: Using extension text
+2017-06-09T15:52:49.572Z - info: Using extension reports
+2017-06-09T15:52:49.619Z - info: Using extension resources
+2017-06-09T15:52:49.675Z - info: Using extension browser-client
+2017-06-09T15:52:49.677Z - info: Using extension studio
+2017-06-09T15:52:49.814Z - info: Using extension html-to-xlsx
+2017-06-09T15:52:49.952Z - info: Using extension scripts
+2017-06-09T15:52:50.005Z - info: Using extension assets
+2017-06-09T15:52:50.064Z - info: Using extension scheduling
+2017-06-09T15:52:50.154Z - info: Using extension xlsx
+2017-06-09T15:52:50.380Z - info: Using extension sample-template
+2017-06-09T15:52:50.436Z - debug: Creating samples is disabled
+2017-06-09T15:52:50.437Z - info: Using extension public-templates
+2017-06-09T15:52:50.494Z - debug: Extension public-templates was disabled
+2017-06-09T15:52:50.527Z - info: Creating memory store
+2017-06-09T15:52:50.561Z - info: Creating default express app.
+2017-06-09T15:52:50.599Z - info: jsreport server successfully started on http port: 3001
+2017-06-09T15:52:50.601Z - info: Veryfing license key free
+2017-06-09T15:52:51.691Z - info: Using free license
+2017-06-09T15:52:51.693Z - info: reporter initialized
+2017-06-09T15:53:30.155Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-06-09T15:53:30.157Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-06-09T15:53:30.163Z - info: Searching for available extensions in C:\tp_profesional\FlourApp-TrabajoProfesional\
+2017-06-09T15:53:30.191Z - info: Extensions location cache contains up to date information, skipping crawling in C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-06-09T15:53:33.655Z - info: Found 29 extensions
+2017-06-09T15:53:33.678Z - debug: Writing extension locations cache to C:\Users\Dionisio\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-06-09T15:53:33.690Z - debug: Discovered 29 extensions
+2017-06-09T15:53:33.692Z - info: Using extension import-export
+2017-06-09T15:53:34.079Z - info: Using extension tags
+2017-06-09T15:53:34.091Z - info: Using extension templates
+2017-06-09T15:53:34.177Z - info: Using extension jsrender
+2017-06-09T15:53:34.178Z - info: Using extension cli
+2017-06-09T15:53:34.179Z - info: Using extension authentication
+2017-06-09T15:53:34.357Z - debug: Extension authentication was disabled
+2017-06-09T15:53:34.357Z - info: Using extension debug
+2017-06-09T15:53:34.359Z - info: Using extension express
+2017-06-09T15:53:34.417Z - info: Using extension fop-pdf
+2017-06-09T15:53:34.471Z - info: Using extension handlebars
+2017-06-09T15:53:34.474Z - info: Using extension phantom-pdf
+2017-06-09T15:53:34.582Z - info: Using extension fs-store
+2017-06-09T15:53:34.700Z - debug: Extension fs-store was disabled
+2017-06-09T15:53:34.701Z - info: Using extension images
+2017-06-09T15:53:34.776Z - info: Using extension data
+2017-06-09T15:53:34.828Z - info: Using extension child-templates
+2017-06-09T15:53:34.876Z - info: Using extension licensing
+2017-06-09T15:53:35.000Z - info: Using extension authorization
+2017-06-09T15:53:35.053Z - debug: Extension authorization was disabled
+2017-06-09T15:53:35.054Z - info: Using extension text
+2017-06-09T15:53:35.056Z - info: Using extension reports
+2017-06-09T15:53:35.106Z - info: Using extension resources
+2017-06-09T15:53:35.153Z - info: Using extension browser-client
+2017-06-09T15:53:35.155Z - info: Using extension studio
+2017-06-09T15:53:35.311Z - info: Using extension html-to-xlsx
+2017-06-09T15:53:35.467Z - info: Using extension scripts
+2017-06-09T15:53:35.536Z - info: Using extension assets
+2017-06-09T15:53:35.611Z - info: Using extension scheduling
+2017-06-09T15:53:35.725Z - info: Using extension xlsx
+2017-06-09T15:53:36.040Z - info: Using extension sample-template
+2017-06-09T15:53:36.088Z - debug: Creating samples is disabled
+2017-06-09T15:53:36.089Z - info: Using extension public-templates
+2017-06-09T15:53:36.137Z - debug: Extension public-templates was disabled
+2017-06-09T15:53:36.170Z - info: Creating memory store
+2017-06-09T15:53:36.215Z - info: Creating default express app.
+2017-06-09T15:53:36.261Z - info: jsreport server successfully started on http port: 3001
+2017-06-09T15:53:36.264Z - info: Veryfing license key free
+2017-06-09T15:53:36.268Z - info: Applying cached license information
+2017-06-09T15:53:36.269Z - info: Using free license
+2017-06-09T15:53:36.271Z - info: reporter initialized
+2017-06-09T17:01:04.389Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-06-09T17:01:04.390Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-06-09T17:01:04.395Z - info: Searching for available extensions in C:\tp_profesional\FlourApp-TrabajoProfesional\
+2017-06-09T17:01:04.431Z - info: Extensions location cache contains up to date information, skipping crawling in C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-06-09T17:01:07.775Z - info: Found 29 extensions
+2017-06-09T17:01:07.876Z - debug: Writing extension locations cache to C:\Users\Dionisio\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-06-09T17:01:07.880Z - debug: Discovered 29 extensions
+2017-06-09T17:01:07.882Z - info: Using extension import-export
+2017-06-09T17:01:08.478Z - info: Using extension tags
+2017-06-09T17:01:08.489Z - info: Using extension templates
+2017-06-09T17:01:08.568Z - info: Using extension jsrender
+2017-06-09T17:01:08.569Z - info: Using extension cli
+2017-06-09T17:01:08.570Z - info: Using extension authentication
+2017-06-09T17:01:08.786Z - debug: Extension authentication was disabled
+2017-06-09T17:01:08.786Z - info: Using extension debug
+2017-06-09T17:01:08.788Z - info: Using extension express
+2017-06-09T17:01:08.867Z - info: Using extension fop-pdf
+2017-06-09T17:01:08.929Z - info: Using extension handlebars
+2017-06-09T17:01:08.933Z - info: Using extension phantom-pdf
+2017-06-09T17:01:09.075Z - info: Using extension fs-store
+2017-06-09T17:01:09.231Z - debug: Extension fs-store was disabled
+2017-06-09T17:01:09.231Z - info: Using extension images
+2017-06-09T17:01:09.333Z - info: Using extension data
+2017-06-09T17:01:09.442Z - info: Using extension child-templates
+2017-06-09T17:01:09.544Z - info: Using extension licensing
+2017-06-09T17:01:09.718Z - info: Using extension authorization
+2017-06-09T17:01:09.786Z - debug: Extension authorization was disabled
+2017-06-09T17:01:09.786Z - info: Using extension text
+2017-06-09T17:01:09.788Z - info: Using extension reports
+2017-06-09T17:01:09.851Z - info: Using extension resources
+2017-06-09T17:01:09.914Z - info: Using extension browser-client
+2017-06-09T17:01:09.918Z - info: Using extension studio
+2017-06-09T17:01:10.077Z - info: Using extension html-to-xlsx
+2017-06-09T17:01:10.250Z - info: Using extension scripts
+2017-06-09T17:01:10.334Z - info: Using extension assets
+2017-06-09T17:01:10.440Z - info: Using extension scheduling
+2017-06-09T17:01:10.551Z - info: Using extension xlsx
+2017-06-09T17:01:10.894Z - info: Using extension sample-template
+2017-06-09T17:01:10.979Z - debug: Creating samples is disabled
+2017-06-09T17:01:10.979Z - info: Using extension public-templates
+2017-06-09T17:01:11.076Z - debug: Extension public-templates was disabled
+2017-06-09T17:01:11.137Z - info: Creating memory store
+2017-06-09T17:01:11.208Z - info: Creating default express app.
+2017-06-09T17:01:11.332Z - info: jsreport server successfully started on http port: 3001
+2017-06-09T17:01:11.336Z - info: Veryfing license key free
+2017-06-09T17:01:12.652Z - info: Using free license
+2017-06-09T17:01:12.655Z - info: reporter initialized
+2017-06-09T17:02:15.234Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-06-09T17:02:15.236Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-06-09T17:02:15.241Z - info: Searching for available extensions in C:\tp_profesional\FlourApp-TrabajoProfesional\
+2017-06-09T17:02:15.269Z - info: Extensions location cache contains up to date information, skipping crawling in C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-06-09T17:02:17.099Z - info: Found 29 extensions
+2017-06-09T17:02:17.115Z - debug: Writing extension locations cache to C:\Users\Dionisio\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-06-09T17:02:17.117Z - debug: Discovered 29 extensions
+2017-06-09T17:02:17.118Z - info: Using extension import-export
+2017-06-09T17:02:17.427Z - info: Using extension tags
+2017-06-09T17:02:17.437Z - info: Using extension templates
+2017-06-09T17:02:17.496Z - info: Using extension jsrender
+2017-06-09T17:02:17.498Z - info: Using extension cli
+2017-06-09T17:02:17.499Z - info: Using extension authentication
+2017-06-09T17:02:17.635Z - debug: Extension authentication was disabled
+2017-06-09T17:02:17.636Z - info: Using extension debug
+2017-06-09T17:02:17.637Z - info: Using extension express
+2017-06-09T17:02:17.701Z - info: Using extension fop-pdf
+2017-06-09T17:02:17.757Z - info: Using extension handlebars
+2017-06-09T17:02:17.759Z - info: Using extension phantom-pdf
+2017-06-09T17:02:17.865Z - info: Using extension fs-store
+2017-06-09T17:02:17.991Z - debug: Extension fs-store was disabled
+2017-06-09T17:02:17.992Z - info: Using extension images
+2017-06-09T17:02:18.067Z - info: Using extension data
+2017-06-09T17:02:18.135Z - info: Using extension child-templates
+2017-06-09T17:02:18.225Z - info: Using extension licensing
+2017-06-09T17:02:18.347Z - info: Using extension authorization
+2017-06-09T17:02:18.394Z - debug: Extension authorization was disabled
+2017-06-09T17:02:18.394Z - info: Using extension text
+2017-06-09T17:02:18.395Z - info: Using extension reports
+2017-06-09T17:02:18.449Z - info: Using extension resources
+2017-06-09T17:02:18.496Z - info: Using extension browser-client
+2017-06-09T17:02:18.498Z - info: Using extension studio
+2017-06-09T17:02:18.635Z - info: Using extension html-to-xlsx
+2017-06-09T17:02:18.793Z - info: Using extension scripts
+2017-06-09T17:02:18.846Z - info: Using extension assets
+2017-06-09T17:02:18.907Z - info: Using extension scheduling
+2017-06-09T17:02:19.006Z - info: Using extension xlsx
+2017-06-09T17:02:19.228Z - info: Using extension sample-template
+2017-06-09T17:02:19.275Z - debug: Creating samples is disabled
+2017-06-09T17:02:19.276Z - info: Using extension public-templates
+2017-06-09T17:02:19.334Z - debug: Extension public-templates was disabled
+2017-06-09T17:02:19.366Z - info: Creating memory store
+2017-06-09T17:02:19.400Z - info: Creating default express app.
+2017-06-09T17:02:19.448Z - info: jsreport server successfully started on http port: 3001
+2017-06-09T17:02:19.451Z - info: Veryfing license key free
+2017-06-09T17:02:19.456Z - info: Applying cached license information
+2017-06-09T17:02:19.456Z - info: Using free license
+2017-06-09T17:02:19.458Z - info: reporter initialized
+2017-06-09T17:07:07.975Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-06-09T17:07:07.976Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-06-09T17:07:07.980Z - info: Searching for available extensions in C:\tp_profesional\FlourApp-TrabajoProfesional\
+2017-06-09T17:07:08.006Z - info: Extensions location cache contains up to date information, skipping crawling in C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-06-09T17:07:09.893Z - info: Found 29 extensions
+2017-06-09T17:07:09.909Z - debug: Writing extension locations cache to C:\Users\Dionisio\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-06-09T17:07:09.911Z - debug: Discovered 29 extensions
+2017-06-09T17:07:09.912Z - info: Using extension import-export
+2017-06-09T17:07:10.224Z - info: Using extension tags
+2017-06-09T17:07:10.237Z - info: Using extension templates
+2017-06-09T17:07:10.296Z - info: Using extension jsrender
+2017-06-09T17:07:10.297Z - info: Using extension cli
+2017-06-09T17:07:10.299Z - info: Using extension authentication
+2017-06-09T17:07:10.445Z - debug: Extension authentication was disabled
+2017-06-09T17:07:10.445Z - info: Using extension debug
+2017-06-09T17:07:10.447Z - info: Using extension express
+2017-06-09T17:07:10.503Z - info: Using extension fop-pdf
+2017-06-09T17:07:10.558Z - info: Using extension handlebars
+2017-06-09T17:07:10.561Z - info: Using extension phantom-pdf
+2017-06-09T17:07:10.666Z - info: Using extension fs-store
+2017-06-09T17:07:10.784Z - debug: Extension fs-store was disabled
+2017-06-09T17:07:10.784Z - info: Using extension images
+2017-06-09T17:07:10.846Z - info: Using extension data
+2017-06-09T17:07:10.925Z - info: Using extension child-templates
+2017-06-09T17:07:10.983Z - info: Using extension licensing
+2017-06-09T17:07:11.094Z - info: Using extension authorization
+2017-06-09T17:07:11.156Z - debug: Extension authorization was disabled
+2017-06-09T17:07:11.156Z - info: Using extension text
+2017-06-09T17:07:11.157Z - info: Using extension reports
+2017-06-09T17:07:11.205Z - info: Using extension resources
+2017-06-09T17:07:11.251Z - info: Using extension browser-client
+2017-06-09T17:07:11.253Z - info: Using extension studio
+2017-06-09T17:07:11.390Z - info: Using extension html-to-xlsx
+2017-06-09T17:07:11.526Z - info: Using extension scripts
+2017-06-09T17:07:11.593Z - info: Using extension assets
+2017-06-09T17:07:11.684Z - info: Using extension scheduling
+2017-06-09T17:07:11.775Z - info: Using extension xlsx
+2017-06-09T17:07:12.057Z - info: Using extension sample-template
+2017-06-09T17:07:12.138Z - debug: Creating samples is disabled
+2017-06-09T17:07:12.138Z - info: Using extension public-templates
+2017-06-09T17:07:12.211Z - debug: Extension public-templates was disabled
+2017-06-09T17:07:12.271Z - info: Creating memory store
+2017-06-09T17:07:12.334Z - info: Creating default express app.
+2017-06-09T17:07:12.387Z - info: jsreport server successfully started on http port: 3001
+2017-06-09T17:07:12.389Z - info: Veryfing license key free
+2017-06-09T17:07:13.577Z - info: Using free license
+2017-06-09T17:07:13.580Z - info: reporter initialized
+2017-06-09T17:12:03.769Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-06-09T17:12:03.770Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-06-09T17:12:03.774Z - info: Searching for available extensions in C:\tp_profesional\FlourApp-TrabajoProfesional\
+2017-06-09T17:12:03.800Z - info: Extensions location cache contains up to date information, skipping crawling in C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-06-09T17:12:05.661Z - info: Found 29 extensions
+2017-06-09T17:12:05.683Z - debug: Writing extension locations cache to C:\Users\Dionisio\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-06-09T17:12:05.690Z - debug: Discovered 29 extensions
+2017-06-09T17:12:05.691Z - info: Using extension import-export
+2017-06-09T17:12:06.010Z - info: Using extension tags
+2017-06-09T17:12:06.023Z - info: Using extension templates
+2017-06-09T17:12:06.097Z - info: Using extension jsrender
+2017-06-09T17:12:06.098Z - info: Using extension cli
+2017-06-09T17:12:06.099Z - info: Using extension authentication
+2017-06-09T17:12:06.247Z - debug: Extension authentication was disabled
+2017-06-09T17:12:06.248Z - info: Using extension debug
+2017-06-09T17:12:06.250Z - info: Using extension express
+2017-06-09T17:12:06.309Z - info: Using extension fop-pdf
+2017-06-09T17:12:06.363Z - info: Using extension handlebars
+2017-06-09T17:12:06.366Z - info: Using extension phantom-pdf
+2017-06-09T17:12:06.474Z - info: Using extension fs-store
+2017-06-09T17:12:06.615Z - debug: Extension fs-store was disabled
+2017-06-09T17:12:06.616Z - info: Using extension images
+2017-06-09T17:12:06.690Z - info: Using extension data
+2017-06-09T17:12:06.751Z - info: Using extension child-templates
+2017-06-09T17:12:06.801Z - info: Using extension licensing
+2017-06-09T17:12:06.923Z - info: Using extension authorization
+2017-06-09T17:12:07.007Z - debug: Extension authorization was disabled
+2017-06-09T17:12:07.007Z - info: Using extension text
+2017-06-09T17:12:07.009Z - info: Using extension reports
+2017-06-09T17:12:07.062Z - info: Using extension resources
+2017-06-09T17:12:07.116Z - info: Using extension browser-client
+2017-06-09T17:12:07.121Z - info: Using extension studio
+2017-06-09T17:12:07.292Z - info: Using extension html-to-xlsx
+2017-06-09T17:12:07.473Z - info: Using extension scripts
+2017-06-09T17:12:07.541Z - info: Using extension assets
+2017-06-09T17:12:07.624Z - info: Using extension scheduling
+2017-06-09T17:12:07.762Z - info: Using extension xlsx
+2017-06-09T17:12:08.071Z - info: Using extension sample-template
+2017-06-09T17:12:08.131Z - debug: Creating samples is disabled
+2017-06-09T17:12:08.131Z - info: Using extension public-templates
+2017-06-09T17:12:08.224Z - debug: Extension public-templates was disabled
+2017-06-09T17:12:08.317Z - info: Creating memory store
+2017-06-09T17:12:08.362Z - info: Creating default express app.
+2017-06-09T17:12:08.429Z - info: jsreport server successfully started on http port: 3001
+2017-06-09T17:12:08.433Z - info: Veryfing license key free
+2017-06-09T17:12:09.597Z - info: Using free license
+2017-06-09T17:12:09.603Z - info: reporter initialized
+2017-06-09T17:13:21.200Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-06-09T17:13:21.202Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-06-09T17:13:21.207Z - info: Searching for available extensions in C:\tp_profesional\FlourApp-TrabajoProfesional\
+2017-06-09T17:13:21.234Z - info: Extensions location cache contains up to date information, skipping crawling in C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-06-09T17:13:23.254Z - info: Found 29 extensions
+2017-06-09T17:13:23.282Z - debug: Writing extension locations cache to C:\Users\Dionisio\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-06-09T17:13:23.284Z - debug: Discovered 29 extensions
+2017-06-09T17:13:23.286Z - info: Using extension import-export
+2017-06-09T17:13:23.614Z - info: Using extension tags
+2017-06-09T17:13:23.624Z - info: Using extension templates
+2017-06-09T17:13:23.693Z - info: Using extension jsrender
+2017-06-09T17:13:23.694Z - info: Using extension cli
+2017-06-09T17:13:23.696Z - info: Using extension authentication
+2017-06-09T17:13:23.849Z - debug: Extension authentication was disabled
+2017-06-09T17:13:23.850Z - info: Using extension debug
+2017-06-09T17:13:23.852Z - info: Using extension express
+2017-06-09T17:13:23.916Z - info: Using extension fop-pdf
+2017-06-09T17:13:23.984Z - info: Using extension handlebars
+2017-06-09T17:13:23.988Z - info: Using extension phantom-pdf
+2017-06-09T17:13:24.111Z - info: Using extension fs-store
+2017-06-09T17:13:24.238Z - debug: Extension fs-store was disabled
+2017-06-09T17:13:24.240Z - info: Using extension images
+2017-06-09T17:13:24.329Z - info: Using extension data
+2017-06-09T17:13:24.406Z - info: Using extension child-templates
+2017-06-09T17:13:24.495Z - info: Using extension licensing
+2017-06-09T17:13:24.625Z - info: Using extension authorization
+2017-06-09T17:13:24.677Z - debug: Extension authorization was disabled
+2017-06-09T17:13:24.678Z - info: Using extension text
+2017-06-09T17:13:24.680Z - info: Using extension reports
+2017-06-09T17:13:24.754Z - info: Using extension resources
+2017-06-09T17:13:24.809Z - info: Using extension browser-client
+2017-06-09T17:13:24.811Z - info: Using extension studio
+2017-06-09T17:13:24.963Z - info: Using extension html-to-xlsx
+2017-06-09T17:13:25.144Z - info: Using extension scripts
+2017-06-09T17:13:25.197Z - info: Using extension assets
+2017-06-09T17:13:25.271Z - info: Using extension scheduling
+2017-06-09T17:13:25.373Z - info: Using extension xlsx
+2017-06-09T17:13:25.608Z - info: Using extension sample-template
+2017-06-09T17:13:25.658Z - debug: Creating samples is disabled
+2017-06-09T17:13:25.658Z - info: Using extension public-templates
+2017-06-09T17:13:25.717Z - debug: Extension public-templates was disabled
+2017-06-09T17:13:25.763Z - info: Creating memory store
+2017-06-09T17:13:25.807Z - info: Creating default express app.
+2017-06-09T17:13:25.850Z - info: jsreport server successfully started on http port: 3001
+2017-06-09T17:13:25.851Z - info: Veryfing license key free
+2017-06-09T17:13:25.859Z - info: Applying cached license information
+2017-06-09T17:13:25.860Z - info: Using free license
+2017-06-09T17:13:25.861Z - info: reporter initialized
+2017-06-09T17:17:31.964Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-06-09T17:17:31.965Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-06-09T17:17:31.972Z - info: Searching for available extensions in C:\tp_profesional\FlourApp-TrabajoProfesional\
+2017-06-09T17:17:32.000Z - info: Extensions location cache contains up to date information, skipping crawling in C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-06-09T17:17:34.160Z - info: Found 29 extensions
+2017-06-09T17:17:34.185Z - debug: Writing extension locations cache to C:\Users\Dionisio\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-06-09T17:17:34.187Z - debug: Discovered 29 extensions
+2017-06-09T17:17:34.189Z - info: Using extension import-export
+2017-06-09T17:17:34.549Z - info: Using extension tags
+2017-06-09T17:17:34.561Z - info: Using extension templates
+2017-06-09T17:17:34.627Z - info: Using extension jsrender
+2017-06-09T17:17:34.628Z - info: Using extension cli
+2017-06-09T17:17:34.630Z - info: Using extension authentication
+2017-06-09T17:17:34.808Z - debug: Extension authentication was disabled
+2017-06-09T17:17:34.808Z - info: Using extension debug
+2017-06-09T17:17:34.811Z - info: Using extension express
+2017-06-09T17:17:34.874Z - info: Using extension fop-pdf
+2017-06-09T17:17:34.932Z - info: Using extension handlebars
+2017-06-09T17:17:34.934Z - info: Using extension phantom-pdf
+2017-06-09T17:17:35.059Z - info: Using extension fs-store
+2017-06-09T17:17:35.187Z - debug: Extension fs-store was disabled
+2017-06-09T17:17:35.187Z - info: Using extension images
+2017-06-09T17:17:35.278Z - info: Using extension data
+2017-06-09T17:17:35.335Z - info: Using extension child-templates
+2017-06-09T17:17:35.389Z - info: Using extension licensing
+2017-06-09T17:17:35.540Z - info: Using extension authorization
+2017-06-09T17:17:35.597Z - debug: Extension authorization was disabled
+2017-06-09T17:17:35.598Z - info: Using extension text
+2017-06-09T17:17:35.599Z - info: Using extension reports
+2017-06-09T17:17:35.650Z - info: Using extension resources
+2017-06-09T17:17:35.700Z - info: Using extension browser-client
+2017-06-09T17:17:35.702Z - info: Using extension studio
+2017-06-09T17:17:35.866Z - info: Using extension html-to-xlsx
+2017-06-09T17:17:36.047Z - info: Using extension scripts
+2017-06-09T17:17:36.109Z - info: Using extension assets
+2017-06-09T17:17:36.185Z - info: Using extension scheduling
+2017-06-09T17:17:36.323Z - info: Using extension xlsx
+2017-06-09T17:17:36.630Z - info: Using extension sample-template
+2017-06-09T17:17:36.677Z - debug: Creating samples is disabled
+2017-06-09T17:17:36.677Z - info: Using extension public-templates
+2017-06-09T17:17:36.749Z - debug: Extension public-templates was disabled
+2017-06-09T17:17:36.801Z - info: Creating memory store
+2017-06-09T17:17:36.844Z - info: Creating default express app.
+2017-06-09T17:17:36.883Z - info: jsreport server successfully started on http port: 3001
+2017-06-09T17:17:36.885Z - info: Veryfing license key free
+2017-06-09T17:17:38.790Z - info: Using free license
+2017-06-09T17:17:38.793Z - info: reporter initialized
+2017-06-09T17:19:14.837Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-06-09T17:19:14.840Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-06-09T17:19:14.844Z - info: Searching for available extensions in C:\tp_profesional\FlourApp-TrabajoProfesional\
+2017-06-09T17:19:14.870Z - info: Extensions location cache contains up to date information, skipping crawling in C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-06-09T17:19:17.191Z - info: Found 29 extensions
+2017-06-09T17:19:17.207Z - debug: Writing extension locations cache to C:\Users\Dionisio\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-06-09T17:19:17.210Z - debug: Discovered 29 extensions
+2017-06-09T17:19:17.211Z - info: Using extension import-export
+2017-06-09T17:19:17.543Z - info: Using extension tags
+2017-06-09T17:19:17.554Z - info: Using extension templates
+2017-06-09T17:19:17.615Z - info: Using extension jsrender
+2017-06-09T17:19:17.616Z - info: Using extension cli
+2017-06-09T17:19:17.617Z - info: Using extension authentication
+2017-06-09T17:19:17.781Z - debug: Extension authentication was disabled
+2017-06-09T17:19:17.781Z - info: Using extension debug
+2017-06-09T17:19:17.783Z - info: Using extension express
+2017-06-09T17:19:17.847Z - info: Using extension fop-pdf
+2017-06-09T17:19:17.910Z - info: Using extension handlebars
+2017-06-09T17:19:17.914Z - info: Using extension phantom-pdf
+2017-06-09T17:19:18.032Z - info: Using extension fs-store
+2017-06-09T17:19:18.196Z - debug: Extension fs-store was disabled
+2017-06-09T17:19:18.197Z - info: Using extension images
+2017-06-09T17:19:18.291Z - info: Using extension data
+2017-06-09T17:19:18.413Z - info: Using extension child-templates
+2017-06-09T17:19:18.484Z - info: Using extension licensing
+2017-06-09T17:19:18.612Z - info: Using extension authorization
+2017-06-09T17:19:18.665Z - debug: Extension authorization was disabled
+2017-06-09T17:19:18.666Z - info: Using extension text
+2017-06-09T17:19:18.667Z - info: Using extension reports
+2017-06-09T17:19:18.803Z - info: Using extension resources
+2017-06-09T17:19:18.903Z - info: Using extension browser-client
+2017-06-09T17:19:18.909Z - info: Using extension studio
+2017-06-09T17:19:19.082Z - info: Using extension html-to-xlsx
+2017-06-09T17:19:19.278Z - info: Using extension scripts
+2017-06-09T17:19:19.351Z - info: Using extension assets
+2017-06-09T17:19:19.435Z - info: Using extension scheduling
+2017-06-09T17:19:19.597Z - info: Using extension xlsx
+2017-06-09T17:19:19.866Z - info: Using extension sample-template
+2017-06-09T17:19:19.915Z - debug: Creating samples is disabled
+2017-06-09T17:19:19.916Z - info: Using extension public-templates
+2017-06-09T17:19:19.971Z - debug: Extension public-templates was disabled
+2017-06-09T17:19:20.029Z - info: Creating memory store
+2017-06-09T17:19:20.066Z - info: Creating default express app.
+2017-06-09T17:19:20.107Z - info: jsreport server successfully started on http port: 3001
+2017-06-09T17:19:20.109Z - info: Veryfing license key free
+2017-06-09T17:19:20.114Z - info: Applying cached license information
+2017-06-09T17:19:20.115Z - info: Using free license
+2017-06-09T17:19:20.117Z - info: reporter initialized
+2017-06-09T17:34:33.221Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-06-09T17:34:33.222Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-06-09T17:34:33.228Z - info: Searching for available extensions in C:\tp_profesional\FlourApp-TrabajoProfesional\
+2017-06-09T17:34:33.269Z - info: Extensions location cache contains up to date information, skipping crawling in C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-06-09T17:34:35.785Z - info: Found 29 extensions
+2017-06-09T17:34:35.819Z - debug: Writing extension locations cache to C:\Users\Dionisio\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-06-09T17:34:35.821Z - debug: Discovered 29 extensions
+2017-06-09T17:34:35.824Z - info: Using extension import-export
+2017-06-09T17:34:36.391Z - info: Using extension tags
+2017-06-09T17:34:36.407Z - info: Using extension templates
+2017-06-09T17:34:36.503Z - info: Using extension jsrender
+2017-06-09T17:34:36.505Z - info: Using extension cli
+2017-06-09T17:34:36.507Z - info: Using extension authentication
+2017-06-09T17:34:36.701Z - debug: Extension authentication was disabled
+2017-06-09T17:34:36.701Z - info: Using extension debug
+2017-06-09T17:34:36.704Z - info: Using extension express
+2017-06-09T17:34:36.794Z - info: Using extension fop-pdf
+2017-06-09T17:34:36.862Z - info: Using extension handlebars
+2017-06-09T17:34:36.866Z - info: Using extension phantom-pdf
+2017-06-09T17:34:36.998Z - info: Using extension fs-store
+2017-06-09T17:34:37.140Z - debug: Extension fs-store was disabled
+2017-06-09T17:34:37.141Z - info: Using extension images
+2017-06-09T17:34:37.229Z - info: Using extension data
+2017-06-09T17:34:37.318Z - info: Using extension child-templates
+2017-06-09T17:34:37.406Z - info: Using extension licensing
+2017-06-09T17:34:37.545Z - info: Using extension authorization
+2017-06-09T17:34:37.602Z - debug: Extension authorization was disabled
+2017-06-09T17:34:37.603Z - info: Using extension text
+2017-06-09T17:34:37.604Z - info: Using extension reports
+2017-06-09T17:34:37.676Z - info: Using extension resources
+2017-06-09T17:34:37.773Z - info: Using extension browser-client
+2017-06-09T17:34:37.776Z - info: Using extension studio
+2017-06-09T17:34:38.010Z - info: Using extension html-to-xlsx
+2017-06-09T17:34:38.246Z - info: Using extension scripts
+2017-06-09T17:34:38.300Z - info: Using extension assets
+2017-06-09T17:34:38.366Z - info: Using extension scheduling
+2017-06-09T17:34:38.449Z - info: Using extension xlsx
+2017-06-09T17:34:38.671Z - info: Using extension sample-template
+2017-06-09T17:34:38.741Z - debug: Creating samples is disabled
+2017-06-09T17:34:38.742Z - info: Using extension public-templates
+2017-06-09T17:34:38.806Z - debug: Extension public-templates was disabled
+2017-06-09T17:34:38.840Z - info: Creating memory store
+2017-06-09T17:34:38.888Z - info: Creating default express app.
+2017-06-09T17:34:38.928Z - info: jsreport server successfully started on http port: 3001
+2017-06-09T17:34:38.931Z - info: Veryfing license key free
+2017-06-09T17:34:40.145Z - info: Using free license
+2017-06-09T17:34:40.150Z - info: reporter initialized
+2017-06-09T17:40:38.423Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-06-09T17:40:38.425Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-06-09T17:40:38.432Z - info: Searching for available extensions in C:\tp_profesional\FlourApp-TrabajoProfesional\
+2017-06-09T17:40:38.480Z - info: Extensions location cache contains up to date information, skipping crawling in C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-06-09T17:40:40.495Z - info: Found 29 extensions
+2017-06-09T17:40:40.512Z - debug: Writing extension locations cache to C:\Users\Dionisio\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-06-09T17:40:40.513Z - debug: Discovered 29 extensions
+2017-06-09T17:40:40.515Z - info: Using extension import-export
+2017-06-09T17:40:40.827Z - info: Using extension tags
+2017-06-09T17:40:40.839Z - info: Using extension templates
+2017-06-09T17:40:40.899Z - info: Using extension jsrender
+2017-06-09T17:40:40.901Z - info: Using extension cli
+2017-06-09T17:40:40.902Z - info: Using extension authentication
+2017-06-09T17:40:41.049Z - debug: Extension authentication was disabled
+2017-06-09T17:40:41.050Z - info: Using extension debug
+2017-06-09T17:40:41.052Z - info: Using extension express
+2017-06-09T17:40:41.111Z - info: Using extension fop-pdf
+2017-06-09T17:40:41.167Z - info: Using extension handlebars
+2017-06-09T17:40:41.169Z - info: Using extension phantom-pdf
+2017-06-09T17:40:41.276Z - info: Using extension fs-store
+2017-06-09T17:40:41.390Z - debug: Extension fs-store was disabled
+2017-06-09T17:40:41.390Z - info: Using extension images
+2017-06-09T17:40:41.466Z - info: Using extension data
+2017-06-09T17:40:41.520Z - info: Using extension child-templates
+2017-06-09T17:40:41.570Z - info: Using extension licensing
+2017-06-09T17:40:41.691Z - info: Using extension authorization
+2017-06-09T17:40:41.746Z - debug: Extension authorization was disabled
+2017-06-09T17:40:41.747Z - info: Using extension text
+2017-06-09T17:40:41.748Z - info: Using extension reports
+2017-06-09T17:40:41.796Z - info: Using extension resources
+2017-06-09T17:40:41.844Z - info: Using extension browser-client
+2017-06-09T17:40:41.846Z - info: Using extension studio
+2017-06-09T17:40:41.985Z - info: Using extension html-to-xlsx
+2017-06-09T17:40:42.124Z - info: Using extension scripts
+2017-06-09T17:40:42.188Z - info: Using extension assets
+2017-06-09T17:40:42.250Z - info: Using extension scheduling
+2017-06-09T17:40:42.335Z - info: Using extension xlsx
+2017-06-09T17:40:42.588Z - info: Using extension sample-template
+2017-06-09T17:40:42.649Z - debug: Creating samples is disabled
+2017-06-09T17:40:42.649Z - info: Using extension public-templates
+2017-06-09T17:40:42.736Z - debug: Extension public-templates was disabled
+2017-06-09T17:40:42.793Z - info: Creating memory store
+2017-06-09T17:40:42.869Z - info: Creating default express app.
+2017-06-09T17:40:42.940Z - info: jsreport server successfully started on http port: 3001
+2017-06-09T17:40:42.944Z - info: Veryfing license key free
+2017-06-09T17:40:44.145Z - info: Using free license
+2017-06-09T17:40:44.148Z - info: reporter initialized
+2017-06-09T17:43:40.615Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-06-09T17:43:40.618Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-06-09T17:43:40.623Z - info: Searching for available extensions in C:\tp_profesional\FlourApp-TrabajoProfesional\
+2017-06-09T17:43:40.649Z - info: Extensions location cache contains up to date information, skipping crawling in C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-06-09T17:43:42.508Z - info: Found 29 extensions
+2017-06-09T17:43:42.525Z - debug: Writing extension locations cache to C:\Users\Dionisio\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-06-09T17:43:42.527Z - debug: Discovered 29 extensions
+2017-06-09T17:43:42.529Z - info: Using extension import-export
+2017-06-09T17:43:42.850Z - info: Using extension tags
+2017-06-09T17:43:42.869Z - info: Using extension templates
+2017-06-09T17:43:42.930Z - info: Using extension jsrender
+2017-06-09T17:43:42.932Z - info: Using extension cli
+2017-06-09T17:43:42.933Z - info: Using extension authentication
+2017-06-09T17:43:43.075Z - debug: Extension authentication was disabled
+2017-06-09T17:43:43.076Z - info: Using extension debug
+2017-06-09T17:43:43.078Z - info: Using extension express
+2017-06-09T17:43:43.142Z - info: Using extension fop-pdf
+2017-06-09T17:43:43.197Z - info: Using extension handlebars
+2017-06-09T17:43:43.200Z - info: Using extension phantom-pdf
+2017-06-09T17:43:43.299Z - info: Using extension fs-store
+2017-06-09T17:43:43.420Z - debug: Extension fs-store was disabled
+2017-06-09T17:43:43.420Z - info: Using extension images
+2017-06-09T17:43:43.485Z - info: Using extension data
+2017-06-09T17:43:43.540Z - info: Using extension child-templates
+2017-06-09T17:43:43.588Z - info: Using extension licensing
+2017-06-09T17:43:43.712Z - info: Using extension authorization
+2017-06-09T17:43:43.767Z - debug: Extension authorization was disabled
+2017-06-09T17:43:43.768Z - info: Using extension text
+2017-06-09T17:43:43.769Z - info: Using extension reports
+2017-06-09T17:43:43.816Z - info: Using extension resources
+2017-06-09T17:43:43.873Z - info: Using extension browser-client
+2017-06-09T17:43:43.875Z - info: Using extension studio
+2017-06-09T17:43:44.008Z - info: Using extension html-to-xlsx
+2017-06-09T17:43:44.155Z - info: Using extension scripts
+2017-06-09T17:43:44.209Z - info: Using extension assets
+2017-06-09T17:43:44.271Z - info: Using extension scheduling
+2017-06-09T17:43:44.364Z - info: Using extension xlsx
+2017-06-09T17:43:44.615Z - info: Using extension sample-template
+2017-06-09T17:43:44.677Z - debug: Creating samples is disabled
+2017-06-09T17:43:44.677Z - info: Using extension public-templates
+2017-06-09T17:43:44.752Z - debug: Extension public-templates was disabled
+2017-06-09T17:43:44.810Z - info: Creating memory store
+2017-06-09T17:43:44.884Z - info: Creating default express app.
+2017-06-09T17:43:44.923Z - info: jsreport server successfully started on http port: 3001
+2017-06-09T17:43:44.925Z - info: Veryfing license key free
+2017-06-09T17:43:46.145Z - info: Using free license
+2017-06-09T17:43:46.147Z - info: reporter initialized
+2017-06-09T17:47:36.374Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-06-09T17:47:36.376Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-06-09T17:47:36.380Z - info: Searching for available extensions in C:\tp_profesional\FlourApp-TrabajoProfesional\
+2017-06-09T17:47:36.406Z - info: Extensions location cache contains up to date information, skipping crawling in C:\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-06-09T17:47:38.281Z - info: Found 29 extensions
+2017-06-09T17:47:38.299Z - debug: Writing extension locations cache to C:\Users\Dionisio\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-06-09T17:47:38.301Z - debug: Discovered 29 extensions
+2017-06-09T17:47:38.302Z - info: Using extension import-export
+2017-06-09T17:47:38.635Z - info: Using extension tags
+2017-06-09T17:47:38.648Z - info: Using extension templates
+2017-06-09T17:47:38.708Z - info: Using extension jsrender
+2017-06-09T17:47:38.710Z - info: Using extension cli
+2017-06-09T17:47:38.711Z - info: Using extension authentication
+2017-06-09T17:47:38.864Z - debug: Extension authentication was disabled
+2017-06-09T17:47:38.864Z - info: Using extension debug
+2017-06-09T17:47:38.866Z - info: Using extension express
+2017-06-09T17:47:38.951Z - info: Using extension fop-pdf
+2017-06-09T17:47:39.011Z - info: Using extension handlebars
+2017-06-09T17:47:39.013Z - info: Using extension phantom-pdf
+2017-06-09T17:47:39.125Z - info: Using extension fs-store
+2017-06-09T17:47:39.237Z - debug: Extension fs-store was disabled
+2017-06-09T17:47:39.237Z - info: Using extension images
+2017-06-09T17:47:39.305Z - info: Using extension data
+2017-06-09T17:47:39.370Z - info: Using extension child-templates
+2017-06-09T17:47:39.420Z - info: Using extension licensing
+2017-06-09T17:47:39.539Z - info: Using extension authorization
+2017-06-09T17:47:39.596Z - debug: Extension authorization was disabled
+2017-06-09T17:47:39.597Z - info: Using extension text
+2017-06-09T17:47:39.599Z - info: Using extension reports
+2017-06-09T17:47:39.655Z - info: Using extension resources
+2017-06-09T17:47:39.705Z - info: Using extension browser-client
+2017-06-09T17:47:39.708Z - info: Using extension studio
+2017-06-09T17:47:39.855Z - info: Using extension html-to-xlsx
+2017-06-09T17:47:39.998Z - info: Using extension scripts
+2017-06-09T17:47:40.057Z - info: Using extension assets
+2017-06-09T17:47:40.131Z - info: Using extension scheduling
+2017-06-09T17:47:40.215Z - info: Using extension xlsx
+2017-06-09T17:47:40.474Z - info: Using extension sample-template
+2017-06-09T17:47:40.535Z - debug: Creating samples is disabled
+2017-06-09T17:47:40.536Z - info: Using extension public-templates
+2017-06-09T17:47:40.612Z - debug: Extension public-templates was disabled
+2017-06-09T17:47:40.669Z - info: Creating memory store
+2017-06-09T17:47:40.744Z - info: Creating default express app.
+2017-06-09T17:47:40.788Z - info: jsreport server successfully started on http port: 3001
+2017-06-09T17:47:40.790Z - info: Veryfing license key free
+2017-06-09T17:47:41.978Z - info: Using free license
+2017-06-09T17:47:41.979Z - info: reporter initialized

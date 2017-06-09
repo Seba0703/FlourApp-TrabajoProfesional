@@ -20,7 +20,8 @@ var buscarMateriaPrima = function(productos) {
         nombre: materiasPrima[i].nombre,
         cantidad: materiasPrima[i].cantidad,
         stockMax: materiasPrima[i].stockMax,
-        stockMin: materiasPrima[i].stockMin
+        stockMin: materiasPrima[i].stockMin,
+        stockOptimo: materiasPrima[i].stockOptimo
       });
     }
     resolve(materiasPrima);
@@ -40,7 +41,8 @@ var buscarSemiProcesado = function(productos) {
         nombre: semiProcesados[i].nombre,
         cantidad: semiProcesados[i].cantidad,
         stockMax: semiProcesados[i].stockMax,
-        stockMin: semiProcesados[i].stockMin
+        stockMin: semiProcesados[i].stockMin,
+        stockOptimo: semiProcesados[i].stockOptimo
       });
     }
     resolve(semiProcesados);
@@ -60,7 +62,8 @@ var buscarTerminados = function(productos) {
         nombre: productosTerminados[i].nombre,
         cantidad: productosTerminados[i].cantidad,
         stockMax: productosTerminados[i].stockMax,
-        stockMin: productosTerminados[i].stockMin
+        stockMin: productosTerminados[i].stockMin,
+        stockOptimo: productosTerminados[i].stockOptimo
       });
     }
     resolve(productosTerminados);
@@ -75,16 +78,14 @@ exports.estadoStock = function(req, res) {
   promises.push(buscarMateriaPrima(productos));
   promises.push(buscarSemiProcesado(productos));
   promises.push(buscarTerminados(productos));
-
   Promise.all(promises).then(function() {
     var promises2 = [];
     var productos2 = [];
     var date = new Date(), y = date.getFullYear(), m = date.getMonth();
     var firstDay = new Date();
     var lastDay = new Date();
-    firstDay.setFullYear(y, m, 1)
+    firstDay.setFullYear(y, m - 2, 1)
     lastDay.setFullYear(y, m + 1, 0)
-
     for(var i = 0; i < productos.length; ++i) {
       promises2.push(estadosProducto(productos[i], firstDay, lastDay));
     }
@@ -97,6 +98,39 @@ exports.estadoStock = function(req, res) {
       res.send(500, err.message);
   });
 };
+
+var calcularStockOptimo = function(ultimasCompras, producto) {
+  var optimo = 0;
+  var sum = 0;
+  ultimasCompras.map(function(item, index){
+    sum += item.cantidad;
+  });
+
+  if(producto.cantidad > producto.stockMax) { // FALTA STOCK?
+    if(sum > producto.stockOptimo) {          // COMPRAMOS MAS QUE EL OPTIMO?
+                                              // SI. HAY QUE COMPRAR MAS
+
+
+      } // NO. ENTONCES TENES QUE COMPRAR MAS HASTA LLEGAR AL OPTIMO. NO MODIFICO.
+  } else
+  if(producto.cantidad < producto.stockMin) { // SOBRA STOCK?
+    if(sum < producto.stockOptimo) {          // COMPRAMOS MENOS QUE EL OPTIMO?
+                                              // HAY QUE COMPRAR MAS
+
+    } // NO. ENTONCES TENES QUE COMPRAR MAS HASTA LLEGAR AL OPTIMO. NO MODIFICO.
+  } else {
+    optimo = producto.stockOptimo;
+  }
+  console.log("COMPARO");
+  console.log(sum);
+  console.log(producto.stockOptimo);
+  console.log("------");
+  if(sum>producto.stockOptimo) optimo = 9999
+  else if(sum<producto.stockOptimo) optimo = -8888
+  else optimo = producto.stockOptimo;
+
+  return optimo;
+}
 
 var estadosProducto = function(producto, desde, hasta) {
   return new Promise(function(resolve, reject) {
@@ -114,12 +148,8 @@ var estadosProducto = function(producto, desde, hasta) {
           results.push(documentoMercantilItems[i]);
       }
 
-      var sum = 0;
-      results.map(function(item, index){
-        sum += item.cantidad;
-      });
-      if(sum==0)
-        sum = -73;
+      var optimo = calcularStockOptimo(results, producto);
+
       productosResult =
         {
           _id: producto._id,
@@ -128,7 +158,7 @@ var estadosProducto = function(producto, desde, hasta) {
           cantidad: producto.cantidad,
           stockMax: producto.stockMax,
           stockMin: producto.stockMin,
-          stockOptimo: sum
+          stockOptimo: optimo
         };
       resolve(productosResult);
     };

@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 //Import models
 var MateriaPrima  = require("../models/materiaPrima").materiaPrimaModel;
 
-exports.findAll = function(req, res) {  
-    MateriaPrima.find(function(err, materiasPrima){ 
+exports.findAll = function(req, res) {
+    MateriaPrima.find(function(err, materiasPrima){
 		if(err) res.send(500, err.message);
 
 		console.log('GET/materiasPrima');
@@ -12,15 +12,15 @@ exports.findAll = function(req, res) {
 };
 
 
-exports.findById = function(req, res) {  
-	var findByIdCallback = 
+exports.findById = function(req, res) {
+	var findByIdCallback =
 	function(err, materiaPrima){
 		if(err) return res.send(500, err.message);
 
 		console.log('GET/materiaPrima/' + req.params.id);
 		res.status(200).jsonp(materiaPrima);
     };
-	
+
     MateriaPrima.findById(req.params.id, findByIdCallback); //luego de realizar la busqueda ejecuta el callback
 };
 
@@ -36,6 +36,7 @@ exports.add = function(req, res) {
         unidad:     	        req.body.unidad,
         stockMin:               req.body.stockMin,
         stockMax:   	        req.body.stockMax,
+        stockOptimo:   	        (req.body.stockMax+req.body.stockMin)/2,
         embolsadoCantDefault:   req.body.embolsadoCantDefault,
         precioVenta:  	        req.body.precioVenta,
         tipo:                   req.body.tipo,
@@ -51,9 +52,9 @@ exports.add = function(req, res) {
 exports.update = function(req, res) {
 	console.log('UPDATE');
     console.log(req.body);
-	
+
     MateriaPrima.findById(req.params.id, function(err, materiaPrima) { //"materiaPrima" es el objeto que me devuelve la busqueda
-        
+
 		//actualizo todos los campos de ese "materiaPrima"
         materiaPrima.tasaImpositivaID =     req.body.tasaImpositivaID;
         materiaPrima.nombre =               req.body.nombre;
@@ -61,6 +62,7 @@ exports.update = function(req, res) {
         materiaPrima.unidad =     		  	req.body.unidad;
         materiaPrima.stockMin =             req.body.stockMin;
         materiaPrima.stockMax =   	        req.body.stockMax;
+        materiaPrima.stockOptimo =   	        (req.body.stockMax+req.body.stockMin)/2;
         materiaPrima.embolsadoCantDefault = req.body.embolsadoCantDefault;
         materiaPrima.precioVenta =  		req.body.precioVenta;
         materiaPrima.tipo =                 req.body.tipo;
@@ -81,13 +83,13 @@ exports.updateStock = function(req, res) {
 				if (+req.body.add == 1){
 					if (materiaPrima.cantidad)
 						materiaPrima.cantidad = +materiaPrima.cantidad + +req.body.cant;
-					else 
+					else
 						materiaPrima.cantidad = +req.body.cant;
 				} else {
 					materiaPrima.cantidad = +materiaPrima.cantidad - +req.body.cant;
 				}
-				
-				if(materiaPrima.cantidad >= 0) { 
+
+				if(materiaPrima.cantidad >= 0) {
 					materiaPrima.save(function(err) { //almaceno en la base "materiaPrima" para que quede actualizada con los nuevos cambios
 						if(err) return res.status(500).send(err.message);
 						res.status(200).jsonp(materiaPrima);
@@ -113,13 +115,13 @@ exports.canUpdateStock = function(req, res) {
 				if (req.query.add == 'true') {
 					if (materiaPrima.cantidad)
 						materiaPrima.cantidad = +materiaPrima.cantidad + +req.query.cant;
-					else 
+					else
 						materiaPrima.cantidad = +req.query.cant;
 				} else {
 					materiaPrima.cantidad = +materiaPrima.cantidad - +req.query.cant;
 				}
-				
-				if(materiaPrima.cantidad >= 0) { 
+
+				if(materiaPrima.cantidad >= 0) {
 					res.status(200).jsonp(materiaPrima);
 				} else {
 					res.status(505).send('No hay stock suficiente para realizar la accion. ' + req.query.id);
@@ -135,9 +137,9 @@ exports.canUpdateStock = function(req, res) {
 
 
 exports.delete = function(req, res) {
-	console.log('DELETE');	
+	console.log('DELETE');
 	console.log(req.params.id);
-	
+
     MateriaPrima.findById(req.params.id, function(err, materiaPrima) {
         materiaPrima.remove(function(err) {
             if(err) return res.status(500).send(err.message);
@@ -145,5 +147,3 @@ exports.delete = function(req, res) {
         })
     });
 };
-
-
