@@ -2,11 +2,16 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';  
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 import { FacturaVentaModelDB } from './FacturaVentaModelDB'
 import { FacturaVenta } from './FacturaVenta'
 import { Producto } from './Producto'
-import {URL_DOCUMENTOS_MERCANTILES, URL_DOCUMENTOS_MERCANTILES_ITEMS} from '../rutas';
+import {
+  URL_DOCUMENTOS_MERCANTILES, URL_DOCUMENTOS_MERCANTILES_ITEMS,
+  URL_DOCUMENTOS_MERCANTILES_VENCIMIENTOS
+} from '../rutas';
+import {Vencimiento} from "./Vencimiento";
 
 @Injectable()
 export class FacturaVentaServices {
@@ -88,4 +93,41 @@ export class FacturaVentaServices {
     return this.http.put(URL_DOCUMENTOS_MERCANTILES_ITEMS + "/" + body._id, body, {headers: headers});
   }
 
+
+  vincularVencimientos(vencimiento: Vencimiento): Promise<void> {
+   var headers = this.getHeaderJSON();
+    console.log("POST REQUEST");
+    return this.http.post(URL_DOCUMENTOS_MERCANTILES_VENCIMIENTOS, JSON.stringify(vencimiento), {headers: headers})
+        .toPromise()
+        .then(() => null)
+        .catch(this.handleError);;
+  }
+
+  vincularVencimientosUpdate(vencimiento: Vencimiento): Promise<void> {
+    var headers = this.getHeaderJSON();
+    console.log("PUT REQUEST");
+    return this.http.put(URL_DOCUMENTOS_MERCANTILES_VENCIMIENTOS + "/" + vencimiento._id, JSON.stringify(vencimiento), {headers: headers})
+        .toPromise()
+        .then(() => null)
+        .catch(this.handleError);
+  }
+
+  getHeaderJSON(): Headers {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return headers;
+  }
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
+  }
+
+  getVencimientosFacturaID(_id: string): Promise<Vencimiento[]>{
+    return this.http
+        .get(URL_DOCUMENTOS_MERCANTILES_VENCIMIENTOS + "/documentoMercantil/" + _id)
+        .toPromise()
+        .then(response => response.json() as Vencimiento[])
+        .catch(this.handleError);
+  }
 }

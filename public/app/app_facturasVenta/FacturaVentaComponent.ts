@@ -15,6 +15,7 @@ import { ListaDePrecioServices } from '../app_listaDePrecios/ListaDePrecioServic
 import { MateriaPrimaServices } from '../app_materiasPrima/materiaPrimaServices';
 import { SemiProcesadoServices } from '../app_semiProcesados/semiProcesadoServices';
 import { ProductoTerminadoServices } from '../app_productosTerminados/productoTerminadoServices';
+import {Vencimiento} from "./Vencimiento";
 
 
 @Component({
@@ -85,21 +86,26 @@ export class FacturaVentaComponent implements OnInit{
                     this.fvService
                     .getProductosDeLaFacturaID(fv._id)
                     .subscribe(productos => {
-                      console.log("PRODUCTOS GUARDADOS")
-                      console.log(productos)
+                      console.log("PRODUCTOS GUARDADOS");
+                      console.log(productos);
 
-                      this.facturasVentaDisponibles
-                      .push(
-                        new FacturaVenta(
-                          fv._id, 
-                          fv.fechaEmision, 
-                          cliente, 
-                          fv.condicionPago, 
-                          fv.listaPrecioNombre, 
-                          productos)
-                      )
+                      this.fvService.getVencimientosFacturaID(fv._id).then( vencimientos => {
 
-                      console.log(this.facturasVentaDisponibles)
+                        this.facturasVentaDisponibles
+                            .push(
+                                new FacturaVenta(
+                                    fv._id,
+                                    fv.fechaEmision,
+                                    cliente,
+                                    fv.condicionPago,
+                                    fv.listaPrecioNombre,
+                                    productos,
+                                    vencimientos)
+                            )
+
+                        console.log(this.facturasVentaDisponibles)
+                      });
+
                     })
                   }
                 }
@@ -170,6 +176,13 @@ export class FacturaVentaComponent implements OnInit{
     this.facturaVenta.fecha = new Date(factura.fecha)//la asingnacion anterior no funciona para fecha
     console.log("PROCESANDO FACTURA=")
     console.log(this.facturaVenta)
+
+  }
+
+  generarRemito(factura: FacturaVenta){
+
+    console.log("PROCESANDO FACTURA=");
+    console.log(factura);
 
   }
 
@@ -279,6 +292,7 @@ export class FacturaVentaComponent implements OnInit{
             }
             console.log(producto.precioVenta)
             this.facturaVenta.productos.push(new Producto(null, "unTipo", producto._id, producto.nombre, 1, producto.precioVenta, this.getIVA(producto)));
+            this.facturaVenta.setImportesEnVencimientos();
           },
           err => console.error("EL ERROR FUE: ", err)
         )
@@ -342,73 +356,96 @@ export class FacturaVentaComponent implements OnInit{
       listaPrecioNombre:  this.facturaVenta.nombreListaDePrecios
     }
 
-    if(this.facturaVenta._id == undefined) { // Es un alta nueva
+    if (this.facturaVenta.isControlTotal_OK()) {
 
-      console.log(bodyFacturaVenta)
+      if (this.facturaVenta._id == undefined) { // Es un alta nueva
 
-      this.fvService
-        .agregarFactura(bodyFacturaVenta)
-        .subscribe( 
-          fvAgregada => {
-            console.log(fvAgregada)
+        console.log(bodyFacturaVenta)
 
-            let bodyDocumentoMercantilItem = {}
-            for(let producto of this.facturaVenta.productos){
-              bodyDocumentoMercantilItem = {
-                tipo:                   "tipo",
-                productoID:             producto.mp_sp_pt_ID,
-                nombre:                 producto.nombre,
-                cantidad:               producto.cantidad,
-                precio:                 producto.precioVenta,
-                iva:                    producto.iva,
-                documentoMercantilID:   fvAgregada._id
+        this.fvService
+            .agregarFactura(bodyFacturaVenta)
+            .subscribe(
+                fvAgregada => {
+                  console.log(fvAgregada)
+
+                  let bodyDocumentoMercantilItem = {}
+                  for (let producto of this.facturaVenta.productos) {
+                    bodyDocumentoMercantilItem = {
+                      tipo: "tipo",
+                      productoID: producto.mp_sp_pt_ID,
+                      nombre: producto.nombre,
+                      cantidad: producto.cantidad,
+                      precio: producto.precioVenta,
+                      iva: producto.iva,
+                      documentoMercantilID: fvAgregada._id
+                    }
+
+                    console.log("VINCULANDO bodyDocumentoMercantilItem=")
+                    console.log(bodyDocumentoMercantilItem)
+
+                    this.fvService.vincularProducto(bodyDocumentoMercantilItem).subscribe()
+
+                  }
+
+                  for (var i = 0; i < this.facturaVenta.vencimientos.length; i++) {
+                    console.log("VINCULANDO Vencimientos");
+                    var vencimiento: Vencimiento = this.facturaVenta.vencimientos[i];
+                    vencimiento.factura_id = fvAgregada._id;
+                    console.log(vencimiento);
+
+                    this.fvService.vincularVencimientos(vencimiento).then();
+                  }
+
+                  alert("\t\t\t\t¡Factura guardada!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
+                  window.location.reload();
+                },
+                err => console.error("EL ERROR FUE: ", err));
+
+      } else { // Esta modificando una factura existente
+
+        bodyFacturaVenta["_id"] = this.facturaVenta._id
+
+        console.log(bodyFacturaVenta)
+
+        this.fvService
+            .modificarFactura(bodyFacturaVenta)
+            .subscribe(res => {
+              let bodyDocumentoMercantilItem = {}
+              for (let producto of this.facturaVenta.productos) {
+                bodyDocumentoMercantilItem = {
+                  _id: producto._id,
+                  tipo: "tipo",
+                  productoID: producto.mp_sp_pt_ID,
+                  nombre: producto.nombre,
+                  cantidad: producto.cantidad,
+                  precio: producto.precioVenta,
+                  iva: producto.iva,
+                  documentoMercantilID: this.facturaVenta._id
+                }
+
+                console.log("MODIFICANDO bodyDocumentoMercantilItem=")
+                console.log(bodyDocumentoMercantilItem)
+
+                this.fvService.modificarProducto(bodyDocumentoMercantilItem).subscribe()
               }
 
-              console.log("VINCULANDO bodyDocumentoMercantilItem=")
-              console.log(bodyDocumentoMercantilItem)
+              for (var i = 0; i < this.facturaVenta.vencimientos.length; i++) {
+                console.log("VINCULANDO Vencimientos");
+                var vencimiento: Vencimiento = this.facturaVenta.vencimientos[i];
+                vencimiento.factura_id = this.facturaVenta._id;
+                console.log(vencimiento);
+                if (vencimiento._id) {
+                  this.fvService.vincularVencimientosUpdate(vencimiento).then();
+                } else {
+                  this.fvService.vincularVencimientos(vencimiento).then();
+                }
+              }
 
-              this.fvService.vincularProducto(bodyDocumentoMercantilItem).subscribe()
+              alert("\t\t\t\t¡Factura modificada!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
+              window.location.reload();
 
-            }
-
-            alert("\t\t\t\t¡Factura guardada!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
-            window.location.reload();
-          },
-          err => console.error("EL ERROR FUE: ", err));
-
-    } else { // Esta modificando una factura existente
-
-      bodyFacturaVenta["_id"] = this.facturaVenta._id
-
-      console.log(bodyFacturaVenta)
-
-      this.fvService
-      .modificarFactura(bodyFacturaVenta)
-      .subscribe(res => {
-        let bodyDocumentoMercantilItem = {}
-        for(let producto of this.facturaVenta.productos){
-          bodyDocumentoMercantilItem = {
-            _id:                     producto._id,
-            tipo:                    "tipo",
-            productoID:              producto.mp_sp_pt_ID,
-            nombre:                  producto.nombre,
-            cantidad:                producto.cantidad,
-            precio:                  producto.precioVenta,
-            iva:                     producto.iva,
-            documentoMercantilID:   this.facturaVenta._id
-          }
-
-          console.log("MODIFICANDO bodyDocumentoMercantilItem=")
-          console.log(bodyDocumentoMercantilItem)
-
-          this.fvService.modificarProducto(bodyDocumentoMercantilItem).subscribe()
-        }
-
-        alert("\t\t\t\t¡Factura modificada!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
-        window.location.reload();
-
-      })
-
+            })
+      }
     }
   }
 

@@ -86,6 +86,9 @@ app.use('/api', movProductUsadoRoutersHandler);
 var facturacionDatosPropiosRoutersHandler = require("./routersHandlers/facturacionDatosPropiosRoutersHandler").getFacturacionDatosPropiosRoutersHandler(express);
 app.use('/api', facturacionDatosPropiosRoutersHandler);
 
+var documentoMercantilVencimientoRoutersHandler = require("./routersHandlers/documentoMercantilVEncimientoRoutersHandler").getDocumentoMercantilItemRoutersHandler(express);
+app.use('/api', documentoMercantilVencimientoRoutersHandler);
+
 var documentoMercantilItemRoutersHandler = require("./routersHandlers/documentoMercantilItemRoutersHandler").getDocumentoMercantilItemRoutersHandler(express);
 app.use('/api', documentoMercantilItemRoutersHandler);
 

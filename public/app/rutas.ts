@@ -1,5 +1,7 @@
 let ip = "localhost";
 let puerto = 3000;
+var url = 'http://' + ip + ':' + puerto;
+var urlApi = url + "/api";
 
 //VIEWs
 export const URL_VIEW_INDEX = 			'http://' + ip + ':' + puerto + '/index.html';
@@ -32,6 +34,7 @@ export const URL_LISTA_PORCENTAJES_CON_DATOS = 'http://' + ip + ':' + puerto + '
 
 export const URL_DOCUMENTOS_MERCANTILES = 			'http://' + ip + ':' + puerto + '/api/documentosMercantiles';
 export const URL_DOCUMENTOS_MERCANTILES_ITEMS = 		'http://' + ip + ':' + puerto + '/api/documentosMercantilesItems';
+export const URL_DOCUMENTOS_MERCANTILES_VENCIMIENTOS = urlApi + '/documentosMercantilesVencimientos';
 
 export const URL_INFORME_ESTADO = 			'http://' + ip + ':' + puerto + '/api/informeEstadoStock';
 export const URL_INFORME_PRECIOS = 			'http://' + ip + ':' + puerto + '/api/informePrecios';
