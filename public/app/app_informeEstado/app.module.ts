@@ -9,6 +9,7 @@ import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { InformesServices } from '../app_informes/informesServices';
 import { EstadoStockComponent } from './estadoStockComponent';
 import { StockItemComponent } from './stockItemComponent';
+import { StockOptimoComponent } from './modalStockOptimoComponent';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { StockItemComponent } from './stockItemComponent';
     NavMenuComponent,
     SignOutComponent,
     EstadoStockComponent,
-    StockItemComponent
+    StockItemComponent,
+    StockOptimoComponent
   ],
   providers: [
     InformesServices

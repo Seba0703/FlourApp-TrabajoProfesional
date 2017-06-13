@@ -106,29 +106,18 @@ var calcularStockOptimo = function(ultimasCompras, producto) {
     sum += item.cantidad;
   });
 
-  if(producto.cantidad > producto.stockMax) { // FALTA STOCK?
-    if(sum > producto.stockOptimo) {          // COMPRAMOS MAS QUE EL OPTIMO?
-                                              // SI. HAY QUE COMPRAR MAS
-
-
-      } // NO. ENTONCES TENES QUE COMPRAR MAS HASTA LLEGAR AL OPTIMO. NO MODIFICO.
+  if(producto.cantidad > producto.stockMax) {
+    if(sum > producto.stockOptimo) {
+      optimo = producto.stockMax + ((producto.cantidad - producto.stockMax)/2);
+    }
   } else
-  if(producto.cantidad < producto.stockMin) { // SOBRA STOCK?
-    if(sum < producto.stockOptimo) {          // COMPRAMOS MENOS QUE EL OPTIMO?
-                                              // HAY QUE COMPRAR MAS
-
-    } // NO. ENTONCES TENES QUE COMPRAR MAS HASTA LLEGAR AL OPTIMO. NO MODIFICO.
+  if(producto.cantidad < producto.stockMin) {
+    if(sum < producto.stockOptimo) {
+      optimo = producto.stockMin - ((producto.stockMin - producto.cantidad)/2);
+    }
   } else {
     optimo = producto.stockOptimo;
   }
-  console.log("COMPARO");
-  console.log(sum);
-  console.log(producto.stockOptimo);
-  console.log("------");
-  if(sum>producto.stockOptimo) optimo = 9999
-  else if(sum<producto.stockOptimo) optimo = -8888
-  else optimo = producto.stockOptimo;
-
   return optimo;
 }
 
@@ -158,7 +147,8 @@ var estadosProducto = function(producto, desde, hasta) {
           cantidad: producto.cantidad,
           stockMax: producto.stockMax,
           stockMin: producto.stockMin,
-          stockOptimo: optimo
+          stockOptimo: producto.stockOptimo,
+          stockOptimoRecomendado: optimo
         };
       resolve(productosResult);
     };

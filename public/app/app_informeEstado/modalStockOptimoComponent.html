@@ -1,0 +1,72 @@
+<!-- <button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar materia prima" data-toggle="modal" data-target="#modalStockOptimo">+</button> -->
+<button type="button" class="btn btn-outline-primary btn-sm btn-block" style="margin-bottom:0px; color:#2196F3" data-toggle="modal" data-target="#modalStockOptimo">
+    {{recomendacion}}
+    {{valor_optimo}}
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modalStockOptimo" tabindex="-1" role="dialog" aria-labelledby="modalStockOptimoLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalStockOptimoLabel">Modificar Stock Optimo</h5>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <h3>{{nombre}}</h3>
+                    <p>
+                        <b>Cantidad actual:
+                        </b>{{cantidad}}</p>
+                    <div>
+                        Stock Min:
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            {{min}}
+                        </div>
+                        <div class="col-md-2">
+                            ->
+                        </div>
+                        <div class="col-md-8">
+                            <input type="number" class="form-control" placeholder="Nuevo Stock Minimo" aria-describedby="stockmin" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]=" stockMin">
+                        </div>
+                    </div>
+                    <div>
+                        Stock Max:
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            {{max}}
+                        </div>
+                        <div class="col-md-2">
+                            ->
+                        </div>
+                        <div class="col-md-8">
+                            <input type="number" class="form-control" placeholder="Nuevo Stock Máximo" aria-describedby="stockmin" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]=" stockMin">
+                        </div>
+                    </div>
+                    <div>
+                        Stock Óptimo:
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            {{optimo_actual}}
+                        </div>
+                        <div class="col-md-2">
+                            ->
+                        </div>
+                        <div class="col-md-8">
+                            <input type="number" class="form-control" placeholder="Nuevo Stock Optimo" aria-describedby="stockmin" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]=" stockMin">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="agregar()">
+                    Agregar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,10 +3,10 @@
 		<h6 style="margin-bottom:2px; font-size: 110%; font-weight: bold">{{nombre}}</h6>
 		<p style="margin-bottom:0px">Stock
 			<b [ngClass]="estadoColor()">{{estadoTexto()}}</b>
-			<span class="pull-right" style="margin-bottom:0px; color:#2196F3">
-				Recomendado:
-				{{optimo}}
-			</span>
+			<!-- <span class="pull-right" style="margin-bottom:0px; color:#2196F3">
+				{{recomendacion()}}
+				{{valor_optimo()}}
+			</span> -->
 		</p>
 		<p style="margin-bottom:0px">Min:
 			{{min}}
@@ -16,7 +16,8 @@
 				{{actual}}</b>
 		</p>
 		<div class="progress">
-			<div class="progress-bar" style="height: 8px" [ngClass]="estadoColorBarra()" role="progressbar" [style.width]="(actual*100)/max+'%'" aria-valuenow="actual" aria-valuemin="0" aria-valuemax="max"></div>
+			<div class="progress-bar" style="height: 8px; margin-bottom:10px;" [ngClass]="estadoColorBarra()" role="progressbar" [style.width]="((actual+1)*100)/max+'%'" aria-valuenow="actual" aria-valuemin="0" aria-valuemax="max"></div>
 		</div>
+		<modificar-stock-optimo *ngIf="recomendacion() != ''" [min]="min" [max]="max" [optimo_actual]="optimo_actual" [valor_optimo]="valor_optimo()" [recomendacion]="recomendacion()" [nombre]="nombre" [cantidad]="actual"></modificar-stock-optimo>
 	</div>
 </div>
