@@ -4,11 +4,7 @@ public/app/**/*.js
 public/app/**/*.map
 npm-debug.log
 public/npm-debug.log
-logs
 logs/reporter.log
 .idea
-logs
-logs/reporter.log
-logs/reporter.log
-*.log
 .idea/typescript-compiler.xml
+

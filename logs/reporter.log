@@ -23475,3 +23475,50 @@ return ret;
 2017-06-12T01:25:40.271Z - info: Veryfing license key free
 2017-06-12T01:25:41.425Z - info: Using free license
 2017-06-12T01:25:41.426Z - info: reporter initialized
+2017-06-13T22:55:53.570Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-06-13T22:55:53.571Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-06-13T22:55:53.573Z - info: Searching for available extensions in C:\Users\Sebastian\Documents\GitHub\FlourApp-TrabajoProfesional\
+2017-06-13T22:55:53.588Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Sebastian\Documents\GitHub\FlourApp-TrabajoProfesional\node_modules\
+2017-06-13T22:55:54.686Z - info: Found 29 extensions
+2017-06-13T22:55:54.698Z - debug: Writing extension locations cache to C:\Users\SEBAST~1\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-06-13T22:55:54.699Z - debug: Discovered 29 extensions
+2017-06-13T22:55:54.700Z - info: Using extension import-export
+2017-06-13T22:55:54.944Z - info: Using extension tags
+2017-06-13T22:55:54.955Z - info: Using extension templates
+2017-06-13T22:55:54.960Z - info: Using extension jsrender
+2017-06-13T22:55:54.960Z - info: Using extension cli
+2017-06-13T22:55:54.961Z - info: Using extension authentication
+2017-06-13T22:55:55.019Z - debug: Extension authentication was disabled
+2017-06-13T22:55:55.019Z - info: Using extension debug
+2017-06-13T22:55:55.021Z - info: Using extension express
+2017-06-13T22:55:55.086Z - info: Using extension fop-pdf
+2017-06-13T22:55:55.089Z - info: Using extension handlebars
+2017-06-13T22:55:55.091Z - info: Using extension phantom-pdf
+2017-06-13T22:55:55.127Z - info: Using extension fs-store
+2017-06-13T22:55:55.281Z - debug: Extension fs-store was disabled
+2017-06-13T22:55:55.281Z - info: Using extension images
+2017-06-13T22:55:55.285Z - info: Using extension data
+2017-06-13T22:55:55.286Z - info: Using extension child-templates
+2017-06-13T22:55:55.288Z - info: Using extension licensing
+2017-06-13T22:55:55.343Z - info: Using extension authorization
+2017-06-13T22:55:55.344Z - debug: Extension authorization was disabled
+2017-06-13T22:55:55.344Z - info: Using extension text
+2017-06-13T22:55:55.345Z - info: Using extension reports
+2017-06-13T22:55:55.347Z - info: Using extension resources
+2017-06-13T22:55:55.349Z - info: Using extension browser-client
+2017-06-13T22:55:55.351Z - info: Using extension studio
+2017-06-13T22:55:55.474Z - info: Using extension html-to-xlsx
+2017-06-13T22:55:55.573Z - info: Using extension scripts
+2017-06-13T22:55:55.575Z - info: Using extension assets
+2017-06-13T22:55:55.582Z - info: Using extension scheduling
+2017-06-13T22:55:55.605Z - info: Using extension xlsx
+2017-06-13T22:55:55.744Z - info: Using extension sample-template
+2017-06-13T22:55:55.746Z - debug: Creating samples is disabled
+2017-06-13T22:55:55.746Z - info: Using extension public-templates
+2017-06-13T22:55:55.752Z - debug: Extension public-templates was disabled
+2017-06-13T22:55:55.783Z - info: Creating memory store
+2017-06-13T22:55:55.799Z - info: Creating default express app.
+2017-06-13T22:55:55.848Z - info: jsreport server successfully started on http port: 3001
+2017-06-13T22:55:55.849Z - info: Veryfing license key free
+2017-06-13T22:55:57.137Z - info: Using free license
+2017-06-13T22:55:57.139Z - info: reporter initialized
