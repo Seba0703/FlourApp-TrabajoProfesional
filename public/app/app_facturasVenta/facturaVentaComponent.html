@@ -231,6 +231,11 @@
 				  	</div>
 
 				  	<div class="tab-pane" id="item3" role="tabpanel">
+						<div layout-align="center center" margin="10px" class="text-center">
+							<label for="example-text-input" class="col-form-label" >
+								<strong>Diferencia con total: {{facturaVenta.redondeoDiff}} </strong>
+							</label>
+						</div>
 						<div class="row">
 							<div class="col-md-12" style="max-height: 400px; overflow-y: scroll;">
 								<table class="table">
@@ -250,7 +255,7 @@
 
 									<td>
 										<input type="number" min="0.01" step="0.01"  class="form-control" placeholder="$"
-											   [(ngModel)]="facturaVenta.vencimientos[i].importe">
+											   [(ngModel)]="facturaVenta.vencimientos[i].importe" (blur)="facturaVenta.calculateDiff()">
 									</td>
 
 									<td>
@@ -286,7 +291,6 @@
 					  	<button 
 							type="button" 
 							class="btn btn-primary"
-							data-dismiss="modal"
 					        (click)="guardarFactura()">
 					            Guardar factura
 					     </button>
@@ -298,6 +302,3 @@
         </div>
     </div>
 </div>
-
-
-
