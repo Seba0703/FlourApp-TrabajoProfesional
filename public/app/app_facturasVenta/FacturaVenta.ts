@@ -5,6 +5,8 @@ import {Vencimiento} from "./Vencimiento";
 
 export class FacturaVenta {
 	public condPagoParsed?: string[];
+	public errorMsj?: string;
+	public redondeoDiff?: number = 0;
     constructor(
         public _id?: string,
         public fecha?: Date,
@@ -34,6 +36,7 @@ export class FacturaVenta {
 
 	    	if(vencimientos) {
 	    		this.vencimientos = vencimientos;
+	    		this.calculateDiff();
 			} else {
 	    		this.vencimientos = [];
 			}
@@ -45,9 +48,12 @@ export class FacturaVenta {
 		var importe = this.getImporte();
 		var cantCondPagos = this.condPagoParsed.length;
 		var importeCondPago = CommonFunctions.round(importe / cantCondPagos, 2);
+		var total: number = 0;
+
 
 		for(var i = 0; i < this.condPagoParsed.length; i++ ) {
 			var vencimiento: Vencimiento = this.vencimientos[i];
+			total += importeCondPago;
 			if (vencimiento) {
 				vencimiento.importe = importeCondPago;
 				vencimiento.fecha = this.getFechaVencConPago(Number(this.condPagoParsed[i]));
@@ -60,6 +66,8 @@ export class FacturaVenta {
 				this.vencimientos.push(vencimiento);
 			}
 		}
+
+		this.redondeoDiff = CommonFunctions.round(importe - CommonFunctions.round(total, 2), 2);
 	}
 
     getImporte(): number {
@@ -89,11 +97,23 @@ export class FacturaVenta {
 		}
 
 		var totalFactura = this.getImporte();
-		if (total != totalFactura) {
-        	alert('El total de los importes de vencimientos es ' + total + ' y el importe de la factura es de ' + totalFactura);
+        var totalRound = CommonFunctions.round(total, 2);
+		if ( Math.abs(this.redondeoDiff) > 1) {
+			this.errorMsj = 'El total de los importes de vencimientos es ' + totalRound + ' y el importe de la factura es de ' + totalFactura;
+			alert(this.errorMsj);
         	return false;
 		}
 		return true;
+	}
+
+	calculateDiff() {
+		var totalVencimiento: number = 0;
+		var totalImporte = this.getImporte();
+		for(var i = 0; i < this.vencimientos.length; i++) {
+			totalVencimiento += this.vencimientos[i].importe;
+		}
+
+		this.redondeoDiff = CommonFunctions.round(totalImporte - CommonFunctions.round(totalVencimiento, 2), 2);
 	}
 
 }
