@@ -39,17 +39,13 @@ export class StockItemComponent {
 
   recomendacion():string {
     if(this.actual>this.max)
-      return 'Aumentar óptimo a ';
-    if(this.actual<this.min)
       return 'Reducir óptimo a ';
+    if(this.actual<this.min)
+      return 'Aumentar óptimo a ';
     return '';
   }
 
-  valor_optimo():string {
-    if(this.actual>this.max)
-      return ''+this.optimo;
-    if(this.actual<this.min)
-      return ''+this.optimo;
-    return '';
+  valor_optimo():number {
+    return (this.optimo);
   }
 }

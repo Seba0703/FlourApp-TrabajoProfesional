@@ -84,8 +84,8 @@ exports.estadoStock = function(req, res) {
     var date = new Date(), y = date.getFullYear(), m = date.getMonth();
     var firstDay = new Date();
     var lastDay = new Date();
-    firstDay.setFullYear(y, m - 2, 1)
-    lastDay.setFullYear(y, m + 1, 0)
+    firstDay.setFullYear(y, m - 2, 1);
+    lastDay.setFullYear(y, m + 1, 0);
     for(var i = 0; i < productos.length; ++i) {
       promises2.push(estadosProducto(productos[i], firstDay, lastDay));
     }
@@ -100,24 +100,18 @@ exports.estadoStock = function(req, res) {
 };
 
 var calcularStockOptimo = function(ultimasCompras, producto) {
-  var optimo = 0;
+  var optimo = producto.stockOptimo;
   var sum = 0;
   ultimasCompras.map(function(item, index){
     sum += item.cantidad;
   });
 
-  if(producto.cantidad > producto.stockMax) {
-    if(sum > producto.stockOptimo) {
-      optimo = producto.stockMax + ((producto.cantidad - producto.stockMax)/2);
-    }
-  } else
-  if(producto.cantidad < producto.stockMin) {
-    if(sum < producto.stockOptimo) {
-      optimo = producto.stockMin - ((producto.stockMin - producto.cantidad)/2);
-    }
-  } else {
-    optimo = producto.stockOptimo;
+  if(sum < producto.stockOptimo && producto.cantidad > producto.stockMax) {
+    optimo = (producto.stockMin - (producto.cantidad - producto.stockMax/2)).toFixed(0);
+  } else if(sum > producto.stockOptimo && producto.cantidad < producto.stockMin) {
+    optimo = (producto.stockMax + ((producto.cantidad)/2)).toFixed(0);
   }
+
   return optimo;
 }
 
