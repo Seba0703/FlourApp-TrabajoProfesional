@@ -1,7 +1,7 @@
 // Import controller
 var documentoMercantilVencimientoController = require("../controllers/documentoMercantilVencimientoController");
 
-exports.getDocumentoMercantilItemRoutersHandler = function(express){
+exports.getDocumentoMercantilVencimientoRoutersHandler = function(express){
     var documentoMercantilItemRoutersHandler = express.Router();
 
     documentoMercantilItemRoutersHandler.route('/documentosMercantilesVencimientos')

@@ -1,13 +1,13 @@
 var mongoose = require("mongoose"); //instancio objeto "mongoose"
 var Schema = mongoose.Schema;
 
-var movimientoProduccionFinalSchema = new Schema({  
-  materiaPrimaFinal:      { type: Schema.Types.ObjectId, ref: 'MateriaPrima' },
-  prodSemiFinal:      { type: Schema.Types.ObjectId, ref: 'ProductoSemiProcesado' },
-  prodTermFinal:      { type: Schema.Types.ObjectId, ref: 'ProductoTerminado' },
-  tipo:				   	{ type: Number },
-  fecha:            	{ type: Date },
-  cantidadFabricada:   	{ type: Number }
+var movimientoProduccionFinalSchema = new Schema({
+    materiaPrimaFinal:      { type: Schema.Types.ObjectId, ref: 'MateriaPrima' },
+    prodSemiFinal:      { type: Schema.Types.ObjectId, ref: 'ProductoSemiProcesado' },
+    prodTermFinal:      { type: Schema.Types.ObjectId, ref: 'ProductoTerminado' },
+    tipo:				   	{ type: Number },
+    fecha:            	{ type: Date },
+    cantidadFabricada:   	{ type: Number }
 });
 
 exports.movimientoProduccionFinalModel = mongoose.model('MovimientoProduccionFinal', movimientoProduccionFinalSchema); //crea el modelo y lo exporta para que lo puedan usar otros modulos

@@ -59,6 +59,9 @@ app.use('/api', usuarioRoutersHandler);
 var clienteRoutersHandler = require("./routersHandlers/clienteRoutersHandler").getClienteRoutersHandler(express);
 app.use('/api', clienteRoutersHandler);
 
+var retencionRoutersHandler = require("./routersHandlers/retencionRoutersHandler").getRetencionRoutersHandler(express);
+app.use('/api', retencionRoutersHandler);
+
 var proveedorRoutersHandler = require("./routersHandlers/proveedorRoutersHandler").getProveedorRoutersHandler(express);
 app.use('/api', proveedorRoutersHandler);
 
@@ -86,7 +89,7 @@ app.use('/api', movProductUsadoRoutersHandler);
 var facturacionDatosPropiosRoutersHandler = require("./routersHandlers/facturacionDatosPropiosRoutersHandler").getFacturacionDatosPropiosRoutersHandler(express);
 app.use('/api', facturacionDatosPropiosRoutersHandler);
 
-var documentoMercantilVencimientoRoutersHandler = require("./routersHandlers/documentoMercantilVEncimientoRoutersHandler").getDocumentoMercantilItemRoutersHandler(express);
+var documentoMercantilVencimientoRoutersHandler = require("./routersHandlers/documentoMercantilVencimientoRoutersHandler").getDocumentoMercantilVencimientoRoutersHandler(express);
 app.use('/api', documentoMercantilVencimientoRoutersHandler);
 
 var documentoMercantilItemRoutersHandler = require("./routersHandlers/documentoMercantilItemRoutersHandler").getDocumentoMercantilItemRoutersHandler(express);

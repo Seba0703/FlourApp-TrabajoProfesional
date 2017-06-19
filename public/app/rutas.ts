@@ -11,6 +11,7 @@ export const URL_VIEW_CLIENTES =		'http://' + ip + ':' + puerto + '/clientes.htm
 //API
 export const URL_CLIENTES = 			'http://' + ip + ':' + puerto + '/api/clientes';
 export const URL_PROVEEDORES = 			'http://' + ip + ':' + puerto + '/api/proveedores';
+export const URL_RETENCIONES = 			urlApi + '/retenciones';
 export const URL_MATERIAS_PRIMA = 		'http://' + ip + ':' + puerto + '/api/materiasPrima';
 export const URL_SEMIPROCESADOS = 		'http://' + ip + ':' + puerto + '/api/semiProcesados';
 export const URL_PRODUCTOS_TERMINADOS = 'http://' + ip + ':' + puerto + '/api/productosTerminados';
