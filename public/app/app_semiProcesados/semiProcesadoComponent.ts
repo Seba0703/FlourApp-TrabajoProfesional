@@ -6,6 +6,8 @@ import { ComponenteSeleccionado } from '../listaPorcentaje/componenteSeleccionad
 import { MateriaPrimaServices } from '../app_materiasPrima/materiaPrimaServices';
 import { SemiProcesadoServices } from '../app_semiProcesados/semiProcesadoServices';
 import { ProductoTerminadoServices } from '../app_productosTerminados/productoTerminadoServices';
+import {Retencion} from "../app_retenciones/retencion";
+import {RetencionServices} from "../app_retenciones/retencionServices";
 
 @Component({
   selector: 'tabla-semi-procesados',
@@ -32,6 +34,14 @@ export class SemiProcesadoComponent implements OnInit{
   private porcentajeMerma: number;
   private precioVenta: number;
 
+    private retencionesCliente: Retencion[] = [];
+    private retenciones: Retencion[];
+    // para autocomplete
+    public filteredList: Retencion[] = [];
+    public query: string = '';
+    //retencion seleccionada del autocomplete
+    public retencion: Retencion;
+
   private idProductoActual: string;
 
   private mostrarModal: boolean = true;
@@ -39,7 +49,8 @@ export class SemiProcesadoComponent implements OnInit{
   constructor(
     private mpService: MateriaPrimaServices,
     private spService: SemiProcesadoServices,
-    private ptService: ProductoTerminadoServices){
+    private ptService: ProductoTerminadoServices,
+    private retencionSrv: RetencionServices){
     let dataLogin = JSON.parse(sessionStorage.getItem("dataLogin"));
     
     this.nombreUsuario = dataLogin.nombreUsuario;
@@ -53,6 +64,7 @@ export class SemiProcesadoComponent implements OnInit{
   ngOnInit() {
     console.log("ON INIT");
     this.cargarSemiProcesados();
+    this.cargarRetenciones();
   }
 
   cargarSemiProcesados(){
@@ -262,6 +274,8 @@ export class SemiProcesadoComponent implements OnInit{
     this.embolsado =           semiProcesado.embolsadoCantDefault;
     this.porcentajeMerma =     semiProcesado.porcentajeMerma;
     this.precioVenta=        semiProcesado.precioVenta;
+    this.retencionesCliente = semiProcesado.retenciones_ids;
+
   }
 
   guardarModificaciones(){
@@ -297,7 +311,8 @@ export class SemiProcesadoComponent implements OnInit{
             embolsadoCantDefault: this.embolsado,
             porcentajeMerma:      this.porcentajeMerma,
             tipo:                 "2",
-            precioVenta:          this.precioVenta
+            precioVenta:          this.precioVenta,
+            retenciones_ids:    this.retencionesCliente
         }
         
         console.log(semiProcesado);
@@ -320,5 +335,54 @@ export class SemiProcesadoComponent implements OnInit{
       alert("¡ERROR en campo/s!\n\nRecuerde que 'Nombre - Stock Min - Stock Max' son obligatorios y que el porcentaje de merma no puede ser mayor que 100%");
     }
   }
+
+    cargarRetenciones() {
+        this.retencionSrv.getRetenciones().then(retenciones => {
+            this.retenciones = retenciones;
+            this.filteredList = retenciones;
+
+        })
+    }
+
+    filter() {
+        if (this.query !== ""){
+            this.filteredList = this.retenciones.filter(function(retencion: Retencion){
+                return retencion.nombre.toLowerCase().indexOf(this.query.toLowerCase()) > -1
+                    || retencion.codigo.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
+            }.bind(this));
+        }else{
+            this.filteredList = this.retenciones;
+        }
+    }
+
+    select(retencion: Retencion){
+        this.query = retencion.nombre;
+        this.retencion = retencion;
+        this.filteredList = this.retenciones;
+    }
+
+    agregarRetencion() {
+        if (this.retencion && !this.hasRetencion(this.retencion)) {
+            this.retencionesCliente.push(this.retencion);
+            this.retencion = null;
+        }
+    }
+
+    hasRetencion(retencion: Retencion): boolean {
+        var i = 0;
+        var hasRetencion = false;
+        while (i <  this.retencionesCliente.length && !hasRetencion) {
+            if (this.retencionesCliente[i]._id == retencion._id) {
+                hasRetencion = true;
+            }
+            i++;
+        }
+
+        return hasRetencion;
+    }
+
+    borrarRetencionCliente(i: number) {
+        this.retencionesCliente.splice(i,1);
+    }
 
 }

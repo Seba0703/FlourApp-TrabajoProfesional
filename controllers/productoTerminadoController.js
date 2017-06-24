@@ -3,12 +3,14 @@ var mongoose = require('mongoose');
 var ProductoTerminado  = require("../models/productoTerminado").productoTerminadoModel;
 
 exports.findAll = function(req, res) {
-    ProductoTerminado.find(function(err, productosTerminados){
-		if(err) res.send(500, err.message);
+    ProductoTerminado.find({})
+        .populate({ path: 'retenciones_ids', populate: {path: 'rangos_ids'}})
+		.exec(function(err, productosTerminados){
+        if(err) res.send(500, err.message);
 
-		console.log('GET/productosTerminados');
-		res.status(200).jsonp(productosTerminados);
-		});
+        console.log('GET/productosTerminados');
+        res.status(200).jsonp(productosTerminados);
+    });
 };
 
 
@@ -21,7 +23,7 @@ exports.findById = function(req, res) {
 		res.status(200).jsonp(productoTerminado);
     };
 
-    ProductoTerminado.findById(req.params.id, findByIdCallback); //luego de realizar la busqueda ejecuta el callback
+    ProductoTerminado.findById(req.params.id, findByIdCallback).populate({ path: 'retenciones_ids', populate: {path: 'rangos_ids'}}); //luego de realizar la busqueda ejecuta el callback
 };
 
 
@@ -40,7 +42,8 @@ exports.add = function(req, res) {
         embolsadoCantDefault:  req.body.embolsadoCantDefault,
         porcentajeMerma:       req.body.porcentajeMerma,
         tipo:                  req.body.tipo,
-        precioVenta:  	       req.body.precioVenta
+        precioVenta:  	       req.body.precioVenta,
+        retenciones_ids: req.body.retenciones_ids
 
     });
 
@@ -98,6 +101,7 @@ exports.update = function(req, res) {
         productoTerminado.porcentajeMerma =      req.body.porcentajeMerma;
         productoTerminado.tipo =                 req.body.tipo;
         productoTerminado.precioVenta =          req.body.precioVenta;
+        productoTerminado.retenciones_ids = req.body.retenciones_ids;
 
         productoTerminado.save(function(err) { //almaceno en la base "productoTerminado" para que quede actualizada con los nuevos cambios
             if(err) return res.status(500).send(err.message);

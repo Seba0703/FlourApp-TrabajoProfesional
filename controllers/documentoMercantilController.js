@@ -5,17 +5,24 @@ var documentoMercantilItemController = require("./documentoMercantilItemControll
 var facturacionDatosPropiosModel  = require("../models/facturacionDatosPropios").facturacionDatosPropiosModel;
 var Cliente  = require("../models/cliente").clienteModel;
 var Proveedor  = require("../models/proveedor").proveedorModel;
+var RetencionFactura = require("../models/retencionFactura").retencionFacturaModel;
 var fs = require('fs');
 var path = require('path');
 var http = require('http');
 
 exports.findAll = function(req, res) {
-    DocumentoMercantil.find(function(err, documentosmercantiles){
-		if(err) res.send(500, err.message);
+    DocumentoMercantil.find({})
+        .populate({ path: 'retencionesFactura_ids',
+            populate: {path: 'retencion_id',
+                populate: {path: 'rangos_ids'}
+            }
+        })
+        .exec(function(err, documentosmercantiles){
+        if(err) res.send(500, err.message);
 
-		console.log('GET/documentosMercantiles');
-		res.status(200).jsonp(documentosmercantiles);
-		});
+        console.log('GET/documentosMercantiles');
+        res.status(200).jsonp(documentosmercantiles);
+    });
 };
 
 function normalizeTipo (tipo) {
@@ -34,7 +41,13 @@ exports.findFiltered = function(req, res) {
       fechaEmision: { $gte: req.query.desde, $lte: req.query.hasta }
     }
 
-    DocumentoMercantil.find(busqueda, function(err, documentosmercantiles){
+    DocumentoMercantil.find(busqueda)
+        .populate({ path: 'retencionesFactura_ids',
+            populate: {path: 'retencion_id',
+                populate: {path: 'rangos_ids'}
+            }
+        })
+        .exec(function(err, documentosmercantiles){
 		if(err) res.send(500, err.message);
 		console.log('GET/documentosMercantiles');
     console.log(req.query);
@@ -145,7 +158,13 @@ exports.findById = function(req, res) {
 		res.status(200).jsonp(documentomercantil);
     };
 
-    DocumentoMercantil.findById(req.params.id, findByIdCallback); //luego de realizar la busqueda ejecuta el callback
+    DocumentoMercantil.findById(req.params.id)
+        .populate({ path: 'retencionesFactura_ids',
+            populate: {path: 'retencion_id',
+                populate: {path: 'rangos_ids'}
+            }
+        })
+        .exec(findByIdCallback); //luego de realizar la busqueda ejecuta el callback
 };
 
 exports.findByTipo = function(req, res) {
@@ -157,14 +176,27 @@ exports.findByTipo = function(req, res) {
         res.status(200).jsonp(documentosmercantiles);
     };
 
-    DocumentoMercantil.find({tipo: req.params.tipo}, findByTipoCallback); //luego de realizar la busqueda ejecuta el callback
+    DocumentoMercantil.find({tipo: req.params.tipo})
+        .populate({ path: 'retencionesFactura_ids',
+            populate: {path: 'retencion_id',
+                populate: {path: 'rangos_ids'}
+            }
+        })
+        .exec(findByTipoCallback); //luego de realizar la busqueda ejecuta el callback
 };
 
+//para pasar i  inmutado
+retencionSave = function(i, rentecionesFactura, rentecionesFactura_ids, retencionFactura, req, res) {
+    retencionFactura.save(function(err, retencionFactura) { //almaceno el retencion en la base de datos
+        if(err) return res.status(500).send( err.message);
+        rentecionesFactura_ids.push(retencionFactura._id);
+        if(i == (rentecionesFactura.length - 1)) {
+            onlyDocumentoSave(rentecionesFactura_ids, req, res);
+        }
+    });
+};
 
-exports.add = function(req, res) {
-    console.log('POST');
-    console.log(req.body);
-
+onlyDocumentoSave = function(retencionesFactura_ids, req, res) {
     var documentomercantil = new DocumentoMercantil({ //creo un nuevo documentomercantil en base a lo recibido en el request
         tipo:                   req.body.tipo,
         puntoDeVenta:           req.body.puntoDeVenta,
@@ -182,13 +214,35 @@ exports.add = function(req, res) {
         impuestosInternos:      req.body.impuestosInternos,
         impuestosMunicipales:   req.body.impuestosMunicipales,
         CAI:                    req.body.CAI,
-        fechaVtoCAI:            req.body.fechaVtoCAI
+        fechaVtoCAI:            req.body.fechaVtoCAI,
+        retencionesFactura_ids: retencionesFactura_ids
     });
 
     documentomercantil.save(function(err, documentomercantil) { //almaceno el documentomercantil en la base de datos
         if(err) return res.status(500).send( err.message);
         res.status(200).jsonp(documentomercantil);
     });
+};
+
+exports.add = function(req, res) {
+    console.log('POST');
+    console.log(req.body);
+
+    var rentecionesFactura = req.body.retencionesFactura_ids;
+    var rentecionesFactura_ids = [];
+    for (var i = 0; i < rentecionesFactura.length; i++) {
+
+        var retencionFactura = new RetencionFactura({
+            retencion_id: rentecionesFactura[i].retencion_id,
+            importe: rentecionesFactura[i].importe
+        });
+
+        retencionSave(i, rentecionesFactura, rentecionesFactura_ids, retencionFactura, req, res);
+    }
+
+    if (rentecionesFactura.length == 0) {
+        onlyDocumentoSave(rentecionesFactura_ids, req, res);
+    }
 
 };
 
@@ -199,7 +253,7 @@ exports.update = function(req, res) {
 
     DocumentoMercantil.findById(req.params.id, function(err, documentomercantil) { //"documentomercantil" es el objeto que me devuelve la busqueda
 
-		//actualizo todos los campos de ese "documentomercantil"
+        //actualizo todos los campos de ese "documentomercantil"
         documentomercantil.tipo =                   req.body.tipo;
         documentomercantil.puntoDeVenta =           req.body.puntoDeVenta;
         documentomercantil.tipoFactura =            req.body.tipoFactura;
@@ -217,11 +271,65 @@ exports.update = function(req, res) {
         documentomercantil.impuestosMunicipales =   req.body.impuestosMunicipales;
         documentomercantil.CAI =                    req.body.CAI;
         documentomercantil.fechaVtoCAI =            req.body.fechaVtoCAI;
+        
+        RetencionFactura.remove({'_id':{'$in':req.body.retencionesDelete_ids}}).exec();
 
-        documentomercantil.save(function(err) { //almaceno en la base "documentomercantil" para que quede actualizada con los nuevos cambios
+        var retencionesFactura = req.body.retencionesFactura_ids;
+        var retencionesFactura_ids = [];
+
+        for (var i = 0; i < retencionesFactura.length; i++) {
+
+            if (retencionesFactura[i]._id) {
+                retencionesFactura_ids.push(retencionesFactura[i]._id);
+                retencionFacturaUpdate(i, retencionesFactura, retencionesFactura_ids, documentomercantil, res);
+            } else {
+                var retencionFactura = new RetencionFactura({
+                    retencion_id: retencionesFactura[i].retencion_id,
+                    importe: retencionesFactura[i].importe
+                });
+
+                retencionFacturaSave(i, retencionesFactura, retencionesFactura_ids, documentomercantil, retencionFactura, res);
+            }
+        }
+
+        if(retencionesFactura.length == 0) {
+            documentomercantil.save(function (err) { //almaceno en la base "documentomercantil" para que quede actualizada con los nuevos cambios
+                if (err) return res.status(500).send(err.message);
+                res.status(200).jsonp(documentomercantil);
+            });
+        }
+    });
+};
+
+
+retencionFacturaUpdate = function(i, retencionesFactura, retencionesFactura_ids, documentomercantil, res ) {
+    RetencionFactura.findById({'_id': retencionesFactura[i]._id}, function(err, retencionFactura) {
+        retencionFactura.retencion_id = retencionesFactura[i].retencion_id;
+        retencionFactura.importe = retencionesFactura[i].importe;
+
+        retencionFactura.save(function(err, rangoRet) { //almaceno en la base "retencion" para que quede actualizada con los nuevos cambios
             if(err) return res.status(500).send(err.message);
-			res.status(200).jsonp(documentomercantil);
+            updateDocumento(i, retencionesFactura, documentomercantil, retencionesFactura_ids, res);
         });
+    });
+};
+
+updateDocumento = function (i, retencionesFactura, documentomercantil, retencionesFactura_ids, res) {
+    if(i == (retencionesFactura.length - 1)) {
+        documentomercantil.retencionesFactura_ids = retencionesFactura_ids;
+
+        documentomercantil.save(function(err, documento) { //almaceno el retencion en la base de datos
+            if(err) return res.status(500).send( err.message);
+            res.status(200).jsonp(documento);
+        });
+    }
+};
+
+retencionFacturaSave = function(i, retencionesFactura, retencionesFactura_ids, documentomercantil, retencionFactura, res) {
+    retencionFactura.save(function(err, rangoRetencion) { //almaceno el retencion en la base de datos
+        if (err) return res.status(500).send(err.message);
+        retencionesFactura_ids.push(rangoRetencion._id);
+        updateDocumento(i, retencionesFactura, documentomercantil, retencionesFactura_ids, res);
     });
 };
 

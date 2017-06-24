@@ -6,10 +6,8 @@ import { HttpModule } from '@angular/http';
 import { AppComponent }  from './app.component';
 import { NavMenuComponent } from '../nav-menu/navMenuComponent';
 import { SignOutComponent }  from '../sign-out/signOutComponent';
-import { MateriaPrimaComponent} from './materiaPrimaComponent';
-import { AgregadorMateriaPrimaComponent} from './agregadorMateriaPrimaComponent';
-import { MateriaPrimaServices} from './materiaPrimaServices';
-import {RetencionServices} from "../app_retenciones/retencionServices";
+import {RetencionServices} from "./retencionServices";
+
 
 @NgModule({
   imports: [
@@ -20,11 +18,11 @@ import {RetencionServices} from "../app_retenciones/retencionServices";
   declarations: [
     AppComponent,
     NavMenuComponent,
-    SignOutComponent,
-    MateriaPrimaComponent,
-    AgregadorMateriaPrimaComponent
+    SignOutComponent
   ],
-  providers: [ MateriaPrimaServices, RetencionServices ],
+  providers: [ 
+  	RetencionServices
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

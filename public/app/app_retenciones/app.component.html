@@ -1,0 +1,141 @@
+<div class="container">
+
+	<div class="row"> <!-- inserto dentro del container una fila  -->
+		
+		<div class="col-md-12">
+			<nav-menu [origen]="'retenciones'"></nav-menu>
+		</div>
+		
+	</div>
+
+	<div class="row">
+		<div *ngIf="retenciones"  class="col-md-11">
+			<table class="table">
+				<thead class="thead-inverse">
+					<tr>
+						<th>Codigo</th>
+						<th>Nombre</th>
+						<th>Codigo Impositivo</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody *ngFor="let retencion of retenciones; let i = index">
+					<td>{{retencion.codigo}}</td>
+					<td>{{retencion.nombre}}</td>
+					<td>{{retencion.codigoImpositivo}}</td>
+					<td>
+						<button type="button" class="btn btn-success" (click)="modificar(retencion, i)" title="Modificar"
+								data-toggle="modal" data-target="#modificarModal">
+							<i class="fa fa-pencil" aria-hidden="true"></i>
+						</button>
+						<button type="button" class="btn btn-danger" (click)="borrar(retencion._id)" title="Borrar" >
+							<i class="fa fa-trash" aria-hidden="true"></i>
+						</button>
+					</td>
+				</tbody>
+			</table>
+		</div>
+
+		<div *ngIf="retenciones" class="col-md-1" style="padding-left: 0px;">
+			<button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar retención" (click)="nuevo()"
+					data-toggle="modal" data-target="#modificarModal">+</button>
+		</div>
+	</div>
+
+	<div  class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">{{titulo}}</h5>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" data-toggle="tab" href="#datos" role="tab">Datos</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" data-toggle="tab" href="#items" role="tab">Items</a>
+						</li>
+					</ul>
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+
+						<div class="tab-pane active" id="datos" role="tabpanel">
+
+							<div class="form-group row" style="margin-top: 12px;">
+								<div *ngIf="retencion" class="col">
+									<input [(ngModel)]="retencion.nombre" type="text" class="form-control" aria-describedby="basic-addon1"  placeholder="Nombre retención" style="margin-bottom: 4px;"/>
+
+									<input type="text" class="form-control" aria-describedby="basic-addon1" placeholder="Codigo" style="margin-bottom: 4px;" [(ngModel)]="retencion.codigo"/>
+
+									<input type="text" class="form-control" aria-describedby="basic-addon1" placeholder="Codigo impositivo" style="margin-bottom: 4px;" [(ngModel)]="retencion.codigoImpositivo"/>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-pane" id="items" role="tabpanel">
+							<div class="col">
+								<label for="text" style="margin-top: 8px;"><strong>Agregue los rangos de acción:</strong></label>
+								<div *ngIf="retencion" class="row">
+									<div class="col" style="overflow-y: scroll;">
+										<table class="table">
+											<thead class="thead-inverse">
+											<tr>
+												<th>Desde</th>
+												<th>Hasta</th>
+												<th>Porcentaje</th>
+												<th>Importe fijo</th>
+												<th>Acción</th>
+											</tr>
+											</thead>
+											<tbody *ngFor="let rango of retencion.rangos_ids; let i = index">
+											<td>
+												<input type="number" min="0.01" step="0.01" style="width: 90px;" [(ngModel)]="rango.desde">
+											</td>
+
+											<td>
+												<input type="number" min="0.01" step="0.01" style="width: 90px;" [(ngModel)]="rango.hasta">
+											</td>
+
+											<td>
+												<input type="number" min="0.01" max="100" step="0.01" style="width: 90px;" [(ngModel)]="rango.porcentaje">
+											</td>
+
+											<td>
+												<input type="number" min="0.01" style="width: 90px;" step="0.01" [(ngModel)]="rango.importeFijo">
+											</td>
+
+											<td>
+												<button type="button" class="btn btn-danger" (click)="borrarItem(i)" title="Borrar" >
+													<i class="fa fa-trash" aria-hidden="true"></i>
+												</button>
+											</td>
+
+											</tbody>
+										</table>
+									</div>
+
+									<div class="col-md-1" style="padding-left: 0px;">
+										<button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar retención" (click)="nuevoItem()">+</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelar()">Cancelar</button>
+				<button type="button" class="btn btn-success" (click)="guardarModificaciones()">
+					Guardar modificaciones
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>

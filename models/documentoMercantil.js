@@ -1,5 +1,6 @@
 var mongoose = require("mongoose"); //instancio objeto "mongoose"
 var Schema = mongoose.Schema;
+var RetencionFactura  = require("../models/retencionFactura").retencionFacturaModel;
 
 var documentoMercantilSchema = new mongoose.Schema({
   tipo: 				        { type: String }, /*tipo: fact_compra, fact_venta, remito u ord_compra*/
@@ -18,7 +19,16 @@ var documentoMercantilSchema = new mongoose.Schema({
   impuestosInternos: 	{ type: Number },
   impuestosMunicipales: { type: Number },
   CAI:                  { type: Number },
-  fechaVtoCAI:   	    { type: Date   }
+  fechaVtoCAI:   	    { type: Date   },
+  retencionesFactura_ids: [{ type: Schema.Types.ObjectId, ref: 'RetencionFactura', default:[]}]
+});
+
+
+documentoMercantilSchema.pre('remove', function(next) {
+    // 'this' is the client being removed. Provide callbacks here if you want
+    // to be notified of the calls' result.
+    RetencionFactura.remove({'_id':{'$in':this.retencionFacturas_ids}}).exec();
+    next();
 });
 
 exports.documentoMercantilModel = mongoose.model('DocumentoMercantil', documentoMercantilSchema); //crea el modelo y lo exporta para que lo puedan usar otros modulos

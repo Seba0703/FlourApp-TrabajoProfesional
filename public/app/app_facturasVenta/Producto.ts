@@ -1,3 +1,4 @@
+import {Retencion} from "../app_retenciones/retencion";
 export class Producto {
     constructor(
         public _id?: string,
@@ -6,7 +7,8 @@ export class Producto {
         public nombre?: string,
         public cantidad?: number,
         public precioVenta?: number,
-        public iva?: number
+        public iva?: number,
+        public retenciones_ids?: Retencion[]
         ){
     }
 }

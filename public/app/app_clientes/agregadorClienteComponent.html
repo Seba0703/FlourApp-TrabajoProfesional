@@ -3,64 +3,156 @@ data-toggle="modal" data-target="#exampleModal">+</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="mostrarModalAgregar">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Agregar cliente</h5>
             </div>
             <div class="modal-body">
 				<div class="container">
-				    <input type="text" class="form-control" placeholder="Nombre empresa" aria-describedby="basic-addon1" style="margin-bottom: 4px;" [(ngModel)]="nombreEmpresa">
 
-				    <input type="number" class="form-control" placeholder="CUIT ( sin los &quot;-&quot; )" 
-				    aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" 
-                    onkeypress="return validateChar(event)" [(ngModel)]="cuit">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#datosC" role="tab">Datos cliente</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#retencionesC" role="tab">Retenciones</a>
+                        </li>
+                    </ul>
 
-                    <div class="form-group row">
-                        <div class="col-4">
-                            <label for="example-text-input" class="col-form-label">Categoria Fiscal</label>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="datosC" role="tabpanel">
+                            <input type="text" class="form-control" placeholder="Nombre empresa" aria-describedby="basic-addon1" style="margin-bottom: 4px; margin-top: 4px;" [(ngModel)]="nombreEmpresa">
+
+                            <input type="number" class="form-control" placeholder="CUIT ( sin los &quot;-&quot; )"
+                                   aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1"
+                                   onkeypress="return validateChar(event)" [(ngModel)]="cuit">
+
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label for="example-text-input" class="col-form-label">Categoria Fiscal</label>
+                                </div>
+                                <div class="col-8">
+                                    <select class="form-control" id="categoriaFiscal" [(ngModel)]="categoriaFiscal">
+                                        <option>Consumidor Final</option>
+                                        <option>Del Exterior</option>
+                                        <option>Exento</option>
+                                        <option>No computable IVA</option>
+                                        <option>Responsable Inscripto</option>
+                                        <option>Responsable No Inscripto</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label for="example-text-input" class="col-form-label">Lista de Precios</label>
+                                </div>
+                                <div class="col-8">
+                                    <select class="form-control" [(ngModel)]="listaPrecioNombreSeleccionada">
+                                        <option *ngFor="let precioDisponible of listaDePreciosDisponible"
+                                                [value]="precioDisponible"
+                                        >
+                                            {{precioDisponible}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control" placeholder="Dirección"
+                                   aria-describedby="basic-addon1" style="margin-bottom: 4px;" [(ngModel)]="direccion">
+
+                            <input type="text" class="form-control" placeholder="Condición de Pago (ej: 30-60-90)"
+                                   aria-describedby="basic-addon1" style="margin-bottom: 4px;"
+                                   onkeypress="return validarCondPago(event)" [(ngModel)]="condicionPago">
                         </div>
-                        <div class="col-8">
-							<select class="form-control" id="categoriaFiscal" [(ngModel)]="categoriaFiscal">
-								<option>Consumidor Final</option>
-								<option>Del Exterior</option>
-								<option>Exento</option>
-								<option>No computable IVA</option>
-								<option>Responsable Inscripto</option>
-								<option>Responsable No Inscripto</option>
-							</select>
+
+                        <div class="tab-pane" id="retencionesC" role="tabpanel">
+                            <div class="container" >
+                                <div class="row">
+                                    <div class="col" style="overflow-y: scroll;">
+                                        <table class="table">
+                                            <thead class="thead-inverse">
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Codigo</th>
+                                                <th>Acción</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody *ngFor="let retencion of retencionesCliente; let i = index">
+                                            <td>{{retencion.nombre}}</td>
+
+                                            <td>{{retencion.codigo}}</td>
+
+                                            <td>
+                                                <button type="button" class="btn btn-danger" (click)="borrarRetencionCliente(i)" title="Borrar" >
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </button>
+                                            </td>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar retención"
+                                            data-toggle="modal" data-target="#retencionesModalC" style="margin: 10px;">+</button>
+                                </div>
+                            </div>
+                        </div>
+				    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" (click)="agregar()">
+                        Agregar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="retencionesModalC" tabindex="-1" role="dialog" aria-labelledby="retencionesModalLabelC" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="retencionesModalLabelC">Agregar retención</h5>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="input-field col s12" style="margin: 4px;">
+                        <input id="retencion" type="text" placeholder="Retención" aria-describedby="basic-addon1" class="form-control validate filter-input" [(ngModel)]=query (keyup)=filter()>
+                    </div>
+                    <div class="suggestions" *ngIf="filteredList.length > 0">
+                        <div class="col" style="overflow-y: scroll;">
+                            <table class="table">
+                                <thead class="thead-inverse">
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Codigo</th>
+                                </tr>
+                                </thead>
+                                <tbody *ngFor="let retencion of filteredList">
+                                <td>
+                                    <div (click)="select(retencion)">{{retencion.nombre}}</div>
+                                </td>
+
+                                <td>
+                                    <div (click)="select(retencion)">{{retencion.codigo}}</div>
+                                </td>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-
-                    <div class="form-group row">
-                        <div class="col-4">
-                            <label for="example-text-input" class="col-form-label">Lista de Precios</label>
-                        </div>
-                        <div class="col-8">
-                            <select class="form-control" [(ngModel)]="listaPrecioNombreSeleccionada">
-                                <option *ngFor="let precioDisponible of listaDePreciosDisponible" 
-                                    [value]="precioDisponible" 
-                                >
-                                  {{precioDisponible}}
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-
-				    <input type="text" class="form-control" placeholder="Dirección" 
-				    aria-describedby="basic-addon1" style="margin-bottom: 4px;" [(ngModel)]="direccion">
-
-				    <input type="text" class="form-control" placeholder="Condición de Pago (ej: 30-60-90)" 
-				    aria-describedby="basic-addon1" style="margin-bottom: 4px;" 
-                    onkeypress="return validarCondPago(event)" [(ngModel)]="condicionPago">
-				</div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" (click)="agregar()">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="agregarRetencion()">
                     Agregar
                 </button>
             </div>
         </div>
     </div>
 </div>
+

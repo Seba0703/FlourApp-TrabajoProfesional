@@ -3,6 +3,8 @@ import { Response } from '@angular/http';
 
 import { ClienteServices } from './clienteServices';
 import { ListaDePrecioServices} from '../app_listaDePrecios/ListaDePrecioServices';
+import {Retencion} from "../app_retenciones/retencion";
+import {RetencionServices} from "../app_retenciones/retencionServices";
 
 @Component({
   selector: 'tabla-clientes',
@@ -26,9 +28,17 @@ export class ClienteComponent {
   private listaDePreciosDisponible: Array<string>;
   private cuitsExistentes: Array<string>;
 
+  private retencionesCliente: Retencion[] = [];
+  private retenciones: Retencion[];
+  // para autocomplete
+  public filteredList: Retencion[] = [];
+  public query: string = '';
+  //retencion seleccionada del autocomplete
+  public retencion: Retencion;
+
   private mostrarModalModificar: boolean = true;
   
-  constructor(private cService: ClienteServices, private lpService: ListaDePrecioServices){
+  constructor(private cService: ClienteServices, private lpService: ListaDePrecioServices, private retencionSrv: RetencionServices){
     let dataLogin = JSON.parse(sessionStorage.getItem("dataLogin"));
     this.accionesEjecutables = dataLogin.permisos;
 
@@ -39,6 +49,7 @@ export class ClienteComponent {
     console.log("ON INIT");
     this.cargarClientes();
     this.cargarCUITsExistentes();
+    this.cargarRetenciones();
   }
 
   cargarClientes(){
@@ -108,6 +119,7 @@ export class ClienteComponent {
     this.listaPrecioNombreSeleccionada =  cliente.listaPrecioNombre;
     this.direccion =                      cliente.direccion;
     this.condicionPago =                  cliente.condicionPago;
+    this.retencionesCliente = cliente.retenciones_ids as Retencion[];
   }
 
   guardarModificaciones(){
@@ -121,7 +133,8 @@ export class ClienteComponent {
             categoriaFiscal:    this.categoriaFiscal,
             listaPrecioNombre:  this.listaPrecioNombreSeleccionada,
             direccion:          this.direccion,
-            condicionPago:      this.condicionPago
+            condicionPago:      this.condicionPago,
+            retenciones_ids: this.retencionesCliente
         }
         
         console.log(cliente);
@@ -151,5 +164,55 @@ export class ClienteComponent {
     }
     return false;
   }
+
+    cargarRetenciones() {
+        this.retencionSrv.getRetenciones().then(retenciones => {
+            this.retenciones = retenciones;
+            this.filteredList = retenciones;
+
+        })
+    }
+
+    filter() {
+        if (this.query !== ""){
+            this.filteredList = this.retenciones.filter(function(retencion: Retencion){
+                return retencion.nombre.toLowerCase().indexOf(this.query.toLowerCase()) > -1
+                    || retencion.codigo.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
+            }.bind(this));
+        }else{
+            this.filteredList = this.retenciones;
+        }
+    }
+
+    select(retencion: Retencion){
+        this.query = retencion.nombre;
+        this.retencion = retencion;
+        this.filteredList = this.retenciones;
+    }
+
+    agregarRetencion() {
+        if (this.retencion && !this.hasRetencion(this.retencion)) {
+            this.retencionesCliente.push(this.retencion);
+            this.retencion = null;
+        }
+    }
+
+    hasRetencion(retencion: Retencion): boolean {
+        var i = 0;
+        var hasRetencion = false;
+        while (i <  this.retencionesCliente.length && !hasRetencion) {
+            if (this.retencionesCliente[i]._id == retencion._id) {
+                hasRetencion = true;
+            }
+            i++;
+        }
+
+        return hasRetencion;
+    }
+
+    borrarRetencionCliente(i: number) {
+        this.retencionesCliente.splice(i,1);
+    }
+
 
 }

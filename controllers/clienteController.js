@@ -3,12 +3,14 @@ var mongoose = require('mongoose');
 var Cliente  = require("../models/cliente").clienteModel;
 
 exports.findAll = function(req, res) {  
-    Cliente.find(function(err, clientes){ 
-		if(err) res.send(500, err.message);
+    Cliente.find({})
+        .populate({ path: 'retenciones_ids', populate: {path: 'rangos_ids'}})
+        .exec(function(err, clientes){
+            if(err) res.send(500, err.message);
 
-		console.log('GET/clientes');
-		res.status(200).jsonp(clientes);
-		});
+            console.log('GET/clientes');
+            res.status(200).jsonp(clientes);
+        });
 };
 
 
@@ -21,7 +23,7 @@ exports.findById = function(req, res) {
 		res.status(200).jsonp(cliente);
     };
 	
-    Cliente.findById(req.params.id, findByIdCallback); //luego de realizar la busqueda ejecuta el callback
+    Cliente.findById(req.params.id, findByIdCallback).populate({ path: 'retenciones_ids', populate: {path: 'rangos_ids'}}); //luego de realizar la busqueda ejecuta el callback
 };
 
 
@@ -35,7 +37,8 @@ exports.add = function(req, res) {
         categoriaFiscal:    req.body.categoriaFiscal,
         listaPrecioNombre:   	req.body.listaPrecioNombre,
         direccion:  		req.body.direccion,
-        condicionPago:    req.body.condicionPago
+        condicionPago:    req.body.condicionPago,
+        retenciones_ids: req.body.retenciones_ids
     });
 
     cliente.save(function(err, cliente) { //almaceno el cliente en la base de datos
@@ -58,6 +61,7 @@ exports.update = function(req, res) {
         cliente.listaPrecioNombre =   	req.body.listaPrecioNombre;
         cliente.direccion =  		req.body.direccion;
         cliente.condicionPago =   req.body.condicionPago;
+        cliente.retenciones_ids = req.body.retenciones_ids;
 
         cliente.save(function(err) { //almaceno en la base "cliente" para que quede actualizada con los nuevos cambios
             if(err) return res.status(500).send(err.message);

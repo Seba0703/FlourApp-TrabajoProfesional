@@ -3,12 +3,14 @@ var mongoose = require('mongoose');
 var ProductoSemiProcesado  = require("../models/productoSemiProcesado").productoSemiProcesadoModel;
 
 exports.findAll = function(req, res) {
-    ProductoSemiProcesado.find(function(err, semiProcesados){
-		if(err) res.send(500, err.message);
+    ProductoSemiProcesado.find({})
+        .populate({ path: 'retenciones_ids', populate: {path: 'rangos_ids'}})
+		.exec(function(err, semiProcesados){
+        if(err) res.send(500, err.message);
 
-		console.log('GET/semiProcesados');
-		res.status(200).jsonp(semiProcesados);
-		});
+        console.log('GET/semiProcesados');
+        res.status(200).jsonp(semiProcesados);
+    });
 };
 
 
@@ -21,7 +23,7 @@ exports.findById = function(req, res) {
 		res.status(200).jsonp(semiProcesado);
     };
 
-    ProductoSemiProcesado.findById(req.params.id, findByIdCallback); //luego de realizar la busqueda ejecuta el callback
+    ProductoSemiProcesado.findById(req.params.id, findByIdCallback).populate({ path: 'retenciones_ids', populate: {path: 'rangos_ids'}}); //luego de realizar la busqueda ejecuta el callback
 };
 
 
@@ -41,7 +43,8 @@ exports.add = function(req, res) {
         porcentajeMerma:       req.body.porcentajeMerma,
         tipo:                  req.body.tipo,
         listaPorcentajesID:    req.body.listaPorcentajesID,
-        precioVenta:  	       req.body.precioVenta
+        precioVenta:  	       req.body.precioVenta,
+        retenciones_ids: req.body.retenciones_ids
 
     });
 
@@ -105,6 +108,7 @@ exports.update = function(req, res) {
         semiProcesado.tipo =                 req.body.tipo;
         semiProcesado.listaPorcentajesID =   req.body.listaPorcentajesID;
         semiProcesado.precioVenta =          req.body.precioVenta;
+        semiProcesado.retenciones_ids = req.body.retenciones_ids;
 
         semiProcesado.save(function(err) { //almaceno en la base "semiProcesado" para que quede actualizada con los nuevos cambios
             if(err) return res.status(500).send(err.message);
