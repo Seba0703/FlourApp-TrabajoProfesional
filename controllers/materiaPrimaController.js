@@ -3,12 +3,14 @@ var mongoose = require('mongoose');
 var MateriaPrima  = require("../models/materiaPrima").materiaPrimaModel;
 
 exports.findAll = function(req, res) {
-    MateriaPrima.find(function(err, materiasPrima){
-		if(err) res.send(500, err.message);
+    MateriaPrima.find({})
+        .populate({ path: 'retenciones_ids', populate: {path: 'rangos_ids'}})
+		.exec(function(err, materiasPrima){
+        if(err) res.send(500, err.message);
 
-		console.log('GET/materiasPrima');
-		res.status(200).jsonp(materiasPrima);
-		});
+        console.log('GET/materiasPrima');
+        res.status(200).jsonp(materiasPrima);
+    });
 };
 
 
@@ -21,7 +23,7 @@ exports.findById = function(req, res) {
 		res.status(200).jsonp(materiaPrima);
     };
 
-    MateriaPrima.findById(req.params.id, findByIdCallback); //luego de realizar la busqueda ejecuta el callback
+    MateriaPrima.findById(req.params.id, findByIdCallback).populate({ path: 'retenciones_ids', populate: {path: 'rangos_ids'}}); //luego de realizar la busqueda ejecuta el callback
 };
 
 
@@ -40,6 +42,7 @@ exports.add = function(req, res) {
         embolsadoCantDefault:   req.body.embolsadoCantDefault,
         precioVenta:  	        req.body.precioVenta,
         tipo:                   req.body.tipo,
+        retenciones_ids: req.body.retenciones_ids
     });
 
     materiaPrima.save(function(err, materiaPrima) { //almaceno el materiaPrima en la base de datos
@@ -66,6 +69,7 @@ exports.update = function(req, res) {
         materiaPrima.embolsadoCantDefault = req.body.embolsadoCantDefault;
         materiaPrima.precioVenta =  		req.body.precioVenta;
         materiaPrima.tipo =                 req.body.tipo;
+        materiaPrima.retenciones_ids = req.body.retenciones_ids;
 
         materiaPrima.save(function(err) { //almaceno en la base "materiaPrima" para que quede actualizada con los nuevos cambios
             if(err) return res.status(500).send(err.message);

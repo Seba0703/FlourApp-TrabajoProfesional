@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Response } from '@angular/http';
 
 import { MateriaPrimaServices } from './materiaPrimaServices';
+import {Retencion} from "../app_retenciones/retencion";
+import {RetencionServices} from "../app_retenciones/retencionServices";
 
 @Component({
   selector: 'tabla-materias-prima',
@@ -24,9 +26,17 @@ export class MateriaPrimaComponent {
   private embolsadoCantDefault: number;
   private precioVenta: number;
 
+    private retencionesCliente: Retencion[] = [];
+    private retenciones: Retencion[];
+    // para autocomplete
+    public filteredList: Retencion[] = [];
+    public query: string = '';
+    //retencion seleccionada del autocomplete
+    public retencion: Retencion;
+
   private mostrarModalModificar: boolean = true;
   
-  constructor(private mpService: MateriaPrimaServices){
+  constructor(private mpService: MateriaPrimaServices, private retencionSrv: RetencionServices){
     let dataLogin = JSON.parse(sessionStorage.getItem("dataLogin"));
     
     this.nombreUsuario = dataLogin.nombreUsuario;
@@ -36,6 +46,7 @@ export class MateriaPrimaComponent {
   ngOnInit() {
     console.log("ON INIT");
     this.cargarMateriasPrima();
+    this.cargarRetenciones();
   }
 
   cargarMateriasPrima(){
@@ -97,6 +108,7 @@ export class MateriaPrimaComponent {
     this.stockMax =           materiaPrima.stockMax;
     this.embolsadoCantDefault = materiaPrima.embolsadoCantDefault;
     this.precioVenta=        materiaPrima.precioVenta;
+    this.retencionesCliente = materiaPrima.retenciones_ids;
   }
 
   guardarModificaciones(){
@@ -132,7 +144,8 @@ export class MateriaPrimaComponent {
           stockMax:             this.stockMax,
           embolsadoCantDefault: this.embolsadoCantDefault,
           tipo:                 "1",
-          precioVenta:          this.precioVenta
+          precioVenta:          this.precioVenta,
+          retenciones_ids: this.retencionesCliente
       }
       
       console.log(materiaPrima);
@@ -151,4 +164,55 @@ export class MateriaPrimaComponent {
       alert("\t\t\t\t¡ERROR!\n\nCampos obligatorios: Nombre - Stock Min - Stock Max");
     }
   }
+
+    cargarRetenciones() {
+        this.retencionSrv.getRetenciones().then(retenciones => {
+            this.retenciones = retenciones;
+            this.filteredList = retenciones;
+
+        })
+    }
+
+    filter() {
+        if (this.query !== ""){
+            this.filteredList = this.retenciones.filter(function(retencion: Retencion){
+                return retencion.nombre.toLowerCase().indexOf(this.query.toLowerCase()) > -1
+                    || retencion.codigo.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
+            }.bind(this));
+        }else{
+            this.filteredList = this.retenciones;
+        }
+    }
+
+    select(retencion: Retencion){
+        this.query = retencion.nombre;
+        this.retencion = retencion;
+        this.filteredList = this.retenciones;
+    }
+
+    agregarRetencion() {
+        if (this.retencion && !this.hasRetencion(this.retencion)) {
+            this.retencionesCliente.push(this.retencion);
+            this.retencion = null;
+            this.query = "";
+        }
+    }
+
+    hasRetencion(retencion: Retencion): boolean {
+        var i = 0;
+        var hasRetencion = false;
+        while (i <  this.retencionesCliente.length && !hasRetencion) {
+            if (this.retencionesCliente[i]._id == retencion._id) {
+                hasRetencion = true;
+            }
+            i++;
+        }
+
+        return hasRetencion;
+    }
+
+    borrarRetencionCliente(i: number) {
+        this.retencionesCliente.splice(i,1);
+    }
+
 }

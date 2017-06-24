@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductoTerminadoServices } from './productoTerminadoServices';
+import {Retencion} from "../app_retenciones/retencion";
+import {RetencionServices} from "../app_retenciones/retencionServices";
 
 @Component({
   selector: 'agregar-producto-terminado',
@@ -16,9 +18,21 @@ export class AgregadorProductoTerminadoComponent{
   private porcentajeMerma: number;
   private precioVenta: number;
 
+    private retencionesCliente: Retencion[] = [];
+    private retenciones: Retencion[];
+    // para autocomplete
+    public filteredList: Retencion[] = [];
+    public query: string = '';
+    //retencion seleccionada del autocomplete
+    public retencion: Retencion;
+
   private mostrarModalAgregar: boolean = true;
   
-  constructor(private ptService: ProductoTerminadoServices){}
+  constructor(private ptService: ProductoTerminadoServices, private retencionSrv: RetencionServices){}
+
+  ngOnInit() {
+      this.cargarRetenciones();
+  }
 
   agregar() {
     if(this.nombre && this.stockMin && this.stockMax) { 
@@ -54,7 +68,8 @@ export class AgregadorProductoTerminadoComponent{
             embolsadoCantDefault: this.embolsado,
             porcentajeMerma:    this.porcentajeMerma,
             tipo:               "3",
-            precioVenta:        this.precioVenta
+            precioVenta:        this.precioVenta,
+            retenciones_ids:    this.retencionesCliente
         }
         
         console.log(productoTerminado);
@@ -78,5 +93,55 @@ export class AgregadorProductoTerminadoComponent{
        alert("¡ERROR en campo/s!\n\nRecuerde que 'Nombre - Stock Min - Stock Max' son obligatorios");
     }
   }
+
+    cargarRetenciones() {
+        this.retencionSrv.getRetenciones().then(retenciones => {
+            this.retenciones = retenciones;
+            this.filteredList = retenciones;
+
+        })
+    }
+
+    filter() {
+        if (this.query !== ""){
+            this.filteredList = this.retenciones.filter(function(retencion: Retencion){
+                return retencion.nombre.toLowerCase().indexOf(this.query.toLowerCase()) > -1
+                    || retencion.codigo.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
+            }.bind(this));
+        }else{
+            this.filteredList = this.retenciones;
+        }
+    }
+
+    select(retencion: Retencion){
+        this.query = retencion.nombre;
+        this.retencion = retencion;
+        this.filteredList = this.retenciones;
+    }
+
+    agregarRetencion() {
+        if (this.retencion && !this.hasRetencion(this.retencion)) {
+            this.retencionesCliente.push(this.retencion);
+            this.retencion = null;
+            this.query = "";
+        }
+    }
+
+    hasRetencion(retencion: Retencion): boolean {
+        var i = 0;
+        var hasRetencion = false;
+        while (i <  this.retencionesCliente.length && !hasRetencion) {
+            if (this.retencionesCliente[i]._id == retencion._id) {
+                hasRetencion = true;
+            }
+            i++;
+        }
+
+        return hasRetencion;
+    }
+
+    borrarRetencionCliente(i: number) {
+        this.retencionesCliente.splice(i,1);
+    }
 
 }

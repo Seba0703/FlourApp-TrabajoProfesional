@@ -8,12 +8,12 @@ export class Retencion {
     rangosDelete_ids?: string[] = [];
 
     constructor(_id?: string, nombre?: string, codigo?: string, codigoImpositivo?: string, rangos_ids?: RangoRetencion[], rangosDelete_ids?: string[]){
-        this._id = _id;
-        this.nombre = nombre;
-        this.codigo = codigo;
-        this.codigoImpositivo = codigoImpositivo;
-        this.rangos_ids = rangos_ids;
-        this.rangosDelete_ids = rangosDelete_ids;
+        this._id = _id ? _id : null;
+        this.nombre = nombre ? nombre : null;
+        this.codigo = codigo ? codigo : null;
+        this.codigoImpositivo = codigoImpositivo ? codigoImpositivo : null;
+        this.rangos_ids = rangos_ids ? rangos_ids : [];
+        this.rangosDelete_ids = rangosDelete_ids ? rangosDelete_ids : [];
     };
 
     static clone(retencion: Retencion): Retencion {

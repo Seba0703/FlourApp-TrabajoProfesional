@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 //Import models
-var Retencion  = require("../models/retencion").retencionModel;
+var Retencion  = require("../models/retencion").retencionFacturaModel;
 var RangoRetencion  = require("../models/rangoRetencion").rangoRetencionModel;
 
 exports.findAll = function(req, res) {
@@ -46,17 +46,7 @@ exports.add = function(req, res) {
     }
 
     if (rangos.length == 0) {
-        var retencion = new Retencion({ //creo un nuevo retencion en base a lo recibido en el request
-            nombre:    	req.body.nombre,
-            codigo:     		  	req.body.codigo,
-            codigoImpositivo:    req.body.codigoImpositivo
-
-        });
-
-        retencion.save(function(err, retencion) { //almaceno el retencion en la base de datos
-            if(err) return res.status(500).send( err.message);
-            res.status(200).jsonp(retencion);
-        });
+        onlyRetencionSave(rangos_ids, req, res);
     }
 };
 //para pasar i  inmutado
@@ -65,21 +55,25 @@ retencionSave = function(i, rangos, rangos_ids, rangoRetencion, req, res) {
         if(err) return res.status(500).send( err.message);
         rangos_ids.push(rangoRetencion._id);
         if(i == (rangos.length - 1)) {
-            var retencion = new Retencion({ //creo un nuevo retencion en base a lo recibido en el request
-                nombre:    	req.body.nombre,
-                codigo:     		  	req.body.codigo,
-                codigoImpositivo:    req.body.codigoImpositivo,
-                rangos_ids: rangos_ids
-
-            });
-
-            retencion.save(function(err, retencion) { //almaceno el retencion en la base de datos
-                if(err) return res.status(500).send( err.message);
-                res.status(200).jsonp(retencion);
-            });
+            onlyRetencionSave(rangos_ids, req, res);
         }
     });
 };
+
+onlyRetencionSave = function(rangos_ids, req, res) {
+    var retencion = new Retencion({ //creo un nuevo retencion en base a lo recibido en el request
+        nombre:    	req.body.nombre,
+        codigo:     		  	req.body.codigo,
+        codigoImpositivo:    req.body.codigoImpositivo,
+        rangos_ids: rangos_ids
+
+    });
+
+    retencion.save(function(err, retencion) { //almaceno el retencion en la base de datos
+        if(err) return res.status(500).send( err.message);
+        res.status(200).jsonp(retencion);
+    });
+}
 
 
 exports.update = function(req, res) {
@@ -111,7 +105,7 @@ exports.update = function(req, res) {
                     importeFijo: rangos[i].importeFijo
                 });
 
-                rangoRetencionSave(i, rangos, rangos_ids, retencion, rangoRetencion, res);
+                rangoRetencionaSave(i, rangos, rangos_ids, retencion, rangoRetencion, res);
             }
         }
 
@@ -124,7 +118,7 @@ exports.update = function(req, res) {
     });
 };
 
-rangoRetencionSave = function(i, rangos, rangos_ids, retencion, rangoRetencion, res) {
+rangoRetencionaSave = function(i, rangos, rangos_ids, retencion, rangoRetencion, res) {
     rangoRetencion.save(function(err, rangoRetencion) { //almaceno el retencion en la base de datos
         if (err) return res.status(500).send(err.message);
         rangos_ids.push(rangoRetencion._id);
@@ -146,7 +140,7 @@ rangoRetencionUpdate = function(i, rangos, rangos_ids, retencion, res ) {
     });
 };
 
-saveRetencion = function (i, rangos, retencion,rangos_ids, res) {
+saveRetencion = function (i, rangos, retencion, rangos_ids, res) {
     if(i == (rangos.length - 1)) {
         retencion.rangos_ids = rangos_ids;
 

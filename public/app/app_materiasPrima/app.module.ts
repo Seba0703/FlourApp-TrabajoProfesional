@@ -9,6 +9,7 @@ import { SignOutComponent }  from '../sign-out/signOutComponent';
 import { MateriaPrimaComponent} from './materiaPrimaComponent';
 import { AgregadorMateriaPrimaComponent} from './agregadorMateriaPrimaComponent';
 import { MateriaPrimaServices} from './materiaPrimaServices';
+import {RetencionServices} from "../app_retenciones/retencionServices";
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { MateriaPrimaServices} from './materiaPrimaServices';
     MateriaPrimaComponent,
     AgregadorMateriaPrimaComponent
   ],
-  providers: [ MateriaPrimaServices ],
+  providers: [ MateriaPrimaServices, RetencionServices ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

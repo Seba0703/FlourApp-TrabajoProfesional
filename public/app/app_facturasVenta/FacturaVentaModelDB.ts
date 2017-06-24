@@ -1,3 +1,4 @@
+import {RetencionFacturaVista} from "./RetencionFacturaVista";
 export class FacturaVentaModelDB {
     constructor(
       public _id?: string,
@@ -16,7 +17,7 @@ export class FacturaVentaModelDB {
 	  public impuestosInternos?: 	  number,
 	  public impuestosMunicipales?: number,
 	  public CAI?:                  number,
-	  public fechaVtoCAI?:   	      Date
-        ){
+	  public fechaVtoCAI?:   	      Date,
+      public retencionesFactura_ids?: RetencionFacturaVista[]){
     }
 }

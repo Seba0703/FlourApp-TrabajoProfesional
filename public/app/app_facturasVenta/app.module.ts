@@ -18,6 +18,7 @@ import { MateriaPrimaServices } from '../app_materiasPrima/materiaPrimaServices'
 import { ListaPorcentajeServices } from '../listaPorcentaje/ListaPorcentajeServices'
 import { SemiProcesadoServices } from '../app_semiProcesados/semiProcesadoServices';
 import { ProductoTerminadoServices } from '../app_productosTerminados/productoTerminadoServices';
+import {RetencionServices} from "../app_retenciones/retencionServices";
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { ProductoTerminadoServices } from '../app_productosTerminados/productoTe
     MateriaPrimaServices,
     ListaPorcentajeServices,
     SemiProcesadoServices,
-    ProductoTerminadoServices
+    ProductoTerminadoServices,
+    RetencionServices
   ],
   bootstrap: [ AppComponent ]
 })

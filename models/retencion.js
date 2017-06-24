@@ -17,4 +17,4 @@ retencionSchema.pre('remove', function(next) {
     next();
 });
 
-exports.retencionModel = mongoose.model('Retencion', retencionSchema); //crea el modelo y lo exporta para que lo puedan usar otros modulos
+exports.retencionFacturaModel = mongoose.model('Retencion', retencionSchema); //crea el modelo y lo exporta para que lo puedan usar otros modulos

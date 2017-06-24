@@ -34,7 +34,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="mostrarModalModificar">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modificar-modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Modificar materia prima</h5>
@@ -42,32 +42,79 @@
             <div class="modal-body">
                 <div class="container">
 
-                    <div class="form-group row">
-                        <div class="col-4">
-                            <label for="example-text-input" class="col-form-label">Tasa Impositiva</label>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#datos" role="tab">Datos cliente</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#retenciones" role="tab">Retenciones</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="datos" role="tabpanel">
+
+
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label for="example-text-input" class="col-form-label">Tasa Impositiva</label>
+                                </div>
+                                <div class="col-8">
+                                    <select class="form-control" id="porcentajeIVA" [(ngModel)]="tasaImpositiva">
+                                      <option>IVA-0%</option>
+                                      <option>IVA-10.5%</option>
+                                      <option>IVA-21%</option>
+                                      <option>IVA-27%</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="nombre">
+
+                            <input type="number" class="form-control" placeholder="Cantidad" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="cantidad">
+
+                            <input type="text" class="form-control" placeholder="Unidad" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="unidad">
+
+                            <input type="number" class="form-control" placeholder="Stock Min" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="stockMin">
+
+                            <input type="number" class="form-control" placeholder="Stock Max" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="stockMax">
+
+                            <input type="number" step="0.01" class="form-control" placeholder="Precio Venta" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validarPrecioVenta(event)" [(ngModel)]="precioVenta">
                         </div>
-                        <div class="col-8">
-                            <select class="form-control" id="porcentajeIVA" [(ngModel)]="tasaImpositiva">
-                              <option>IVA-0%</option>
-                              <option>IVA-10.5%</option>
-                              <option>IVA-21%</option>
-                              <option>IVA-27%</option>
-                            </select>
+
+                        <div class="tab-pane" id="retenciones" role="tabpanel">
+                            <div class="container" >
+                                <div class="row">
+                                    <div class="col" style="overflow-y: scroll;">
+                                        <table class="table">
+                                            <thead class="thead-inverse">
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Codigo</th>
+                                                <th>Acción</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody *ngFor="let retencion of retencionesCliente; let i = index">
+                                            <td>{{retencion.nombre}}</td>
+
+                                            <td>{{retencion.codigo}}</td>
+
+                                            <td>
+                                                <button type="button" class="btn btn-danger" (click)="borrarRetencionCliente(i)" title="Borrar" >
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </button>
+                                            </td>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar retención"
+                                            data-toggle="modal" data-target="#retencionesModal" style="margin: 10px;">+</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <input type="text" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="nombre">
-
-                    <input type="number" class="form-control" placeholder="Cantidad" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="cantidad">
-
-                    <input type="text" class="form-control" placeholder="Unidad" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" [(ngModel)]="unidad">
-
-                    <input type="number" class="form-control" placeholder="Stock Min" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="stockMin">
-
-                    <input type="number" class="form-control" placeholder="Stock Max" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="stockMax">
-
-                    <input type="number" step="0.01" class="form-control" placeholder="Precio Venta" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validarPrecioVenta(event)" [(ngModel)]="precioVenta">
-
                 </div>
             </div>
             <div class="modal-footer">
@@ -79,3 +126,48 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="retencionesModal" tabindex="-1" role="dialog" aria-labelledby="retencionesModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="retencionesModalLabel">Agregar retención</h5>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="input-field col s12" style="margin: 4px;">
+                        <input id="retencion" type="text" placeholder="Retención" aria-describedby="basic-addon1" class="form-control validate filter-input" [(ngModel)]=query (keyup)=filter()>
+                    </div>
+                    <div class="suggestions" *ngIf="filteredList.length > 0">
+                        <div class="col" style="overflow-y: scroll;">
+                            <table class="table">
+                                <thead class="thead-inverse">
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Codigo</th>
+                                </tr>
+                                </thead>
+                                <tbody *ngFor="let retencion of filteredList">
+                                <td>
+                                    <div (click)="select(retencion)">{{retencion.nombre}}</div>
+                                </td>
+
+                                <td>
+                                    <div (click)="select(retencion)">{{retencion.codigo}}</div>
+                                </td>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="agregarRetencion()">
+                    Agregar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

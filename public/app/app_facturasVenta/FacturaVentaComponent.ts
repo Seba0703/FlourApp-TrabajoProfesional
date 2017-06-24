@@ -16,6 +16,10 @@ import { MateriaPrimaServices } from '../app_materiasPrima/materiaPrimaServices'
 import { SemiProcesadoServices } from '../app_semiProcesados/semiProcesadoServices';
 import { ProductoTerminadoServices } from '../app_productosTerminados/productoTerminadoServices';
 import {Vencimiento} from "./Vencimiento";
+import {RetencionServices} from "../app_retenciones/retencionServices";
+import {Retencion} from "../app_retenciones/retencion";
+import {RetencionFactura} from "./RetencionFactura";
+import {RetencionFacturaVista} from "./RetencionFacturaVista";
 
 
 @Component({
@@ -37,13 +41,20 @@ export class FacturaVentaComponent implements OnInit{
   private nombresListasDePreciosDisponibles: string[];
   private productosDisponibles: Array<any>;
 
+  private retenciones: Retencion[];
+  public filteredList: Retencion[] = [];
+  public query: string = '';
+  //retencion seleccionada del autocomplete
+  public retencion: Retencion;
+
   constructor(
     private fvService: FacturaVentaServices,
   	private cService: ClienteServices,
   	private ldpService: ListaDePrecioServices,
     private mpService: MateriaPrimaServices,
     private spService: SemiProcesadoServices,
-    private ptService: ProductoTerminadoServices){
+    private ptService: ProductoTerminadoServices,
+    private retencionSrv: RetencionServices){
     
     this.facturaVenta = new FacturaVenta();
     this.productosDisponibles = new Array<any>();
@@ -51,13 +62,15 @@ export class FacturaVentaComponent implements OnInit{
   }
 
   ngOnInit() {
-    console.log("ON INIT");
+      console.log("ON INIT");
 
-    this.estadoLabelClientes = "Ver";
-    this.cargarClientesDisponibles();
-    this.cargarListasDePreciosDisponibles();
-    this.cargarProductosDisponibles();
+      this.estadoLabelClientes = "Ver";
+      this.cargarClientesDisponibles();
+      this.cargarListasDePreciosDisponibles();
+      this.cargarProductosDisponibles();
+      this.cargarRetenciones();
   }
+
 
   cargarClientesDisponibles(){
     this.clientesDisponibles = []
@@ -100,7 +113,8 @@ export class FacturaVentaComponent implements OnInit{
                                     fv.condicionPago,
                                     fv.listaPrecioNombre,
                                     productos,
-                                    vencimientos)
+                                    vencimientos,
+                                    fv.retencionesFactura_ids)
                             )
 
                         console.log(this.facturasVentaDisponibles)
@@ -172,10 +186,11 @@ export class FacturaVentaComponent implements OnInit{
 
 
   seleccionarFacturaParaModificar(factura: FacturaVenta){
+    factura.recalcularRetencionAllSinVista(this.productosDisponibles);
     this.facturaVenta = factura;
-    this.facturaVenta.fecha = new Date(factura.fecha)//la asingnacion anterior no funciona para fecha
-    console.log("PROCESANDO FACTURA=")
-    console.log(this.facturaVenta)
+    this.facturaVenta.fecha = new Date(factura.fecha);//la asingnacion anterior no funciona para fecha
+    console.log("PROCESANDO FACTURA=");
+    console.log(this.facturaVenta);
 
   }
 
@@ -213,11 +228,14 @@ export class FacturaVentaComponent implements OnInit{
     if(cliente.listaPrecioNombre != null) {
       this.actualizarPreciosEnBaseAlistaDePreciosConNombre(cliente.listaPrecioNombre)
     }
+
+    this.facturaVenta.recalcularRetencionAllUpdateVista(); //cambian los precios de los productos y los importes finales
   }
 
   onListaDePreciosChange(){
     console.log("LDP CHANGE!!!");
-    this.actualizarPreciosEnBaseAlistaDePreciosConNombre(this.facturaVenta.nombreListaDePrecios)
+    this.actualizarPreciosEnBaseAlistaDePreciosConNombre(this.facturaVenta.nombreListaDePrecios);
+      this.facturaVenta.recalcularRetencionAllUpdateVista(); //cambian los precios de los productos y los importes finales
   }
 
   actualizarPreciosEnBaseAlistaDePreciosConNombre(nombreListaDePrecios: string){
@@ -249,6 +267,7 @@ export class FacturaVentaComponent implements OnInit{
                   }
                  }
 
+                 this.facturaVenta.recalcularRetencionAllUpdateVista(); //cambian los precios de los productos y los importes finales
                  console.log("PRODUCTOS DISPONIBLES ACTUALIZADOS POR LPD= ");
                 console.log(this.productosDisponibles);
              })
@@ -290,9 +309,12 @@ export class FacturaVentaComponent implements OnInit{
                 }
               }
             }
-            console.log(producto.precioVenta)
-            this.facturaVenta.productos.push(new Producto(null, "unTipo", producto._id, producto.nombre, 1, producto.precioVenta, this.getIVA(producto)));
+            console.log(producto.precioVenta);
+            let productoAdded: Producto = new Producto(null, "unTipo", producto._id, producto.nombre, 1, producto.precioVenta, this.getIVA(producto), producto.retenciones_ids);
+            this.facturaVenta.productos.push(productoAdded);
             this.facturaVenta.setImportesEnVencimientos();
+            this.facturaVenta.updateVistaAddRetencionFor(producto._id, productoAdded.retenciones_ids, productoAdded.cantidad * productoAdded.precioVenta * (1 + (productoAdded.iva/100)) , false);
+            this.facturaVenta.recalcularRetencionCliente(); //se agrego un item, cambia el importe total -> cambia la retencion del cliente
           },
           err => console.error("EL ERROR FUE: ", err)
         )
@@ -302,6 +324,8 @@ export class FacturaVentaComponent implements OnInit{
   		for(let productoSeleccionado of this.facturaVenta.productos){
   			if(producto._id == productoSeleccionado.mp_sp_pt_ID) {
   				this.facturaVenta.productos.splice(index, 1);
+                this.facturaVenta.removeRetencion(producto._id, producto.retenciones_ids);
+                this.facturaVenta.recalcularRetencionCliente();	//cambia importe -> cambia retenciones cliente
   			} else {
   				index++;
   			}
@@ -353,7 +377,9 @@ export class FacturaVentaComponent implements OnInit{
       fechaEmision:       this.facturaVenta.fecha,
       empresaID:          this.facturaVenta.cliente._id,
       condicionPago:      this.facturaVenta.condicionDePago,
-      listaPrecioNombre:  this.facturaVenta.nombreListaDePrecios
+      listaPrecioNombre:  this.facturaVenta.nombreListaDePrecios,
+      retencionesFactura_ids: this.facturaVenta.retencionesFacturaVista,
+      retencionesDelete_ids: this.facturaVenta.retencionesDelete_ids
     }
 
     if (this.facturaVenta.isControlTotal_OK()) {
@@ -463,5 +489,50 @@ export class FacturaVentaComponent implements OnInit{
         )
     }
   }
+
+    cargarRetenciones() {
+        this.retencionSrv.getRetenciones().then(retenciones => {
+            this.retenciones = retenciones;
+            this.filteredList = retenciones;
+
+        })
+    }
+
+    select(retencion: Retencion){
+        this.query = retencion.nombre;
+        this.retencion = retencion;
+        this.filteredList = this.retenciones;
+    }
+
+    filter() {
+        if (this.query !== ""){
+            this.filteredList = this.retenciones.filter(function(retencion: Retencion){
+                return retencion.nombre.toLowerCase().indexOf(this.query.toLowerCase()) > -1
+                    || retencion.codigo.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
+            }.bind(this));
+        }else{
+            this.filteredList = this.retenciones;
+        }
+    }
+
+    agregarRetencion() {
+        if (this.retencion && !this.hasRetencion(this.retencion)) {
+            this.facturaVenta.retencionesFacturaVista.push(new RetencionFacturaVista(null, 0, this.retencion));
+            this.retencion = null;
+        }
+    }
+
+    hasRetencion(retencion: Retencion): boolean {
+        var i = 0;
+        var hasRetencion = false;
+        while (i <  this.facturaVenta.retencionesFacturaVista.length && !hasRetencion) {
+            if (this.facturaVenta.retencionesFacturaVista[i].retencion_id._id == retencion._id) {
+                hasRetencion = true;
+            }
+            i++;
+        }
+
+        return hasRetencion;
+    }
 
 }

@@ -12,7 +12,8 @@ var productoSemiProcesadoSchema = new mongoose.Schema({
   porcentajeMerma: 		 	{ type: Number },
   tipo:     	  		     { type: String },
   listaPorcentajesID:		 { type: String },
-  precioVenta:			     { type: Number }
+  precioVenta:			     { type: Number },
+  retenciones_ids:	[{ type: mongoose.Schema.Types.ObjectId, ref: 'Retencion', default:[]}]
   //Se relaciona con listaPorcentajesSchema se inserta en esa tabla este ID y los de los productos con los q se genera este Producto
 });
 

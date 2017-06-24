@@ -6,11 +6,11 @@ export class RangoRetencion {
     importeFijo: number = null;
 
     constructor(id?: string, desde?: number, hasta?: number, porcentaje?: number, importeFijo?: number) {
-        this._id = id ;
-        this.desde = desde;
-        this.hasta = hasta;
-        this.porcentaje = porcentaje;
-        this.importeFijo = importeFijo;
+        this._id = id ? id : null ;
+        this.desde = desde ? desde : null;
+        this.hasta = hasta ? hasta: null;
+        this.porcentaje = porcentaje ? porcentaje : null;
+        this.importeFijo = importeFijo ? importeFijo : null;
     }
 
     static clone( rango : RangoRetencion): RangoRetencion {

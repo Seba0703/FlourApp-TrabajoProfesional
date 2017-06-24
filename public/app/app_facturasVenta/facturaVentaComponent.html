@@ -11,7 +11,7 @@
 			</thead>
 			<tbody *ngFor="let fv of facturasVentaDisponibles">
 			    <td>{{fv.cliente.nombreEmpresa}}</td>
-			    <td>${{fv.getImporte()}}</td>
+			    <td>${{fv.getImporteTotal()}}</td>
 			    <th>xxxxx</th>
 			    <td>
 					<button type="button" class="btn btn-warning" (click)="generarRemito(fv)" title="Generar remito"
@@ -58,10 +58,10 @@
 				    <a class="nav-link" data-toggle="tab" href="#productos" role="tab">Productos</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" data-toggle="tab" href="#item3" role="tab">Vencimientos</a>
+				    <a class="nav-link" data-toggle="tab" href="#vencimientos" role="tab">Vencimientos</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" data-toggle="tab" href="#item4" role="tab">Retenciones</a>
+				    <a class="nav-link" data-toggle="tab" href="#retenciones" role="tab">Retenciones</a>
 				  </li>
 				</ul>
 
@@ -190,7 +190,8 @@
 									        	type="number" 
 									        	min="1" 
 									        	style="width: 90px;" 
-									        	placeholder="Cantidad" 
+									        	placeholder="Cantidad"
+												   (blur)="facturaVenta.recalcularRetencionesForProducto(getIndex(producto))"
 									        	[(ngModel)]="facturaVenta.productos[getIndex(producto)].cantidad">
 									    </td>
 
@@ -200,7 +201,8 @@
 									        	step="0.01" 
 									        	min="0" 
 									        	style="width: 90px;" 
-									        	placeholder="Precio" 
+									        	placeholder="Precio"
+												   (blur)="facturaVenta.recalcularRetencionesForProducto(getIndex(producto))"
 									        	[(ngModel)]="facturaVenta.productos[getIndex(producto)].precioVenta">
 									    </td>
 
@@ -210,7 +212,8 @@
 									        	step="0.01" 
 									        	min="0" 
 									        	style="width: 90px;" 
-									        	placeholder="% IVA" 
+									        	placeholder="% IVA"
+												   (blur)="facturaVenta.recalcularRetencionesForProducto(getIndex(producto))"
 									        	[(ngModel)]="facturaVenta.productos[getIndex(producto)].iva">
 									    </td>
 									</tbody>
@@ -218,19 +221,33 @@
 							</div>
 						</div>
 
-						<div class="row">
+						<div class="row text-center" >
+							<div class="col-md-12" style="margin-top: 8px;">
+								<HR COLOR="grey">
+
+								<label for="text" style="margin-top: 8px; font: normal 30px courier !important;">
+									<strong>Total productos = ${{getImporte()}}</strong>
+								</label>
+							</div>
+
+							<div class="col-md-12" style="margin-top: 8px;">
+
+								<label for="text" style="margin-top: 8px; font: normal 30px courier !important;">
+									<strong>Total retenciones = ${{facturaVenta.getImporteTotalRetenciones()}}</strong>
+								</label>
+							</div>
+
 							<div class="col-md-12" style="margin-top: 8px;">
 								<HR COLOR="grey" WIDTH="60%">
 
-								<label for="text" style="margin-top: 8px; font: normal 64px courier !important;">
-									<strong>TOTAL = ${{getImporte()}}</strong>
-
+								<label for="text" style="margin-top: 8px; font: normal 30px courier !important;">
+									<strong>Total = ${{facturaVenta.getImporteTotal()}}</strong>
 								</label>
 							</div>
 						</div>
 				  	</div>
 
-				  	<div class="tab-pane" id="item3" role="tabpanel">
+				  	<div class="tab-pane" id="vencimientos" role="tabpanel">
 						<div layout-align="center center" margin="10px" class="text-center">
 							<label for="example-text-input" class="col-form-label" >
 								<strong>Diferencia con total: {{facturaVenta.redondeoDiff}} </strong>
@@ -268,11 +285,45 @@
 						</div>
 					</div>
 
-				  	<div class="tab-pane" id="item4" role="tabpanel">retenciones</div>
+					<div class="tab-pane" id="retenciones" role="tabpanel">
+						<div class="container" >
+							<div class="row" style="margin: 4px;">
+								<div class="col" style="overflow: scroll;">
+									<table class="table">
+										<thead class="thead-inverse">
+										<tr>
+											<th>Nombre</th>
+											<th>Importe</th>
+											<th>Acción</th>
+										</tr>
+										</thead>
+										<tbody *ngFor="let retencion of facturaVenta.retencionesFacturaVista; let i = index">
+										<td>{{retencion.retencion_id.nombre}}</td>
+
+										<td>
+											<input type="number" min="0.01" step="0.01"  class="form-control" placeholder="$"
+												   [(ngModel)]="retencion.importe">
+										</td>
+
+										<td>
+											<button type="button" class="btn btn-danger" (click)="facturaVenta.borrarRetencionFactura(i)" title="Borrar" >
+												<i class="fa fa-trash" aria-hidden="true"></i>
+											</button>
+										</td>
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="col text-lg-right">
+								<button type="button" class="btn btn-info"
+										data-toggle="modal" data-target="#retencionesModal" style="font-size: 11px; margin: 10px;">+ Agregar retención</button>
+							</div>
+						</div>
+					</div>
 				</div>
-
-
-            </div>
+			  </div>
+			</div>
 
             <div class="modal-footer">
 				<div class="container">
@@ -302,3 +353,47 @@
         </div>
     </div>
 </div>
+
+	<div class="modal fade" id="retencionesModal" tabindex="-1" role="dialog" aria-labelledby="retencionesModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="retencionesModalLabel">Agregar retención</h5>
+				</div>
+				<div class="modal-body">
+					<div class="container">
+						<div class="input-field col s12" style="margin: 4px;">
+							<input id="retencion" type="text" placeholder="Retención" aria-describedby="basic-addon1" class="form-control validate filter-input" [(ngModel)]=query (keyup)=filter()>
+						</div>
+						<div class="suggestions" *ngIf="filteredList.length > 0">
+							<div class="col" style="overflow-y: scroll;">
+								<table class="table">
+									<thead class="thead-inverse">
+									<tr>
+										<th>Nombre</th>
+										<th>Codigo</th>
+									</tr>
+									</thead>
+									<tbody *ngFor="let retencion of filteredList">
+									<td>
+										<div (click)="select(retencion)">{{retencion.nombre}}</div>
+									</td>
+
+									<td>
+										<div (click)="select(retencion)">{{retencion.codigo}}</div>
+									</td>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" (click)="agregarRetencion()">
+						Agregar
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
