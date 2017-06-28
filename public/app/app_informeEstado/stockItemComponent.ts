@@ -12,6 +12,7 @@ export class StockItemComponent {
   @Input() actual: number;
   @Input() optimo: number;
   @Input() optimo_actual: number;
+  @Input() id: string;
 
   estadoColor():string {
     if(this.actual>this.max)

@@ -56,4 +56,8 @@ export class InformesServices{
   getProductosTerminados() {
     return this.http.get(URL_PRODUCTOS_TERMINADOS).map((response) => response.json());
   }
+
+  modificarStockOptimo(modificarStock:any) {
+    console.log(modificarStock);
+  }
 }

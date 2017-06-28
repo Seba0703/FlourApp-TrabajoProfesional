@@ -2,19 +2,19 @@
 	<div class="col-md-4">
 		<h3>Materias Prima</h3>
 		<div *ngFor="let informe of informeEstadoStock;">
-			<stock-item *ngIf="informe.tipo==1" [nombre]="informe.nombre" [min]="informe.stockMin" [max]="informe.stockMax" [optimo]="informe.stockOptimoRecomendado" [optimo_actual]="informe.stockOptimo" [actual]="informe.cantidad"></stock-item>
+			<stock-item *ngIf="informe.tipo==1" [id]="informe._id" [nombre]="informe.nombre" [min]="informe.stockMin" [max]="informe.stockMax" [optimo]="informe.stockOptimoRecomendado" [optimo_actual]="informe.stockOptimo" [actual]="informe.cantidad"></stock-item>
 		</div>
 	</div>
 	<div class="col-md-4">
 		<h3>Semi Procesados</h3>
 		<div *ngFor="let informe of informeEstadoStock;">
-			<stock-item *ngIf="informe.tipo==2" [nombre]="informe.nombre" [min]="informe.stockMin" [max]="informe.stockMax" [optimo]="informe.stockOptimoRecomendado" [optimo_actual]="informe.stockOptimo" [actual]="informe.cantidad"></stock-item>
+			<stock-item *ngIf="informe.tipo==2" [id]="informe._id" [nombre]="informe.nombre" [min]="informe.stockMin" [max]="informe.stockMax" [optimo]="informe.stockOptimoRecomendado" [optimo_actual]="informe.stockOptimo" [actual]="informe.cantidad"></stock-item>
 		</div>
 	</div>
 	<div class="col-md-4">
 		<h3>Productos Terminados</h3>
 		<div *ngFor="let informe of informeEstadoStock;">
-			<stock-item *ngIf="informe.tipo==3" [nombre]="informe.nombre" [min]="informe.stockMin" [max]="informe.stockMax" [optimo]="informe.stockOptimoRecomendado" [optimo_actual]="informe.stockOptimo" [actual]="informe.cantidad"></stock-item>
+			<stock-item *ngIf="informe.tipo==3" [id]="informe._id" [nombre]="informe.nombre" [min]="informe.stockMin" [max]="informe.stockMax" [optimo]="informe.stockOptimoRecomendado" [optimo_actual]="informe.stockOptimo" [actual]="informe.cantidad"></stock-item>
 		</div>
 	</div>
 </div>
