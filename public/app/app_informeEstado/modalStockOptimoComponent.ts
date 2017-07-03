@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Response } from '@angular/http';
 import { InformesServices } from '../app_informes/informesServices';
 
 @Component({
@@ -10,6 +11,7 @@ export class StockOptimoComponent {
   private stockMin: number;
   private stockMax: number;
   private optimo: string;
+  private desvio: number;
   @Input() nombre: number;
   @Input() cantidad: number;
   @Input() min: number;
@@ -18,11 +20,14 @@ export class StockOptimoComponent {
   @Input() valor_optimo: string;
   @Input() optimo_actual: string;
   @Input() id: string;
+  @Input() tipo:string;
 
 
   private mostrarModalAgregar: boolean = true;
 
-  constructor(private iService: InformesServices) {}
+  constructor(private iService: InformesServices) {
+    this.desvio = 20;
+  }
 
   ngOnInit() {
     this.reset();
@@ -34,27 +39,31 @@ export class StockOptimoComponent {
     this.optimo = this.valor_optimo;
   }
 
-  modificarValores(id:string, min:number, max:number, optimo:string) {
+  optimoInt(): number {
+    return parseInt(this.optimo);
+  }
+
+  modificarValores(id:string, min:number, max:number, optimo:string, tipo:string) {
     console.log(min);
     console.log(max);
     console.log(optimo);
     console.log(id);
     let modificarStock = {
       _id: id,
-      min: min,
-      max: max,
-      optimo: optimo
+      stockMin: (this.optimoInt()-(this.optimoInt()*this.desvio/100)).toFixed(0),
+      stockMax: (this.optimoInt()+(this.optimoInt()*this.desvio/100)).toFixed(0),
+      stockOptimo: optimo,
+      tipo: tipo
     }
-    this.iService.modificarStockOptimo(modificarStock);
-      // .subscribe(data => {
-      //   console.log("materiaPrima creado!!!");
-      //   console.log(data);
-      //   this.mostrarModalAgregar = false;
-      //   alert("\t\t\t\t¡Materia Prima agregada!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
-      //   window.location.reload();
-      // }, error => {
-      //   console.log(JSON.stringify(error.json()));
-      //   alert("\t\t\t\t¡ERROR al agregar Materia Prima!\n\nrevise los campos");
-      // });
+    this.iService.modificarStockOptimo(modificarStock)
+    .subscribe(data => {
+        console.log("Listo");
+
+        alert("\t\t\t\t¡Stock Optimo modificado!\n\n Pulse 'Aceptar' para actualizar y visualizar los cambios");
+        window.location.reload();
+    }, error => {
+        console.log(JSON.stringify(error.json()));
+        alert("\t\t\t\t¡ERROR al modificar Stock!\n\nRevise los campos");
+    });
   }
 }

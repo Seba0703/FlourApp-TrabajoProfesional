@@ -7,5 +7,8 @@ exports.getStockRoutersHandler = function(express){
 	stockRoutersHandler.route('/informeEstadoStock')
 	  .get(productosController.estadoStock);
 
+		stockRoutersHandler.route('/informeEstadoStock/:id')
+		.put(productosController.updateStockOptimo);
+
 	return stockRoutersHandler;
 }

@@ -57,7 +57,12 @@ export class InformesServices{
     return this.http.get(URL_PRODUCTOS_TERMINADOS).map((response) => response.json());
   }
 
-  modificarStockOptimo(modificarStock:any) {
-    console.log(modificarStock);
+  modificarStockOptimo(body:any) : Observable<Response> {
+    console.log(body);
+
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log("PUT REQUEST");
+    return this.http.put(URL_INFORME_ESTADO + "/" + body._id, body, {headers: headers});
   }
 }

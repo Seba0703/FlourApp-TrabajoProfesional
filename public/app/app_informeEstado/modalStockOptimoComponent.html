@@ -1,13 +1,13 @@
-<button type="button" class="btn btn-outline-primary btn-sm btn-block" style="margin-bottom:0px; color:#2196F3" data-toggle="modal" [attr.data-target]="'#modalStockOptimo' + nombre" (click)="reset()">
-    {{recomendacion}}
-    {{valor_optimo}}
+<button type="button" class="btn btn-outline-primary btn-sm btn-block" style="margin-bottom:0px; color:#2196F3" data-toggle="modal" [attr.data-target]="'#modalStockOptimo' + id" (click)="reset()">
+    <!-- {{recomendacion}}
+    {{valor_optimo}} -->
+    Modificar Stock Óptimo ({{valor_optimo}})
 </button>
-<!-- Modal -->
-<div class="modal fade" [id]="'modalStockOptimo'+nombre" tabindex="-1" role="dialog" aria-labelledby="modalStockOptimoLabel" aria-hidden="true">
+<div class="modal fade" [id]="'modalStockOptimo'+id" tabindex="-1" role="dialog" aria-labelledby="modalStockOptimoLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalStockOptimoLabel">Modificar Stock Optimo</h5>
+                <h5 class="modal-title" id="modalStockOptimoLabel">Modificar Stock Óptimo</h5>
             </div>
             <div class="modal-body">
                 <div class="container">
@@ -26,7 +26,7 @@
                             ->
                         </div>
                         <div class="col-md-8">
-                            <input type="number" class="form-control" placeholder="Nuevo Stock Minimo" aria-describedby="stockmin" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="stockMin">
+                            <input disabled type="number" class="form-control" placeholder="Nuevo Stock Minimo" aria-describedby="stockmin" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [ngModel]="(optimoInt()-(optimoInt()*desvio/100)).toFixed(0)">
                         </div>
                     </div>
                     <div>
@@ -40,7 +40,7 @@
                             ->
                         </div>
                         <div class="col-md-8">
-                            <input type="number" class="form-control" placeholder="Nuevo Stock Máximo" aria-describedby="stockmin" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="stockMax">
+                            <input disabled type="number" class="form-control" placeholder="Nuevo Stock Máximo" aria-describedby="stockmax" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [ngModel]="(optimoInt()+(optimoInt()*desvio/100)).toFixed(0)">
                         </div>
                     </div>
                     <div>
@@ -54,15 +54,24 @@
                             ->
                         </div>
                         <div class="col-md-8">
-                            <input type="number" class="form-control" placeholder="Nuevo Stock Optimo" aria-describedby="stockmin" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="optimo">
+                            <input type="number" class="form-control" placeholder="Nuevo Stock Optimo" aria-describedby="stockoptimo" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="optimo">
+                        </div>
+                    </div>
+                    <div>
+                        Desvío:
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">{{desvio}}%</div>
+                        <div class="col-md-8">
+                            <input type="range" step="1" min="0" max="100" class="form-control" placeholder="Desvío (Ej: 0.2)" aria-describedby="desvio" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="desvio">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" (click)="modificarValores(id, stockMin, stockMax, optimo)">
-                    Agregar
+                <button type="button" class="btn btn-primary" (click)="modificarValores(id, stockMin, stockMax, optimo, tipo)">
+                    Modificar
                 </button>
             </div>
         </div>

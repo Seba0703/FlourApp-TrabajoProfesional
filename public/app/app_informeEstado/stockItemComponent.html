@@ -14,9 +14,6 @@
 		<div class="progress" style="height: 8px; margin-bottom: 8px; margin-top: 6px;">
 			<div class="progress-bar" style="height: 8px; margin-bottom:10px;" [ngClass]="estadoColorBarra()" role="progressbar" [style.width]="((actual+1)*100)/max+'%'" aria-valuenow="actual" aria-valuemin="0" aria-valuemax="max"></div>
 		</div>
-		<modificar-stock-optimo *ngIf="optimo_actual != valor_optimo()" [id]="id" [min]="min" [max]="max" [optimo_actual]="optimo_actual" [valor_optimo]="valor_optimo()" [recomendacion]="recomendacion()" [nombre]="nombre" [cantidad]="actual"></modificar-stock-optimo>
-		<h5 *ngIf="(optimo_actual == valor_optimo()) && actual < optimo_actual">
-			<small>(Se compró menos que el óptimo actual)</small>
-		</h5>
+		<modificar-stock-optimo [id]="id" [tipo]="tipo" [min]="min" [max]="max" [optimo_actual]="optimo_actual" [valor_optimo]="valor_optimo()" [recomendacion]="recomendacion()" [nombre]="nombre" [cantidad]="actual"></modificar-stock-optimo>
 	</div>
 </div>

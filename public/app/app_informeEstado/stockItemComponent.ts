@@ -13,6 +13,7 @@ export class StockItemComponent {
   @Input() optimo: number;
   @Input() optimo_actual: number;
   @Input() id: string;
+  @Input() tipo: string;
 
   estadoColor():string {
     if(this.actual>this.max)
@@ -39,9 +40,9 @@ export class StockItemComponent {
   }
 
   recomendacion():string {
-    if(this.actual>this.max)
-      return 'Reducir óptimo a ';
-    if(this.actual<this.min)
+    if(this.optimo == this.optimo_actual && this.actual>this.max)
+      return 'la compra mensual superó los valores óptimos';
+    if(this.optimo == this.optimo_actual && this.actual<this.min)
       return 'Aumentar óptimo a ';
     return '';
   }

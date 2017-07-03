@@ -84,7 +84,7 @@ exports.estadoStock = function(req, res) {
     var date = new Date(), y = date.getFullYear(), m = date.getMonth();
     var firstDay = new Date();
     var lastDay = new Date();
-    firstDay.setFullYear(y, m - 2, 1);
+    firstDay.setFullYear(y, m, 1);
     lastDay.setFullYear(y, m + 1, 0);
     for(var i = 0; i < productos.length; ++i) {
       promises2.push(estadosProducto(productos[i], firstDay, lastDay));
@@ -107,9 +107,11 @@ var calcularStockOptimo = function(ultimasCompras, producto) {
   });
 
   if(sum < producto.stockOptimo && producto.cantidad > producto.stockMax) {
-    optimo = (producto.stockMin - (producto.cantidad - producto.stockMax/2)).toFixed(0);
+    // optimo = (producto.stockMin - (producto.cantidad - producto.stockMax/2)).toFixed(0);
+    optimo = optimo - (optimo*0.2);
   } else if(sum > producto.stockOptimo && producto.cantidad < producto.stockMin) {
-    optimo = (producto.stockMax + ((producto.cantidad)/2)).toFixed(0);
+    // optimo = (producto.stockMax + ((producto.cantidad)/2)).toFixed(0);
+    optimo = optimo + (optimo*0.2);
   }
 
   return optimo;
@@ -196,3 +198,28 @@ exports.ultimosPreciosProducto = function(req, res) {
     }
   }).exec(findByIdCallback);
 }
+
+exports.updateStockOptimo = function(req, res) {
+	console.log('UPDATE');
+  var Tabla;
+  if (req.body.tipo == 1) {
+    Tabla = MateriaPrima;
+  }
+  if (req.body.tipo == 2) {
+    Tabla = ProductoSemiProcesado;
+  }
+  if (req.body.tipo == 3) {
+    Tabla = ProductoTerminado;
+  }
+  if(Tabla != undefined)
+  {
+    var query = {'_id':req.body._id};
+    var newData = req.body;
+    Tabla.findOneAndUpdate(query, newData, {upsert:false}, function(err, doc){
+        if(err) return res.status(500).send(err.message);
+        return res.status(200).jsonp("newData");
+    });
+  } else {
+    if(err) return res.status(500).send("Tipo no encontrado");
+  }
+};
