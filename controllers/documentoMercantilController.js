@@ -230,19 +230,24 @@ exports.add = function(req, res) {
 
     var rentecionesFactura = req.body.retencionesFactura_ids;
     var rentecionesFactura_ids = [];
-    for (var i = 0; i < rentecionesFactura.length; i++) {
+    if (rentecionesFactura) {
+      for (var i = 0; i < rentecionesFactura.length; i++) {
 
-        var retencionFactura = new RetencionFactura({
-            retencion_id: rentecionesFactura[i].retencion_id,
-            importe: rentecionesFactura[i].importe
-        });
+          var retencionFactura = new RetencionFactura({
+              retencion_id: rentecionesFactura[i].retencion_id,
+              importe: rentecionesFactura[i].importe
+          });
 
-        retencionSave(i, rentecionesFactura, rentecionesFactura_ids, retencionFactura, req, res);
-    }
+          retencionSave(i, rentecionesFactura, rentecionesFactura_ids, retencionFactura, req, res);
+      }
 
-    if (rentecionesFactura.length == 0) {
-        onlyDocumentoSave(rentecionesFactura_ids, req, res);
-    }
+      if (rentecionesFactura.length == 0) {
+          onlyDocumentoSave(rentecionesFactura_ids, req, res);
+      }
+  } else {
+      onlyDocumentoSave(rentecionesFactura_ids, req, res);
+  }
+
 
 };
 
@@ -271,33 +276,41 @@ exports.update = function(req, res) {
         documentomercantil.impuestosMunicipales =   req.body.impuestosMunicipales;
         documentomercantil.CAI =                    req.body.CAI;
         documentomercantil.fechaVtoCAI =            req.body.fechaVtoCAI;
-        
+
         RetencionFactura.remove({'_id':{'$in':req.body.retencionesDelete_ids}}).exec();
 
         var retencionesFactura = req.body.retencionesFactura_ids;
         var retencionesFactura_ids = [];
 
-        for (var i = 0; i < retencionesFactura.length; i++) {
+        if (retencionesFactura) {
 
-            if (retencionesFactura[i]._id) {
-                retencionesFactura_ids.push(retencionesFactura[i]._id);
-                retencionFacturaUpdate(i, retencionesFactura, retencionesFactura_ids, documentomercantil, res);
-            } else {
-                var retencionFactura = new RetencionFactura({
-                    retencion_id: retencionesFactura[i].retencion_id,
-                    importe: retencionesFactura[i].importe
-                });
+          for (var i = 0; i < retencionesFactura.length; i++) {
 
-                retencionFacturaSave(i, retencionesFactura, retencionesFactura_ids, documentomercantil, retencionFactura, res);
-            }
-        }
+              if (retencionesFactura[i]._id) {
+                  retencionesFactura_ids.push(retencionesFactura[i]._id);
+                  retencionFacturaUpdate(i, retencionesFactura, retencionesFactura_ids, documentomercantil, res);
+              } else {
+                  var retencionFactura = new RetencionFactura({
+                      retencion_id: retencionesFactura[i].retencion_id,
+                      importe: retencionesFactura[i].importe
+                  });
 
-        if(retencionesFactura.length == 0) {
-            documentomercantil.save(function (err) { //almaceno en la base "documentomercantil" para que quede actualizada con los nuevos cambios
-                if (err) return res.status(500).send(err.message);
-                res.status(200).jsonp(documentomercantil);
-            });
-        }
+                  retencionFacturaSave(i, retencionesFactura, retencionesFactura_ids, documentomercantil, retencionFactura, res);
+              }
+          }
+
+          if(retencionesFactura.length == 0) {
+              documentomercantil.save(function (err) { //almaceno en la base "documentomercantil" para que quede actualizada con los nuevos cambios
+                  if (err) return res.status(500).send(err.message);
+                  res.status(200).jsonp(documentomercantil);
+              });
+          }
+      } else {
+        documentomercantil.save(function (err) { //almaceno en la base "documentomercantil" para que quede actualizada con los nuevos cambios
+            if (err) return res.status(500).send(err.message);
+            res.status(200).jsonp(documentomercantil);
+        });
+      }
     });
 };
 

@@ -17,11 +17,12 @@
 		margin-left: 20px;
 		cursor: pointer;
 	}
+
 </style>
 <div class="row">
 	<div class="col-md-12">
-		<label for="#nfact">Nro. Fact.:</label>
-		<input id="nfact" type="number" [(ngModel)]="searchFields.numeroFactura"/>
+		<label style="display:none;" for="#nfact">Nro. Fact.:</label>
+		<input style="display:none;" id="nfact" type="number" [(ngModel)]="searchFields.numeroFactura"/>
 		<label for="#desde">Desde:</label>
 		<input id="desde" type="text" (focus)="toogleShowDesde(true)" [(ngModel)]="searchFields.desde"/>
 		<label for="#hasta">Hasta:</label>

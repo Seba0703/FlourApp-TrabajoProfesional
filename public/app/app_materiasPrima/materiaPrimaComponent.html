@@ -1,35 +1,34 @@
 <table class="table">
-  <thead class="thead-inverse">
-  <tr>
-    <th>Nombre</th>
-    <th>Cantidad</th>
-    <th>Unidad</th>
-    <th>Stock Min</th>
-    <th>Stock Max</th>
-    <th>Embolsado (default)</th>
-    <th>Precio Venta</th>
-    <th>Acciones</th>
-  </tr>
-  </thead>
-  <tbody *ngFor="let materiaPrima of materiasPrima">
-    <td>{{materiaPrima.nombre}}</td>
-    <td>{{materiaPrima.cantidad}}</td>
-    <td>{{materiaPrima.unidad}}</td>
-    <td>{{materiaPrima.stockMin}}</td>
-    <td>{{materiaPrima.stockMax}}</td>
-    <td>{{materiaPrima.embolsadoCantDefault}}</td>
-    <td *ngIf="materiaPrima.precioVenta">${{materiaPrima.precioVenta}}</td>
-    <td *ngIf="!materiaPrima.precioVenta"></td>
-    <td>
-        <button type="button" class="btn btn-success" (click)="modificar(materiaPrima)" title="Modificar"
-        data-toggle="modal" data-target="#modificarModal" >
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-        </button>
-        <button type="button" class="btn btn-danger" (click)="borrar(materiaPrima._id)" title="Borrar" >
-          <i class="fa fa-trash" aria-hidden="true"></i>
-        </button>
-    </td>
-  </tbody>
+    <thead class="thead-inverse">
+        <tr>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Unidad</th>
+            <th>Stock Min</th>
+            <th>Stock Max</th>
+            <th>Embolsado (default)</th>
+            <th>Precio Venta</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let materiaPrima of materiasPrima">
+        <td>{{materiaPrima.nombre}}</td>
+        <td>{{materiaPrima.cantidad}}</td>
+        <td>{{materiaPrima.unidad}}</td>
+        <td>{{materiaPrima.stockMin}}</td>
+        <td>{{materiaPrima.stockMax}}</td>
+        <td>{{materiaPrima.embolsadoCantDefault}}</td>
+        <td *ngIf="materiaPrima.precioVenta">${{materiaPrima.precioVenta}}</td>
+        <td *ngIf="!materiaPrima.precioVenta"></td>
+        <td>
+            <button type="button" class="btn btn-success" (click)="modificar(materiaPrima)" title="Modificar" data-toggle="modal" data-target="#modificarModal">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-danger" (click)="borrar(materiaPrima._id)" title="Borrar">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+        </td>
+    </tbody>
 </table>
 
 <!-- Modal -->
@@ -44,7 +43,7 @@
 
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#datos" role="tab">Datos cliente</a>
+                            <a class="nav-link active" data-toggle="tab" href="#datos" role="tab">Datos Materia Prima</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#retenciones" role="tab">Retenciones</a>
@@ -54,17 +53,16 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="datos" role="tabpanel">
 
-
                             <div class="form-group row">
                                 <div class="col-4">
                                     <label for="example-text-input" class="col-form-label">Tasa Impositiva</label>
                                 </div>
                                 <div class="col-8">
                                     <select class="form-control" id="porcentajeIVA" [(ngModel)]="tasaImpositiva">
-                                      <option>IVA-0%</option>
-                                      <option>IVA-10.5%</option>
-                                      <option>IVA-21%</option>
-                                      <option>IVA-27%</option>
+                                        <option>IVA-0%</option>
+                                        <option>IVA-10.5%</option>
+                                        <option>IVA-21%</option>
+                                        <option>IVA-27%</option>
                                     </select>
                                 </div>
                             </div>
@@ -83,34 +81,33 @@
                         </div>
 
                         <div class="tab-pane" id="retenciones" role="tabpanel">
-                            <div class="container" >
+                            <div class="container">
                                 <div class="row">
                                     <div class="col" style="overflow-y: scroll;">
                                         <table class="table">
                                             <thead class="thead-inverse">
-                                            <tr>
-                                                <th>Nombre</th>
-                                                <th>Codigo</th>
-                                                <th>Acción</th>
-                                            </tr>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Codigo</th>
+                                                    <th>Acción</th>
+                                                </tr>
                                             </thead>
                                             <tbody *ngFor="let retencion of retencionesCliente; let i = index">
-                                            <td>{{retencion.nombre}}</td>
+                                                <td>{{retencion.nombre}}</td>
 
-                                            <td>{{retencion.codigo}}</td>
+                                                <td>{{retencion.codigo}}</td>
 
-                                            <td>
-                                                <button type="button" class="btn btn-danger" (click)="borrarRetencionCliente(i)" title="Borrar" >
-                                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                                </button>
-                                            </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger" (click)="borrarRetencionCliente(i)" title="Borrar">
+                                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                                    </button>
+                                                </td>
 
                                             </tbody>
                                         </table>
                                     </div>
 
-                                    <button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar retención"
-                                            data-toggle="modal" data-target="#retencionesModal" style="margin: 10px;">+</button>
+                                    <button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar retención" data-toggle="modal" data-target="#retencionesModal" style="margin: 10px;">+</button>
                                 </div>
                             </div>
                         </div>
@@ -142,19 +139,19 @@
                         <div class="col" style="overflow-y: scroll;">
                             <table class="table">
                                 <thead class="thead-inverse">
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Codigo</th>
-                                </tr>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Codigo</th>
+                                    </tr>
                                 </thead>
                                 <tbody *ngFor="let retencion of filteredList">
-                                <td>
-                                    <div (click)="select(retencion)">{{retencion.nombre}}</div>
-                                </td>
+                                    <td>
+                                        <div (click)="select(retencion)">{{retencion.nombre}}</div>
+                                    </td>
 
-                                <td>
-                                    <div (click)="select(retencion)">{{retencion.codigo}}</div>
-                                </td>
+                                    <td>
+                                        <div (click)="select(retencion)">{{retencion.codigo}}</div>
+                                    </td>
                                 </tbody>
                             </table>
                         </div>
@@ -170,4 +167,3 @@
         </div>
     </div>
 </div>
-

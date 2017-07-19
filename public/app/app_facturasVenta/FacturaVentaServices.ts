@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';  
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
@@ -63,12 +63,12 @@ export class FacturaVentaServices {
         productos
         .push(
           new Producto(
-            response.json()[i]._id, 
+            response.json()[i]._id,
             response.json()[i].tipo,
-            response.json()[i].productoID, 
-            response.json()[i].nombre, 
-            response.json()[i].cantidad, 
-            response.json()[i].precio, 
+            response.json()[i].productoID,
+            response.json()[i].nombre,
+            response.json()[i].cantidad,
+            response.json()[i].precio,
             response.json()[i].iva))
       }
 
@@ -129,5 +129,10 @@ export class FacturaVentaServices {
         .toPromise()
         .then(response => response.json() as Vencimiento[])
         .catch(this.handleError);
+  }
+
+  verPDF(id:string) {
+    var win = window.open(URL_DOCUMENTOS_MERCANTILES+"/pdf/"+id, '_blank');
+    win.focus();
   }
 }

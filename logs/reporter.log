@@ -27626,3 +27626,1260 @@ return ret;
 2017-07-03T18:33:36.904Z - info: Creating default express app.
 2017-07-03T18:33:36.959Z - info: jsreport server successfully started on http port: 3001
 2017-07-03T18:33:36.962Z - info: Veryfing license key free
+2017-07-15T19:06:42.773Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-07-15T19:06:42.775Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-07-15T19:06:42.779Z - info: Searching for available extensions in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\
+2017-07-15T19:06:42.814Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-07-15T19:06:44.697Z - info: Found 29 extensions
+2017-07-15T19:06:44.715Z - debug: Writing extension locations cache to C:\Users\Euclides\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-07-15T19:06:44.717Z - debug: Discovered 29 extensions
+2017-07-15T19:06:44.719Z - info: Using extension import-export
+2017-07-15T19:06:45.138Z - info: Using extension tags
+2017-07-15T19:06:45.147Z - info: Using extension templates
+2017-07-15T19:06:45.211Z - info: Using extension jsrender
+2017-07-15T19:06:45.215Z - info: Using extension cli
+2017-07-15T19:06:45.216Z - info: Using extension authentication
+2017-07-15T19:06:45.334Z - debug: Extension authentication was disabled
+2017-07-15T19:06:45.334Z - info: Using extension debug
+2017-07-15T19:06:45.336Z - info: Using extension express
+2017-07-15T19:06:45.437Z - info: Using extension fop-pdf
+2017-07-15T19:06:45.535Z - info: Using extension handlebars
+2017-07-15T19:06:45.539Z - info: Using extension phantom-pdf
+2017-07-15T19:06:45.673Z - info: Using extension fs-store
+2017-07-15T19:06:45.815Z - debug: Extension fs-store was disabled
+2017-07-15T19:06:45.815Z - info: Using extension images
+2017-07-15T19:06:45.903Z - info: Using extension data
+2017-07-15T19:06:45.978Z - info: Using extension child-templates
+2017-07-15T19:06:46.073Z - info: Using extension licensing
+2017-07-15T19:06:46.185Z - info: Using extension authorization
+2017-07-15T19:06:46.259Z - debug: Extension authorization was disabled
+2017-07-15T19:06:46.260Z - info: Using extension text
+2017-07-15T19:06:46.261Z - info: Using extension reports
+2017-07-15T19:06:46.321Z - info: Using extension resources
+2017-07-15T19:06:46.377Z - info: Using extension browser-client
+2017-07-15T19:06:46.379Z - info: Using extension studio
+2017-07-15T19:06:46.702Z - info: Using extension html-to-xlsx
+2017-07-15T19:06:46.910Z - info: Using extension scripts
+2017-07-15T19:06:47.004Z - info: Using extension assets
+2017-07-15T19:06:47.076Z - info: Using extension scheduling
+2017-07-15T19:06:47.192Z - info: Using extension xlsx
+2017-07-15T19:06:47.466Z - info: Using extension sample-template
+2017-07-15T19:06:47.519Z - debug: Creating samples is disabled
+2017-07-15T19:06:47.520Z - info: Using extension public-templates
+2017-07-15T19:06:47.590Z - debug: Extension public-templates was disabled
+2017-07-15T19:06:47.634Z - info: Creating memory store
+2017-07-15T19:06:47.714Z - info: Creating default express app.
+2017-07-15T19:06:48.242Z - info: jsreport server successfully started on http port: 3001
+2017-07-15T19:06:48.245Z - info: Veryfing license key free
+2017-07-15T19:06:49.668Z - info: Using free license
+2017-07-15T19:06:49.671Z - info: reporter initialized
+2017-07-15T20:53:32.679Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-07-15T20:53:32.680Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-07-15T20:53:32.772Z - info: Searching for available extensions in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\
+2017-07-15T20:53:33.680Z - info: Extensions location cache C:\Users\Euclides\AppData\Local\Temp\jsreport-temp\extensions\locations.json contains older information, crawling
+2017-07-15T20:55:00.164Z - info: Found 29 extensions
+2017-07-15T20:55:00.275Z - debug: Writing extension locations cache to C:\Users\Euclides\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-07-15T20:55:00.310Z - debug: Discovered 29 extensions
+2017-07-15T20:55:00.313Z - info: Using extension import-export
+2017-07-15T20:55:03.131Z - info: Using extension tags
+2017-07-15T20:55:03.174Z - info: Using extension templates
+2017-07-15T20:55:03.586Z - info: Using extension jsrender
+2017-07-15T20:55:03.589Z - info: Using extension cli
+2017-07-15T20:55:03.590Z - info: Using extension authentication
+2017-07-15T20:55:04.292Z - debug: Extension authentication was disabled
+2017-07-15T20:55:04.293Z - info: Using extension debug
+2017-07-15T20:55:04.305Z - info: Using extension express
+2017-07-15T20:55:04.652Z - info: Using extension fop-pdf
+2017-07-15T20:55:04.998Z - info: Using extension handlebars
+2017-07-15T20:55:05.024Z - info: Using extension phantom-pdf
+2017-07-15T20:55:05.434Z - info: Using extension fs-store
+2017-07-15T20:55:06.517Z - debug: Extension fs-store was disabled
+2017-07-15T20:55:06.517Z - info: Using extension images
+2017-07-15T20:55:06.957Z - info: Using extension data
+2017-07-15T20:55:07.263Z - info: Using extension child-templates
+2017-07-15T20:55:07.569Z - info: Using extension licensing
+2017-07-15T20:55:09.632Z - info: Using extension authorization
+2017-07-15T20:55:10.616Z - debug: Extension authorization was disabled
+2017-07-15T20:55:10.617Z - info: Using extension text
+2017-07-15T20:55:10.662Z - info: Using extension reports
+2017-07-15T20:55:10.993Z - info: Using extension resources
+2017-07-15T20:55:11.326Z - info: Using extension browser-client
+2017-07-15T20:55:11.338Z - info: Using extension studio
+2017-07-15T20:55:12.093Z - info: Using extension html-to-xlsx
+2017-07-15T20:55:13.008Z - info: Using extension scripts
+2017-07-15T20:55:13.322Z - info: Using extension assets
+2017-07-15T20:55:13.596Z - info: Using extension scheduling
+2017-07-15T20:55:14.020Z - info: Using extension xlsx
+2017-07-15T20:55:15.066Z - info: Using extension sample-template
+2017-07-15T20:55:15.330Z - debug: Creating samples is disabled
+2017-07-15T20:55:15.330Z - info: Using extension public-templates
+2017-07-15T20:55:15.671Z - debug: Extension public-templates was disabled
+2017-07-15T20:55:15.858Z - info: Creating memory store
+2017-07-15T20:55:45.483Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-07-15T20:55:45.484Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-07-15T20:55:45.489Z - info: Searching for available extensions in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\
+2017-07-15T20:55:45.514Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-07-15T20:55:48.602Z - info: Found 29 extensions
+2017-07-15T20:55:48.616Z - debug: Writing extension locations cache to C:\Users\Euclides\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-07-15T20:55:48.619Z - debug: Discovered 29 extensions
+2017-07-15T20:55:48.620Z - info: Using extension import-export
+2017-07-15T20:55:48.967Z - info: Using extension tags
+2017-07-15T20:55:48.975Z - info: Using extension templates
+2017-07-15T20:55:49.026Z - info: Using extension jsrender
+2017-07-15T20:55:49.027Z - info: Using extension cli
+2017-07-15T20:55:49.028Z - info: Using extension authentication
+2017-07-15T20:55:49.118Z - debug: Extension authentication was disabled
+2017-07-15T20:55:49.119Z - info: Using extension debug
+2017-07-15T20:55:49.121Z - info: Using extension express
+2017-07-15T20:55:49.175Z - info: Using extension fop-pdf
+2017-07-15T20:55:49.233Z - info: Using extension handlebars
+2017-07-15T20:55:49.235Z - info: Using extension phantom-pdf
+2017-07-15T20:55:49.328Z - info: Using extension fs-store
+2017-07-15T20:55:49.432Z - debug: Extension fs-store was disabled
+2017-07-15T20:55:49.434Z - info: Using extension images
+2017-07-15T20:55:49.494Z - info: Using extension data
+2017-07-15T20:55:49.537Z - info: Using extension child-templates
+2017-07-15T20:55:49.582Z - info: Using extension licensing
+2017-07-15T20:55:49.663Z - info: Using extension authorization
+2017-07-15T20:55:49.722Z - debug: Extension authorization was disabled
+2017-07-15T20:55:49.723Z - info: Using extension text
+2017-07-15T20:55:49.724Z - info: Using extension reports
+2017-07-15T20:55:49.773Z - info: Using extension resources
+2017-07-15T20:55:49.815Z - info: Using extension browser-client
+2017-07-15T20:55:49.818Z - info: Using extension studio
+2017-07-15T20:55:49.947Z - info: Using extension html-to-xlsx
+2017-07-15T20:55:50.080Z - info: Using extension scripts
+2017-07-15T20:55:50.126Z - info: Using extension assets
+2017-07-15T20:55:50.177Z - info: Using extension scheduling
+2017-07-15T20:55:50.267Z - info: Using extension xlsx
+2017-07-15T20:55:50.485Z - info: Using extension sample-template
+2017-07-15T20:55:50.563Z - debug: Creating samples is disabled
+2017-07-15T20:55:50.563Z - info: Using extension public-templates
+2017-07-15T20:55:50.607Z - debug: Extension public-templates was disabled
+2017-07-15T20:55:50.638Z - info: Creating memory store
+2017-07-15T20:55:50.676Z - info: Creating default express app.
+2017-07-15T20:55:50.947Z - info: jsreport server successfully started on http port: 3001
+2017-07-15T20:55:50.950Z - info: Veryfing license key free
+2017-07-15T20:55:52.716Z - info: Using free license
+2017-07-15T20:55:52.718Z - info: reporter initialized
+2017-07-15T20:58:54.161Z - info: Starting rendering request 1 (user: null) requestId=1
+2017-07-15T20:58:54.163Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=1
+2017-07-15T20:58:54.163Z - debug: Inline data specified. requestId=1
+2017-07-15T20:58:54.173Z - debug: Resources not defined for this template. requestId=1
+2017-07-15T20:58:54.178Z - debug: Rendering engine jsrender requestId=1
+2017-07-15T20:58:55.081Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 17:58:55 GMT-0300 (Hora estándar de Argentina), requestId=1
+2017-07-15T20:58:55.086Z - debug: Replaced images [] requestId=1
+2017-07-15T20:58:55.090Z - debug: Executing recipe phantom-pdf requestId=1
+2017-07-15T20:58:56.441Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 17:58:55 GMT-0300 (Hora estándar de Argentina), requestId=1
+2017-07-15T20:58:56.441Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C69edde90-69a0-11e7-b5e6-a3df00715138html.html timestamp=Sat Jul 15 2017 17:58:56 GMT-0300 (Hora estándar de Argentina), requestId=1
+2017-07-15T20:58:56.445Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=1
+2017-07-15T20:58:56.446Z - debug: Skipping storing report. requestId=1
+2017-07-15T20:58:56.451Z - info: Rendering request 1 finished in 2290 ms requestId=1
+2017-07-15T20:59:06.687Z - info: Starting rendering request 2 (user: null) requestId=2
+2017-07-15T20:59:06.687Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=2
+2017-07-15T20:59:06.688Z - debug: Inline data specified. requestId=2
+2017-07-15T20:59:06.689Z - debug: Resources not defined for this template. requestId=2
+2017-07-15T20:59:06.690Z - debug: Rendering engine jsrender requestId=2
+2017-07-15T20:59:07.041Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 17:59:07 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-15T20:59:07.048Z - debug: Replaced images [] requestId=2
+2017-07-15T20:59:07.050Z - debug: Executing recipe phantom-pdf requestId=2
+2017-07-15T20:59:07.895Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 17:59:07 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-15T20:59:07.896Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C710de7b0-69a0-11e7-b5e6-a3df00715138html.html timestamp=Sat Jul 15 2017 17:59:07 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-15T20:59:07.896Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 17:59:07 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-15T20:59:07.900Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=2
+2017-07-15T20:59:07.901Z - debug: Skipping storing report. requestId=2
+2017-07-15T20:59:07.905Z - info: Rendering request 2 finished in 1218 ms requestId=2
+2017-07-15T21:06:05.721Z - info: Starting rendering request 3 (user: null) requestId=3
+2017-07-15T21:06:05.722Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=3
+2017-07-15T21:06:05.723Z - debug: Inline data specified. requestId=3
+2017-07-15T21:06:05.725Z - debug: Resources not defined for this template. requestId=3
+2017-07-15T21:06:05.726Z - debug: Rendering engine jsrender requestId=3
+2017-07-15T21:06:06.195Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 18:06:06 GMT-0300 (Hora estándar de Argentina), requestId=3
+2017-07-15T21:06:06.197Z - debug: Replaced images [] requestId=3
+2017-07-15T21:06:06.199Z - debug: Executing recipe phantom-pdf requestId=3
+2017-07-15T21:06:07.847Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 18:06:07 GMT-0300 (Hora estándar de Argentina), requestId=3
+2017-07-15T21:06:07.847Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C6ae36cb0-69a1-11e7-b5e6-a3df00715138html.html timestamp=Sat Jul 15 2017 18:06:07 GMT-0300 (Hora estándar de Argentina), requestId=3
+2017-07-15T21:06:07.849Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=3
+2017-07-15T21:06:07.849Z - debug: Skipping storing report. requestId=3
+2017-07-15T21:06:07.852Z - info: Rendering request 3 finished in 2131 ms requestId=3
+2017-07-15T21:12:14.836Z - info: Starting rendering request 4 (user: null) requestId=4
+2017-07-15T21:12:14.837Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=4
+2017-07-15T21:12:14.838Z - debug: Inline data specified. requestId=4
+2017-07-15T21:12:14.839Z - debug: Resources not defined for this template. requestId=4
+2017-07-15T21:12:14.840Z - debug: Rendering engine jsrender requestId=4
+2017-07-15T21:12:15.379Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 18:12:15 GMT-0300 (Hora estándar de Argentina), requestId=4
+2017-07-15T21:12:15.381Z - debug: Replaced images [] requestId=4
+2017-07-15T21:12:15.382Z - debug: Executing recipe phantom-pdf requestId=4
+2017-07-15T21:12:17.038Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 18:12:16 GMT-0300 (Hora estándar de Argentina), requestId=4
+2017-07-15T21:12:17.038Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C46efd270-69a2-11e7-b5e6-a3df00715138html.html timestamp=Sat Jul 15 2017 18:12:16 GMT-0300 (Hora estándar de Argentina), requestId=4
+2017-07-15T21:12:17.039Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 18:12:16 GMT-0300 (Hora estándar de Argentina), requestId=4
+2017-07-15T21:12:17.040Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=4
+2017-07-15T21:12:17.041Z - debug: Skipping storing report. requestId=4
+2017-07-15T21:12:17.042Z - info: Rendering request 4 finished in 2206 ms requestId=4
+2017-07-15T21:28:13.425Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-07-15T21:28:13.426Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-07-15T21:28:13.429Z - info: Searching for available extensions in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\
+2017-07-15T21:28:13.455Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-07-15T21:28:16.372Z - info: Found 29 extensions
+2017-07-15T21:28:16.386Z - debug: Writing extension locations cache to C:\Users\Euclides\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-07-15T21:28:16.388Z - debug: Discovered 29 extensions
+2017-07-15T21:28:16.390Z - info: Using extension import-export
+2017-07-15T21:28:16.803Z - info: Using extension tags
+2017-07-15T21:28:16.814Z - info: Using extension templates
+2017-07-15T21:28:16.880Z - info: Using extension jsrender
+2017-07-15T21:28:16.882Z - info: Using extension cli
+2017-07-15T21:28:16.882Z - info: Using extension authentication
+2017-07-15T21:28:16.988Z - debug: Extension authentication was disabled
+2017-07-15T21:28:16.988Z - info: Using extension debug
+2017-07-15T21:28:16.990Z - info: Using extension express
+2017-07-15T21:28:17.051Z - info: Using extension fop-pdf
+2017-07-15T21:28:17.122Z - info: Using extension handlebars
+2017-07-15T21:28:17.124Z - info: Using extension phantom-pdf
+2017-07-15T21:28:17.229Z - info: Using extension fs-store
+2017-07-15T21:28:17.437Z - debug: Extension fs-store was disabled
+2017-07-15T21:28:17.437Z - info: Using extension images
+2017-07-15T21:28:17.507Z - info: Using extension data
+2017-07-15T21:28:17.557Z - info: Using extension child-templates
+2017-07-15T21:28:17.607Z - info: Using extension licensing
+2017-07-15T21:28:17.729Z - info: Using extension authorization
+2017-07-15T21:28:17.775Z - debug: Extension authorization was disabled
+2017-07-15T21:28:17.775Z - info: Using extension text
+2017-07-15T21:28:17.776Z - info: Using extension reports
+2017-07-15T21:28:17.824Z - info: Using extension resources
+2017-07-15T21:28:17.871Z - info: Using extension browser-client
+2017-07-15T21:28:17.874Z - info: Using extension studio
+2017-07-15T21:28:18.026Z - info: Using extension html-to-xlsx
+2017-07-15T21:28:18.175Z - info: Using extension scripts
+2017-07-15T21:28:18.238Z - info: Using extension assets
+2017-07-15T21:28:18.299Z - info: Using extension scheduling
+2017-07-15T21:28:18.396Z - info: Using extension xlsx
+2017-07-15T21:28:18.689Z - info: Using extension sample-template
+2017-07-15T21:28:18.737Z - debug: Creating samples is disabled
+2017-07-15T21:28:18.737Z - info: Using extension public-templates
+2017-07-15T21:28:18.788Z - debug: Extension public-templates was disabled
+2017-07-15T21:28:18.820Z - info: Creating memory store
+2017-07-15T21:28:18.862Z - info: Creating default express app.
+2017-07-15T21:28:18.919Z - info: jsreport server successfully started on http port: 3001
+2017-07-15T21:28:18.920Z - info: Veryfing license key free
+2017-07-15T21:28:20.094Z - info: Using free license
+2017-07-15T21:28:20.095Z - info: reporter initialized
+2017-07-15T21:28:34.491Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-07-15T21:28:34.493Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-07-15T21:28:34.496Z - info: Searching for available extensions in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\
+2017-07-15T21:28:34.520Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-07-15T21:28:37.732Z - info: Found 29 extensions
+2017-07-15T21:28:37.749Z - debug: Writing extension locations cache to C:\Users\Euclides\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-07-15T21:28:37.751Z - debug: Discovered 29 extensions
+2017-07-15T21:28:37.752Z - info: Using extension import-export
+2017-07-15T21:28:38.036Z - info: Using extension tags
+2017-07-15T21:28:38.050Z - info: Using extension templates
+2017-07-15T21:28:38.097Z - info: Using extension jsrender
+2017-07-15T21:28:38.098Z - info: Using extension cli
+2017-07-15T21:28:38.099Z - info: Using extension authentication
+2017-07-15T21:28:38.189Z - debug: Extension authentication was disabled
+2017-07-15T21:28:38.189Z - info: Using extension debug
+2017-07-15T21:28:38.191Z - info: Using extension express
+2017-07-15T21:28:38.243Z - info: Using extension fop-pdf
+2017-07-15T21:28:38.289Z - info: Using extension handlebars
+2017-07-15T21:28:38.291Z - info: Using extension phantom-pdf
+2017-07-15T21:28:38.426Z - info: Using extension fs-store
+2017-07-15T21:28:38.551Z - debug: Extension fs-store was disabled
+2017-07-15T21:28:38.557Z - info: Using extension images
+2017-07-15T21:28:38.608Z - info: Using extension data
+2017-07-15T21:28:38.663Z - info: Using extension child-templates
+2017-07-15T21:28:38.711Z - info: Using extension licensing
+2017-07-15T21:28:38.794Z - info: Using extension authorization
+2017-07-15T21:28:38.842Z - debug: Extension authorization was disabled
+2017-07-15T21:28:38.842Z - info: Using extension text
+2017-07-15T21:28:38.844Z - info: Using extension reports
+2017-07-15T21:28:38.894Z - info: Using extension resources
+2017-07-15T21:28:38.939Z - info: Using extension browser-client
+2017-07-15T21:28:38.941Z - info: Using extension studio
+2017-07-15T21:28:39.073Z - info: Using extension html-to-xlsx
+2017-07-15T21:28:39.196Z - info: Using extension scripts
+2017-07-15T21:28:39.242Z - info: Using extension assets
+2017-07-15T21:28:39.293Z - info: Using extension scheduling
+2017-07-15T21:28:39.388Z - info: Using extension xlsx
+2017-07-15T21:28:39.630Z - info: Using extension sample-template
+2017-07-15T21:28:39.673Z - debug: Creating samples is disabled
+2017-07-15T21:28:39.674Z - info: Using extension public-templates
+2017-07-15T21:28:39.718Z - debug: Extension public-templates was disabled
+2017-07-15T21:28:39.748Z - info: Creating memory store
+2017-07-15T21:28:39.824Z - info: Creating default express app.
+2017-07-15T21:28:39.886Z - info: jsreport server successfully started on http port: 3001
+2017-07-15T21:28:39.897Z - info: Veryfing license key free
+2017-07-15T21:28:39.911Z - info: Applying cached license information
+2017-07-15T21:28:39.912Z - info: Using free license
+2017-07-15T21:28:39.914Z - info: reporter initialized
+2017-07-15T21:29:08.004Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-07-15T21:29:08.006Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-07-15T21:29:08.009Z - info: Searching for available extensions in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\
+2017-07-15T21:29:08.034Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-07-15T21:29:10.913Z - info: Found 29 extensions
+2017-07-15T21:29:10.934Z - debug: Writing extension locations cache to C:\Users\Euclides\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-07-15T21:29:10.936Z - debug: Discovered 29 extensions
+2017-07-15T21:29:10.937Z - info: Using extension import-export
+2017-07-15T21:29:11.287Z - info: Using extension tags
+2017-07-15T21:29:11.295Z - info: Using extension templates
+2017-07-15T21:29:11.342Z - info: Using extension jsrender
+2017-07-15T21:29:11.342Z - info: Using extension cli
+2017-07-15T21:29:11.343Z - info: Using extension authentication
+2017-07-15T21:29:11.440Z - debug: Extension authentication was disabled
+2017-07-15T21:29:11.440Z - info: Using extension debug
+2017-07-15T21:29:11.442Z - info: Using extension express
+2017-07-15T21:29:11.497Z - info: Using extension fop-pdf
+2017-07-15T21:29:11.544Z - info: Using extension handlebars
+2017-07-15T21:29:11.546Z - info: Using extension phantom-pdf
+2017-07-15T21:29:11.644Z - info: Using extension fs-store
+2017-07-15T21:29:11.753Z - debug: Extension fs-store was disabled
+2017-07-15T21:29:11.753Z - info: Using extension images
+2017-07-15T21:29:11.802Z - info: Using extension data
+2017-07-15T21:29:11.845Z - info: Using extension child-templates
+2017-07-15T21:29:11.888Z - info: Using extension licensing
+2017-07-15T21:29:11.975Z - info: Using extension authorization
+2017-07-15T21:29:12.018Z - debug: Extension authorization was disabled
+2017-07-15T21:29:12.018Z - info: Using extension text
+2017-07-15T21:29:12.019Z - info: Using extension reports
+2017-07-15T21:29:12.072Z - info: Using extension resources
+2017-07-15T21:29:12.120Z - info: Using extension browser-client
+2017-07-15T21:29:12.121Z - info: Using extension studio
+2017-07-15T21:29:12.247Z - info: Using extension html-to-xlsx
+2017-07-15T21:29:12.370Z - info: Using extension scripts
+2017-07-15T21:29:12.416Z - info: Using extension assets
+2017-07-15T21:29:12.473Z - info: Using extension scheduling
+2017-07-15T21:29:12.549Z - info: Using extension xlsx
+2017-07-15T21:29:12.766Z - info: Using extension sample-template
+2017-07-15T21:29:12.828Z - debug: Creating samples is disabled
+2017-07-15T21:29:12.829Z - info: Using extension public-templates
+2017-07-15T21:29:12.893Z - debug: Extension public-templates was disabled
+2017-07-15T21:29:12.933Z - info: Creating memory store
+2017-07-15T21:29:12.969Z - info: Creating default express app.
+2017-07-15T21:29:13.009Z - info: jsreport server successfully started on http port: 3001
+2017-07-15T21:29:13.011Z - info: Veryfing license key free
+2017-07-15T21:29:13.017Z - info: Applying cached license information
+2017-07-15T21:29:13.017Z - info: Using free license
+2017-07-15T21:29:13.021Z - info: reporter initialized
+2017-07-15T21:34:36.520Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-07-15T21:34:36.522Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-07-15T21:34:36.524Z - info: Searching for available extensions in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\
+2017-07-15T21:34:36.550Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-07-15T21:34:39.491Z - info: Found 29 extensions
+2017-07-15T21:34:39.516Z - debug: Writing extension locations cache to C:\Users\Euclides\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-07-15T21:34:39.518Z - debug: Discovered 29 extensions
+2017-07-15T21:34:39.519Z - info: Using extension import-export
+2017-07-15T21:34:39.865Z - info: Using extension tags
+2017-07-15T21:34:39.875Z - info: Using extension templates
+2017-07-15T21:34:39.926Z - info: Using extension jsrender
+2017-07-15T21:34:39.927Z - info: Using extension cli
+2017-07-15T21:34:39.928Z - info: Using extension authentication
+2017-07-15T21:34:40.030Z - debug: Extension authentication was disabled
+2017-07-15T21:34:40.030Z - info: Using extension debug
+2017-07-15T21:34:40.032Z - info: Using extension express
+2017-07-15T21:34:40.087Z - info: Using extension fop-pdf
+2017-07-15T21:34:40.143Z - info: Using extension handlebars
+2017-07-15T21:34:40.145Z - info: Using extension phantom-pdf
+2017-07-15T21:34:40.241Z - info: Using extension fs-store
+2017-07-15T21:34:40.355Z - debug: Extension fs-store was disabled
+2017-07-15T21:34:40.355Z - info: Using extension images
+2017-07-15T21:34:40.414Z - info: Using extension data
+2017-07-15T21:34:40.471Z - info: Using extension child-templates
+2017-07-15T21:34:40.569Z - info: Using extension licensing
+2017-07-15T21:34:40.654Z - info: Using extension authorization
+2017-07-15T21:34:40.697Z - debug: Extension authorization was disabled
+2017-07-15T21:34:40.697Z - info: Using extension text
+2017-07-15T21:34:40.698Z - info: Using extension reports
+2017-07-15T21:34:40.742Z - info: Using extension resources
+2017-07-15T21:34:40.794Z - info: Using extension browser-client
+2017-07-15T21:34:40.796Z - info: Using extension studio
+2017-07-15T21:34:40.924Z - info: Using extension html-to-xlsx
+2017-07-15T21:34:41.059Z - info: Using extension scripts
+2017-07-15T21:34:41.107Z - info: Using extension assets
+2017-07-15T21:34:41.156Z - info: Using extension scheduling
+2017-07-15T21:34:41.241Z - info: Using extension xlsx
+2017-07-15T21:34:41.418Z - info: Using extension sample-template
+2017-07-15T21:34:41.462Z - debug: Creating samples is disabled
+2017-07-15T21:34:41.463Z - info: Using extension public-templates
+2017-07-15T21:34:41.519Z - debug: Extension public-templates was disabled
+2017-07-15T21:34:41.548Z - info: Creating memory store
+2017-07-15T21:34:41.595Z - info: Creating default express app.
+2017-07-15T21:34:41.654Z - info: jsreport server successfully started on http port: 3001
+2017-07-15T21:34:41.657Z - info: Veryfing license key free
+2017-07-15T21:34:42.967Z - info: Using free license
+2017-07-15T21:34:42.971Z - info: reporter initialized
+2017-07-15T21:35:15.290Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-07-15T21:35:15.292Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-07-15T21:35:15.295Z - info: Searching for available extensions in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\
+2017-07-15T21:35:15.333Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-07-15T21:35:18.300Z - info: Found 29 extensions
+2017-07-15T21:35:18.313Z - debug: Writing extension locations cache to C:\Users\Euclides\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-07-15T21:35:18.316Z - debug: Discovered 29 extensions
+2017-07-15T21:35:18.318Z - info: Using extension import-export
+2017-07-15T21:35:18.659Z - info: Using extension tags
+2017-07-15T21:35:18.667Z - info: Using extension templates
+2017-07-15T21:35:18.714Z - info: Using extension jsrender
+2017-07-15T21:35:18.715Z - info: Using extension cli
+2017-07-15T21:35:18.716Z - info: Using extension authentication
+2017-07-15T21:35:18.806Z - debug: Extension authentication was disabled
+2017-07-15T21:35:18.807Z - info: Using extension debug
+2017-07-15T21:35:18.808Z - info: Using extension express
+2017-07-15T21:35:18.870Z - info: Using extension fop-pdf
+2017-07-15T21:35:18.918Z - info: Using extension handlebars
+2017-07-15T21:35:18.920Z - info: Using extension phantom-pdf
+2017-07-15T21:35:19.018Z - info: Using extension fs-store
+2017-07-15T21:35:19.137Z - debug: Extension fs-store was disabled
+2017-07-15T21:35:19.137Z - info: Using extension images
+2017-07-15T21:35:19.189Z - info: Using extension data
+2017-07-15T21:35:19.236Z - info: Using extension child-templates
+2017-07-15T21:35:19.281Z - info: Using extension licensing
+2017-07-15T21:35:19.372Z - info: Using extension authorization
+2017-07-15T21:35:19.416Z - debug: Extension authorization was disabled
+2017-07-15T21:35:19.416Z - info: Using extension text
+2017-07-15T21:35:19.417Z - info: Using extension reports
+2017-07-15T21:35:19.462Z - info: Using extension resources
+2017-07-15T21:35:19.516Z - info: Using extension browser-client
+2017-07-15T21:35:19.519Z - info: Using extension studio
+2017-07-15T21:35:19.688Z - info: Using extension html-to-xlsx
+2017-07-15T21:35:19.854Z - info: Using extension scripts
+2017-07-15T21:35:19.907Z - info: Using extension assets
+2017-07-15T21:35:19.980Z - info: Using extension scheduling
+2017-07-15T21:35:20.113Z - info: Using extension xlsx
+2017-07-15T21:35:20.441Z - info: Using extension sample-template
+2017-07-15T21:35:20.492Z - debug: Creating samples is disabled
+2017-07-15T21:35:20.493Z - info: Using extension public-templates
+2017-07-15T21:35:20.551Z - debug: Extension public-templates was disabled
+2017-07-15T21:35:20.586Z - info: Creating memory store
+2017-07-15T21:35:20.654Z - info: Creating default express app.
+2017-07-15T21:35:20.696Z - info: jsreport server successfully started on http port: 3001
+2017-07-15T21:35:20.700Z - info: Veryfing license key free
+2017-07-15T21:35:20.706Z - info: Applying cached license information
+2017-07-15T21:35:20.706Z - info: Using free license
+2017-07-15T21:35:20.708Z - info: reporter initialized
+2017-07-15T21:42:09.854Z - info: Starting rendering request 1 (user: null) requestId=1
+2017-07-15T21:42:09.856Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=1
+2017-07-15T21:42:09.857Z - debug: Inline data specified. requestId=1
+2017-07-15T21:42:09.869Z - debug: Resources not defined for this template. requestId=1
+2017-07-15T21:42:09.873Z - debug: Rendering engine jsrender requestId=1
+2017-07-15T21:42:10.258Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 18:42:10 GMT-0300 (Hora estándar de Argentina), requestId=1
+2017-07-15T21:42:10.262Z - debug: Replaced images [] requestId=1
+2017-07-15T21:42:10.267Z - debug: Executing recipe phantom-pdf requestId=1
+2017-07-15T21:42:11.398Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 18:42:11 GMT-0300 (Hora estándar de Argentina), requestId=1
+2017-07-15T21:42:11.399Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C74c5fef0-69a6-11e7-aa91-a5885f90e0afhtml.html timestamp=Sat Jul 15 2017 18:42:11 GMT-0300 (Hora estándar de Argentina), requestId=1
+2017-07-15T21:42:11.399Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 18:42:11 GMT-0300 (Hora estándar de Argentina), requestId=1
+2017-07-15T21:42:11.400Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 18:42:11 GMT-0300 (Hora estándar de Argentina), requestId=1
+2017-07-15T21:42:11.403Z - debug: phantom-pdf recipe finished with 2 pages generated requestId=1
+2017-07-15T21:42:11.404Z - debug: Skipping storing report. requestId=1
+2017-07-15T21:42:11.412Z - info: Rendering request 1 finished in 1557 ms requestId=1
+2017-07-15T21:44:35.980Z - info: Starting rendering request 2 (user: null) requestId=2
+2017-07-15T21:44:35.981Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=2
+2017-07-15T21:44:35.981Z - debug: Inline data specified. requestId=2
+2017-07-15T21:44:35.983Z - debug: Resources not defined for this template. requestId=2
+2017-07-15T21:44:35.984Z - debug: Rendering engine jsrender requestId=2
+2017-07-15T21:44:36.374Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 18:44:36 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-15T21:44:36.376Z - debug: Replaced images [] requestId=2
+2017-07-15T21:44:36.379Z - debug: Executing recipe phantom-pdf requestId=2
+2017-07-15T21:44:37.239Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 18:44:37 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-15T21:44:37.239Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5Ccbdc9cd0-69a6-11e7-aa91-a5885f90e0afhtml.html timestamp=Sat Jul 15 2017 18:44:37 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-15T21:44:37.239Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 18:44:37 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-15T21:44:37.240Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 18:44:37 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-15T21:44:37.241Z - debug: phantom-pdf recipe finished with 2 pages generated requestId=2
+2017-07-15T21:44:37.242Z - debug: Skipping storing report. requestId=2
+2017-07-15T21:44:37.245Z - info: Rendering request 2 finished in 1266 ms requestId=2
+2017-07-15T21:44:46.037Z - info: Starting rendering request 3 (user: null) requestId=3
+2017-07-15T21:44:46.038Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=3
+2017-07-15T21:44:46.038Z - debug: Inline data specified. requestId=3
+2017-07-15T21:44:46.041Z - debug: Resources not defined for this template. requestId=3
+2017-07-15T21:44:46.042Z - debug: Rendering engine jsrender requestId=3
+2017-07-15T21:44:46.373Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 18:44:46 GMT-0300 (Hora estándar de Argentina), requestId=3
+2017-07-15T21:44:46.374Z - debug: Replaced images [] requestId=3
+2017-07-15T21:44:46.376Z - debug: Executing recipe phantom-pdf requestId=3
+2017-07-15T21:44:47.199Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 18:44:47 GMT-0300 (Hora estándar de Argentina), requestId=3
+2017-07-15T21:44:47.199Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5Cd1d1e190-69a6-11e7-aa91-a5885f90e0afhtml.html timestamp=Sat Jul 15 2017 18:44:47 GMT-0300 (Hora estándar de Argentina), requestId=3
+2017-07-15T21:44:47.200Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 18:44:47 GMT-0300 (Hora estándar de Argentina), requestId=3
+2017-07-15T21:44:47.200Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 18:44:47 GMT-0300 (Hora estándar de Argentina), requestId=3
+2017-07-15T21:44:47.212Z - debug: phantom-pdf recipe finished with 2 pages generated requestId=3
+2017-07-15T21:44:47.213Z - debug: Skipping storing report. requestId=3
+2017-07-15T21:44:47.216Z - info: Rendering request 3 finished in 1180 ms requestId=3
+2017-07-15T21:45:23.587Z - info: Starting rendering request 4 (user: null) requestId=4
+2017-07-15T21:45:23.588Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=4
+2017-07-15T21:45:23.588Z - debug: Inline data specified. requestId=4
+2017-07-15T21:45:23.590Z - debug: Resources not defined for this template. requestId=4
+2017-07-15T21:45:23.591Z - debug: Rendering engine jsrender requestId=4
+2017-07-15T21:45:23.919Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 18:45:23 GMT-0300 (Hora estándar de Argentina), requestId=4
+2017-07-15T21:45:23.920Z - debug: Replaced images [] requestId=4
+2017-07-15T21:45:23.925Z - debug: Executing recipe phantom-pdf requestId=4
+2017-07-15T21:45:24.671Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 18:45:24 GMT-0300 (Hora estándar de Argentina), requestId=4
+2017-07-15T21:45:24.672Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5Ce8336760-69a6-11e7-aa91-a5885f90e0afhtml.html timestamp=Sat Jul 15 2017 18:45:24 GMT-0300 (Hora estándar de Argentina), requestId=4
+2017-07-15T21:45:24.672Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 18:45:24 GMT-0300 (Hora estándar de Argentina), requestId=4
+2017-07-15T21:45:24.673Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 18:45:24 GMT-0300 (Hora estándar de Argentina), requestId=4
+2017-07-15T21:45:24.674Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=4
+2017-07-15T21:45:24.675Z - debug: Skipping storing report. requestId=4
+2017-07-15T21:45:24.677Z - info: Rendering request 4 finished in 1090 ms requestId=4
+2017-07-15T21:45:51.384Z - info: Starting rendering request 5 (user: null) requestId=5
+2017-07-15T21:45:51.385Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=5
+2017-07-15T21:45:51.385Z - debug: Inline data specified. requestId=5
+2017-07-15T21:45:51.387Z - debug: Resources not defined for this template. requestId=5
+2017-07-15T21:45:51.387Z - debug: Rendering engine jsrender requestId=5
+2017-07-15T21:45:51.739Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 18:45:51 GMT-0300 (Hora estándar de Argentina), requestId=5
+2017-07-15T21:45:51.740Z - debug: Replaced images [] requestId=5
+2017-07-15T21:45:51.741Z - debug: Executing recipe phantom-pdf requestId=5
+2017-07-15T21:45:52.487Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 18:45:52 GMT-0300 (Hora estándar de Argentina), requestId=5
+2017-07-15T21:45:52.487Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5Cf8c7c9e0-69a6-11e7-aa91-a5885f90e0afhtml.html timestamp=Sat Jul 15 2017 18:45:52 GMT-0300 (Hora estándar de Argentina), requestId=5
+2017-07-15T21:45:52.487Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 18:45:52 GMT-0300 (Hora estándar de Argentina), requestId=5
+2017-07-15T21:45:52.488Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 18:45:52 GMT-0300 (Hora estándar de Argentina), requestId=5
+2017-07-15T21:45:52.488Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=5
+2017-07-15T21:45:52.489Z - debug: Skipping storing report. requestId=5
+2017-07-15T21:45:52.491Z - info: Rendering request 5 finished in 1106 ms requestId=5
+2017-07-15T21:46:00.890Z - info: Starting rendering request 6 (user: null) requestId=6
+2017-07-15T21:46:00.893Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=6
+2017-07-15T21:46:00.893Z - debug: Inline data specified. requestId=6
+2017-07-15T21:46:00.895Z - debug: Resources not defined for this template. requestId=6
+2017-07-15T21:46:00.895Z - debug: Rendering engine jsrender requestId=6
+2017-07-15T21:46:01.264Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 18:46:01 GMT-0300 (Hora estándar de Argentina), requestId=6
+2017-07-15T21:46:01.266Z - debug: Replaced images [] requestId=6
+2017-07-15T21:46:01.268Z - debug: Executing recipe phantom-pdf requestId=6
+2017-07-15T21:46:02.061Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 18:46:01 GMT-0300 (Hora estándar de Argentina), requestId=6
+2017-07-15T21:46:02.062Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5Cfe757e50-69a6-11e7-aa91-a5885f90e0afhtml.html timestamp=Sat Jul 15 2017 18:46:01 GMT-0300 (Hora estándar de Argentina), requestId=6
+2017-07-15T21:46:02.062Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 18:46:01 GMT-0300 (Hora estándar de Argentina), requestId=6
+2017-07-15T21:46:02.063Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 18:46:01 GMT-0300 (Hora estándar de Argentina), requestId=6
+2017-07-15T21:46:02.064Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=6
+2017-07-15T21:46:02.065Z - debug: Skipping storing report. requestId=6
+2017-07-15T21:46:02.068Z - info: Rendering request 6 finished in 1177 ms requestId=6
+2017-07-15T21:46:11.055Z - info: Starting rendering request 7 (user: null) requestId=7
+2017-07-15T21:46:11.056Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=7
+2017-07-15T21:46:11.057Z - debug: Inline data specified. requestId=7
+2017-07-15T21:46:11.060Z - debug: Resources not defined for this template. requestId=7
+2017-07-15T21:46:11.063Z - debug: Rendering engine jsrender requestId=7
+2017-07-15T21:46:11.389Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 18:46:11 GMT-0300 (Hora estándar de Argentina), requestId=7
+2017-07-15T21:46:11.390Z - debug: Replaced images [] requestId=7
+2017-07-15T21:46:11.392Z - debug: Executing recipe phantom-pdf requestId=7
+2017-07-15T21:46:12.165Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 18:46:12 GMT-0300 (Hora estándar de Argentina), requestId=7
+2017-07-15T21:46:12.166Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C047e2400-69a7-11e7-aa91-a5885f90e0afhtml.html timestamp=Sat Jul 15 2017 18:46:12 GMT-0300 (Hora estándar de Argentina), requestId=7
+2017-07-15T21:46:12.166Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 18:46:12 GMT-0300 (Hora estándar de Argentina), requestId=7
+2017-07-15T21:46:12.167Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 18:46:12 GMT-0300 (Hora estándar de Argentina), requestId=7
+2017-07-15T21:46:12.167Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=7
+2017-07-15T21:46:12.168Z - debug: Skipping storing report. requestId=7
+2017-07-15T21:46:12.169Z - info: Rendering request 7 finished in 1114 ms requestId=7
+2017-07-15T21:46:39.196Z - info: Starting rendering request 8 (user: null) requestId=8
+2017-07-15T21:46:39.196Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=8
+2017-07-15T21:46:39.196Z - debug: Inline data specified. requestId=8
+2017-07-15T21:46:39.198Z - debug: Resources not defined for this template. requestId=8
+2017-07-15T21:46:39.199Z - debug: Rendering engine jsrender requestId=8
+2017-07-15T21:46:39.577Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 18:46:39 GMT-0300 (Hora estándar de Argentina), requestId=8
+2017-07-15T21:46:39.583Z - debug: Replaced images [] requestId=8
+2017-07-15T21:46:39.585Z - debug: Executing recipe phantom-pdf requestId=8
+2017-07-15T21:46:40.320Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 18:46:40 GMT-0300 (Hora estándar de Argentina), requestId=8
+2017-07-15T21:46:40.320Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C154c3420-69a7-11e7-aa91-a5885f90e0afhtml.html timestamp=Sat Jul 15 2017 18:46:40 GMT-0300 (Hora estándar de Argentina), requestId=8
+2017-07-15T21:46:40.321Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 18:46:40 GMT-0300 (Hora estándar de Argentina), requestId=8
+2017-07-15T21:46:40.321Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 18:46:40 GMT-0300 (Hora estándar de Argentina), requestId=8
+2017-07-15T21:46:40.321Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=8
+2017-07-15T21:46:40.322Z - debug: Skipping storing report. requestId=8
+2017-07-15T21:46:40.323Z - info: Rendering request 8 finished in 1127 ms requestId=8
+2017-07-15T21:46:55.094Z - info: Starting rendering request 9 (user: null) requestId=9
+2017-07-15T21:46:55.094Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=9
+2017-07-15T21:46:55.095Z - debug: Inline data specified. requestId=9
+2017-07-15T21:46:55.097Z - debug: Resources not defined for this template. requestId=9
+2017-07-15T21:46:55.097Z - debug: Rendering engine jsrender requestId=9
+2017-07-15T21:46:55.470Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 18:46:55 GMT-0300 (Hora estándar de Argentina), requestId=9
+2017-07-15T21:46:55.473Z - debug: Replaced images [] requestId=9
+2017-07-15T21:46:55.478Z - debug: Executing recipe phantom-pdf requestId=9
+2017-07-15T21:46:56.201Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 18:46:56 GMT-0300 (Hora estándar de Argentina), requestId=9
+2017-07-15T21:46:56.202Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C1ec56f80-69a7-11e7-aa91-a5885f90e0afhtml.html timestamp=Sat Jul 15 2017 18:46:56 GMT-0300 (Hora estándar de Argentina), requestId=9
+2017-07-15T21:46:56.202Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 18:46:56 GMT-0300 (Hora estándar de Argentina), requestId=9
+2017-07-15T21:46:56.203Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 18:46:56 GMT-0300 (Hora estándar de Argentina), requestId=9
+2017-07-15T21:46:56.204Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=9
+2017-07-15T21:46:56.205Z - debug: Skipping storing report. requestId=9
+2017-07-15T21:46:56.206Z - info: Rendering request 9 finished in 1113 ms requestId=9
+2017-07-15T21:47:07.648Z - info: Starting rendering request 10 (user: null) requestId=10
+2017-07-15T21:47:07.649Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=10
+2017-07-15T21:47:07.649Z - debug: Inline data specified. requestId=10
+2017-07-15T21:47:07.651Z - debug: Resources not defined for this template. requestId=10
+2017-07-15T21:47:07.652Z - debug: Rendering engine jsrender requestId=10
+2017-07-15T21:47:07.996Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 18:47:07 GMT-0300 (Hora estándar de Argentina), requestId=10
+2017-07-15T21:47:07.997Z - debug: Replaced images [] requestId=10
+2017-07-15T21:47:07.999Z - debug: Executing recipe phantom-pdf requestId=10
+2017-07-15T21:47:08.777Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 18:47:08 GMT-0300 (Hora estándar de Argentina), requestId=10
+2017-07-15T21:47:08.778Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C263bd600-69a7-11e7-aa91-a5885f90e0afhtml.html timestamp=Sat Jul 15 2017 18:47:08 GMT-0300 (Hora estándar de Argentina), requestId=10
+2017-07-15T21:47:08.779Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 18:47:08 GMT-0300 (Hora estándar de Argentina), requestId=10
+2017-07-15T21:47:08.779Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 18:47:08 GMT-0300 (Hora estándar de Argentina), requestId=10
+2017-07-15T21:47:08.779Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=10
+2017-07-15T21:47:08.781Z - debug: Skipping storing report. requestId=10
+2017-07-15T21:47:08.783Z - info: Rendering request 10 finished in 1135 ms requestId=10
+2017-07-15T21:49:29.139Z - info: Starting rendering request 11 (user: null) requestId=11
+2017-07-15T21:49:29.139Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=11
+2017-07-15T21:49:29.145Z - debug: Inline data specified. requestId=11
+2017-07-15T21:49:29.148Z - debug: Resources not defined for this template. requestId=11
+2017-07-15T21:49:29.148Z - debug: Rendering engine jsrender requestId=11
+2017-07-15T21:49:29.536Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 18:49:29 GMT-0300 (Hora estándar de Argentina), requestId=11
+2017-07-15T21:49:29.538Z - debug: Replaced images [] requestId=11
+2017-07-15T21:49:29.540Z - debug: Executing recipe phantom-pdf requestId=11
+2017-07-15T21:49:30.310Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 18:49:30 GMT-0300 (Hora estándar de Argentina), requestId=11
+2017-07-15T21:49:30.311Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C7a992040-69a7-11e7-aa91-a5885f90e0afhtml.html timestamp=Sat Jul 15 2017 18:49:30 GMT-0300 (Hora estándar de Argentina), requestId=11
+2017-07-15T21:49:30.311Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 18:49:30 GMT-0300 (Hora estándar de Argentina), requestId=11
+2017-07-15T21:49:30.312Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 18:49:30 GMT-0300 (Hora estándar de Argentina), requestId=11
+2017-07-15T21:49:30.313Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=11
+2017-07-15T21:49:30.313Z - debug: Skipping storing report. requestId=11
+2017-07-15T21:49:30.316Z - info: Rendering request 11 finished in 1177 ms requestId=11
+2017-07-15T21:55:39.071Z - info: Starting rendering request 12 (user: null) requestId=12
+2017-07-15T21:55:39.072Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=12
+2017-07-15T21:55:39.073Z - debug: Inline data specified. requestId=12
+2017-07-15T21:55:39.075Z - debug: Resources not defined for this template. requestId=12
+2017-07-15T21:55:39.075Z - debug: Rendering engine jsrender requestId=12
+2017-07-15T21:55:39.470Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 18:55:39 GMT-0300 (Hora estándar de Argentina), requestId=12
+2017-07-15T21:55:39.472Z - debug: Replaced images [] requestId=12
+2017-07-15T21:55:39.473Z - debug: Executing recipe phantom-pdf requestId=12
+2017-07-15T21:55:40.420Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 18:55:40 GMT-0300 (Hora estándar de Argentina), requestId=12
+2017-07-15T21:55:40.420Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C5718ba30-69a8-11e7-aa91-a5885f90e0afhtml.html timestamp=Sat Jul 15 2017 18:55:40 GMT-0300 (Hora estándar de Argentina), requestId=12
+2017-07-15T21:55:40.421Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 18:55:40 GMT-0300 (Hora estándar de Argentina), requestId=12
+2017-07-15T21:55:40.421Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 18:55:40 GMT-0300 (Hora estándar de Argentina), requestId=12
+2017-07-15T21:55:40.422Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=12
+2017-07-15T21:55:40.426Z - debug: Skipping storing report. requestId=12
+2017-07-15T21:55:40.434Z - info: Rendering request 12 finished in 1360 ms requestId=12
+2017-07-15T22:21:21.242Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-07-15T22:21:21.245Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-07-15T22:21:21.249Z - info: Searching for available extensions in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\
+2017-07-15T22:21:21.269Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-07-15T22:21:26.283Z - info: Found 29 extensions
+2017-07-15T22:21:26.309Z - debug: Writing extension locations cache to C:\Users\Euclides\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-07-15T22:21:26.311Z - debug: Discovered 29 extensions
+2017-07-15T22:21:26.312Z - info: Using extension import-export
+2017-07-15T22:21:26.651Z - info: Using extension tags
+2017-07-15T22:21:26.661Z - info: Using extension templates
+2017-07-15T22:21:26.714Z - info: Using extension jsrender
+2017-07-15T22:21:26.715Z - info: Using extension cli
+2017-07-15T22:21:26.715Z - info: Using extension authentication
+2017-07-15T22:21:26.807Z - debug: Extension authentication was disabled
+2017-07-15T22:21:26.807Z - info: Using extension debug
+2017-07-15T22:21:26.809Z - info: Using extension express
+2017-07-15T22:21:26.871Z - info: Using extension fop-pdf
+2017-07-15T22:21:26.931Z - info: Using extension handlebars
+2017-07-15T22:21:26.934Z - info: Using extension phantom-pdf
+2017-07-15T22:21:27.032Z - info: Using extension fs-store
+2017-07-15T22:21:27.163Z - debug: Extension fs-store was disabled
+2017-07-15T22:21:27.164Z - info: Using extension images
+2017-07-15T22:21:27.227Z - info: Using extension data
+2017-07-15T22:21:27.299Z - info: Using extension child-templates
+2017-07-15T22:21:27.378Z - info: Using extension licensing
+2017-07-15T22:21:27.470Z - info: Using extension authorization
+2017-07-15T22:21:27.516Z - debug: Extension authorization was disabled
+2017-07-15T22:21:27.517Z - info: Using extension text
+2017-07-15T22:21:27.518Z - info: Using extension reports
+2017-07-15T22:21:27.563Z - info: Using extension resources
+2017-07-15T22:21:27.607Z - info: Using extension browser-client
+2017-07-15T22:21:27.610Z - info: Using extension studio
+2017-07-15T22:21:27.758Z - info: Using extension html-to-xlsx
+2017-07-15T22:21:27.889Z - info: Using extension scripts
+2017-07-15T22:21:27.938Z - info: Using extension assets
+2017-07-15T22:21:27.986Z - info: Using extension scheduling
+2017-07-15T22:21:28.069Z - info: Using extension xlsx
+2017-07-15T22:21:28.249Z - info: Using extension sample-template
+2017-07-15T22:21:28.293Z - debug: Creating samples is disabled
+2017-07-15T22:21:28.293Z - info: Using extension public-templates
+2017-07-15T22:21:28.364Z - debug: Extension public-templates was disabled
+2017-07-15T22:21:28.413Z - info: Creating memory store
+2017-07-15T22:21:28.480Z - info: Creating default express app.
+2017-07-15T22:21:28.525Z - info: jsreport server successfully started on http port: 3001
+2017-07-15T22:21:28.528Z - info: Veryfing license key free
+2017-07-15T22:21:30.336Z - info: Using free license
+2017-07-15T22:21:30.340Z - info: reporter initialized
+2017-07-15T22:21:57.648Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-07-15T22:21:57.652Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-07-15T22:21:57.657Z - info: Searching for available extensions in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\
+2017-07-15T22:21:57.697Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-07-15T22:22:01.447Z - info: Found 29 extensions
+2017-07-15T22:22:01.461Z - debug: Writing extension locations cache to C:\Users\Euclides\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-07-15T22:22:01.463Z - debug: Discovered 29 extensions
+2017-07-15T22:22:01.464Z - info: Using extension import-export
+2017-07-15T22:22:01.800Z - info: Using extension tags
+2017-07-15T22:22:01.807Z - info: Using extension templates
+2017-07-15T22:22:01.853Z - info: Using extension jsrender
+2017-07-15T22:22:01.854Z - info: Using extension cli
+2017-07-15T22:22:01.855Z - info: Using extension authentication
+2017-07-15T22:22:01.947Z - debug: Extension authentication was disabled
+2017-07-15T22:22:01.947Z - info: Using extension debug
+2017-07-15T22:22:01.949Z - info: Using extension express
+2017-07-15T22:22:02.019Z - info: Using extension fop-pdf
+2017-07-15T22:22:02.067Z - info: Using extension handlebars
+2017-07-15T22:22:02.069Z - info: Using extension phantom-pdf
+2017-07-15T22:22:02.163Z - info: Using extension fs-store
+2017-07-15T22:22:02.277Z - debug: Extension fs-store was disabled
+2017-07-15T22:22:02.277Z - info: Using extension images
+2017-07-15T22:22:02.328Z - info: Using extension data
+2017-07-15T22:22:02.372Z - info: Using extension child-templates
+2017-07-15T22:22:02.416Z - info: Using extension licensing
+2017-07-15T22:22:02.510Z - info: Using extension authorization
+2017-07-15T22:22:02.555Z - debug: Extension authorization was disabled
+2017-07-15T22:22:02.555Z - info: Using extension text
+2017-07-15T22:22:02.556Z - info: Using extension reports
+2017-07-15T22:22:02.608Z - info: Using extension resources
+2017-07-15T22:22:02.662Z - info: Using extension browser-client
+2017-07-15T22:22:02.664Z - info: Using extension studio
+2017-07-15T22:22:02.822Z - info: Using extension html-to-xlsx
+2017-07-15T22:22:02.955Z - info: Using extension scripts
+2017-07-15T22:22:03.017Z - info: Using extension assets
+2017-07-15T22:22:03.073Z - info: Using extension scheduling
+2017-07-15T22:22:03.170Z - info: Using extension xlsx
+2017-07-15T22:22:03.422Z - info: Using extension sample-template
+2017-07-15T22:22:03.499Z - debug: Creating samples is disabled
+2017-07-15T22:22:03.499Z - info: Using extension public-templates
+2017-07-15T22:22:03.547Z - debug: Extension public-templates was disabled
+2017-07-15T22:22:03.578Z - info: Creating memory store
+2017-07-15T22:22:03.619Z - info: Creating default express app.
+2017-07-15T22:22:03.680Z - info: jsreport server successfully started on http port: 3001
+2017-07-15T22:22:03.682Z - info: Veryfing license key free
+2017-07-15T22:22:03.689Z - info: Applying cached license information
+2017-07-15T22:22:03.689Z - info: Using free license
+2017-07-15T22:22:03.691Z - info: reporter initialized
+2017-07-15T22:22:22.008Z - info: Starting rendering request 1 (user: null) requestId=1
+2017-07-15T22:22:22.011Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=1
+2017-07-15T22:22:22.012Z - debug: Inline data specified. requestId=1
+2017-07-15T22:22:22.025Z - debug: Resources not defined for this template. requestId=1
+2017-07-15T22:22:22.029Z - debug: Rendering engine jsrender requestId=1
+2017-07-15T22:22:22.405Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 19:22:22 GMT-0300 (Hora estándar de Argentina), requestId=1
+2017-07-15T22:22:22.409Z - debug: Replaced images [] requestId=1
+2017-07-15T22:22:22.413Z - debug: Executing recipe phantom-pdf requestId=1
+2017-07-15T22:22:23.496Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 19:22:23 GMT-0300 (Hora estándar de Argentina), requestId=1
+2017-07-15T22:22:23.496Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C12861d00-69ac-11e7-83c2-2ddc85af70echtml.html timestamp=Sat Jul 15 2017 19:22:23 GMT-0300 (Hora estándar de Argentina), requestId=1
+2017-07-15T22:22:23.497Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 19:22:23 GMT-0300 (Hora estándar de Argentina), requestId=1
+2017-07-15T22:22:23.497Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 19:22:23 GMT-0300 (Hora estándar de Argentina), requestId=1
+2017-07-15T22:22:23.499Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=1
+2017-07-15T22:22:23.500Z - debug: Skipping storing report. requestId=1
+2017-07-15T22:22:23.508Z - info: Rendering request 1 finished in 1504 ms requestId=1
+2017-07-15T22:52:00.269Z - info: Starting rendering request 2 (user: null) requestId=2
+2017-07-15T22:52:00.276Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=2
+2017-07-15T22:52:00.277Z - debug: Inline data specified. requestId=2
+2017-07-15T22:52:00.294Z - debug: Resources not defined for this template. requestId=2
+2017-07-15T22:52:00.304Z - debug: Rendering engine jsrender requestId=2
+2017-07-15T22:52:01.020Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 19:52:00 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-15T22:52:01.024Z - debug: Replaced images [] requestId=2
+2017-07-15T22:52:01.026Z - debug: Executing recipe phantom-pdf requestId=2
+2017-07-15T22:52:03.508Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 19:52:02 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-15T22:52:03.509Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C36a9fcc0-69b0-11e7-83c2-2ddc85af70echtml.html timestamp=Sat Jul 15 2017 19:52:02 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-15T22:52:03.509Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 19:52:02 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-15T22:52:03.510Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 19:52:02 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-15T22:52:03.512Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=2
+2017-07-15T22:52:03.513Z - debug: Skipping storing report. requestId=2
+2017-07-15T22:52:03.523Z - info: Rendering request 2 finished in 3260 ms requestId=2
+2017-07-15T23:00:48.993Z - info: Starting rendering request 3 (user: null) requestId=3
+2017-07-15T23:00:48.995Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=3
+2017-07-15T23:00:48.995Z - debug: Inline data specified. requestId=3
+2017-07-15T23:00:48.998Z - debug: Resources not defined for this template. requestId=3
+2017-07-15T23:00:48.999Z - debug: Rendering engine jsrender requestId=3
+2017-07-15T23:00:49.390Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 20:00:49 GMT-0300 (Hora estándar de Argentina), requestId=3
+2017-07-15T23:00:49.397Z - debug: Replaced images [] requestId=3
+2017-07-15T23:00:49.399Z - debug: Executing recipe phantom-pdf requestId=3
+2017-07-15T23:00:50.323Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 20:00:50 GMT-0300 (Hora estándar de Argentina), requestId=3
+2017-07-15T23:00:50.324Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C71981690-69b1-11e7-83c2-2ddc85af70echtml.html timestamp=Sat Jul 15 2017 20:00:50 GMT-0300 (Hora estándar de Argentina), requestId=3
+2017-07-15T23:00:50.324Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 20:00:50 GMT-0300 (Hora estándar de Argentina), requestId=3
+2017-07-15T23:00:50.325Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 20:00:50 GMT-0300 (Hora estándar de Argentina), requestId=3
+2017-07-15T23:00:50.326Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=3
+2017-07-15T23:00:50.327Z - debug: Skipping storing report. requestId=3
+2017-07-15T23:00:50.329Z - info: Rendering request 3 finished in 1337 ms requestId=3
+2017-07-15T23:01:11.398Z - info: Starting rendering request 4 (user: null) requestId=4
+2017-07-15T23:01:11.399Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=4
+2017-07-15T23:01:11.399Z - debug: Inline data specified. requestId=4
+2017-07-15T23:01:11.403Z - debug: Resources not defined for this template. requestId=4
+2017-07-15T23:01:11.404Z - debug: Rendering engine jsrender requestId=4
+2017-07-15T23:01:11.769Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 20:01:11 GMT-0300 (Hora estándar de Argentina), requestId=4
+2017-07-15T23:01:11.770Z - debug: Replaced images [] requestId=4
+2017-07-15T23:01:11.772Z - debug: Executing recipe phantom-pdf requestId=4
+2017-07-15T23:01:12.575Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 20:01:12 GMT-0300 (Hora estándar de Argentina), requestId=4
+2017-07-15T23:01:12.576Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C7eedc8d0-69b1-11e7-83c2-2ddc85af70echtml.html timestamp=Sat Jul 15 2017 20:01:12 GMT-0300 (Hora estándar de Argentina), requestId=4
+2017-07-15T23:01:12.576Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 20:01:12 GMT-0300 (Hora estándar de Argentina), requestId=4
+2017-07-15T23:01:12.577Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 20:01:12 GMT-0300 (Hora estándar de Argentina), requestId=4
+2017-07-15T23:01:12.579Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=4
+2017-07-15T23:01:12.580Z - debug: Skipping storing report. requestId=4
+2017-07-15T23:01:12.581Z - info: Rendering request 4 finished in 1185 ms requestId=4
+2017-07-15T23:02:38.217Z - info: Starting rendering request 5 (user: null) requestId=5
+2017-07-15T23:02:38.219Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=5
+2017-07-15T23:02:38.219Z - debug: Inline data specified. requestId=5
+2017-07-15T23:02:38.222Z - debug: Resources not defined for this template. requestId=5
+2017-07-15T23:02:38.223Z - debug: Rendering engine jsrender requestId=5
+2017-07-15T23:02:38.773Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 20:02:38 GMT-0300 (Hora estándar de Argentina), requestId=5
+2017-07-15T23:02:38.775Z - debug: Replaced images [] requestId=5
+2017-07-15T23:02:38.776Z - debug: Executing recipe phantom-pdf requestId=5
+2017-07-15T23:02:40.372Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 20:02:39 GMT-0300 (Hora estándar de Argentina), requestId=5
+2017-07-15T23:02:40.372Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5Cb2cac310-69b1-11e7-83c2-2ddc85af70echtml.html timestamp=Sat Jul 15 2017 20:02:39 GMT-0300 (Hora estándar de Argentina), requestId=5
+2017-07-15T23:02:40.373Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 20:02:39 GMT-0300 (Hora estándar de Argentina), requestId=5
+2017-07-15T23:02:40.373Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 20:02:39 GMT-0300 (Hora estándar de Argentina), requestId=5
+2017-07-15T23:02:40.374Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=5
+2017-07-15T23:02:40.376Z - debug: Skipping storing report. requestId=5
+2017-07-15T23:02:40.382Z - info: Rendering request 5 finished in 2164 ms requestId=5
+2017-07-15T23:03:47.270Z - info: Starting rendering request 6 (user: null) requestId=6
+2017-07-15T23:03:47.272Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=6
+2017-07-15T23:03:47.272Z - debug: Inline data specified. requestId=6
+2017-07-15T23:03:47.274Z - debug: Resources not defined for this template. requestId=6
+2017-07-15T23:03:47.275Z - debug: Rendering engine jsrender requestId=6
+2017-07-15T23:03:47.656Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 20:03:47 GMT-0300 (Hora estándar de Argentina), requestId=6
+2017-07-15T23:03:47.661Z - debug: Replaced images [] requestId=6
+2017-07-15T23:03:47.662Z - debug: Executing recipe phantom-pdf requestId=6
+2017-07-15T23:03:48.447Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 20:03:48 GMT-0300 (Hora estándar de Argentina), requestId=6
+2017-07-15T23:03:48.448Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5Cdbd8b5f0-69b1-11e7-83c2-2ddc85af70echtml.html timestamp=Sat Jul 15 2017 20:03:48 GMT-0300 (Hora estándar de Argentina), requestId=6
+2017-07-15T23:03:48.448Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 20:03:48 GMT-0300 (Hora estándar de Argentina), requestId=6
+2017-07-15T23:03:48.449Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 20:03:48 GMT-0300 (Hora estándar de Argentina), requestId=6
+2017-07-15T23:03:48.450Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=6
+2017-07-15T23:03:48.451Z - debug: Skipping storing report. requestId=6
+2017-07-15T23:03:48.453Z - info: Rendering request 6 finished in 1183 ms requestId=6
+2017-07-15T23:05:53.600Z - info: Starting rendering request 7 (user: null) requestId=7
+2017-07-15T23:05:53.601Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=7
+2017-07-15T23:05:53.601Z - debug: Inline data specified. requestId=7
+2017-07-15T23:05:53.604Z - debug: Resources not defined for this template. requestId=7
+2017-07-15T23:05:53.605Z - debug: Rendering engine jsrender requestId=7
+2017-07-15T23:05:54.233Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 20:05:54 GMT-0300 (Hora estándar de Argentina), requestId=7
+2017-07-15T23:05:54.234Z - debug: Replaced images [] requestId=7
+2017-07-15T23:05:54.235Z - debug: Executing recipe phantom-pdf requestId=7
+2017-07-15T23:05:55.452Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 20:05:55 GMT-0300 (Hora estándar de Argentina), requestId=7
+2017-07-15T23:05:55.453Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C274a37c0-69b2-11e7-83c2-2ddc85af70echtml.html timestamp=Sat Jul 15 2017 20:05:55 GMT-0300 (Hora estándar de Argentina), requestId=7
+2017-07-15T23:05:55.454Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 20:05:55 GMT-0300 (Hora estándar de Argentina), requestId=7
+2017-07-15T23:05:55.454Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 20:05:55 GMT-0300 (Hora estándar de Argentina), requestId=7
+2017-07-15T23:05:55.457Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=7
+2017-07-15T23:05:55.457Z - debug: Skipping storing report. requestId=7
+2017-07-15T23:05:55.459Z - info: Rendering request 7 finished in 1859 ms requestId=7
+2017-07-15T23:06:20.986Z - info: Starting rendering request 8 (user: null) requestId=8
+2017-07-15T23:06:20.987Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=8
+2017-07-15T23:06:20.987Z - debug: Inline data specified. requestId=8
+2017-07-15T23:06:20.991Z - debug: Resources not defined for this template. requestId=8
+2017-07-15T23:06:20.992Z - debug: Rendering engine jsrender requestId=8
+2017-07-15T23:06:21.909Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 20:06:21 GMT-0300 (Hora estándar de Argentina), requestId=8
+2017-07-15T23:06:21.910Z - debug: Replaced images [] requestId=8
+2017-07-15T23:06:21.911Z - debug: Executing recipe phantom-pdf requestId=8
+2017-07-15T23:06:23.143Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 20:06:22 GMT-0300 (Hora estándar de Argentina), requestId=8
+2017-07-15T23:06:23.144Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C37c93d80-69b2-11e7-83c2-2ddc85af70echtml.html timestamp=Sat Jul 15 2017 20:06:22 GMT-0300 (Hora estándar de Argentina), requestId=8
+2017-07-15T23:06:23.145Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 20:06:22 GMT-0300 (Hora estándar de Argentina), requestId=8
+2017-07-15T23:06:23.145Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 20:06:22 GMT-0300 (Hora estándar de Argentina), requestId=8
+2017-07-15T23:06:23.150Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=8
+2017-07-15T23:06:23.150Z - debug: Skipping storing report. requestId=8
+2017-07-15T23:06:23.152Z - info: Rendering request 8 finished in 2165 ms requestId=8
+2017-07-15T23:07:51.050Z - info: Starting rendering request 9 (user: null) requestId=9
+2017-07-15T23:07:51.054Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=9
+2017-07-15T23:07:51.054Z - debug: Inline data specified. requestId=9
+2017-07-15T23:07:51.060Z - debug: Resources not defined for this template. requestId=9
+2017-07-15T23:07:51.061Z - debug: Rendering engine jsrender requestId=9
+2017-07-15T23:07:51.555Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 20:07:51 GMT-0300 (Hora estándar de Argentina), requestId=9
+2017-07-15T23:07:51.563Z - debug: Replaced images [] requestId=9
+2017-07-15T23:07:51.565Z - debug: Executing recipe phantom-pdf requestId=9
+2017-07-15T23:07:52.595Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 20:07:52 GMT-0300 (Hora estándar de Argentina), requestId=9
+2017-07-15T23:07:52.595Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C6d3981f0-69b2-11e7-83c2-2ddc85af70echtml.html timestamp=Sat Jul 15 2017 20:07:52 GMT-0300 (Hora estándar de Argentina), requestId=9
+2017-07-15T23:07:52.598Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 20:07:52 GMT-0300 (Hora estándar de Argentina), requestId=9
+2017-07-15T23:07:52.599Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 20:07:52 GMT-0300 (Hora estándar de Argentina), requestId=9
+2017-07-15T23:07:52.600Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=9
+2017-07-15T23:07:52.600Z - debug: Skipping storing report. requestId=9
+2017-07-15T23:07:52.602Z - info: Rendering request 9 finished in 1553 ms requestId=9
+2017-07-15T23:08:03.197Z - info: Starting rendering request 10 (user: null) requestId=10
+2017-07-15T23:08:03.197Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=10
+2017-07-15T23:08:03.198Z - debug: Inline data specified. requestId=10
+2017-07-15T23:08:03.199Z - debug: Resources not defined for this template. requestId=10
+2017-07-15T23:08:03.200Z - debug: Rendering engine jsrender requestId=10
+2017-07-15T23:08:03.699Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 20:08:03 GMT-0300 (Hora estándar de Argentina), requestId=10
+2017-07-15T23:08:03.706Z - debug: Replaced images [] requestId=10
+2017-07-15T23:08:03.710Z - debug: Executing recipe phantom-pdf requestId=10
+2017-07-15T23:08:04.821Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 20:08:04 GMT-0300 (Hora estándar de Argentina), requestId=10
+2017-07-15T23:08:04.822Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C747688f0-69b2-11e7-83c2-2ddc85af70echtml.html timestamp=Sat Jul 15 2017 20:08:04 GMT-0300 (Hora estándar de Argentina), requestId=10
+2017-07-15T23:08:04.824Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 20:08:04 GMT-0300 (Hora estándar de Argentina), requestId=10
+2017-07-15T23:08:04.826Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 20:08:04 GMT-0300 (Hora estándar de Argentina), requestId=10
+2017-07-15T23:08:04.827Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=10
+2017-07-15T23:08:04.828Z - debug: Skipping storing report. requestId=10
+2017-07-15T23:08:04.830Z - info: Rendering request 10 finished in 1634 ms requestId=10
+2017-07-15T23:08:35.277Z - info: Starting rendering request 11 (user: null) requestId=11
+2017-07-15T23:08:35.277Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=11
+2017-07-15T23:08:35.278Z - debug: Inline data specified. requestId=11
+2017-07-15T23:08:35.311Z - debug: Resources not defined for this template. requestId=11
+2017-07-15T23:08:35.314Z - debug: Rendering engine jsrender requestId=11
+2017-07-15T23:08:35.813Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 20:08:35 GMT-0300 (Hora estándar de Argentina), requestId=11
+2017-07-15T23:08:35.815Z - debug: Replaced images [] requestId=11
+2017-07-15T23:08:35.825Z - debug: Executing recipe phantom-pdf requestId=11
+2017-07-15T23:08:37.428Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 20:08:37 GMT-0300 (Hora estándar de Argentina), requestId=11
+2017-07-15T23:08:37.428Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C879b3340-69b2-11e7-83c2-2ddc85af70echtml.html timestamp=Sat Jul 15 2017 20:08:37 GMT-0300 (Hora estándar de Argentina), requestId=11
+2017-07-15T23:08:37.429Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 20:08:37 GMT-0300 (Hora estándar de Argentina), requestId=11
+2017-07-15T23:08:37.429Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 20:08:37 GMT-0300 (Hora estándar de Argentina), requestId=11
+2017-07-15T23:08:37.437Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=11
+2017-07-15T23:08:37.438Z - debug: Skipping storing report. requestId=11
+2017-07-15T23:08:37.455Z - info: Rendering request 11 finished in 2173 ms requestId=11
+2017-07-15T23:10:53.192Z - info: Starting rendering request 12 (user: null) requestId=12
+2017-07-15T23:10:53.192Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=12
+2017-07-15T23:10:53.194Z - debug: Inline data specified. requestId=12
+2017-07-15T23:10:53.199Z - debug: Resources not defined for this template. requestId=12
+2017-07-15T23:10:53.199Z - debug: Rendering engine jsrender requestId=12
+2017-07-15T23:10:53.920Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 20:10:53 GMT-0300 (Hora estándar de Argentina), requestId=12
+2017-07-15T23:10:53.921Z - debug: Replaced images [] requestId=12
+2017-07-15T23:10:53.923Z - debug: Executing recipe phantom-pdf requestId=12
+2017-07-15T23:10:55.723Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 20:10:55 GMT-0300 (Hora estándar de Argentina), requestId=12
+2017-07-15T23:10:55.723Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5Cd9ead330-69b2-11e7-83c2-2ddc85af70echtml.html timestamp=Sat Jul 15 2017 20:10:55 GMT-0300 (Hora estándar de Argentina), requestId=12
+2017-07-15T23:10:55.725Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 20:10:55 GMT-0300 (Hora estándar de Argentina), requestId=12
+2017-07-15T23:10:55.725Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 20:10:55 GMT-0300 (Hora estándar de Argentina), requestId=12
+2017-07-15T23:10:55.726Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=12
+2017-07-15T23:10:55.726Z - debug: Skipping storing report. requestId=12
+2017-07-15T23:10:55.733Z - info: Rendering request 12 finished in 2538 ms requestId=12
+2017-07-15T23:11:20.282Z - info: Starting rendering request 13 (user: null) requestId=13
+2017-07-15T23:11:20.283Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=13
+2017-07-15T23:11:20.283Z - debug: Inline data specified. requestId=13
+2017-07-15T23:11:20.285Z - debug: Resources not defined for this template. requestId=13
+2017-07-15T23:11:20.287Z - debug: Rendering engine jsrender requestId=13
+2017-07-15T23:11:21.136Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 20:11:21 GMT-0300 (Hora estándar de Argentina), requestId=13
+2017-07-15T23:11:21.137Z - debug: Replaced images [] requestId=13
+2017-07-15T23:11:21.138Z - debug: Executing recipe phantom-pdf requestId=13
+2017-07-15T23:11:23.044Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 20:11:22 GMT-0300 (Hora estándar de Argentina), requestId=13
+2017-07-15T23:11:23.046Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5Cea23a830-69b2-11e7-83c2-2ddc85af70echtml.html timestamp=Sat Jul 15 2017 20:11:22 GMT-0300 (Hora estándar de Argentina), requestId=13
+2017-07-15T23:11:23.048Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 20:11:22 GMT-0300 (Hora estándar de Argentina), requestId=13
+2017-07-15T23:11:23.048Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 20:11:22 GMT-0300 (Hora estándar de Argentina), requestId=13
+2017-07-15T23:11:23.049Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=13
+2017-07-15T23:11:23.049Z - debug: Skipping storing report. requestId=13
+2017-07-15T23:11:23.052Z - info: Rendering request 13 finished in 2771 ms requestId=13
+2017-07-15T23:19:15.073Z - info: Starting rendering request 14 (user: null) requestId=14
+2017-07-15T23:19:15.074Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=14
+2017-07-15T23:19:15.074Z - debug: Inline data specified. requestId=14
+2017-07-15T23:19:15.077Z - debug: Resources not defined for this template. requestId=14
+2017-07-15T23:19:15.078Z - debug: Rendering engine jsrender requestId=14
+2017-07-15T23:19:15.549Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 20:19:15 GMT-0300 (Hora estándar de Argentina), requestId=14
+2017-07-15T23:19:15.550Z - debug: Replaced images [] requestId=14
+2017-07-15T23:19:15.551Z - debug: Executing recipe phantom-pdf requestId=14
+2017-07-15T23:19:16.608Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 20:19:16 GMT-0300 (Hora estándar de Argentina), requestId=14
+2017-07-15T23:19:16.609Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C04e97d10-69b4-11e7-83c2-2ddc85af70echtml.html timestamp=Sat Jul 15 2017 20:19:16 GMT-0300 (Hora estándar de Argentina), requestId=14
+2017-07-15T23:19:16.609Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 20:19:16 GMT-0300 (Hora estándar de Argentina), requestId=14
+2017-07-15T23:19:16.609Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 20:19:16 GMT-0300 (Hora estándar de Argentina), requestId=14
+2017-07-15T23:19:16.610Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=14
+2017-07-15T23:19:16.611Z - debug: Skipping storing report. requestId=14
+2017-07-15T23:19:16.613Z - info: Rendering request 14 finished in 1540 ms requestId=14
+2017-07-15T23:20:17.809Z - info: Starting rendering request 15 (user: null) requestId=15
+2017-07-15T23:20:17.811Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=15
+2017-07-15T23:20:17.812Z - debug: Inline data specified. requestId=15
+2017-07-15T23:20:17.814Z - debug: Resources not defined for this template. requestId=15
+2017-07-15T23:20:17.814Z - debug: Rendering engine jsrender requestId=15
+2017-07-15T23:20:18.367Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 20:20:18 GMT-0300 (Hora estándar de Argentina), requestId=15
+2017-07-15T23:20:18.368Z - debug: Replaced images [] requestId=15
+2017-07-15T23:20:18.376Z - debug: Executing recipe phantom-pdf requestId=15
+2017-07-15T23:20:19.855Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 20:20:19 GMT-0300 (Hora estándar de Argentina), requestId=15
+2017-07-15T23:20:19.856Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C2a5bab90-69b4-11e7-83c2-2ddc85af70echtml.html timestamp=Sat Jul 15 2017 20:20:19 GMT-0300 (Hora estándar de Argentina), requestId=15
+2017-07-15T23:20:19.856Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 20:20:19 GMT-0300 (Hora estándar de Argentina), requestId=15
+2017-07-15T23:20:19.856Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 20:20:19 GMT-0300 (Hora estándar de Argentina), requestId=15
+2017-07-15T23:20:19.858Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=15
+2017-07-15T23:20:19.858Z - debug: Skipping storing report. requestId=15
+2017-07-15T23:20:19.861Z - info: Rendering request 15 finished in 2053 ms requestId=15
+2017-07-15T23:49:59.332Z - info: Starting rendering request 16 (user: null) requestId=16
+2017-07-15T23:49:59.332Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=16
+2017-07-15T23:49:59.333Z - debug: Inline data specified. requestId=16
+2017-07-15T23:49:59.335Z - debug: Resources not defined for this template. requestId=16
+2017-07-15T23:49:59.335Z - debug: Rendering engine jsrender requestId=16
+2017-07-15T23:50:00.715Z - debug: Compiled template not found in the cache, compiling timestamp=Sat Jul 15 2017 20:50:00 GMT-0300 (Hora estándar de Argentina), requestId=16
+2017-07-15T23:50:00.718Z - debug: Replaced images [] requestId=16
+2017-07-15T23:50:00.719Z - debug: Executing recipe phantom-pdf requestId=16
+2017-07-15T23:50:03.016Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Sat Jul 15 2017 20:50:02 GMT-0300 (Hora estándar de Argentina), requestId=16
+2017-07-15T23:50:03.016Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C50b7c810-69b8-11e7-83c2-2ddc85af70echtml.html timestamp=Sat Jul 15 2017 20:50:02 GMT-0300 (Hora estándar de Argentina), requestId=16
+2017-07-15T23:50:03.016Z - debug: Request http://localhost:3000/img/logo.png timestamp=Sat Jul 15 2017 20:50:02 GMT-0300 (Hora estándar de Argentina), requestId=16
+2017-07-15T23:50:03.016Z - debug: Request http://localhost:3000/img/afip.png timestamp=Sat Jul 15 2017 20:50:02 GMT-0300 (Hora estándar de Argentina), requestId=16
+2017-07-15T23:50:03.018Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=16
+2017-07-15T23:50:03.018Z - debug: Skipping storing report. requestId=16
+2017-07-15T23:50:03.020Z - info: Rendering request 16 finished in 3690 ms requestId=16
+2017-07-16T00:06:43.485Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-07-16T00:06:43.487Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-07-16T00:06:43.493Z - info: Searching for available extensions in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\
+2017-07-16T00:06:43.511Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-07-16T00:06:55.648Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-07-16T00:06:55.650Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-07-16T00:06:55.654Z - info: Searching for available extensions in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\
+2017-07-16T00:06:55.679Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-07-16T00:07:01.394Z - info: Found 29 extensions
+2017-07-16T00:07:01.409Z - debug: Writing extension locations cache to C:\Users\Euclides\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-07-16T00:07:01.410Z - debug: Discovered 29 extensions
+2017-07-16T00:07:01.411Z - info: Using extension import-export
+2017-07-16T00:07:01.906Z - info: Using extension tags
+2017-07-16T00:07:01.914Z - info: Using extension templates
+2017-07-16T00:07:01.961Z - info: Using extension jsrender
+2017-07-16T00:07:01.962Z - info: Using extension cli
+2017-07-16T00:07:01.963Z - info: Using extension authentication
+2017-07-16T00:07:02.154Z - debug: Extension authentication was disabled
+2017-07-16T00:07:02.155Z - info: Using extension debug
+2017-07-16T00:07:02.156Z - info: Using extension express
+2017-07-16T00:07:02.213Z - info: Using extension fop-pdf
+2017-07-16T00:07:02.370Z - info: Using extension handlebars
+2017-07-16T00:07:02.372Z - info: Using extension phantom-pdf
+2017-07-16T00:07:02.465Z - info: Using extension fs-store
+2017-07-16T00:07:02.678Z - debug: Extension fs-store was disabled
+2017-07-16T00:07:02.678Z - info: Using extension images
+2017-07-16T00:07:02.742Z - info: Using extension data
+2017-07-16T00:07:02.921Z - info: Using extension child-templates
+2017-07-16T00:07:02.964Z - info: Using extension licensing
+2017-07-16T00:07:03.145Z - info: Using extension authorization
+2017-07-16T00:07:03.187Z - debug: Extension authorization was disabled
+2017-07-16T00:07:03.187Z - info: Using extension text
+2017-07-16T00:07:03.188Z - info: Using extension reports
+2017-07-16T00:07:03.233Z - info: Using extension resources
+2017-07-16T00:07:03.384Z - info: Using extension browser-client
+2017-07-16T00:07:03.387Z - info: Using extension studio
+2017-07-16T00:07:03.534Z - info: Using extension html-to-xlsx
+2017-07-16T00:07:03.742Z - info: Using extension scripts
+2017-07-16T00:07:03.897Z - info: Using extension assets
+2017-07-16T00:07:03.945Z - info: Using extension scheduling
+2017-07-16T00:07:04.135Z - info: Using extension xlsx
+2017-07-16T00:07:04.423Z - info: Using extension sample-template
+2017-07-16T00:07:04.464Z - debug: Creating samples is disabled
+2017-07-16T00:07:04.465Z - info: Using extension public-templates
+2017-07-16T00:07:04.542Z - debug: Extension public-templates was disabled
+2017-07-16T00:07:04.605Z - info: Creating memory store
+2017-07-16T00:07:04.687Z - info: Creating default express app.
+2017-07-16T00:07:04.725Z - info: jsreport server successfully started on http port: 3001
+2017-07-16T00:07:04.728Z - info: Veryfing license key free
+2017-07-16T00:07:06.528Z - info: Using free license
+2017-07-16T00:07:06.530Z - info: reporter initialized
+2017-07-16T00:09:54.182Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-07-16T00:09:54.183Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-07-16T00:09:54.187Z - info: Searching for available extensions in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\
+2017-07-16T00:09:54.213Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-07-16T00:09:59.949Z - info: Found 29 extensions
+2017-07-16T00:09:59.989Z - debug: Writing extension locations cache to C:\Users\Euclides\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-07-16T00:09:59.992Z - debug: Discovered 29 extensions
+2017-07-16T00:10:00.004Z - info: Using extension import-export
+2017-07-16T00:10:00.688Z - info: Using extension tags
+2017-07-16T00:10:00.697Z - info: Using extension templates
+2017-07-16T00:10:00.752Z - info: Using extension jsrender
+2017-07-16T00:10:00.753Z - info: Using extension cli
+2017-07-16T00:10:00.753Z - info: Using extension authentication
+2017-07-16T00:10:00.954Z - debug: Extension authentication was disabled
+2017-07-16T00:10:00.954Z - info: Using extension debug
+2017-07-16T00:10:00.957Z - info: Using extension express
+2017-07-16T00:10:01.027Z - info: Using extension fop-pdf
+2017-07-16T00:10:01.195Z - info: Using extension handlebars
+2017-07-16T00:10:01.197Z - info: Using extension phantom-pdf
+2017-07-16T00:10:01.322Z - info: Using extension fs-store
+2017-07-16T00:10:01.515Z - debug: Extension fs-store was disabled
+2017-07-16T00:10:01.515Z - info: Using extension images
+2017-07-16T00:10:01.721Z - info: Using extension data
+2017-07-16T00:10:01.840Z - info: Using extension child-templates
+2017-07-16T00:10:01.966Z - info: Using extension licensing
+2017-07-16T00:10:02.079Z - info: Using extension authorization
+2017-07-16T00:10:02.210Z - debug: Extension authorization was disabled
+2017-07-16T00:10:02.210Z - info: Using extension text
+2017-07-16T00:10:02.211Z - info: Using extension reports
+2017-07-16T00:10:02.255Z - info: Using extension resources
+2017-07-16T00:10:02.327Z - info: Using extension browser-client
+2017-07-16T00:10:02.328Z - info: Using extension studio
+2017-07-16T00:10:02.570Z - info: Using extension html-to-xlsx
+2017-07-16T00:10:02.768Z - info: Using extension scripts
+2017-07-16T00:10:02.928Z - info: Using extension assets
+2017-07-16T00:10:02.982Z - info: Using extension scheduling
+2017-07-16T00:10:03.200Z - info: Using extension xlsx
+2017-07-16T00:10:03.501Z - info: Using extension sample-template
+2017-07-16T00:10:03.576Z - debug: Creating samples is disabled
+2017-07-16T00:10:03.576Z - info: Using extension public-templates
+2017-07-16T00:10:03.725Z - debug: Extension public-templates was disabled
+2017-07-16T00:10:03.754Z - info: Creating memory store
+2017-07-16T00:10:03.946Z - info: Creating default express app.
+2017-07-16T00:10:04.082Z - info: jsreport server successfully started on http port: 3001
+2017-07-16T00:10:04.086Z - info: Veryfing license key free
+2017-07-16T00:10:05.385Z - info: Using free license
+2017-07-16T00:10:05.387Z - info: reporter initialized
+2017-07-16T00:11:16.587Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-07-16T00:11:16.589Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-07-16T00:11:16.592Z - info: Searching for available extensions in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\
+2017-07-16T00:11:16.662Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-07-16T00:11:22.885Z - info: Found 29 extensions
+2017-07-16T00:11:22.918Z - debug: Writing extension locations cache to C:\Users\Euclides\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-07-16T00:11:22.919Z - debug: Discovered 29 extensions
+2017-07-16T00:11:22.921Z - info: Using extension import-export
+2017-07-16T00:11:23.719Z - info: Using extension tags
+2017-07-16T00:11:23.730Z - info: Using extension templates
+2017-07-16T00:11:23.993Z - info: Using extension jsrender
+2017-07-16T00:11:23.994Z - info: Using extension cli
+2017-07-16T00:11:23.995Z - info: Using extension authentication
+2017-07-16T00:11:24.215Z - debug: Extension authentication was disabled
+2017-07-16T00:11:24.215Z - info: Using extension debug
+2017-07-16T00:11:24.218Z - info: Using extension express
+2017-07-16T00:11:24.300Z - info: Using extension fop-pdf
+2017-07-16T00:11:24.493Z - info: Using extension handlebars
+2017-07-16T00:11:24.496Z - info: Using extension phantom-pdf
+2017-07-16T00:11:24.759Z - info: Using extension fs-store
+2017-07-16T00:11:25.045Z - debug: Extension fs-store was disabled
+2017-07-16T00:11:25.045Z - info: Using extension images
+2017-07-16T00:11:25.394Z - info: Using extension data
+2017-07-16T00:11:25.598Z - info: Using extension child-templates
+2017-07-16T00:11:25.656Z - info: Using extension licensing
+2017-07-16T00:11:25.885Z - info: Using extension authorization
+2017-07-16T00:11:26.070Z - debug: Extension authorization was disabled
+2017-07-16T00:11:26.071Z - info: Using extension text
+2017-07-16T00:11:26.072Z - info: Using extension reports
+2017-07-16T00:11:26.135Z - info: Using extension resources
+2017-07-16T00:11:26.177Z - info: Using extension browser-client
+2017-07-16T00:11:26.179Z - info: Using extension studio
+2017-07-16T00:11:26.414Z - info: Using extension html-to-xlsx
+2017-07-16T00:11:26.651Z - info: Using extension scripts
+2017-07-16T00:11:26.806Z - info: Using extension assets
+2017-07-16T00:11:26.862Z - info: Using extension scheduling
+2017-07-16T00:11:27.050Z - info: Using extension xlsx
+2017-07-16T00:11:27.317Z - info: Using extension sample-template
+2017-07-16T00:11:27.370Z - debug: Creating samples is disabled
+2017-07-16T00:11:27.370Z - info: Using extension public-templates
+2017-07-16T00:11:27.413Z - debug: Extension public-templates was disabled
+2017-07-16T00:11:27.445Z - info: Creating memory store
+2017-07-16T00:11:27.507Z - info: Creating default express app.
+2017-07-16T00:11:27.618Z - info: jsreport server successfully started on http port: 3001
+2017-07-16T00:11:27.629Z - info: Veryfing license key free
+2017-07-16T00:11:27.638Z - info: Applying cached license information
+2017-07-16T00:11:27.639Z - info: Using free license
+2017-07-16T00:11:27.641Z - info: reporter initialized
+2017-07-16T00:13:16.215Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-07-16T00:13:16.216Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-07-16T00:13:16.220Z - info: Searching for available extensions in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\
+2017-07-16T00:13:16.244Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-07-16T00:13:22.046Z - info: Found 29 extensions
+2017-07-16T00:13:22.074Z - debug: Writing extension locations cache to C:\Users\Euclides\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-07-16T00:13:22.076Z - debug: Discovered 29 extensions
+2017-07-16T00:13:22.077Z - info: Using extension import-export
+2017-07-16T00:13:22.571Z - info: Using extension tags
+2017-07-16T00:13:22.580Z - info: Using extension templates
+2017-07-16T00:13:22.631Z - info: Using extension jsrender
+2017-07-16T00:13:22.632Z - info: Using extension cli
+2017-07-16T00:13:22.633Z - info: Using extension authentication
+2017-07-16T00:13:22.823Z - debug: Extension authentication was disabled
+2017-07-16T00:13:22.823Z - info: Using extension debug
+2017-07-16T00:13:22.825Z - info: Using extension express
+2017-07-16T00:13:22.883Z - info: Using extension fop-pdf
+2017-07-16T00:13:22.962Z - info: Using extension handlebars
+2017-07-16T00:13:22.979Z - info: Using extension phantom-pdf
+2017-07-16T00:13:23.126Z - info: Using extension fs-store
+2017-07-16T00:13:23.343Z - debug: Extension fs-store was disabled
+2017-07-16T00:13:23.344Z - info: Using extension images
+2017-07-16T00:13:23.408Z - info: Using extension data
+2017-07-16T00:13:23.586Z - info: Using extension child-templates
+2017-07-16T00:13:23.631Z - info: Using extension licensing
+2017-07-16T00:13:23.818Z - info: Using extension authorization
+2017-07-16T00:13:23.861Z - debug: Extension authorization was disabled
+2017-07-16T00:13:23.861Z - info: Using extension text
+2017-07-16T00:13:23.862Z - info: Using extension reports
+2017-07-16T00:13:23.904Z - info: Using extension resources
+2017-07-16T00:13:24.052Z - info: Using extension browser-client
+2017-07-16T00:13:24.054Z - info: Using extension studio
+2017-07-16T00:13:24.284Z - info: Using extension html-to-xlsx
+2017-07-16T00:13:24.400Z - info: Using extension scripts
+2017-07-16T00:13:24.547Z - info: Using extension assets
+2017-07-16T00:13:24.594Z - info: Using extension scheduling
+2017-07-16T00:13:24.791Z - info: Using extension xlsx
+2017-07-16T00:13:25.059Z - info: Using extension sample-template
+2017-07-16T00:13:25.102Z - debug: Creating samples is disabled
+2017-07-16T00:13:25.103Z - info: Using extension public-templates
+2017-07-16T00:13:25.153Z - debug: Extension public-templates was disabled
+2017-07-16T00:13:25.250Z - info: Creating memory store
+2017-07-16T00:13:25.335Z - info: Creating default express app.
+2017-07-16T00:13:25.375Z - info: jsreport server successfully started on http port: 3001
+2017-07-16T00:13:25.380Z - info: Veryfing license key free
+2017-07-16T00:13:26.756Z - info: Using free license
+2017-07-16T00:13:26.758Z - info: reporter initialized
+2017-07-17T23:46:38.454Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-07-17T23:46:38.456Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-07-17T23:46:38.578Z - info: Searching for available extensions in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\
+2017-07-17T23:46:38.937Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-07-17T23:46:55.905Z - info: Found 29 extensions
+2017-07-17T23:46:55.955Z - debug: Writing extension locations cache to C:\Users\Euclides\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-07-17T23:46:55.963Z - debug: Discovered 29 extensions
+2017-07-17T23:46:55.965Z - info: Using extension import-export
+2017-07-17T23:47:06.823Z - info: Using extension tags
+2017-07-17T23:47:07.485Z - info: Using extension templates
+2017-07-17T23:47:08.986Z - info: Using extension jsrender
+2017-07-17T23:47:09.002Z - info: Using extension cli
+2017-07-17T23:47:09.006Z - info: Using extension authentication
+2017-07-17T23:47:11.583Z - debug: Extension authentication was disabled
+2017-07-17T23:47:11.583Z - info: Using extension debug
+2017-07-17T23:47:11.678Z - info: Using extension express
+2017-07-17T23:47:12.842Z - info: Using extension fop-pdf
+2017-07-17T23:47:14.955Z - info: Using extension handlebars
+2017-07-17T23:47:15.059Z - info: Using extension phantom-pdf
+2017-07-17T23:47:16.075Z - info: Using extension fs-store
+2017-07-17T23:47:20.971Z - debug: Extension fs-store was disabled
+2017-07-17T23:47:20.972Z - info: Using extension images
+2017-07-17T23:47:22.054Z - info: Using extension data
+2017-07-17T23:47:23.595Z - info: Using extension child-templates
+2017-07-17T23:47:24.147Z - info: Using extension licensing
+2017-07-17T23:47:29.760Z - info: Using extension authorization
+2017-07-17T23:47:30.767Z - debug: Extension authorization was disabled
+2017-07-17T23:47:30.768Z - info: Using extension text
+2017-07-17T23:47:30.813Z - info: Using extension reports
+2017-07-17T23:47:31.352Z - info: Using extension resources
+2017-07-17T23:47:31.885Z - info: Using extension browser-client
+2017-07-17T23:47:31.963Z - info: Using extension studio
+2017-07-17T23:47:35.318Z - info: Using extension html-to-xlsx
+2017-07-17T23:47:40.047Z - info: Using extension scripts
+2017-07-17T23:47:40.503Z - info: Using extension assets
+2017-07-17T23:47:41.117Z - info: Using extension scheduling
+2017-07-17T23:47:41.860Z - info: Using extension xlsx
+2017-07-17T23:47:45.714Z - info: Using extension sample-template
+2017-07-17T23:47:46.037Z - debug: Creating samples is disabled
+2017-07-17T23:47:46.038Z - info: Using extension public-templates
+2017-07-17T23:47:46.611Z - debug: Extension public-templates was disabled
+2017-07-17T23:47:47.182Z - info: Creating memory store
+2017-07-17T23:47:47.324Z - info: Creating default express app.
+2017-07-17T23:47:48.508Z - info: jsreport server successfully started on http port: 3001
+2017-07-17T23:49:07.141Z - info: Initializing jsreport@1.7.0 in development mode using configuration file dev.config.json
+2017-07-17T23:49:07.142Z - info: Setting process based strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2017-07-17T23:49:07.146Z - info: Searching for available extensions in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\
+2017-07-17T23:49:07.185Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Euclides\Desktop\tp_profesional\FlourApp-TrabajoProfesional\node_modules\
+2017-07-17T23:49:08.815Z - info: Found 29 extensions
+2017-07-17T23:49:08.829Z - debug: Writing extension locations cache to C:\Users\Euclides\AppData\Local\Temp\jsreport-temp\extensions\locations.json
+2017-07-17T23:49:08.830Z - debug: Discovered 29 extensions
+2017-07-17T23:49:08.832Z - info: Using extension import-export
+2017-07-17T23:49:09.169Z - info: Using extension tags
+2017-07-17T23:49:09.178Z - info: Using extension templates
+2017-07-17T23:49:09.239Z - info: Using extension jsrender
+2017-07-17T23:49:09.241Z - info: Using extension cli
+2017-07-17T23:49:09.243Z - info: Using extension authentication
+2017-07-17T23:49:09.334Z - debug: Extension authentication was disabled
+2017-07-17T23:49:09.335Z - info: Using extension debug
+2017-07-17T23:49:09.336Z - info: Using extension express
+2017-07-17T23:49:09.393Z - info: Using extension fop-pdf
+2017-07-17T23:49:09.465Z - info: Using extension handlebars
+2017-07-17T23:49:09.469Z - info: Using extension phantom-pdf
+2017-07-17T23:49:09.586Z - info: Using extension fs-store
+2017-07-17T23:49:09.698Z - debug: Extension fs-store was disabled
+2017-07-17T23:49:09.699Z - info: Using extension images
+2017-07-17T23:49:09.749Z - info: Using extension data
+2017-07-17T23:49:09.792Z - info: Using extension child-templates
+2017-07-17T23:49:09.836Z - info: Using extension licensing
+2017-07-17T23:49:09.916Z - info: Using extension authorization
+2017-07-17T23:49:09.959Z - debug: Extension authorization was disabled
+2017-07-17T23:49:09.959Z - info: Using extension text
+2017-07-17T23:49:09.961Z - info: Using extension reports
+2017-07-17T23:49:10.004Z - info: Using extension resources
+2017-07-17T23:49:10.052Z - info: Using extension browser-client
+2017-07-17T23:49:10.054Z - info: Using extension studio
+2017-07-17T23:49:10.174Z - info: Using extension html-to-xlsx
+2017-07-17T23:49:10.297Z - info: Using extension scripts
+2017-07-17T23:49:10.344Z - info: Using extension assets
+2017-07-17T23:49:10.393Z - info: Using extension scheduling
+2017-07-17T23:49:10.469Z - info: Using extension xlsx
+2017-07-17T23:49:10.675Z - info: Using extension sample-template
+2017-07-17T23:49:10.735Z - debug: Creating samples is disabled
+2017-07-17T23:49:10.736Z - info: Using extension public-templates
+2017-07-17T23:49:10.805Z - debug: Extension public-templates was disabled
+2017-07-17T23:49:10.836Z - info: Creating memory store
+2017-07-17T23:49:10.875Z - info: Creating default express app.
+2017-07-17T23:49:10.914Z - info: jsreport server successfully started on http port: 3001
+2017-07-17T23:49:10.917Z - info: Veryfing license key free
+2017-07-17T23:49:12.330Z - info: Using free license
+2017-07-17T23:49:12.332Z - info: reporter initialized
+2017-07-18T01:57:54.161Z - info: Starting rendering request 1 (user: null) requestId=1
+2017-07-18T01:57:54.164Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=1
+2017-07-18T01:57:54.164Z - debug: Inline data specified. requestId=1
+2017-07-18T01:57:54.216Z - debug: Resources not defined for this template. requestId=1
+2017-07-18T01:57:54.234Z - debug: Rendering engine jsrender requestId=1
+2017-07-18T01:57:57.920Z - debug: Compiled template not found in the cache, compiling timestamp=Mon Jul 17 2017 22:57:57 GMT-0300 (Hora estándar de Argentina), requestId=1
+2017-07-18T01:57:57.924Z - debug: Replaced images [] requestId=1
+2017-07-18T01:57:57.926Z - debug: Executing recipe phantom-pdf requestId=1
+2017-07-18T01:58:01.737Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Mon Jul 17 2017 22:57:59 GMT-0300 (Hora estándar de Argentina), requestId=1
+2017-07-18T01:58:01.737Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C85852bf0-6b5c-11e7-9223-9bca7d87eb23html.html timestamp=Mon Jul 17 2017 22:57:59 GMT-0300 (Hora estándar de Argentina), requestId=1
+2017-07-18T01:58:01.738Z - debug: Request http://localhost:3000/img/logo.png timestamp=Mon Jul 17 2017 22:57:59 GMT-0300 (Hora estándar de Argentina), requestId=1
+2017-07-18T01:58:01.739Z - debug: Request http://localhost:3000/img/afip.png timestamp=Mon Jul 17 2017 22:57:59 GMT-0300 (Hora estándar de Argentina), requestId=1
+2017-07-18T01:58:01.741Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=1
+2017-07-18T01:58:01.742Z - debug: Skipping storing report. requestId=1
+2017-07-18T01:58:01.749Z - info: Rendering request 1 finished in 7615 ms requestId=1
+2017-07-18T01:58:38.720Z - info: Starting rendering request 2 (user: null) requestId=2
+2017-07-18T01:58:38.721Z - info: Rendering anonymous template { recipe:phantom-pdf,engine:jsrender} requestId=2
+2017-07-18T01:58:38.721Z - debug: Inline data specified. requestId=2
+2017-07-18T01:58:38.723Z - debug: Resources not defined for this template. requestId=2
+2017-07-18T01:58:38.724Z - debug: Rendering engine jsrender requestId=2
+2017-07-18T01:58:39.196Z - debug: Compiled template not found in the cache, compiling timestamp=Mon Jul 17 2017 22:58:39 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-18T01:58:39.197Z - debug: Replaced images [] requestId=2
+2017-07-18T01:58:39.199Z - debug: Executing recipe phantom-pdf requestId=2
+2017-07-18T01:58:40.667Z - debug: Converting in dedicated phantomjs 1.9.8 timestamp=Mon Jul 17 2017 22:58:40 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-18T01:58:40.668Z - debug: Request file:///C%3A%5CUsers%5CEuclides%5CAppData%5CLocal%5CTemp%5Cjsreport-temp%5C9e1db600-6b5c-11e7-9223-9bca7d87eb23html.html timestamp=Mon Jul 17 2017 22:58:40 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-18T01:58:40.669Z - debug: Request http://localhost:3000/img/logo.png timestamp=Mon Jul 17 2017 22:58:40 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-18T01:58:40.670Z - debug: Request http://localhost:3000/img/afip.png timestamp=Mon Jul 17 2017 22:58:40 GMT-0300 (Hora estándar de Argentina), requestId=2
+2017-07-18T01:58:40.671Z - debug: phantom-pdf recipe finished with 1 pages generated requestId=2
+2017-07-18T01:58:40.673Z - debug: Skipping storing report. requestId=2
+2017-07-18T01:58:40.677Z - info: Rendering request 2 finished in 1955 ms requestId=2

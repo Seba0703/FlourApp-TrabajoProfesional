@@ -1,54 +1,52 @@
 <table class="table">
-  <thead class="thead-inverse">
-  <tr>
-    <th>Nombre</th>
-    <th>Cantidad</th>
-    <th>Unidad</th>
-    <th>Stock Min</th>
-    <th>Stock Max</th>
-    <th>Embolsado (default)</th>
-    <th>Porcentaje Merma</th>
-    <th>Precio Venta</th>
-    <th>Componentes</th>
-    <th>Acciones</th>
-  </tr>
-  </thead>
-  <tbody *ngFor="let semiProcesado of semiProcesados">
-    <td>{{semiProcesado.nombre}}</td>
-    <td>{{semiProcesado.cantidad}}</td>
-    <td>{{semiProcesado.unidad}}</td>
-    <td>{{semiProcesado.stockMin}}</td>
-    <td>{{semiProcesado.stockMax}}</td>
-    <td>{{semiProcesado.embolsadoCantDefault}}</td>
-    <td *ngIf="semiProcesado.porcentajeMerma">{{semiProcesado.porcentajeMerma}}%</td>
-    <td *ngIf="!semiProcesado.porcentajeMerma"></td>
-    <td *ngIf="semiProcesado.precioVenta">${{semiProcesado.precioVenta}}</td>
-    <td *ngIf="!semiProcesado.precioVenta"></td>
-    <td>
-      <div class="row" style="margin: 0 auto">
-        <button type="button" class="btn btn-warning" (click)="componentes(semiProcesado._id)" title="Definir componentes" 
-        data-toggle="modal" data-target="#componentesModal">
-          <i class="fa fa-eyedropper" aria-hidden="true"></i>
-        </button>
-      </div>
-    </td>
-    <td>
-      <div class="row">
-          <div class="col-md-6">
-            <button type="button" class="btn btn-success" (click)="modificar(semiProcesado)" title="Modificar" 
-            data-toggle="modal" data-target="#modificarModal">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-            </button>
-          </div>
-          
-          <div class="col-md-6">
-            <button type="button" class="btn btn-danger" (click)="borrar(semiProcesado._id)" title="Borrar" >
-              <i class="fa fa-trash" aria-hidden="true"></i>
-            </button>
-          </div>
-      </div>
-    </td>
-  </tbody>
+    <thead class="thead-inverse">
+        <tr>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Unidad</th>
+            <th>Stock Min</th>
+            <th>Stock Max</th>
+            <th>Embolsado (default)</th>
+            <th>Porcentaje Merma</th>
+            <th>Precio Venta</th>
+            <th>Componentes</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let semiProcesado of semiProcesados">
+        <td>{{semiProcesado.nombre}}</td>
+        <td>{{semiProcesado.cantidad}}</td>
+        <td>{{semiProcesado.unidad}}</td>
+        <td>{{semiProcesado.stockMin}}</td>
+        <td>{{semiProcesado.stockMax}}</td>
+        <td>{{semiProcesado.embolsadoCantDefault}}</td>
+        <td *ngIf="semiProcesado.porcentajeMerma">{{semiProcesado.porcentajeMerma}}%</td>
+        <td *ngIf="!semiProcesado.porcentajeMerma"></td>
+        <td *ngIf="semiProcesado.precioVenta">${{semiProcesado.precioVenta}}</td>
+        <td *ngIf="!semiProcesado.precioVenta"></td>
+        <td>
+            <div class="row" style="margin: 0 auto">
+                <button type="button" class="btn btn-warning" (click)="componentes(semiProcesado._id)" title="Definir componentes" data-toggle="modal" data-target="#componentesModal">
+                    <i class="fa fa-eyedropper" aria-hidden="true"></i>
+                </button>
+            </div>
+        </td>
+        <td>
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-success" (click)="modificar(semiProcesado)" title="Modificar" data-toggle="modal" data-target="#modificarModal">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger" (click)="borrar(semiProcesado._id)" title="Borrar">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </td>
+    </tbody>
 </table>
 
 <!-- Modal MODIFICAR SEMIPROCESADO-->
@@ -63,7 +61,7 @@
 
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#datos" role="tab">Datos cliente</a>
+                            <a class="nav-link active" data-toggle="tab" href="#datos" role="tab">Datos Producto Semiprocesado</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#retenciones" role="tab">Retenciones</a>
@@ -78,10 +76,10 @@
                                 </div>
                                 <div class="col-8">
                                     <select class="form-control" id="porcentajeIVA" [(ngModel)]="tasaImpositiva">
-                                      <option>IVA-0%</option>
-                                      <option>IVA-10.5%</option>
-                                      <option>IVA-21%</option>
-                                      <option>IVA-27%</option>
+                                        <option>IVA-0%</option>
+                                        <option>IVA-10.5%</option>
+                                        <option>IVA-21%</option>
+                                        <option>IVA-27%</option>
                                     </select>
                                 </div>
                             </div>
@@ -95,49 +93,45 @@
 
                             <input type="number" class="form-control" placeholder="Stock Max" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="stockMax">
 
-                            <input type="number" class="form-control" placeholder="Embolsado (default)"
-                            aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="embolsado">
+                            <input type="number" class="form-control" placeholder="Embolsado (default)" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="embolsado">
 
-                            <input type="number" class="form-control"
-                            placeholder="Porcentaje Merma (ej: 10 => equivale 10%)" aria-describedby="basic-addon1"
-                            style="margin-bottom: 4px;" min="0" max="100" onkeypress="return validateChar(event)" [(ngModel)]="porcentajeMerma">
+                            <input type="number" class="form-control" placeholder="Porcentaje Merma (ej: 10 => equivale 10%)" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="0" max="100" onkeypress="return validateChar(event)" [(ngModel)]="porcentajeMerma">
 
                             <input type="number" step="0.01" class="form-control" placeholder="Precio Venta" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validarPrecioVenta(event)" [(ngModel)]="precioVenta">
                         </div>
 
                         <div class="tab-pane" id="retenciones" role="tabpanel">
-                            <div class="container" >
+                            <div class="container">
                                 <div class="row" style="margin: 4px;">
                                     <div class="col" style="overflow-y: scroll;">
                                         <table class="table">
                                             <thead class="thead-inverse">
-                                            <tr>
-                                                <th>Nombre</th>
-                                                <th>Codigo</th>
-                                                <th>Acción</th>
-                                            </tr>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Codigo</th>
+                                                    <th>Acción</th>
+                                                </tr>
                                             </thead>
                                             <tbody *ngFor="let retencion of retencionesCliente; let i = index">
-                                            <td>
-                                                <div (click)="select(retencion)">{{retencion.nombre}}</div>
-                                            </td>
+                                                <td>
+                                                    <div (click)="select(retencion)">{{retencion.nombre}}</div>
+                                                </td>
 
-                                            <td>
-                                                <div (click)="select(retencion)">{{retencion.codigo}}</div>
-                                            </td>
+                                                <td>
+                                                    <div (click)="select(retencion)">{{retencion.codigo}}</div>
+                                                </td>
 
-                                            <td>
-                                                <button type="button" class="btn btn-danger" (click)="borrarRetencionCliente(i)" title="Borrar" >
-                                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                                </button>
-                                            </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger" (click)="borrarRetencionCliente(i)" title="Borrar">
+                                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                                    </button>
+                                                </td>
 
                                             </tbody>
                                         </table>
                                     </div>
 
-                                    <button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar retención"
-                                            data-toggle="modal" data-target="#retencionesModal" style="margin: 10px;">+</button>
+                                    <button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar retención" data-toggle="modal" data-target="#retencionesModal" style="margin: 10px;">+</button>
                                 </div>
                             </div>
                         </div>
@@ -169,19 +163,19 @@
                         <div class="col" style="overflow-y: scroll;">
                             <table class="table">
                                 <thead class="thead-inverse">
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Codigo</th>
-                                </tr>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Codigo</th>
+                                    </tr>
                                 </thead>
                                 <tbody *ngFor="let retencion of filteredList">
-                                <td>
-                                    <div (click)="select(retencion)">{{retencion.nombre}}</div>
-                                </td>
+                                    <td>
+                                        <div (click)="select(retencion)">{{retencion.nombre}}</div>
+                                    </td>
 
-                                <td>
-                                    <div (click)="select(retencion)">{{retencion.codigo}}</div>
-                                </td>
+                                    <td>
+                                        <div (click)="select(retencion)">{{retencion.codigo}}</div>
+                                    </td>
                                 </tbody>
                             </table>
                         </div>
@@ -199,44 +193,54 @@
 </div>
 
 <!-- Modal COMPONETES-->
-<div class="modal fade" id="componentesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" 
-[hidden]="!mostrarModal"> <!-- hidden es true si mostrarModal es false-->
+<div class="modal fade" id="componentesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" [hidden]="!mostrarModal">
+    <!-- hidden es true si mostrarModal es false-->
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="componentes-modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Lista de Porcentajes</h5>
             </div>
             <div class="modal-body">
-              <div class="container">
-                <label for="text" style="margin-top: 8px;"><strong>Componentes seleccionados:</strong></label>
-                   <span *ngFor="let componente of componentesDisponibles">
-                    <div *ngIf="!fueSeleccionado(componente._id)">
-                         <input type="checkbox" #cv (change)="onChange(componente._id, componente.nombre, 0, cv.checked)"                                    
-                          >
-                               {{componente.nombre}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese porcentaje"  #porcentaje (keyup)="onPorcentajeChange(porcentaje.value, componente._id)" (change)="onPorcentajeChange(porcentaje.value, componente._id)"> <br>
-                    </div>
+                <div class="container">
+                    <label for="text" style="margin-top: 8px;">
+                        <strong>Componentes seleccionados:</strong>
+                    </label>
+                    <span *ngFor="let componente of componentesDisponibles">
+                        <div *ngIf="!fueSeleccionado(componente._id)">
+                            <input type="checkbox" #cv (change)="onChange(componente._id, componente.nombre, 0, cv.checked)">
+                            {{componente.nombre}}
+                            <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese porcentaje" #porcentaje (keyup)="onPorcentajeChange(porcentaje.value, componente._id)" (change)="onPorcentajeChange(porcentaje.value, componente._id)">
+                            <br>
+                        </div>
 
-                    <div *ngIf="fueSeleccionado(componente._id)">
-                         <input type="checkbox" checked #cv (change)="onChange(componente._id, componente.nombre, 0, cv.checked)"                                    
-                          >
-                               {{componente.nombre}} <input *ngIf="cv.checked == true" type="number" placeholder="Ingrese porcentaje"  [value]="getPorcentaje(componente._id)" #porcentaje (keyup)="onPorcentajeChange(porcentaje.value, componente._id)" (change)="onPorcentajeChange(porcentaje.value, componente._id)"> <br>
-                    </div>
+                        <div *ngIf="fueSeleccionado(componente._id)">
+                            <input type="checkbox" checked #cv (change)="onChange(componente._id, componente.nombre, 0, cv.checked)">
+                            {{componente.nombre}}
+                            <input
+                                *ngIf="cv.checked == true"
+                                type="number"
+                                placeholder="Ingrese porcentaje"
+                                [value]="getPorcentaje(componente._id)"
+                                #porcentaje
+                                (keyup)="onPorcentajeChange(porcentaje.value, componente._id)"
+                                (change)="onPorcentajeChange(porcentaje.value, componente._id)">
+                            <br>
+                        </div>
 
-                   </span>
-              </div>
+                    </span>
+                </div>
             </div>
             <div class="modal-footer">
-              <div class="container">
-                <div class="row" style="margin: 0 auto">
-                  <div class="col-md-12">
+                <div class="container">
+                    <div class="row" style="margin: 0 auto">
+                        <div class="col-md-12">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-warning" data-dismiss="modal"
-                            (click)="guardarComponentes()">
+                            <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="guardarComponentes()">
                                 Guardar componentes
                             </button>
-                  </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
         </div>
     </div>

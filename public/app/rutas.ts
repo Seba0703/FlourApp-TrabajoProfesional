@@ -1,4 +1,4 @@
-let ip = "localhost";
+let ip = "192.168.0.7";
 let puerto = 3000;
 var url = 'http://' + ip + ':' + puerto;
 var urlApi = url + "/api";

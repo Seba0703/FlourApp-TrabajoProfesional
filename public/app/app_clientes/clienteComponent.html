@@ -1,13 +1,13 @@
 <table class="table">
     <thead class="thead-inverse">
         <tr>
-        <th>Nombre Empresa</th>
-        <th>CUIT</th>
-        <th>Categoría Fiscal</th>
-        <th>Lista de Precios</th>
-        <th>Dirección</th>
-        <th>Condición de Pago</th>
-        <th>Acciones</th>
+            <th>Nombre Empresa</th>
+            <th>CUIT</th>
+            <th>Categoría Fiscal</th>
+            <th>Lista de Precios</th>
+            <th>Dirección</th>
+            <th>Condición de Pago</th>
+            <th style="width: 12%">Acciones</th>
         </tr>
     </thead>
     <tbody *ngFor="let cliente of clientes">
@@ -17,13 +17,12 @@
         <td>{{cliente.listaPrecioNombre}}</td>
         <td>{{cliente.direccion}}</td>
         <td>{{cliente.condicionPago}}</td>
-        <td>
-            <button type="button" class="btn btn-success" (click)="modificar(cliente)" title="Modificar"
-            data-toggle="modal" data-target="#modificarModal" >
-              <i class="fa fa-pencil" aria-hidden="true"></i>
+        <td style="padding: 12px 0 12px 0; width: 12%">
+            <button type="button" class="btn btn-success" (click)="modificar(cliente)" title="Modificar" data-toggle="modal" data-target="#modificarModal" style="font-size: 10px;">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
             </button>
-            <button type="button" class="btn btn-danger" (click)="borrar(cliente._id)" title="Borrar" >
-              <i class="fa fa-trash" aria-hidden="true"></i>
+            <button type="button" class="btn btn-danger" (click)="borrar(cliente._id)" title="Borrar" style="font-size: 10px;">
+                <i class="fa fa-trash" aria-hidden="true"></i>
             </button>
         </td>
     </tbody>
@@ -37,7 +36,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Modificar cliente</h5>
             </div>
             <div class="modal-body">
-				<div class="container">
+                <div class="container">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#datos" role="tab">Datos cliente</a>
@@ -51,9 +50,7 @@
                         <div class="tab-pane active" id="datos" role="tabpanel">
                             <input type="text" class="form-control" placeholder="Nombre empresa" aria-describedby="basic-addon1" style="margin-bottom: 4px; margin-top: 4px" [(ngModel)]="nombreEmpresa">
 
-                            <input type="number" class="form-control" placeholder="CUIT ( sin los &quot;-&quot; )"
-                            aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1"
-                            onkeypress="return validateChar(event)" [(ngModel)]="cuit">
+                            <input type="number" class="form-control" placeholder="CUIT ( sin los &quot;-&quot; )" aria-describedby="basic-addon1" style="margin-bottom: 4px;" min="1" onkeypress="return validateChar(event)" [(ngModel)]="cuit">
 
                             <div class="form-group row">
                                 <div class="col-4">
@@ -77,61 +74,55 @@
                                 </div>
                                 <div class="col-8">
                                     <select class="form-control" [(ngModel)]="listaPrecioNombreSeleccionada">
-                                        <option *ngFor="let precioDisponible of listaDePreciosDisponible"
-                                            [value]="precioDisponible"
-                                        >
-                                          {{precioDisponible}}
+                                        <option *ngFor="let precioDisponible of listaDePreciosDisponible" [value]="precioDisponible">
+                                            {{precioDisponible}}
                                         </option>
                                     </select>
                                 </div>
                             </div>
 
-                            <input type="text" class="form-control" placeholder="Dirección"
-                            aria-describedby="basic-addon1" style="margin-bottom: 4px;" [(ngModel)]="direccion">
+                            <input type="text" class="form-control" placeholder="Dirección" aria-describedby="basic-addon1" style="margin-bottom: 4px;" [(ngModel)]="direccion">
 
-                            <input type="text" class="form-control" placeholder="Condición de Pago (ej: 30-60-90)"
-                            aria-describedby="basic-addon1" style="margin-bottom: 4px;"
-                            onkeypress="return validarCondPago(event)" [(ngModel)]="condicionPago">
+                            <input type="text" class="form-control" placeholder="Condición de Pago (ej: 30-60-90)" aria-describedby="basic-addon1" style="margin-bottom: 4px;" onkeypress="return validarCondPago(event)" [(ngModel)]="condicionPago">
                         </div>
 
                         <div class="tab-pane" id="retenciones" role="tabpanel">
-                            <div class="container" >
+                            <div class="container">
                                 <div class="row" style="margin: 4px;">
                                     <div class="col" style="overflow-y: scroll;">
                                         <table class="table">
                                             <thead class="thead-inverse">
-                                            <tr>
-                                                <th>Nombre</th>
-                                                <th>Codigo</th>
-                                                <th>Acción</th>
-                                            </tr>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Codigo</th>
+                                                    <th>Acción</th>
+                                                </tr>
                                             </thead>
                                             <tbody *ngFor="let retencion of retencionesCliente; let i = index">
-                                            <td>
-                                                <div (click)="select(retencion)">{{retencion.nombre}}</div>
-                                            </td>
+                                                <td>
+                                                    <div (click)="select(retencion)">{{retencion.nombre}}</div>
+                                                </td>
 
-                                            <td>
-                                                <div (click)="select(retencion)">{{retencion.codigo}}</div>
-                                            </td>
+                                                <td>
+                                                    <div (click)="select(retencion)">{{retencion.codigo}}</div>
+                                                </td>
 
-                                            <td>
-                                                <button type="button" class="btn btn-danger" (click)="borrarRetencionCliente(i)" title="Borrar" >
-                                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                                </button>
-                                            </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger" (click)="borrarRetencionCliente(i)" title="Borrar">
+                                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                                    </button>
+                                                </td>
 
                                             </tbody>
                                         </table>
                                     </div>
 
-                                    <button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar retención"
-                                            data-toggle="modal" data-target="#retencionesModal" style="margin: 10px;">+</button>
+                                    <button type="button" class="btn btn-primary btn-circle btn-lg" title="Agregar retención" data-toggle="modal" data-target="#retencionesModal" style="margin: 10px;">+</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-				</div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -158,19 +149,19 @@
                         <div class="col" style="overflow-y: scroll;">
                             <table class="table">
                                 <thead class="thead-inverse">
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Codigo</th>
-                                </tr>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Codigo</th>
+                                    </tr>
                                 </thead>
                                 <tbody *ngFor="let retencion of filteredList">
-                                <td>
-                                    <div (click)="select(retencion)">{{retencion.nombre}}</div>
-                                </td>
+                                    <td>
+                                        <div (click)="select(retencion)">{{retencion.nombre}}</div>
+                                    </td>
 
-                                <td>
-                                    <div (click)="select(retencion)">{{retencion.codigo}}</div>
-                                </td>
+                                    <td>
+                                        <div (click)="select(retencion)">{{retencion.codigo}}</div>
+                                    </td>
                                 </tbody>
                             </table>
                         </div>
@@ -186,5 +177,3 @@
         </div>
     </div>
 </div>
-
-

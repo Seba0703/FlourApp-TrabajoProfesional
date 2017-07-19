@@ -2,37 +2,37 @@
 	<div class="col-md-11">
 		<table class="table">
 			<thead class="thead-inverse">
-			    <tr>
-			    <th>Cliente</th>
-			    <th>Importe</th>
-			    <th>Nº Comprobante</th>
-			    <th>Acciones</th>
-			    </tr>
+				<tr>
+					<th>Cliente</th>
+					<th>Importe</th>
+					<th>Condicion de Pago</th>
+					<th>Acciones</th>
+				</tr>
 			</thead>
 			<tbody *ngFor="let fv of facturasVentaDisponibles">
-			    <td>{{fv.cliente.nombreEmpresa}}</td>
-			    <td>${{fv.getImporteTotal()}}</td>
-			    <th>xxxxx</th>
-			    <td>
-					<button type="button" class="btn btn-warning" (click)="generarRemito(fv)" title="Generar remito"
-							data-toggle="modal" data-target="#componentesModal">
+				<td>{{fv.cliente.nombreEmpresa}}</td>
+				<td>${{fv.getImporteTotal()}}</td>
+				<th>{{fv.condicionDePago}}</th>
+				<td>
+					<button type="button" class="btn btn-warning" (click)="generarRemito(fv)" title="Generar remito" data-toggle="modal" data-target="#componentesModal">
 						<i class="fa fa-eyedropper" aria-hidden="true"></i>
 					</button>
-		            <button type="button" class="btn btn-success" (click)="seleccionarFacturaParaModificar(fv)" title="Modificar"
-		            data-toggle="modal" data-target="#facturaModal" >
-		              <i class="fa fa-pencil" aria-hidden="true"></i>
-		            </button>
-			        <button type="button" class="btn btn-danger" (click)="borrar(fv)" title="Borrar" >
-			          <i class="fa fa-trash" aria-hidden="true"></i>
-			        </button>
-			    </td>
+					<button type="button" class="btn btn-success" (click)="seleccionarFacturaParaModificar(fv)" title="Modificar" data-toggle="modal" data-target="#facturaModal">
+						<i class="fa fa-pencil" aria-hidden="true"></i>
+					</button>
+					<button type="button" class="btn btn-danger" (click)="borrar(fv)" title="Borrar">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+					</button>
+					<button type="button" class="btn btn-info" (click)="verPDF(fv)" title="PDF">
+						<i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+					</button>
+				</td>
 			</tbody>
 		</table>
 	</div>
 
 	<div class="col-md-1" style="padding-left: 0px;">
-		<button type="button" class="btn btn-primary btn-circle btn-lg" title="Crear Factura de Venta" data-toggle="modal" 
-		data-target="#facturaModal" (click)="crearFactura()">
+		<button type="button" class="btn btn-primary btn-circle btn-lg" title="Crear Factura de Venta" data-toggle="modal" data-target="#facturaModal" (click)="crearFactura()">
 			+
 		</button>
 	</div>
@@ -40,341 +40,329 @@
 </div>
 
 <!-- Modal FACTURA-->
-<div class="modal fade" id="facturaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Factura de Venta</h5>
-            </div>
-            <div class="modal-body">
-              <div class="container">
+<div class="modal fade" id="facturaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Factura de Venta</h5>
+			</div>
+			<div class="modal-body">
+				<div class="container">
 
-				<!-- Nav tabs -->
-				<ul class="nav nav-tabs" role="tablist">
-				  <li class="nav-item">
-				    <a class="nav-link active" data-toggle="tab" href="#datos" role="tab">Datos</a>
-				  </li>
-				  <li class="nav-item">
-				    <a class="nav-link" data-toggle="tab" href="#productos" role="tab">Productos</a>
-				  </li>
-				  <li class="nav-item">
-				    <a class="nav-link" data-toggle="tab" href="#vencimientos" role="tab">Vencimientos</a>
-				  </li>
-				  <li class="nav-item">
-				    <a class="nav-link" data-toggle="tab" href="#retenciones" role="tab">Retenciones</a>
-				  </li>
-				</ul>
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" data-toggle="tab" href="#datos" role="tab">Datos</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" data-toggle="tab" href="#productos" role="tab">Productos</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" data-toggle="tab" href="#vencimientos" role="tab">Vencimientos</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" data-toggle="tab" href="#retenciones" role="tab">Retenciones</a>
+						</li>
+					</ul>
 
-				<!-- Tab panes -->
-				<div class="tab-content">
+					<!-- Tab panes -->
+					<div class="tab-content">
 
-				  	<div class="tab-pane active" id="datos" role="tabpanel">
+						<div class="tab-pane active" id="datos" role="tabpanel">
 
-				  		<div class="form-group row" style="margin-top: 12px;">
-	                        <div class="col-md-2">
-	                            <label for="example-text-input" class="col-form-label">
-	                            	<strong>Fecha</strong>
+							<div class="form-group row" style="margin-top: 12px;">
+								<div class="col-md-2">
+									<label for="example-text-input" class="col-form-label">
+										<strong>Fecha</strong>
 
-									<i class="fa fa-calendar" aria-hidden="true" 
-									title="Mostrar calendario"
-									(click)="toggleDP()" 
-									onmouseover="" style="cursor: pointer;">
-								</i>
-                            	</label>
-	                        </div>
-	                        <div class="col-md-5">
-								<datepicker [hidden]="!clickedDatepicker"
-								      [(ngModel)]="facturaVenta.fecha"
-								      [showWeeks]="false">
-								 </datepicker>
-	                        </div>
-                    	</div>
+										<i class="fa fa-calendar" aria-hidden="true" title="Mostrar calendario" (click)="toggleDP()" onmouseover="" style="cursor: pointer;"></i>
+									</label>
+								</div>
+								<div class="col-md-5">
+									<datepicker [hidden]="!clickedDatepicker" [(ngModel)]="facturaVenta.fecha" [showWeeks]="false"></datepicker>
+								</div>
+							</div>
 
-						<div id="accordion" role="tablist" aria-multiselectable="true">
-						  <div class="card">
-						    <div class="card-header" role="tab" id="headingOne">
-						      <h5 class="mb-0">
-						        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" 
-						        aria-controls="collapseOne" (click)="cambiarEstado()">
-						          {{estadoLabelClientes}} clientes <i class="fa fa-user-plus" aria-hidden="true"></i>
-						        </a>
-						      </h5>
-						    </div>
+							<div id="accordion" role="tablist" aria-multiselectable="true">
+								<div class="card">
+									<div class="card-header" role="tab" id="headingOne">
+										<h5 class="mb-0">
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" (click)="cambiarEstado()">
+												{{estadoLabelClientes}}
+												clientes
+												<i class="fa fa-user-plus" aria-hidden="true"></i>
+											</a>
+										</h5>
+									</div>
 
-						    <div id="collapseOne" class="collapse hide" role="tabpanel" aria-labelledby="headingOne">
-						      <div class="card-block" style="max-height: 400px; overflow-y: scroll;">
-				                    <span *ngFor="let cliente of clientesDisponibles">
-				                   		<div *ngIf="fueSeleccionado(cliente)">
-				               		        <label>
-										        <input type="radio" name="radiogroup" checked 
-										        (change)="onSeleccionClienteChange(cliente)">
-										        {{cliente.nombreEmpresa}} / {{cliente.cuit}}
-									        </label>
-				                   		</div>
+									<div id="collapseOne" class="collapse hide" role="tabpanel" aria-labelledby="headingOne">
+										<div class="card-block" style="max-height: 400px; overflow-y: scroll;">
+											<span *ngFor="let cliente of clientesDisponibles">
+												<div *ngIf="fueSeleccionado(cliente)">
+													<label>
+														<input type="radio" name="radiogroup" checked (change)="onSeleccionClienteChange(cliente)">
+														{{cliente.nombreEmpresa}}
+														/
+														{{cliente.cuit}}
+													</label>
+												</div>
 
-				                   		<div *ngIf="!fueSeleccionado(cliente)">
-				               		        <label>
-										        <input type="radio" name="radiogroup"
-										        (change)="onSeleccionClienteChange(cliente)">
-										        {{cliente.nombreEmpresa}} / {{cliente.cuit}}
-									        </label>
-				                   		</div>
-				                    </span>
-						      </div>
-						    </div>
-						  </div>
-						</div>
+												<div *ngIf="!fueSeleccionado(cliente)">
+													<label>
+														<input type="radio" name="radiogroup" (change)="onSeleccionClienteChange(cliente)">
+														{{cliente.nombreEmpresa}}
+														/
+														{{cliente.cuit}}
+													</label>
+												</div>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
 
-						<div class="form-group row" style="margin-top: 12px;">
-							<div class="col-md-6">
-								<input type="text" class="form-control" placeholder="Condición de Pago (ej: 30-60-90)"
-								[(ngModel)]="facturaVenta.condicionDePago" (blur)="facturaVenta.setImportesEnVencimientos()">
+							<div class="form-group row" style="margin-top: 12px;">
+								<div class="col-md-6">
+									<input type="text" class="form-control" placeholder="Condición de Pago (ej: 30-60-90)" [(ngModel)]="facturaVenta.condicionDePago" (blur)="facturaVenta.setImportesEnVencimientos()">
+								</div>
+							</div>
+
+							<div class="form-group row" style="margin-top: 12px;">
+								<div class="col-3">
+									<label for="example-text-input" class="col-form-label">
+										<strong>Lista de Precios</strong>
+									</label>
+								</div>
+
+								<div class="col-9">
+									<select class="form-control" (change)="onListaDePreciosChange()" [(ngModel)]="facturaVenta.nombreListaDePrecios">
+										<option *ngFor="let nombreListaDePrecios of nombresListasDePreciosDisponibles" [value]="nombreListaDePrecios">
+											{{nombreListaDePrecios}}
+										</option>
+									</select>
+								</div>
 							</div>
 						</div>
 
-						<div class="form-group row" style="margin-top: 12px;">
-							<div class="col-3">
-	                            <label for="example-text-input" class="col-form-label">
-	                            	<strong>Lista de Precios</strong>
-	                            </label>
-	                        </div>
-
-	                        <div class="col-9">
-	                            <select class="form-control" 
-	                            	(change)="onListaDePreciosChange()"
-	                            	[(ngModel)]="facturaVenta.nombreListaDePrecios">
-	                                <option *ngFor="let nombreListaDePrecios of nombresListasDePreciosDisponibles" 
-	                                    [value]="nombreListaDePrecios"
-	                                >
-	                                  {{nombreListaDePrecios}}
-	                                </option>
-	                            </select>
-	                        </div>
-						</div>
-				  	</div>
-
-				  	<div class="tab-pane" id="productos" role="tabpanel">
-		                <label for="text" style="margin-top: 8px;"><strong>Seleccione los productos:</strong></label>
-						<div class="row">
-							<div class="col-md-12" style="max-height: 400px; overflow-y: scroll;">
-								<table class="table">
-								    <colgroup>
-								       <col span="1" style="width: 70%;">
-								       <col span="1" style="width: 10%;">
-								       <col span="1" style="width: 10%;">
-								       <col span="1" style="width: 10%;">
-								    </colgroup>
-									<thead class="thead-inverse">
-									    <tr>
-									    <th>Producto</th>
-									    <th>Cantidad</th>
-									    <th>Precio</th>
-									    <th>% IVA</th>
-									    </tr>
-									</thead>
-									<tbody *ngFor="let producto of productosDisponibles; let i = index">
-									    <td>
-									    	<div *ngIf="elProductoFueSeleccionado(producto)">
-												<input type="checkbox" checked #cv (change)="onSeleccionProductoChange(producto, cv.checked)">
-	                               				{{producto.nombre}}
-									    	</div>
-									    	<!-- ELSE -->
-									    	<div *ngIf="!elProductoFueSeleccionado(producto)">
-												<input type="checkbox" #cv (change)="onSeleccionProductoChange(producto, cv.checked)">
-	                               				{{producto.nombre}}
-									    	</div>
-									    </td>
-
-									    <td>
-									        <input *ngIf="elProductoFueSeleccionado(producto)" 
-									        	type="number" 
-									        	min="1" 
-									        	style="width: 90px;" 
-									        	placeholder="Cantidad"
-												   (blur)="facturaVenta.recalcularRetencionesForProducto(getIndex(producto))"
-									        	[(ngModel)]="facturaVenta.productos[getIndex(producto)].cantidad">
-									    </td>
-
-									    <td>
-									        <input *ngIf="elProductoFueSeleccionado(producto)" 
-									        	type="number"
-									        	step="0.01" 
-									        	min="0" 
-									        	style="width: 90px;" 
-									        	placeholder="Precio"
-												   (blur)="facturaVenta.recalcularRetencionesForProducto(getIndex(producto))"
-									        	[(ngModel)]="facturaVenta.productos[getIndex(producto)].precioVenta">
-									    </td>
-
-									    <td>
-									        <input *ngIf="elProductoFueSeleccionado(producto)" 
-									        	type="number"
-									        	step="0.01" 
-									        	min="0" 
-									        	style="width: 90px;" 
-									        	placeholder="% IVA"
-												   (blur)="facturaVenta.recalcularRetencionesForProducto(getIndex(producto))"
-									        	[(ngModel)]="facturaVenta.productos[getIndex(producto)].iva">
-									    </td>
-									</tbody>
-								</table>
-							</div>
-						</div>
-
-						<div class="row text-center" >
-							<div class="col-md-12" style="margin-top: 8px;">
-								<HR COLOR="grey">
-
-								<label for="text" style="margin-top: 8px; font: normal 30px courier !important;">
-									<strong>Total productos = ${{getImporte()}}</strong>
-								</label>
-							</div>
-
-							<div class="col-md-12" style="margin-top: 8px;">
-
-								<label for="text" style="margin-top: 8px; font: normal 30px courier !important;">
-									<strong>Total retenciones = ${{facturaVenta.getImporteTotalRetenciones()}}</strong>
-								</label>
-							</div>
-
-							<div class="col-md-12" style="margin-top: 8px;">
-								<HR COLOR="grey" WIDTH="60%">
-
-								<label for="text" style="margin-top: 8px; font: normal 30px courier !important;">
-									<strong>Total = ${{facturaVenta.getImporteTotal()}}</strong>
-								</label>
-							</div>
-						</div>
-				  	</div>
-
-				  	<div class="tab-pane" id="vencimientos" role="tabpanel">
-						<div layout-align="center center" margin="10px" class="text-center">
-							<label for="example-text-input" class="col-form-label" >
-								<strong>Diferencia con total: {{facturaVenta.redondeoDiff}} </strong>
+						<div class="tab-pane" id="productos" role="tabpanel">
+							<label for="text" style="margin-top: 8px;">
+								<strong>Seleccione los productos:</strong>
 							</label>
-						</div>
-						<div class="row">
-							<div class="col-md-12" style="max-height: 400px; overflow-y: scroll;">
-								<table class="table">
-									<thead class="thead-inverse">
-									<tr>
-										<th>N°</th>
-										<th>Fecha vencimiento</th>
-										<th>Importe</th>
-										<th>Cobrado</th>
-									</tr>
-									</thead>
-									<tbody *ngFor="let vencimiento of facturaVenta.vencimientos; let i = index">
+							<div class="row">
+								<div class="col-md-12" style="max-height: 400px; overflow-y: scroll;">
+									<table class="table">
+										<colgroup>
+											<col span="1" style="width: 70%;">
+											<col span="1" style="width: 10%;">
+											<col span="1" style="width: 10%;">
+											<col span="1" style="width: 10%;">
+										</colgroup>
+										<thead class="thead-inverse">
+											<tr>
+												<th>Producto</th>
+												<th>Cantidad</th>
+												<th>Precio</th>
+												<th>% IVA</th>
+											</tr>
+										</thead>
+										<tbody *ngFor="let producto of productosDisponibles; let i = index">
+											<td>
+												<div *ngIf="elProductoFueSeleccionado(producto)">
+													<input type="checkbox" checked #cv (change)="onSeleccionProductoChange(producto, cv.checked)">
+													{{producto.nombre}}
+												</div>
+												<!-- ELSE -->
+												<div *ngIf="!elProductoFueSeleccionado(producto)">
+													<input type="checkbox" #cv (change)="onSeleccionProductoChange(producto, cv.checked)">
+													{{producto.nombre}}
+												</div>
+											</td>
 
-									<td>{{i+1}}</td>
+											<td>
+												<input
+													*ngIf="elProductoFueSeleccionado(producto)"
+													type="number"
+													min="1"
+													style="width: 90px;"
+													placeholder="Cantidad"
+													(blur)="facturaVenta.recalcularRetencionesForProducto(getIndex(producto))"
+													[(ngModel)]="facturaVenta.productos[getIndex(producto)].cantidad">
+											</td>
 
-									<td>{{vencimiento.fecha}}</td>
+											<td>
+												<input
+													*ngIf="elProductoFueSeleccionado(producto)"
+													type="number"
+													step="0.01"
+													min="0"
+													style="width: 90px;"
+													placeholder="Precio"
+													(blur)="facturaVenta.recalcularRetencionesForProducto(getIndex(producto))"
+													[(ngModel)]="facturaVenta.productos[getIndex(producto)].precioVenta">
+											</td>
 
-									<td>
-										<input type="number" min="0.01" step="0.01"  class="form-control" placeholder="$"
-											   [(ngModel)]="facturaVenta.vencimientos[i].importe" (blur)="facturaVenta.calculateDiff()">
-									</td>
+											<td>
+												<input
+													*ngIf="elProductoFueSeleccionado(producto)"
+													type="number"
+													step="0.01"
+													min="0"
+													style="width: 90px;"
+													placeholder="% IVA"
+													(blur)="facturaVenta.recalcularRetencionesForProducto(getIndex(producto))"
+													[(ngModel)]="facturaVenta.productos[getIndex(producto)].iva">
+											</td>
+										</tbody>
+									</table>
+								</div>
+							</div>
 
-									<td>
-										<input type="checkbox" checked #cv [(ngModel)]="facturaVenta.vencimientos[i].cobrado">
-									</td>
+							<div class="row text-center">
+								<div class="col-md-12" style="margin-top: 8px;">
+									<HR COLOR="grey">
 
-									</tbody>
-								</table>
+									<label for="text" style="margin-top: 8px; font: normal 30px courier !important;">
+										<strong>Total productos = ${{getImporte()}}</strong>
+									</label>
+								</div>
+
+								<div class="col-md-12" style="margin-top: 8px;">
+
+									<label for="text" style="margin-top: 8px; font: normal 30px courier !important;">
+										<strong>Total retenciones = ${{facturaVenta.getImporteTotalRetenciones()}}</strong>
+									</label>
+								</div>
+
+								<div class="col-md-12" style="margin-top: 8px;">
+									<HR COLOR="grey" WIDTH="60%">
+
+									<label for="text" style="margin-top: 8px; font: normal 30px courier !important;">
+										<strong>Total = ${{facturaVenta.getImporteTotal()}}</strong>
+									</label>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="tab-pane" id="retenciones" role="tabpanel">
-						<div class="container" >
-							<div class="row" style="margin: 4px;">
-								<div class="col" style="overflow: scroll;">
+						<div class="tab-pane" id="vencimientos" role="tabpanel">
+							<div layout-align="center center" margin="10px" class="text-center">
+								<label for="example-text-input" class="col-form-label">
+									<strong>Diferencia con total:
+										{{facturaVenta.redondeoDiff}}
+									</strong>
+								</label>
+							</div>
+							<div class="row">
+								<div class="col-md-12" style="max-height: 400px; overflow-y: scroll;">
 									<table class="table">
 										<thead class="thead-inverse">
-										<tr>
-											<th>Nombre</th>
-											<th>Importe</th>
-											<th>Acción</th>
-										</tr>
+											<tr>
+												<th>N°</th>
+												<th>Fecha vencimiento</th>
+												<th>Importe</th>
+												<th>Cobrado</th>
+											</tr>
 										</thead>
-										<tbody *ngFor="let retencion of facturaVenta.retencionesFacturaVista; let i = index">
-										<td>{{retencion.retencion_id.nombre}}</td>
+										<tbody *ngFor="let vencimiento of facturaVenta.vencimientos; let i = index">
 
-										<td>
-											<input type="number" min="0.01" step="0.01"  class="form-control" placeholder="$"
-												   [(ngModel)]="retencion.importe">
-										</td>
+											<td>{{i+1}}</td>
 
-										<td>
-											<button type="button" class="btn btn-danger" (click)="facturaVenta.borrarRetencionFactura(i)" title="Borrar" >
-												<i class="fa fa-trash" aria-hidden="true"></i>
-											</button>
-										</td>
+											<td>{{vencimiento.fecha}}</td>
+
+											<td>
+												<input type="number" min="0.01" step="0.01" class="form-control" placeholder="$" [(ngModel)]="facturaVenta.vencimientos[i].importe" (blur)="facturaVenta.calculateDiff()">
+											</td>
+
+											<td>
+												<input type="checkbox" checked #cv [(ngModel)]="facturaVenta.vencimientos[i].cobrado">
+											</td>
 
 										</tbody>
 									</table>
 								</div>
 							</div>
-							<div class="col text-lg-right">
-								<button type="button" class="btn btn-info"
-										data-toggle="modal" data-target="#retencionesModal" style="font-size: 11px; margin: 10px;">+ Agregar retención</button>
+						</div>
+
+						<div class="tab-pane" id="retenciones" role="tabpanel">
+							<div class="container">
+								<div class="row" style="margin: 4px;">
+									<div class="col" style="overflow: scroll;">
+										<table class="table">
+											<thead class="thead-inverse">
+												<tr>
+													<th>Nombre</th>
+													<th>Importe</th>
+													<th>Acción</th>
+												</tr>
+											</thead>
+											<tbody *ngFor="let retencion of facturaVenta.retencionesFacturaVista; let i = index">
+												<td>{{retencion.retencion_id.nombre}}</td>
+
+												<td>
+													<input type="number" min="0.01" step="0.01" class="form-control" placeholder="$" [(ngModel)]="retencion.importe">
+												</td>
+
+												<td>
+													<button type="button" class="btn btn-danger" (click)="facturaVenta.borrarRetencionFactura(i)" title="Borrar">
+														<i class="fa fa-trash" aria-hidden="true"></i>
+													</button>
+												</td>
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="col text-lg-right">
+									<button type="button" class="btn btn-info" data-toggle="modal" data-target="#retencionesModal" style="font-size: 11px; margin: 10px;">+ Agregar retención</button>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			  </div>
 			</div>
 
-            <div class="modal-footer">
+			<div class="modal-footer">
 				<div class="container">
 					<div class="row">
-					  <div class="col"></div>
-					  <div class="col">
-					  	<button 
-					  		type="button" 
-					  		class="btn btn-secondary" 
-					  		data-dismiss="modal"
-					  		(click)="cancelarCambios()">
-					  			Cancelar
-					  	</button>
-					  </div>
-					  <div class="col">
-					  	<button 
-							type="button" 
-							class="btn btn-primary"
-					        (click)="guardarFactura()">
-					            Guardar factura
-					     </button>
-					  </div>
-					  <div class="col"></div>
+						<div class="col"></div>
+						<div class="col">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelarCambios()">
+								Cancelar
+							</button>
+						</div>
+						<div class="col">
+							<button type="button" class="btn btn-primary" (click)="guardarFactura()">
+								Guardar factura
+							</button>
+						</div>
+						<div class="col"></div>
 					</div>
 				</div>
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 </div>
 
-	<div class="modal fade" id="retencionesModal" tabindex="-1" role="dialog" aria-labelledby="retencionesModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="retencionesModalLabel">Agregar retención</h5>
-				</div>
-				<div class="modal-body">
-					<div class="container">
-						<div class="input-field col s12" style="margin: 4px;">
-							<input id="retencion" type="text" placeholder="Retención" aria-describedby="basic-addon1" class="form-control validate filter-input" [(ngModel)]=query (keyup)=filter()>
-						</div>
-						<div class="suggestions" *ngIf="filteredList.length > 0">
-							<div class="col" style="overflow-y: scroll;">
-								<table class="table">
-									<thead class="thead-inverse">
+<div class="modal fade" id="retencionesModal" tabindex="-1" role="dialog" aria-labelledby="retencionesModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="retencionesModalLabel">Agregar retención</h5>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="input-field col s12" style="margin: 4px;">
+						<input id="retencion" type="text" placeholder="Retención" aria-describedby="basic-addon1" class="form-control validate filter-input" [(ngModel)]=query (keyup)=filter()>
+					</div>
+					<div class="suggestions" *ngIf="filteredList.length > 0">
+						<div class="col" style="overflow-y: scroll;">
+							<table class="table">
+								<thead class="thead-inverse">
 									<tr>
 										<th>Nombre</th>
 										<th>Codigo</th>
 									</tr>
-									</thead>
-									<tbody *ngFor="let retencion of filteredList">
+								</thead>
+								<tbody *ngFor="let retencion of filteredList">
 									<td>
 										<div (click)="select(retencion)">{{retencion.nombre}}</div>
 									</td>
@@ -382,18 +370,18 @@
 									<td>
 										<div (click)="select(retencion)">{{retencion.codigo}}</div>
 									</td>
-									</tbody>
-								</table>
-							</div>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal" (click)="agregarRetencion()">
-						Agregar
-					</button>
-				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" (click)="agregarRetencion()">
+					Agregar
+				</button>
 			</div>
 		</div>
 	</div>
+</div>

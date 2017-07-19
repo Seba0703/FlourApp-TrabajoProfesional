@@ -55,7 +55,7 @@ export class FacturaVentaComponent implements OnInit{
     private spService: SemiProcesadoServices,
     private ptService: ProductoTerminadoServices,
     private retencionSrv: RetencionServices){
-    
+
     this.facturaVenta = new FacturaVenta();
     this.productosDisponibles = new Array<any>();
     this.facturasVentaDisponibles = [];
@@ -75,7 +75,7 @@ export class FacturaVentaComponent implements OnInit{
   cargarClientesDisponibles(){
     this.clientesDisponibles = []
   	this.cService.getBasicDataClientes()
-  				 .subscribe( 
+  				 .subscribe(
   				 	clientes => {
                this.clientesDisponibles = clientes;
                console.log("clientesDisponibles CARGADOS=");
@@ -89,13 +89,13 @@ export class FacturaVentaComponent implements OnInit{
     this.facturasVentaDisponibles = []
     console.log("CARGANDO FACTURAS DISPONIBLES= ");
     this.fvService.getFacturas()
-           .subscribe( 
+           .subscribe(
              fvDisponibles => {
                for (let fv of fvDisponibles){
                 for (var i = 0; i < this.clientesDisponibles.length; ++i) {
                   if(fv.empresaID == this.clientesDisponibles[i]._id) {
                     let cliente = this.clientesDisponibles[i]
-                    
+
                     this.fvService
                     .getProductosDeLaFacturaID(fv._id)
                     .subscribe(productos => {
@@ -124,7 +124,7 @@ export class FacturaVentaComponent implements OnInit{
                   }
                 }
                }
-               
+
              },
              err => console.error("EL ERROR FUE: ", err));
   }
@@ -180,7 +180,7 @@ export class FacturaVentaComponent implements OnInit{
 
   crearFactura(){
     this.facturaVenta = new FacturaVenta()
-    
+
     this.cargarProductosDisponibles()
   }
 
@@ -207,7 +207,7 @@ export class FacturaVentaComponent implements OnInit{
   }
 
   cambiarEstado(){
-    if(this.estadoLabelClientes == "Ver") { 
+    if(this.estadoLabelClientes == "Ver") {
       this.estadoLabelClientes = "Ocultar"
     } else {
       this.estadoLabelClientes = "Ver"
@@ -245,11 +245,11 @@ export class FacturaVentaComponent implements OnInit{
                  for(let elemento of listaDePrecios){
                   for (var i = 0; i < this.productosDisponibles.length; ++i) {
                     if (this.productosDisponibles[i]._id == elemento.mp_ID
-                      || this.productosDisponibles[i]._id == elemento.sp_ID 
+                      || this.productosDisponibles[i]._id == elemento.sp_ID
                       || this.productosDisponibles[i]._id == elemento.pt_ID) {
 
                         this.productosDisponibles[i].precioVenta = elemento.precio;
-                        
+
                         let index: number = 0;
                         for(let productoSeleccionado of this.facturaVenta.productos){
                           if(this.productosDisponibles[i]._id == productoSeleccionado.mp_sp_pt_ID) {
@@ -262,7 +262,7 @@ export class FacturaVentaComponent implements OnInit{
                         if(this.facturaVenta.productos[index] != undefined) {
                           this.facturaVenta.productos[index].precioVenta = elemento.precio;
                         }
-                        
+
                     }
                   }
                  }
@@ -318,6 +318,8 @@ export class FacturaVentaComponent implements OnInit{
           },
           err => console.error("EL ERROR FUE: ", err)
         )
+      } else {
+        this.facturaVenta.productos.push(new Producto(null, producto.tipo, producto._id, producto.nombre, 1, producto.precioVenta, this.getIVA(producto)));
       }
   	} else {
   		let index = 0;
@@ -331,7 +333,7 @@ export class FacturaVentaComponent implements OnInit{
   			}
   		}
   	}
-  	
+
   	console.log(this.facturaVenta.productos)
   }
 
@@ -350,11 +352,11 @@ export class FacturaVentaComponent implements OnInit{
       case "ti1":
         return 0;
       case "ti2":
-        return 10.5;  
+        return 10.5;
       case "ti3":
         return 21;
       case "ti4":
-        return 27;  
+        return 27;
       default:
         return 0;
     }
@@ -481,7 +483,7 @@ export class FacturaVentaComponent implements OnInit{
         console.log("You pressed OK!");
         this.fvService
         .borrarFactura(factura)
-        .subscribe(() => { 
+        .subscribe(() => {
           alert("\t\t\t\t¡Se borro existosamente!\n\nPulse 'Aceptar' para actualizar y visualizar los cambios");
           window.location.reload();
           },
@@ -535,4 +537,22 @@ export class FacturaVentaComponent implements OnInit{
         return hasRetencion;
     }
 
+    customAlert(msg:string,duration:number)
+    {
+     var styler = document.createElement("div");
+       styler.setAttribute("style","border: solid 3px Black;width:auto;height:auto;top:50%;left:40%;width:100%;");
+       styler.innerHTML = '<h1 style="color:#000000!important; text-align:center; width:100%;">'+msg+"</h1>";
+       setTimeout(function()
+       {
+         styler.parentNode.removeChild(styler);
+       },duration);
+       document.body.appendChild(styler);
+    }
+
+    verPDF(factura: FacturaVenta){
+      this.customAlert("Generando CAE",7000);
+
+      var route = "api/documentosMercantiles/pdf/" + factura._id;
+      setTimeout(function(){location.href=route;} , 7000);
+    }
 }
