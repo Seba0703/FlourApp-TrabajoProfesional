@@ -8,3 +8,4 @@ logs/reporter.log
 .idea
 .idea/typescript-compiler.xml
 
+*.log
