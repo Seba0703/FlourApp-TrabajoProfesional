@@ -9,4 +9,7 @@ logs/reporter.log
 .idea/typescript-compiler.xml
 
 *.log
+<<<<<<< HEAD
+=======
 *.log
+>>>>>>> cab79a9d70cc0656241b797548c996706a413847
