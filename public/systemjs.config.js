@@ -46,7 +46,7 @@
         defaultExtension: 'js'
       },
 
-	  'ng2-bootstrap':              { format: 'cjs', main: 'bundles/ng2-bootstrap.umd.js', defaultExtension: 'js' },
+	  'ng2-bootstrap':              { format: 'cjs', main: 'bundles/ngx-bootstrap.umd.js', defaultExtension: 'js' },
       'moment':                     { main: 'moment.js', defaultExtension: 'js' },
 
       rxjs: {
